@@ -1,0 +1,63 @@
+---
+layout: post
+title: Ansible - ELK Stack using Vagrant
+date: 
+type: post
+published: false
+status: draft
+categories: []
+tags: []
+meta:
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapDL: s:102:"a:1:{i:0;a:3:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";}}";
+  snapFB: s:253:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snapLI: s:244:"a:1:{i:0;a:8:{s:4:"doLI";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snapSU: s:119:"a:1:{i:0;a:4:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";}}";
+  snapTW: 's:172:"a:1:{i:0;a:5:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";}}";'
+  _s2mail: 'yes'
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<p style="text-align: center;"><strong>Ansible - ELK Stack using Vagrant</strong></p>
+<p style="text-align: left;">I have recently been going through the majority of my Ansible roles/playbooks and making them publicly available in order to help others as well as making things much easier for me to manage across multiple environments allowing me to only have a need to keep environment specific settings secure onsite. Going this route will make changes going forward much easier to keep consistent. How am I going to accomplish this you may be asking yourself. The answer (as of now) is to keep all roles default variables generically defined allowing for site specific settings to be maintained on prem. All roles will be stored on Github with a hook back into Ansible Galaxy. I can then pull the roles that I need down using the ansible-galaxy tool part of the Ansible install. I can then tie together any dependencies per role and when I execute ansible-galaxy it will pull down any additional roles that are required. So as of right now this seems like a good approach. And I would like to share this post with you to show the actual way this may flow when installing a multi-tier app with multiple roles. Who want's to do a single server with a single role anyways? :)</p>
+<p style="text-align: left;">To make this a bit more interesting I will be walking through this using Vagrant for deploying the environment along with the Ansible provisioning. This makes a fairly simple way to dest deployments and scenarios on you laptop for instance. I will be using a Macbook Pro running OSX Yosemite to write this up and do the actual testing therefore there will be a few things we need to do prior to building our ELK Stack using Vagrant. Being that we are building out a multi server environment using Vagrant and using Vagrant's built-in Ansible provisioner we need to install a few apps on our OSX host. The main reason for this is because we need to pass some Ansible hostvars between plays and need the ability to gather facts from those servers not within a specific play. At the end of this, Redis is what will glue it all together for us.</p>
+<p style="text-align: left;">I am also using Virtualbox for Vagrant VM's. You can use VMware Fusion or Workstation but you will have to pay for that (both for VMware and <a href="https://www.vagrantup.com/vmware" target="_blank">Vagrant VMware integration</a>). I recommend using Virtualbox in this case and this is how all of this testing has been done.</p>
+<p style="text-align: left;">First we need to install <a href="http://brew.sh/" target="_blank">Homebrew</a> for OSX. Homebrew is a package manager for OSX similar to apt or yum in Linux world.</p>
+<p>We need to ensure that XCode command line tools are installed and we can do this by running the following:</p>
+<pre>xcode-select --install
+</pre>
+<p>When you run the above you may see that it has already been installed which is what the below is telling us.</p>
+<pre>larrysmith@Larrys-MBP:~$ xcode-select --install
+xcode-select: error: command line tools are already installed, use "Software Update" to install updates
+larrysmith@Larrys-MBP:~$
+</pre>
+<p>Now we are ready to install Homebrew, and we do that by pasting the following in our terminal window.</p>
+<pre>ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+</pre>
+<p>Once Homebrew has completed installing run the following and fix any issues that Homebrew detects, if any.</p>
+<pre>brew doctor
+</pre>
+<p>Now we need to install a few more apps below<br />
+Install python</p>
+<pre>brew install python
+</pre>
+<p>Install Ansible **Note-Ansible can be installed using brew but I have not been able to get Vagrant, Ansible and Redis to place together nicely using brew.</p>
+<pre>sudo pip install ansible
+</pre>
+<p>Install Redis</p>
+<pre>sudo pip install redis
+</pre>
+<p>Now let's install Virtualbox which can be downloaded from <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">here</a>.</p>
+<p>Now we can install Vagrant so head over <a href="https://www.vagrantup.com/downloads.html" target="_blank">here</a> and pick up the OSX package and install.</p>

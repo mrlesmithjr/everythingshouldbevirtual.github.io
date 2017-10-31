@@ -1,0 +1,158 @@
+---
+layout: post
+title: Logstash - VCSA 6.0
+date: 2015-04-22 16:36:05.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Logstash
+- Monitoring
+- vCenter
+- VMware
+- vSphere 6.0
+tags:
+- logstash
+- vcenter
+- vcsa
+meta:
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _s2mail: 'yes'
+  _yoast_wpseo_focuskw: Logstash - VCSA
+  _yoast_wpseo_metadesc: Logstash - VCSA 6.0
+  _yoast_wpseo_linkdex: '72'
+  _thumbnail_id: '4468'
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"75036b5ee686b13b25a36b862de87e11";s:5:"pDate";s:19:"2015-04-22
+    20:36:06";}}";
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"AQpkXa";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/AQpkXa/comments";s:5:"pDate";s:19:"2015-04-22
+    20:36:12";}}";
+  snapTW: 's:327:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:71:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vCenter #logstash #ELKstack";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"590977427372814336";s:5:"pDate";s:19:"2015-04-22
+    20:36:13";}}";'
+  snapLI: s:298:"a:1:{i:0;a:10:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"postType";s:1:"A";}}";
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  _yoast_wpseo_focuskw_text_input: Logstash - VCSA
+  _wp_rp_related_posts_query_result_cache_expiration: '1510392378'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1940";s:5:"score";s:16:"89.9447505187378";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"3193";s:5:"score";s:17:"75.88998555013285";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"4297";s:5:"score";s:17:"72.51707612841386";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"2233";s:5:"score";s:17:"72.32325029051833";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"3353";s:5:"score";s:17:"69.13657998046517";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"3341";s:5:"score";s:17:"68.16266505712777";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"3313";s:5:"score";s:17:"67.07734114665479";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"3302";s:5:"score";s:17:"64.95155273419157";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"4695";s:5:"score";s:17:"62.28155060050611";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"3793";s:5:"score";s:17:"62.28155060050611";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"2870";s:5:"score";s:17:"61.28356826891098";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1879";s:5:"score";s:17:"60.33914507198237";}}
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<h4>Logstash - VCSA 6.0</h4>
+<p>As I have begun upgrading portions of my lab to vSphere 6.x I came across the difference in parsing syslog messages from the new VCSA which was different than previous versions. I was basically getting grokparsefailure on every message coming into logstash. So I wanted to share a new parsing rule for logstash that seems to be working almost 100% of the time. The <strong>bold</strong> lines are what I have added new to my logstash parsing rules.</p>
+<pre>filter {
+  if "vCenter" in [tags] {
+    multiline {
+      pattern =&gt; "--&gt;"
+      what =&gt; "previous"
+    }
+    grok {
+      break_on_match =&gt; true
+      match =&gt; [
+        "message", "&lt;%{INT:syslog_pri}&gt;%{SYSLOGTIMESTAMP:timestamp} %{IPORHOST:syslog_hostname} %{TIMESTAMP_ISO8601:syslog_timestamp} (?(?(?:\[%{DATA:message_thread_id} %{DATA:syslog_level} 
+<p>Example Kibana view.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2015-04-22-at-4.40.36-PM.png"><img class="alignnone wp-image-4468 size-large" src="{{ site.baseurl }}/assets/Screen-Shot-2015-04-22-at-4.40.36-PM-1024x544.png" alt="Screen Shot 2015-04-22 at 4.40.36 PM" width="1024" height="544" /></a></p>
+<p>To configure the VCSA for logging to a remote syslog server is as easy going to Home|Administration|System Configuration|Services and then VMWare Syslog Service. Now click manage and edit to configure.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-9.34.11-PM.png"><img class="alignnone wp-image-5549 size-full" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-9.34.11-PM.png" alt="Screen Shot 2016-01-15 at 9.34.11 PM" width="995" height="665" /></a></p>
+<p>&nbsp;</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-9.39.15-PM-1.png"><img class="alignnone wp-image-5553 size-full" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-9.39.15-PM-1.png" alt="Screen Shot 2016-01-15 at 9.39.15 PM" width="1024" height="634" /></a></p>
+<p>After setting the above and clicking OK you can view the summary page to ensure that your new remote syslog server shows up as below.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-10.08.36-PM.png" rel="attachment wp-att-5561"><img class="alignnone size-full wp-image-5561" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-10.08.36-PM.png" alt="Screen Shot 2016-01-15 at 10.08.36 PM" width="931" height="478" /></a></p>
+<p>If it does not then you can select restart from the Actions drop-down and restart the syslog server and all should be good.</p>
+<p>&nbsp;</p>
+<p>Enjoy!</p>
+%{DATA:message_service}
+<p>Example Kibana view.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2015-04-22-at-4.40.36-PM.png"><img class="alignnone wp-image-4468 size-large" src="{{ site.baseurl }}/assets/Screen-Shot-2015-04-22-at-4.40.36-PM-1024x544.png" alt="Screen Shot 2015-04-22 at 4.40.36 PM" width="1024" height="544" /></a></p>
+<p>To configure the VCSA for logging to a remote syslog server is as easy going to Home|Administration|System Configuration|Services and then VMWare Syslog Service. Now click manage and edit to configure.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-9.34.11-PM.png"><img class="alignnone wp-image-5549 size-full" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-9.34.11-PM.png" alt="Screen Shot 2016-01-15 at 9.34.11 PM" width="995" height="665" /></a></p>
+<p>&nbsp;</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-9.39.15-PM-1.png"><img class="alignnone wp-image-5553 size-full" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-9.39.15-PM-1.png" alt="Screen Shot 2016-01-15 at 9.39.15 PM" width="1024" height="634" /></a></p>
+<p>After setting the above and clicking OK you can view the summary page to ensure that your new remote syslog server shows up as below.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-10.08.36-PM.png" rel="attachment wp-att-5561"><img class="alignnone size-full wp-image-5561" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-10.08.36-PM.png" alt="Screen Shot 2016-01-15 at 10.08.36 PM" width="931" height="478" /></a></p>
+<p>If it does not then you can select restart from the Actions drop-down and restart the syslog server and all should be good.</p>
+<p>&nbsp;</p>
+<p>Enjoy!</p>
+\ ?%{DATA:message_opID}])) \[%{DATA:message_service_info}]\ (?(%{GREEDYDATA})))",
+        "message", "&lt;%{INT:syslog_pri}&gt;%{SYSLOGTIMESTAMP:timestamp} %{IPORHOST:syslog_hostname} %{TIMESTAMP_ISO8601:syslog_timestamp} (?(?(?:\[%{DATA:message_thread_id} %{DATA:syslog_level} 
+<p>Example Kibana view.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2015-04-22-at-4.40.36-PM.png"><img class="alignnone wp-image-4468 size-large" src="{{ site.baseurl }}/assets/Screen-Shot-2015-04-22-at-4.40.36-PM-1024x544.png" alt="Screen Shot 2015-04-22 at 4.40.36 PM" width="1024" height="544" /></a></p>
+<p>To configure the VCSA for logging to a remote syslog server is as easy going to Home|Administration|System Configuration|Services and then VMWare Syslog Service. Now click manage and edit to configure.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-9.34.11-PM.png"><img class="alignnone wp-image-5549 size-full" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-9.34.11-PM.png" alt="Screen Shot 2016-01-15 at 9.34.11 PM" width="995" height="665" /></a></p>
+<p>&nbsp;</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-9.39.15-PM-1.png"><img class="alignnone wp-image-5553 size-full" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-9.39.15-PM-1.png" alt="Screen Shot 2016-01-15 at 9.39.15 PM" width="1024" height="634" /></a></p>
+<p>After setting the above and clicking OK you can view the summary page to ensure that your new remote syslog server shows up as below.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-10.08.36-PM.png" rel="attachment wp-att-5561"><img class="alignnone size-full wp-image-5561" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-10.08.36-PM.png" alt="Screen Shot 2016-01-15 at 10.08.36 PM" width="931" height="478" /></a></p>
+<p>If it does not then you can select restart from the Actions drop-down and restart the syslog server and all should be good.</p>
+<p>&nbsp;</p>
+<p>Enjoy!</p>
+%{DATA:message_service}
+<p>Example Kibana view.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2015-04-22-at-4.40.36-PM.png"><img class="alignnone wp-image-4468 size-large" src="{{ site.baseurl }}/assets/Screen-Shot-2015-04-22-at-4.40.36-PM-1024x544.png" alt="Screen Shot 2015-04-22 at 4.40.36 PM" width="1024" height="544" /></a></p>
+<p>To configure the VCSA for logging to a remote syslog server is as easy going to Home|Administration|System Configuration|Services and then VMWare Syslog Service. Now click manage and edit to configure.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-9.34.11-PM.png"><img class="alignnone wp-image-5549 size-full" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-9.34.11-PM.png" alt="Screen Shot 2016-01-15 at 9.34.11 PM" width="995" height="665" /></a></p>
+<p>&nbsp;</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-9.39.15-PM-1.png"><img class="alignnone wp-image-5553 size-full" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-9.39.15-PM-1.png" alt="Screen Shot 2016-01-15 at 9.39.15 PM" width="1024" height="634" /></a></p>
+<p>After setting the above and clicking OK you can view the summary page to ensure that your new remote syslog server shows up as below.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-10.08.36-PM.png" rel="attachment wp-att-5561"><img class="alignnone size-full wp-image-5561" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-10.08.36-PM.png" alt="Screen Shot 2016-01-15 at 10.08.36 PM" width="931" height="478" /></a></p>
+<p>If it does not then you can select restart from the Actions drop-down and restart the syslog server and all should be good.</p>
+<p>&nbsp;</p>
+<p>Enjoy!</p>
+\ ?%{DATA:message_opID}])) (?(%{GREEDYDATA})))",
+        "message", "&lt;%{INT:syslog_pri}&gt;%{SYSLOGTIMESTAMP:timestamp} %{IPORHOST:syslog_hostname} (?:\[%{TIMESTAMP_ISO8601:syslog_timestamp} %{NOTSPACE} %{DATA:syslog_level} %{NOTSPACE:message_service}]) %{GREEDYDATA:syslog_message}",
+        "message", "&lt;%{INT:syslog_pri}&gt;%{SYSLOGTIMESTAMP:timestamp} %{IPORHOST:syslog_hostname} %{TIMESTAMP_ISO8601:syslog_timestamp} %{GREEDYDATA:syslog_message}",
+        "message", "&lt;%{INT:syslog_pri}&gt;%{SYSLOGTIMESTAMP:timestamp} %{IPORHOST:syslog_hostname} %{GREEDYDATA:syslog_message}",
+        <strong>"message", "%{SYSLOG5424BASE}.?.%{GREEDYDATA:syslog_message}"</strong>
+      ]
+    }
+    syslog_pri { }
+    date {
+      #match =&gt; [ "syslog_timestamp", "YYYY-MM-ddHH:mm:ss,SSS", "YYYY-MM-dd HH:mm:ss,SSS", "ISO8601" ] #For vCenter Appliance 5.x
+      <strong>match =&gt; [ "syslog5424_ts", "YYYY-MM-ddHH:mm:ss,SSS", "YYYY-MM-dd HH:mm:ss,SSS", "ISO8601" ] #For vCenter Appliance 6.x</strong>
+      #match =&gt; [ "timestamp", "MMM d HH:mm:ss", "MMM dd HH:mm:ss" ]
+      timezone =&gt; "UTC" #For vCenter Appliance
+      #timezone =&gt; "America/New_York"
+    }
+    if "_grokparsefailure" not in [tags] {
+      mutate {
+        replace =&gt; [ "host", "%{syslog_hostname}" ]
+      }
+    }
+    <strong>if "syslog5424_host" {
+      mutate {
+        replace =&gt; [ "host", "%{syslog5424_host}" ]
+      }
+    }
+    if "syslog5424_app" {
+      mutate {
+        add_field =&gt; [ "syslog_program", "%{syslog5424_app}" ]
+      }
+    }</strong>
+    mutate {
+      add_tag =&gt; [ "pre-processed" ]
+    }
+  }
+}
+</pre>
+<p>Example Kibana view.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2015-04-22-at-4.40.36-PM.png"><img class="alignnone wp-image-4468 size-large" src="{{ site.baseurl }}/assets/Screen-Shot-2015-04-22-at-4.40.36-PM-1024x544.png" alt="Screen Shot 2015-04-22 at 4.40.36 PM" width="1024" height="544" /></a></p>
+<p>To configure the VCSA for logging to a remote syslog server is as easy going to Home|Administration|System Configuration|Services and then VMWare Syslog Service. Now click manage and edit to configure.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-9.34.11-PM.png"><img class="alignnone wp-image-5549 size-full" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-9.34.11-PM.png" alt="Screen Shot 2016-01-15 at 9.34.11 PM" width="995" height="665" /></a></p>
+<p>&nbsp;</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-9.39.15-PM-1.png"><img class="alignnone wp-image-5553 size-full" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-9.39.15-PM-1.png" alt="Screen Shot 2016-01-15 at 9.39.15 PM" width="1024" height="634" /></a></p>
+<p>After setting the above and clicking OK you can view the summary page to ensure that your new remote syslog server shows up as below.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2016-01-15-at-10.08.36-PM.png" rel="attachment wp-att-5561"><img class="alignnone size-full wp-image-5561" src="{{ site.baseurl }}/assets/Screen-Shot-2016-01-15-at-10.08.36-PM.png" alt="Screen Shot 2016-01-15 at 10.08.36 PM" width="931" height="478" /></a></p>
+<p>If it does not then you can select restart from the Actions drop-down and restart the syslog server and all should be good.</p>
+<p>&nbsp;</p>
+<p>Enjoy!</p>

@@ -1,0 +1,60 @@
+---
+layout: post
+title: Create and Migrate Standard vSwitches to Distributed Switches in vSphere 5.1
+date: 2012-11-13 16:54:16.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- VMware
+- vSphere 5.1
+tags:
+- distributed switches
+- esxi
+- esxi 5.1
+- ESXI5
+- iSCSI
+- vds
+- VMware
+- vsphere 5.1
+- vsphere5
+- vswitch
+meta:
+  _edit_last: '11'
+  _s2mail: 'yes'
+  _jd_tweet_this: 'yes'
+  al2fb_facebook_link_id: '1329619822_3924626597331'
+  al2fb_facebook_link_time: '2012-11-13T21:54:22+00:00'
+  al2fb_facebook_link_picture: post=https://everythingshouldbevirtual.com/?al2fb_image=1
+  _wp_jd_wp: http://wp.me/p2C5rM-c3
+  _wp_jd_target: http://wp.me/p2C5rM-c3
+  _jd_wp_twitter: 'a:1:{i:0;s:124:"#ElRetardoLand New post: Create and Migrate Standard
+    vSwitches to Distributed Switches in vSphere 5.1 http://wp.me/p2C5rM-c3";}'
+  snapDL: s:102:"a:1:{i:0;a:3:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";}}";
+  _oembed_bba908598794e1fcb6e9ce20c6e512e6: "{{unknown}}"
+  snapLI: s:243:"a:1:{i:0;a:8:{s:4:"doLI";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:0:"";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snapSU: s:119:"a:1:{i:0;a:4:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";}}";
+  snapTW: 's:172:"a:1:{i:0;a:5:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";}}";'
+  snapFB: s:253:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  dsq_thread_id: ''
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  _wp_rp_related_posts_query_result_cache_expiration: '1511330767'
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"623";s:5:"score";s:18:"208.52223673076134";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"503";s:5:"score";s:17:"206.8070273444899";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"626";s:5:"score";s:17:"152.8357158344069";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"497";s:5:"score";s:18:"144.91496898239012";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"522";s:5:"score";s:17:"136.6869022615153";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"887";s:5:"score";s:16:"107.853269286896";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"487";s:5:"score";s:18:"106.16452579142336";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"481";s:5:"score";s:17:"98.87454078401763";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:2:"41";s:5:"score";s:17:"98.50241766075081";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1662";s:5:"score";s:16:"95.7495309061381";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1695";s:5:"score";s:16:"94.8788947635315";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"909";s:5:"score";s:17:"91.69709437293885";}}
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>In this scenario we will be migrating existing standard vswitches to distributed switches. This scenario also includes iSCSI vmkernel ports which we will be moving as well. There is no audio in this video so it is just video only. I will be including audio in future videos. Make sure to change the video quality to auto or hd.</p>
+<p>Quick rundown of what is happening is we are going to remove 1 pnic from each vswitch initially to create our new distributed switch in order to migrate to. This will include the console, vm network and iSCSI ports. We will be unbinding the iSCSI ports from the iSCSI software adapter, which will cause us to lose connection to our iSCSI datastores so make sure you do this on your hosts one at a time in maintenance mode if you have workloads running. Or you will cause major issues.</p>
+<p>https://youtu.be/wsFuMXHSa2s</p>

@@ -1,0 +1,52 @@
+---
+layout: post
+title: vSphere 5.1 Network Designs
+date: 2013-05-17 19:30:42.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Virtualization
+- VMware
+- vSphere 5.1
+tags:
+- design
+- network
+- vds
+- VMware
+- Vsphere
+meta:
+  _edit_last: '11'
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  snapFB: s:300:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_421110774654037";s:5:"pDate";s:19:"2013-05-17
+    23:30:45";}}";
+  snapSU: s:213:"a:1:{i:0;a:7:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"5RWkR4";s:5:"pDate";s:19:"2013-05-17
+    23:30:55";}}";
+  snapTW: 's:252:"a:1:{i:0;a:7:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"335537951251521536";s:5:"pDate";s:19:"2013-05-17
+    23:30:55";}}";'
+  _wpas_done_all: '1'
+  snap_isAutoPosted: '1'
+  snapLI: s:187:"a:1:{i:0;a:5:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:6:"&nbsp;";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1509589404'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1695";s:5:"score";s:18:"116.96263667842169";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"747";s:5:"score";s:16:"95.7495309061381";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"503";s:5:"score";s:17:"87.08322604501087";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"939";s:5:"score";s:17:"75.78090882216645";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"623";s:5:"score";s:16:"71.9248521429546";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1402";s:5:"score";s:17:"68.91385305964324";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1815";s:5:"score";s:17:"67.43700423608077";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"626";s:5:"score";s:17:"67.33262698617256";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"522";s:5:"score";s:17:"67.33262698617256";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1190";s:5:"score";s:17:"66.67802499247615";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"199";s:5:"score";s:18:"63.938564804560556";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"497";s:5:"score";s:17:"60.08450477866354";}}
+  _wp_rp_image: '3709'
+  dsq_thread_id: '3347337208'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>I will be adding some vSphere 5.1 Network Design ideas in this post. I will be updating it as I create additional scenarios. These designs are based off of HP C7000 Blade Chassis' using Flex-10 Virtual Connect.</p>
+<p>In this first scenario you will see that this is for those that may not want to put vCenter and Management Consoles into vDS (vSphere Distributed Switch). This scenario is also for environments that do not have VLANS for example DMZ or PCI riding on the same uplinks as LAN VLANS. This design is also using 10GB uplinks as well as 1GB uplinks.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/VMware-Environment-Drawings-11.png"><img class="alignnone size-medium wp-image-1673" alt="VMware-Environment-Drawings-1" src="{{ site.baseurl }}/assets/VMware-Environment-Drawings-11-300x177.png" width="300" height="177" /></a></p>
+<p>This scenario is the same as above but instead of using 10GB only 1GB uplinks will be used. You will want to do LACP on the switches bundling four 1GB uplinks to allow all 1GB uplinks to be active therefore creating 8GB of total bandwidth.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/VMware-Environment-Drawings-22.png"><img class="alignnone size-medium wp-image-1674" alt="VMware-Environment-Drawings-2" src="{{ site.baseurl }}/assets/VMware-Environment-Drawings-22-300x176.png" width="300" height="176" /></a></p>
+<p>In this scenario there is only the use of 10GB uplinks connecting to Nexus 5K to provide access to all of the different networks needed. You can do LACP on the Nexus 5k to make an active active 20GB uplink to each switch.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/VMware-Environment-Drawings-3.png"><img class="alignnone size-medium wp-image-1669" alt="VMware-Environment-Drawings-3" src="{{ site.baseurl }}/assets/VMware-Environment-Drawings-3-300x253.png" width="300" height="253" /></a></p>

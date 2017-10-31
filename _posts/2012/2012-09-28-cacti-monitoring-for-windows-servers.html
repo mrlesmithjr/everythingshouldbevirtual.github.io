@@ -1,0 +1,128 @@
+---
+layout: post
+title: Cacti Monitoring for Windows Servers
+date: 2012-09-28 20:13:25.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Cacti
+- Monitoring
+tags:
+- cacti
+- monitoring
+- ubuntu
+- windows
+meta:
+  _edit_last: '11'
+  fb_social_plugin_settings_box_subscribe: default
+  _jd_tweet_this: 'yes'
+  al2fb_facebook_link_id: '1329619822_3723434527655'
+  al2fb_facebook_link_time: '2012-09-29T00:13:29+00:00'
+  al2fb_facebook_link_picture: post=http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-00-05-300x166.png
+  _wp_jd_wp: http://wp.me/p2C5rM-8v
+  _wp_jd_target: http://wp.me/p2C5rM-8v
+  _jd_wp_twitter: 'a:1:{i:0;s:92:"#ElRetardoLand New post: Cacti Monitoring for Windows
+    Servers http://wp.me/p2C5rM-8v #VMware";}'
+  _yoast_wpseo_linkdex: '74'
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  _yoast_wpseo_focuskw: Cacti Monitoring for Windows Servers
+  snapTW: s:267:"a:1:{i:0;a:9:{s:10:"SNAPformat";s:15:"%TITLE% - %URL%";s:8:"attchImg";s:1:"0";s:4:"doTW";i:0;s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"300274218086584320";s:5:"pDate";s:19:"2013-02-09
+    16:05:27";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";}}";
+  snapSU: s:115:"a:1:{i:0;a:4:{s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:4:"doSU";i:0;s:4:"nsfw";s:1:"0";}}";
+  snapLI: s:248:"a:1:{i:0;a:8:{s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:4:"doLI";i:0;s:11:"SNAPformatT";s:6:"&nbsp;";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snapFB: s:402:"a:1:{i:0;a:13:{s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:4:"doFB";i:0;s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"490878107607759_578622325500003";s:5:"pDate";s:19:"2013-02-09
+    16:06:30";s:8:"postType";s:1:"A";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snap_MYURL: ''
+  snapDL: s:102:"a:1:{i:0;a:3:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1511420009'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"148";s:5:"score";s:16:"189.083646110033";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"553";s:5:"score";s:18:"168.43561485863358";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1919";s:5:"score";s:18:"125.99554297169185";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"3249";s:5:"score";s:17:"91.18728168109178";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"699";s:5:"score";s:17:"71.21036767750641";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"2254";s:5:"score";s:18:"59.810935336306585";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"687";s:5:"score";s:17:"56.75825196195342";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1494";s:5:"score";s:18:"56.592059511321494";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"2646";s:5:"score";s:17:"53.00249708136626";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4968";s:5:"score";s:18:"48.123648597602504";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"4115";s:5:"score";s:17:"47.74922746255493";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"2626";s:5:"score";s:17:"47.74922746255493";}}
+  _wp_rp_image: '3489'
+  dsq_needs_sync: '1'
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>A little over four years ago I spent some time learning cacti and snmp to come up with a good solution to monitor Windows Servers. I had used Cacti several times previous to then, but never found any graphs that I really liked or any that would give me the level of detail that I was looking for. So I created my own and shared back to the Cacti community. To this day I still use these daily at home and at work, and they continue to work well. Today I am going to go through a quick installation of these templates into a new cacti install and then add a windows server 2008 to monitor.</p>
+<p>I will be using a new Ubuntu Server 12.04 install for the cacti server. Once the server is built install cacti using the following and follow the screenshots.</p>
+<p><em>sudo apt-get install cacti</em></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-00-05.png"><img class="alignnone size-medium wp-image-565" title="2012-09-28_17-00-05" src="{{ site.baseurl }}/assets/2012-09-28_17-00-05-300x166.png" alt="" width="300" height="166" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-02-32.png"><img class="alignnone size-medium wp-image-566" title="2012-09-28_17-02-32" src="{{ site.baseurl }}/assets/2012-09-28_17-02-32-300x166.png" alt="" width="300" height="166" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-03-16.png"><img class="alignnone size-medium wp-image-567" title="2012-09-28_17-03-16" src="{{ site.baseurl }}/assets/2012-09-28_17-03-16-300x167.png" alt="" width="300" height="167" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-04-02.png"><img class="alignnone size-medium wp-image-568" title="2012-09-28_17-04-02" src="{{ site.baseurl }}/assets/2012-09-28_17-04-02-300x167.png" alt="" width="300" height="167" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-05-47.png"><img class="alignnone size-medium wp-image-569" title="2012-09-28_17-05-47" src="{{ site.baseurl }}/assets/2012-09-28_17-05-47-300x166.png" alt="" width="300" height="166" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-08-15.png"><img class="alignnone size-medium wp-image-570" title="2012-09-28_17-08-15" src="{{ site.baseurl }}/assets/2012-09-28_17-08-15-300x168.png" alt="" width="300" height="168" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-08-54.png"><img class="alignnone size-medium wp-image-571" title="2012-09-28_17-08-54" src="{{ site.baseurl }}/assets/2012-09-28_17-08-54-300x167.png" alt="" width="300" height="167" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-12-12.png"><img class="alignnone size-medium wp-image-572" title="2012-09-28_17-12-12" src="{{ site.baseurl }}/assets/2012-09-28_17-12-12-300x167.png" alt="" width="300" height="167" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-12-44.png"><img class="alignnone size-medium wp-image-573" title="2012-09-28_17-12-44" src="{{ site.baseurl }}/assets/2012-09-28_17-12-44-300x166.png" alt="" width="300" height="166" /></a></p>
+<p>Now connect to the web ui of cacti and configure</p>
+<p>http://192.168.211.128/cacti  **Change IP to reflect your cacti server</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-14-44.png"><img class="alignnone size-medium wp-image-574" title="2012-09-28_17-14-44" src="{{ site.baseurl }}/assets/2012-09-28_17-14-44-300x167.png" alt="" width="300" height="167" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-16-23.png"><img class="alignnone size-medium wp-image-575" title="2012-09-28_17-16-23" src="{{ site.baseurl }}/assets/2012-09-28_17-16-23-300x151.png" alt="" width="300" height="151" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-16-54.png"><img class="alignnone size-medium wp-image-576" title="2012-09-28_17-16-54" src="{{ site.baseurl }}/assets/2012-09-28_17-16-54-200x300.png" alt="" width="200" height="300" /></a></p>
+<p>All done. Now you will be redirected back to the login screen.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-19-17.png"><img class="alignnone size-medium wp-image-577" title="2012-09-28_17-19-17" src="{{ site.baseurl }}/assets/2012-09-28_17-19-17-300x185.png" alt="" width="300" height="185" /></a></p>
+<p>Login using admin/admin and then change password on next screen</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-20-18.png"><img class="alignnone size-medium wp-image-578" title="2012-09-28_17-20-18" src="{{ site.baseurl }}/assets/2012-09-28_17-20-18-300x208.png" alt="" width="300" height="208" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_17-21-08.png"><img class="alignnone size-medium wp-image-579" title="2012-09-28_17-21-08" src="{{ site.baseurl }}/assets/2012-09-28_17-21-08-300x127.png" alt="" width="300" height="127" /></a></p>
+<p>Cacti is now installed.</p>
+<p>Download the latest version of cacti from <a title="http://everythingshouldbevirtual.com/cacti-templates-for-windows/" href="http://everythingshouldbevirtual.com/cacti-templates-for-windows/" target="_blank">here</a>. Version 13 is the latest at the time of writing this. Download it and extract the zip file. There is a readme.txt that explains where to place the files.</p>
+<p>***UPDATE***</p>
+<p>All new templates will be updated and current from GitHub.</p>
+<p><a title="https://github.com/mrlesmithjr/cacti.git" href="https://github.com/mrlesmithjr/cacti.git" target="_blank">https://github.com/mrlesmithjr/cacti.git</a></p>
+<pre>git clone https://github.com/mrlesmithjr/cacti/</pre>
+<p>Copy files from the resource\snmp_queries\ folder extracted to the cacti server using WinSCP to the /tmp folder.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-20_11-12-17.png"><img class="alignnone size-medium wp-image-529" title="2012-09-20_11-12-17" src="{{ site.baseurl }}/assets/2012-09-20_11-12-17-300x141.png" alt="" width="300" height="141" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-20_11-15-57.png"><img class="alignnone size-medium wp-image-530" title="2012-09-20_11-15-57" src="{{ site.baseurl }}/assets/2012-09-20_11-15-57-300x174.png" alt="" width="300" height="174" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-20_11-16-13.png"><img class="alignnone size-medium wp-image-531" title="2012-09-20_11-16-13" src="{{ site.baseurl }}/assets/2012-09-20_11-16-13-300x171.png" alt="" width="300" height="171" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-20_11-16-21.png"><img class="alignnone size-medium wp-image-532" title="2012-09-20_11-16-21" src="{{ site.baseurl }}/assets/2012-09-20_11-16-21-300x177.png" alt="" width="300" height="177" /></a></p>
+<p>Now on the cacti server cd /tmp</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-20_11-16-41.png"><img class="alignnone size-medium wp-image-533" title="2012-09-20_11-16-41" src="{{ site.baseurl }}/assets/2012-09-20_11-16-41-300x71.png" alt="" width="300" height="71" /></a></p>
+<p>sudo cp snmp_informant_standard_*.xml /usr/share/cacti/site/resource/snmp_queries/</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-20_11-18-02.png"><img class="alignnone size-medium wp-image-534" title="2012-09-20_11-18-02" src="{{ site.baseurl }}/assets/2012-09-20_11-18-02-300x100.png" alt="" width="300" height="100" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-20_11-18-10.png"><img class="alignnone size-medium wp-image-535" title="2012-09-20_11-18-10" src="{{ site.baseurl }}/assets/2012-09-20_11-18-10-300x86.png" alt="" width="300" height="86" /></a></p>
+<p>All done.</p>
+<p>Now we have to import the xml template files from the \template folder into the cacti web ui.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_19-23-35.png"><img class="alignnone size-medium wp-image-582" title="2012-09-28_19-23-35" src="{{ site.baseurl }}/assets/2012-09-28_19-23-35-300x102.png" alt="" width="300" height="102" /></a></p>
+<p>In the cacti web ui go to Import/Export/Import Templates</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_19-25-12.png"><img class="alignnone size-medium wp-image-583" title="2012-09-28_19-25-12" src="{{ site.baseurl }}/assets/2012-09-28_19-25-12-300x119.png" alt="" width="300" height="119" /></a></p>
+<p>Now browse to the folder where you extracted the zip file to and select the first cacti_host_template_windows_host_-_snmp_informant.xml and click import.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_19-45-58.png"><img class="alignnone size-medium wp-image-586" title="2012-09-28_19-45-58" src="{{ site.baseurl }}/assets/2012-09-28_19-45-58-300x195.png" alt="" width="300" height="195" /></a></p>
+<p>The templates are ready to be used now.</p>
+<p>&nbsp;</p>
+<p>Now install SNMP informant Standard on your Windows machine you want to monitor. Get SNMP Informant from <a title="http://www.snmp-informant.com/downloads.htm#SNMP_Informant_-_Freeware_Products" href="http://www.snmp-informant.com/downloads.htm#SNMP_Informant_-_Freeware_Products" target="_blank">here</a>. Download the 1.6 version. You need to have the Windows SNMP agent enabled and configured on your windows machine.</p>
+<p>&nbsp;</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_16-00-09.png"><img class="alignnone size-medium wp-image-551" title="2012-09-28_16-00-09" src="{{ site.baseurl }}/assets/2012-09-28_16-00-09-300x97.png" alt="" width="300" height="97" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_19-53-52.png"><img class="alignnone size-medium wp-image-590" title="2012-09-28_19-53-52" src="{{ site.baseurl }}/assets/2012-09-28_19-53-52-300x236.png" alt="" width="300" height="236" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_19-54-41.png"><img class="alignnone size-medium wp-image-591" title="2012-09-28_19-54-41" src="{{ site.baseurl }}/assets/2012-09-28_19-54-41-300x222.png" alt="" width="300" height="222" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_19-55-04.png"><img class="alignnone size-medium wp-image-592" title="2012-09-28_19-55-04" src="{{ site.baseurl }}/assets/2012-09-28_19-55-04-300x229.png" alt="" width="300" height="229" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_19-55-27.png"><img class="alignnone size-medium wp-image-593" title="2012-09-28_19-55-27" src="{{ site.baseurl }}/assets/2012-09-28_19-55-27-300x225.png" alt="" width="300" height="225" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_19-55-46.png"><img class="alignnone size-medium wp-image-594" title="2012-09-28_19-55-46" src="{{ site.baseurl }}/assets/2012-09-28_19-55-46-300x229.png" alt="" width="300" height="229" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_19-56-07.png"><img class="alignnone size-medium wp-image-595" title="2012-09-28_19-56-07" src="{{ site.baseurl }}/assets/2012-09-28_19-56-07-300x227.png" alt="" width="300" height="227" /></a></p>
+<p>Now configure the SNMP Service</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_19-57-25.png"><img class="alignnone size-medium wp-image-596" title="2012-09-28_19-57-25" src="{{ site.baseurl }}/assets/2012-09-28_19-57-25-300x220.png" alt="" width="300" height="220" /></a></p>
+<p>We are now ready to add our first Windows Server.</p>
+<p>Under devices/add</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_19-59-14.png"><img class="alignnone size-medium wp-image-597" title="2012-09-28_19-59-14" src="{{ site.baseurl }}/assets/2012-09-28_19-59-14-300x142.png" alt="" width="300" height="142" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_20-01-48.png"><img class="alignnone size-medium wp-image-598" title="2012-09-28_20-01-48" src="{{ site.baseurl }}/assets/2012-09-28_20-01-48-300x140.png" alt="" width="300" height="140" /></a></p>
+<p>Now select create graphs for this host and select the statistics you want to gather</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_20-03-02.png"><img class="alignnone size-medium wp-image-599" title="2012-09-28_20-03-02" src="{{ site.baseurl }}/assets/2012-09-28_20-03-02-300x160.png" alt="" width="300" height="160" /></a></p>
+<p>Click create and do not change anything on the next screen. Select create again.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_20-04-46.png"><img class="alignnone size-medium wp-image-600" title="2012-09-28_20-04-46" src="{{ site.baseurl }}/assets/2012-09-28_20-04-46-300x71.png" alt="" width="300" height="71" /></a></p>
+<p>There are additional drop downs for Disk, memory and network stats. Make sure to go through select those as well.</p>
+<p>Now you have to add the new device to the graph tree.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_20-07-30.png"><img class="alignnone size-medium wp-image-601" title="2012-09-28_20-07-30" src="{{ site.baseurl }}/assets/2012-09-28_20-07-30-300x98.png" alt="" width="300" height="98" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/09/2012-09-28_20-08-48.png"><img class="alignnone size-medium wp-image-602" title="2012-09-28_20-08-48" src="{{ site.baseurl }}/assets/2012-09-28_20-08-48-300x63.png" alt="" width="300" height="63" /></a></p>
+<p>That's it. Now just wait for a few minutes and you should start getting some nice looking graphs for your device.</p>
+<p>Enjoy...</p>
+<p>You can follow the thread over on the Cacti forum <a title="http://forums.cacti.net/viewtopic.php?f=12&amp;t=29832" href="http://forums.cacti.net/viewtopic.php?f=12&amp;t=29832" target="_blank">here</a>.</p>
+<p>You can download previous versions of the templates from <a title="http://everythingshouldbevirtual.com/cacti-templates-for-windows" href="http://everythingshouldbevirtual.com/cacti-templates-for-windows">here </a>if you are getting XML parse errors importing.</p>
+<p>&nbsp;</p>

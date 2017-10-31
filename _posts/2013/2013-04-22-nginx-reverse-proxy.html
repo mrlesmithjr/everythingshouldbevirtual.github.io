@@ -1,0 +1,84 @@
+---
+layout: post
+title: Nginx Reverse Proxy
+date: 2013-04-22 17:06:32.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Firewall
+- Linux
+- Security
+- Ubuntu
+tags:
+- ispconfig
+- nginx
+- reverse proxy
+- ubuntu
+meta:
+  _edit_last: '11'
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  snapFB: s:300:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_410279592403822";s:5:"pDate";s:19:"2013-04-22
+    21:06:36";}}";
+  snapSU: s:213:"a:1:{i:0;a:7:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2Pb6ux";s:5:"pDate";s:19:"2013-04-22
+    21:06:44";}}";
+  snapTW: 's:260:"a:1:{i:0;a:7:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:50:"%TITLE%
+    - %URL% #everythingshouldbevirtual #ubuntu";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"326441969972834304";s:5:"pDate";s:19:"2013-04-22
+    21:06:45";}}";'
+  _wpas_done_all: '1'
+  snap_isAutoPosted: '1'
+  snapLI: s:187:"a:1:{i:0;a:5:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:6:"&nbsp;";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1511825743'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"699";s:5:"score";s:18:"183.43547872830194";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"729";s:5:"score";s:17:"94.30901146102076";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"878";s:5:"score";s:16:"85.1546178104121";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"687";s:5:"score";s:16:"80.3588272642634";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"2586";s:5:"score";s:17:"69.52967369544047";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"2646";s:5:"score";s:17:"61.98563549903925";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"2626";s:5:"score";s:18:"61.146915706607366";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"5383";s:5:"score";s:18:"59.314334242859054";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"2254";s:5:"score";s:18:"59.314334242859054";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"3249";s:5:"score";s:17:"58.26995547800696";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"7243";s:5:"score";s:18:"54.964830799890734";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"7208";s:5:"score";s:18:"53.966848468295616";}}
+  _wp_rp_image: empty
+  dsq_thread_id: '3346750476'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>I just wanted to throw this together real quick as I had a request this past week to look into this. I was asked to look into deploying a reverse proxy for a DMZ scenario with backend web servers not in the DMZ. So after spending a good bit of time looking into the Microsoft ARR solution and not having great luck or any consistency I finally turned to Linux. :) I first started with a squid reverse proxy and then decided to look at the Nginx reverse proxy. I would have to say it was much easier and straight forward to configure and get up and running fairly quick. And it runs great.</p>
+<p>First thing you will need to do is install nginx.</p>
+<pre>sudo apt-get install nginx</pre>
+<p>Now you will need to create a conf file which will contain the info of the backend servers you want to configfure for the reverse proxy. I am running the reverse proxy here on tcp port 8080. You can set this to 80 or whatever other port you may want to use. You can create the proxy.conf file info from below to get your started.</p>
+<pre> nano /etc/nginx/conf.d/proxy.conf
+
+server {
+ listen 8080;
+ server_name whateveryourdomain.com;
+ access_log off; 
+ error_log off;
+ location / {
+ proxy_pass http://backendserverip/;
+ proxy_redirect off;
+ proxy_set_header Host $host;
+ proxy_set_header X-Real-IP $remote_addr;
+ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+ proxy_max_temp_file_size 0;
+ client_max_body_size 10m;
+ client_body_buffer_size 128k;
+ proxy_connect_timeout 90;
+ proxy_send_timeout 90;
+ proxy_read_timeout 90;
+ proxy_buffer_size 4k;
+ proxy_buffers 4 32k;
+ proxy_busy_buffers_size 64k;
+ proxy_temp_file_write_size 64k;
+ }
+}</pre>
+<p>Now restart nginx for the config you created above to take affect.</p>
+<pre>sudo /etc/init.d/nginx restart</pre>
+<p>Now you will need to create a NAT/Port Forward rule on your firewall to pass all tcp port 80 to your nginx reverse proxy which in this case is 8080. So it will be like tcp/80 --&gt; tcp/8080.<br />
+You should now be able to test that all is working. If all goes well then you should be good to go.</p>
+<p>For ISPConfig setups to get stats reporting correctly you will need to make the following change. Change /etc/apache2/sites-available/ispconfig.conf</p>
+<pre>LogFormat "%v %h %l %u %t \"%r\" %&gt;s %B \"%{Referer}i\" \"%{User-Agent}i\"" combined_ispconfig</pre>
+<p>To</p>
+<pre>LogFormat "%v %{X-Real-IP}i %l %u %t \"%r\" %&gt;s %B \"%{Referer}i\" \"%{User-Agent}i\"" combined_ispconfig</pre>
+<p>This is all for now and I will update this post as needed going forward. Feel free to leave any comments or suggestions!</p>
+<p>Enjoy!</p>

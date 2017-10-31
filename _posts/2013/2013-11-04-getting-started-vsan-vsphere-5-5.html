@@ -1,0 +1,78 @@
+---
+layout: post
+title: Getting Started with vSAN in vSphere 5.5
+date: 2013-11-04 07:00:13.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- VMware
+- VMware vSAN
+- vSphere 5.5
+tags:
+- vsan
+- vsphere 5.5
+meta:
+  _edit_last: '11'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapLI: s:268:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";b:0;s:11:"isPrePosted";s:1:"1";}}";
+  _s2mail: 'yes'
+  _thumbnail_id: '2150'
+  _wpas_done_all: '1'
+  snap_isAutoPosted: '1'
+  snapFB: s:387:"a:1:{i:0;a:12:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";b:0;s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_494972213934559";s:5:"pDate";s:19:"2013-11-04
+    12:00:22";}}";
+  snapSU: s:259:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"217CXw";s:7:"postURL";s:6:"217CXw";s:5:"pDate";s:19:"2013-11-04
+    12:00:35";}}";
+  snapTW: 's:310:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:57:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vsphere #vsan";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"397332547182792704";s:5:"pDate";s:19:"2013-11-04
+    12:00:36";}}";'
+  _wp_rp_related_posts_query_result_cache_expiration: '1511988830'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"2084";s:5:"score";s:18:"102.75709362439866";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"2156";s:5:"score";s:17:"92.85269637219025";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"2316";s:5:"score";s:17:"89.54108870643273";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"2509";s:5:"score";s:17:"85.84903846958139";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1938";s:5:"score";s:17:"37.85453533085892";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"3114";s:5:"score";s:18:"34.508505003329816";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1483";s:5:"score";s:17:"33.03441504430974";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"2018";s:5:"score";s:17:"32.90404585320996";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1940";s:5:"score";s:18:"31.910247225410934";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"2280";s:5:"score";s:18:"30.279673075212898";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"2329";s:5:"score";s:17:"27.64699263552242";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"5485";s:5:"score";s:18:"26.681863722277594";}}
+  dsq_thread_id: '3351477607'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>As you may or may not know VMware announced the new vSAN with vSphere 5.5. vSAN is currently in public beta but it is very easy to get started testing it out in your new vSphere 5.5 environment. First thing you should do is head over <a title="http://www.vmware.com/vsan-beta-register.html" href="http://www.vmware.com/vsan-beta-register.html" target="_blank">here</a> and get signed up to get your license key which is required to use vSAN. All functionality is already built into vSphere 5.5 but you will need to enter a license key.</p>
+<p>So to get you started I wanted to throw this post together so you can start testing vSAN out. There are a few things you must do in order to get vSAN running properly which I will go over in this post. Just an FYI, all vSAN options and functionality are only visible in the web ui so the traditional C# viclient will not work.</p>
+<p>Now head over to your vCenter web ui using your browser of choice and let's get started.</p>
+<p>First thing you must do is head over to your HA settings for your cluster and disable HA. You will not be able to enable vSAN when HA is enabled and will get an error stating so.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/14-45-51.png"><img class="alignnone size-medium wp-image-2124" alt="14-45-51" src="{{ site.baseurl }}/assets/14-45-51-300x176.png" width="300" height="176" /></a></p>
+<p>Next you will need to create a new VMKernel port for vSAN communications. After creating this port all HA communications within your cluster will function over this same VMKernel port once HA is enabled again.</p>
+<p>I am using VDS (vSphere Distributed Switch) in my setup so these are what screenshots will represent this setup.</p>
+<p>Create a new VDS Portgroup in my case it will be called vSAN Network.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-14-05.png"><img class="alignnone size-medium wp-image-2125" alt="15-14-05" src="{{ site.baseurl }}/assets/15-14-05-300x144.png" width="300" height="144" /></a></p>
+<p>Now create new VMKernel ports for each of your hosts in your cluster using this new Portgroup.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-20-37.png"><img class="alignnone size-medium wp-image-2126" alt="15-20-37" src="{{ site.baseurl }}/assets/15-20-37-300x93.png" width="300" height="93" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-21-05.png"><img class="alignnone size-medium wp-image-2127" alt="15-21-05" src="{{ site.baseurl }}/assets/15-21-05-300x175.png" width="300" height="175" /></a></p>
+<p>Select an existing distributed port group and choose the vSAN Network.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-21-36.png"><img class="alignnone size-medium wp-image-2128" alt="15-21-36" src="{{ site.baseurl }}/assets/15-21-36-300x225.png" width="300" height="225" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-21-47.png"><img class="alignnone size-medium wp-image-2129" alt="15-21-47" src="{{ site.baseurl }}/assets/15-21-47-300x175.png" width="300" height="175" /></a></p>
+<p>Make sure to select Virtual SAN Traffic.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-22-16.png"><img class="alignnone size-medium wp-image-2130" alt="15-22-16" src="{{ site.baseurl }}/assets/15-22-16-300x175.png" width="300" height="175" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-22-26.png"><img class="alignnone size-medium wp-image-2131" alt="15-22-26" src="{{ site.baseurl }}/assets/15-22-26-300x175.png" width="300" height="175" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-22-37.png"><img class="alignnone size-medium wp-image-2132" alt="15-22-37" src="{{ site.baseurl }}/assets/15-22-37-300x174.png" width="300" height="174" /></a></p>
+<p>You will now see your new VMKernel port which is VMK4 in my case.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-22-51.png"><img class="alignnone size-medium wp-image-2133" alt="15-22-51" src="{{ site.baseurl }}/assets/15-22-51-300x155.png" width="300" height="155" /></a></p>
+<p>Now after doing this for each of your hosts in your cluster we will now enable vSAN. Make sure you have your license key handy as well for the next step.</p>
+<p>Browse to your cluster settings and add your license key for vSAN under Virtual SAN Licensing.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-08-04.png"><img class="alignnone size-medium wp-image-2136" alt="15-08-04" src="{{ site.baseurl }}/assets/15-08-04-300x151.png" width="300" height="151" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-08-14.png"><img class="alignnone size-medium wp-image-2137" alt="15-08-14" src="{{ site.baseurl }}/assets/15-08-14-300x159.png" width="300" height="159" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-08-43.png"><img class="alignnone size-medium wp-image-2139" alt="15-08-43" src="{{ site.baseurl }}/assets/15-08-43-300x157.png" width="300" height="157" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-09-18.png"><img class="alignnone size-medium wp-image-2140" alt="15-09-18" src="{{ site.baseurl }}/assets/15-09-18-300x152.png" width="300" height="152" /></a></p>
+<p>Now let's enable vSAN.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/14-46-19.png"><img class="alignnone size-medium wp-image-2141" alt="14-46-19" src="{{ site.baseurl }}/assets/14-46-19-300x151.png" width="300" height="151" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/14-46-33.png"><img class="alignnone size-medium wp-image-2142" alt="14-46-33" src="{{ site.baseurl }}/assets/14-46-33-300x172.png" width="300" height="172" /></a></p>
+<p>Select Auto or Manual for adding disks per host. I selected Automatic but went ahead and manually assigned at the end of this so you can see that as well.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/14-46-51.png"><img class="alignnone size-medium wp-image-2143" alt="14-46-51" src="{{ site.baseurl }}/assets/14-46-51-300x172.png" width="300" height="172" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/14-47-34.png"><img class="alignnone size-medium wp-image-2144" alt="14-47-34" src="{{ site.baseurl }}/assets/14-47-34-300x173.png" width="300" height="173" /></a></p>
+<p>vSAN is now enabled for your cluster.</p>
+<p>Now go to Disk Management and we will now claim the disks to be used in our vSAN setup.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/14-52-18.png"><img class="alignnone size-medium wp-image-2145" alt="14-52-18" src="{{ site.baseurl }}/assets/14-52-18-300x161.png" width="300" height="161" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/14-52-36.png"><img class="alignnone size-medium wp-image-2146" alt="14-52-36" src="{{ site.baseurl }}/assets/14-52-36-300x250.png" width="300" height="250" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/14-52-46.png"><img class="alignnone size-medium wp-image-2147" alt="14-52-46" src="{{ site.baseurl }}/assets/14-52-46-300x250.png" width="300" height="250" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-10-44.png"><img class="alignnone size-medium wp-image-2148" alt="15-10-44" src="{{ site.baseurl }}/assets/15-10-44-300x169.png" width="300" height="169" /></a></p>
+<p>Now if you browse to your Datastores view you will now see a new Datastore called vsanDatastore.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-12-06.png"><img class="alignnone size-medium wp-image-2149" alt="15-12-06" src="{{ site.baseurl }}/assets/15-12-06-300x90.png" width="300" height="90" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-12-17.png"><img class="alignnone size-medium wp-image-2150" alt="15-12-17" src="{{ site.baseurl }}/assets/15-12-17-300x134.png" width="300" height="134" /></a></p>
+<p>So now the last thing to do before using your new vSAN setup is to enable HA for your cluster seeing as we disabled it at the very beginning.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-23-41.png"><img class="alignnone size-medium wp-image-2151" alt="15-23-41" src="{{ site.baseurl }}/assets/15-23-41-300x115.png" width="300" height="115" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-23-57.png"><img class="alignnone size-medium wp-image-2152" alt="15-23-57" src="{{ site.baseurl }}/assets/15-23-57-300x175.png" width="300" height="175" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/11/15-24-05.png"><img class="alignnone size-medium wp-image-2153" alt="15-24-05" src="{{ site.baseurl }}/assets/15-24-05-300x174.png" width="300" height="174" /></a></p>
+<p>And there you have it. vSAN is up and running and has presented us with a new Datastore that you can start using just as any other Datastore. You can call also get into different VM Storage Policies as well once you start getting familiar with vSAN in order to set different policies for each scenario. If you need info on the new VM Storage Policies in vSphere 5.5 head over <a title="http://everythingshouldbevirtual.com/vsphere-5-5-storage-profiles-now-storage-policies" href="http://everythingshouldbevirtual.com/vsphere-5-5-storage-profiles-now-storage-policies" target="_blank">here</a>.</p>
+<p>&nbsp;</p>
+<p>Enjoy!</p>
+<p>&nbsp;</p>

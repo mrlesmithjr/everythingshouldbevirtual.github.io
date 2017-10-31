@@ -1,0 +1,194 @@
+---
+layout: post
+title: Ansible - RabbitMQ Cluster
+date: 2015-04-13 09:44:27.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Ansible
+- Automation
+tags:
+- Ansible
+- rabbitmq
+meta:
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1509630266'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"4934";s:5:"score";s:17:"69.65032765091226";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"4886";s:5:"score";s:17:"63.20658498255392";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"4695";s:5:"score";s:17:"63.20658498255392";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4915";s:5:"score";s:17:"60.58221220459562";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4944";s:5:"score";s:18:"60.209761664079224";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"6225";s:5:"score";s:17:"59.10740782557154";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"4391";s:5:"score";s:17:"57.93754063432303";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"4803";s:5:"score";s:17:"57.27708752647939";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"5057";s:5:"score";s:17:"56.65204953532091";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"5498";s:5:"score";s:16:"55.6382057147174";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"4386";s:5:"score";s:17:"55.49398178781378";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"7064";s:5:"score";s:18:"53.719375397721066";}}
+  _s2mail: 'yes'
+  _yoast_wpseo_focuskw: Ansible - RabbitMQ Cluster
+  _yoast_wpseo_metadesc: Ansible - RabbitMQ Cluster
+  _yoast_wpseo_linkdex: '78'
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"1aee3fa133a269ec6bf14de21a599e08";s:5:"pDate";s:19:"2015-04-13
+    13:44:28";}}";
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"31Uixu";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/31Uixu/comments";s:5:"pDate";s:19:"2015-04-13
+    13:44:35";}}";
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  snapLI: s:298:"a:1:{i:0;a:10:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"postType";s:1:"A";}}";
+  snapTW: 's:327:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:71:"%TITLE%
+    - %URL% #everythingshouldbevirtual #DevOPS #Ansible #automation";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"629478986372886529";s:5:"pDate";s:19:"2015-08-07
+    02:27:40";}}";'
+  _wp_rp_image: '4453'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<h4 style="text-align: center;">Ansible - RabbitMQ Cluster</h4>
+<blockquote><p><strong>***** Update - As of 08/06/2015 the following role can be found <a href="https://galaxy.ansible.com/list#/roles/4594" target="_blank">here</a> on Ansible Galaxy. The below information was updated based on this new role available at the above link and verified to work..However, this information below may be out of date so please grab the latest role from the Ansible Galaxy link above. *****</strong></p></blockquote>
+<p>In this post I will be setting up a clustered RabbitMQ environment for logstash message queuing. Again I will be keeping this short and sweet. This might come in use for someone else as well. This setup will join each node to the cluster, setup a logstash exchange and logstash queue and then also configure the binding between our logstash exchange and logstash queue. It will also configure the ha-policy to spread the queue across all nodes and sync them automatically.</p>
+<p>We will be starting with the following group_vars/app to setup our variables..Make sure to adjust to fit the needs of your environment...</p>
+<pre>config_rabbitmq_ha: true
+enable_rabbitmq_clustering: true
+erlang_cookie: LSKNKBELKPSTDBBCHETL
+rabbitmq_config:
+  - queue_name: logstash
+    durable: true
+    exchange_name: logstash
+    type: fanout
+    routing_key: logstash
+    tags: 'ha-mode=all,ha-sync-mode=automatic'
+rabbitmq_master: ans-test-1
+</pre>
+<p>Within our roles tree for rabbitmq it looks like below<a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2015-04-13-at-9.32.12-AM.png"><img class="alignnone size-medium wp-image-4432" src="{{ site.baseurl }}/assets/Screen-Shot-2015-04-13-at-9.32.12-AM-300x164.png" alt="Screen Shot 2015-04-13 at 9.32.12 AM" width="300" height="164" /></a></p>
+<p>Below will be the contents of each file within the tree from the screenshot above.</p>
+<p>handlers/main.yml</p>
+<pre>---
+- name: restart rabbitmq-server
+  service: name=rabbitmq-server state=restarted
+</pre>
+<p>tasks/main.yml</p>
+<pre>---
+- include: debian.yml
+  when: ansible_os_family == "Debian"
+
+- name: checking to see if already clustered
+  stat: path=/etc/rabbitmq/clustered
+  register: clustered
+
+- include: rabbitmq_clustering.yml
+  when: enable_rabbitmq_clustering and (clustered.stat.exists != True)
+
+- include: rabbitmq_ha_config.yml
+  when: config_rabbitmq_ha and enable_rabbitmq_clustering
+</pre>
+<p>tasks/debian.yml</p>
+<pre>---
+- name: debian | adding RabbitMQ public GPG key to the apt repo
+  apt_key: url=http://www.rabbitmq.com/rabbitmq-signing-key-public.asc state=present
+
+- name: debian | adding RabbitMQ repo
+  apt_repository: repo='deb http://www.rabbitmq.com/debian/ testing main' update_cache=no state=present
+
+- name: debian | installing RabbitMQ server
+  apt: name={{ item }} state=present
+  with_items:
+    - rabbitmq-server
+
+- name: debian | enabling the RabbitMQ Management Console
+  rabbitmq_plugin: names=rabbitmq_management state=enabled
+  notify: restart rabbitmq-server
+
+- name: debian | ensuring that the RabbitMQ service is running
+  service: name=rabbitmq-server state=started enabled=yes
+</pre>
+<p>tasks/rabbitmq_clustering.yml</p>
+<pre>---
+- name: rabbitmq_clustering | stopping rabbitmq app
+  command: rabbitmqctl stop_app
+
+- name: rabbitmq_clustering | resetting rabbitmq app
+  command: rabbitmqctl reset
+
+- name: rabbitmq_clustering | stopping rabbitmq-server
+  service: name=rabbitmq-server state=stopped
+
+- name: rabbitmq_clustering | copy erlang cookie
+  template: src=erlang.cookie.j2 dest=/var/lib/rabbitmq/.erlang.cookie owner=rabbitmq group=rabbitmq mode=0400 backup=yes
+
+- name: rabbitmq_clustering | restarting rabbitmq-server on master
+  service: name=rabbitmq-server state=restarted
+  when: inventory_hostname == "{{ rabbitmq_master }}"
+
+- name: rabbitmq_clustering | starting rabbitmq app on master
+  command: rabbitmqctl start_app
+  register: cluster_master
+  when: inventory_hostname == "{{ rabbitmq_master }}"
+
+- name: rabbitmq_clustering | sending sigterm to any running rabbitmq processes
+  shell: pkill -u rabbitmq || true
+  when: inventory_hostname != "{{ rabbitmq_master }}"
+
+- name: rabbitmq_clustering | restarting rabbitmq-server
+  service: name=rabbitmq-server state=restarted
+  when: inventory_hostname != "{{ rabbitmq_master }}"
+
+- name: rabbitmq_clustering | stopping rabbitmq app
+  command: rabbitmqctl stop_app
+  when: inventory_hostname != "{{ rabbitmq_master }}"
+
+- name: rabbitmq_clustering | resetting rabbitmq app
+  command: rabbitmqctl reset
+  when: inventory_hostname != "{{ rabbitmq_master }}"
+
+- name: rabbitmq_clustering | joining rabbitmq cluster
+  command: rabbitmqctl join_cluster 'rabbit@{{ rabbitmq_master }}'
+  register: cluster_joined
+  when: inventory_hostname != "{{ rabbitmq_master }}"
+
+- name: rabbitmq_clustering | starting rabbitmq app
+  command: rabbitmqctl start_app
+  when: inventory_hostname != "{{ rabbitmq_master }}"
+
+- name: rabbitmq_clustering | marking as clustered
+  file: path=/etc/rabbitmq/clustered state=touch
+  when: cluster_master.changed or cluster_joined.changed
+</pre>
+<p>tasks/rabbitmq_ha_config.yml</p>
+<pre>---
+- name: rabbitmq_ha_config | install rabbitMQ admin
+  shell: wget http://guest:guest@localhost:55672/cli/rabbitmqadmin
+
+- name: rabbitmq_ha_config | moving the rabbitMQ Admin
+  shell: mv rabbitmqadmin /usr/sbin
+
+- name: rabbitmq_ha_config | making executable rabbitMQ Admin
+  shell: chmod +x /usr/sbin/rabbitmqadmin
+  notify: restart rabbitmq-server
+
+- name: rabbitmq_ha_config | creating queue(s)
+  command: rabbitmqadmin declare queue name={{ item.queue_name }} durable={{ item.durable|lower }}
+  run_once: true
+  with_items: rabbitmq_config
+
+- name: rabbitmq_ha_config | setting up ha on queue(s)
+  rabbitmq_policy: name='ha-all' pattern='{{ item.queue_name }}' tags="{{ item.tags }}" state=present
+  run_once: true
+  with_items: rabbitmq_config
+
+- name: rabbitmq_ha_config | creating exchange(s)
+  command: rabbitmqadmin declare exchange name={{ item.exchange_name }} type={{ item.type }}
+  run_once: true
+  with_items: rabbitmq_config
+
+- name: rabbitmq_ha_config | creating binding(s)
+  command: rabbitmqadmin declare binding source={{ item.exchange_name }} destination_type="queue" destination={{ item.queue_name }} routing_key={{ item.routing_key }}
+  run_once: true
+  with_items: rabbitmq_config
+</pre>
+<p>templates/erlang.cookie.j2</p>
+<pre>{{ erlang_cookie }}
+</pre>
+<p>When you are all done this is what you should see in your RabbitMQ web management UI.<a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/04/Screen-Shot-2015-04-13-at-9.41.31-AM.png"><img class="alignnone size-medium wp-image-4433" src="{{ site.baseurl }}/assets/Screen-Shot-2015-04-13-at-9.41.31-AM-280x300.png" alt="Screen Shot 2015-04-13 at 9.41.31 AM" width="280" height="300" /></a></p>
+<p>And there you have it. You now have a highly available RabbitMQ cluster all setup by Ansible.</p>
+<p>Enjoy!</p>

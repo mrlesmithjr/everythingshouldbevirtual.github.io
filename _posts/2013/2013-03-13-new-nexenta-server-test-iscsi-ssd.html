@@ -1,0 +1,78 @@
+---
+layout: post
+title: New Nexenta Server Test - iSCSI - SSD
+date: 2013-03-13 12:23:05.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Nexenta
+- Storage
+tags:
+- esxi
+- nexenta
+- Nexentastor
+- ssd
+- Vsphere
+meta:
+  _edit_last: '11'
+  _s2mail: 'yes'
+  _wpas_done_all: '1'
+  snapEdIT: '1'
+  snapFB: s:300:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_392381160860332";s:5:"pDate";s:19:"2013-03-13
+    16:24:07";}}";
+  snapLI: s:387:"a:1:{i:0;a:8:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:124:"http://www.linkedin.com/updates?discuss=&amp;scope=138895851&amp;stype=M&amp;topic=5717641237406691328&amp;type=U&amp;a=CyRy";s:5:"pDate";s:19:"2013-03-13
+    16:24:59";}}";
+  snapSU: s:213:"a:1:{i:0;a:7:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2U1iJW";s:5:"pDate";s:19:"2013-03-13
+    16:25:11";}}";
+  snapTW: 's:269:"a:1:{i:0;a:7:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:59:"%TITLE%
+    - %URL% #everythingshouldbevirtual #nexenta #vmware";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"311875600036024320";s:5:"pDate";s:19:"2013-03-13
+    16:25:12";}}";'
+  snap_isAutoPosted: '1'
+  _wp_rp_related_posts_query_result_cache_expiration: '1509583885'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1196";s:5:"score";s:18:"181.24666689513745";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1583";s:5:"score";s:17:"133.6193334076626";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1154";s:5:"score";s:17:"95.25706920173295";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"913";s:5:"score";s:17:"87.59042209616365";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"909";s:5:"score";s:17:"87.59042209616365";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1413";s:5:"score";s:17:"80.86196244630223";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1399";s:5:"score";s:17:"80.86196244630223";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1777";s:5:"score";s:17:"78.19066119012203";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1637";s:5:"score";s:17:"78.19066119012203";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1422";s:5:"score";s:17:"78.19066119012203";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"915";s:5:"score";s:17:"78.19066119012203";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"2316";s:5:"score";s:17:"71.02171000137199";}}
+  _wp_rp_image: '3429'
+  dsq_thread_id: '3346748521'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>I just did a quick test using the VMware IO Analyzer using the same tests that I did <a title="http://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd" href="http://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd" target="_blank">here</a>. This test was only using iSCSI with SSD for ZIL/SLOG and L2ARC. But the results show a considerable jump in performance which means that apparently the money has been well spent. I also changed the vmdk file size for the IO Analyzer to 50GB this time seeing as the new server has 32GB of RAM. This way it is not caching the data in memory giving us false results.</p>
+<p>So here are the results of this test.</p>
+<p><strong>OLTP 4K (4K 70% Read 100% Random) – iSCSI</strong></p>
+<p>Original Test Results</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/03/OLTP_4K-Old.png"><img class="alignnone size-medium wp-image-1445" alt="OLTP_4K-Old" src="{{ site.baseurl }}/assets/OLTP_4K-Old-300x223.png" width="300" height="223" /></a></p>
+<p>&nbsp;</p>
+<p>New Test Results</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/03/OLTP_4K-New.png"><img class="alignnone size-medium wp-image-1446" alt="OLTP_4K-New" src="{{ site.baseurl }}/assets/OLTP_4K-New-300x216.png" width="300" height="216" /></a></p>
+<p>&nbsp;</p>
+<p><strong>SQL – 64k (64k 66% Read 100% Random) – iSCSI</strong></p>
+<p>Old test results</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/03/SQL_64K-Old.png"><img class="alignnone size-medium wp-image-1447" alt="SQL_64K-Old" src="{{ site.baseurl }}/assets/SQL_64K-Old-300x228.png" width="300" height="228" /></a></p>
+<p>New test results</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/03/SQL_64K-New.png"><img class="alignnone size-medium wp-image-1448" alt="SQL_64K-New" src="{{ site.baseurl }}/assets/SQL_64K-New-300x222.png" width="300" height="222" /></a></p>
+<p>&nbsp;</p>
+<p><strong>Exchange 2007 (8k 55% Read 80% Random) – iSCSI</strong></p>
+<p>Old test results</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/03/Exchange_2007-Old.png"><img class="alignnone size-medium wp-image-1449" alt="Exchange_2007-Old" src="{{ site.baseurl }}/assets/Exchange_2007-Old-300x223.png" width="300" height="223" /></a></p>
+<p>New test results</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/03/Exchange_2007-New.png"><img class="alignnone size-medium wp-image-1450" alt="Exchange_2007-New" src="{{ site.baseurl }}/assets/Exchange_2007-New-300x222.png" width="300" height="222" /></a></p>
+<p>&nbsp;</p>
+<p><strong>Webserver (8k 95% Read 75% Random) – iSCSI</strong></p>
+<p>Old test results</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/03/WebServer_8K-Old.png"><img class="alignnone size-medium wp-image-1451" alt="WebServer_8K-Old" src="{{ site.baseurl }}/assets/WebServer_8K-Old-300x223.png" width="300" height="223" /></a></p>
+<p>&nbsp;</p>
+<p>New test results</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/03/WebServer_8K-New.png"><img class="alignnone size-medium wp-image-1452" alt="WebServer_8K-New" src="{{ site.baseurl }}/assets/WebServer_8K-New-300x223.png" width="300" height="223" /></a></p>
+<p>&nbsp;</p>
+<p>As you can see the new server is definitely performing at a much higher rate than the previous server was. I will be doing some additional testing here soon to show the comparison even further to my prior build. So stay tuned for that.</p>
+<p>&nbsp;</p>
+<p>Enjoy!</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

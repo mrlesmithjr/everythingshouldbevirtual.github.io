@@ -1,0 +1,161 @@
+---
+layout: post
+title: Highly Available ELK (Elasticsearch, Logstash and Kibana) Unicast Mode
+date: 2014-06-26 09:51:04.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Linux
+- Logstash
+- Monitoring
+- Ubuntu
+tags:
+- elasticsearch
+- haproxy
+- kibana
+- logstash
+meta:
+  _edit_last: '11'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snap_isAutoPosted: '1'
+  snapDL: s:129:"a:1:{i:0;a:4:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";}}";
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:480:"a:1:{i:0;a:12:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:0:"";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:124:"http://www.linkedin.com/updates?discuss=&amp;scope=138895851&amp;stype=M&amp;topic=5887925050467717120&amp;type=U&amp;a=C_IU";s:5:"pDate";s:19:"2014-06-26
+    13:52:04";}}";
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"1qZL1u";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/1qZL1u/comments";s:5:"pDate";s:19:"2014-06-26
+    13:52:13";}}";
+  snapTW: 's:312:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:56:"%TITLE%
+    - %URL% #logstash #ubuntu #elasticsearch #devops";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"482159400447385600";s:5:"pDate";s:19:"2014-06-26
+    13:52:13";}}";'
+  _wp_rp_related_posts_query_result_cache_expiration: '1511789229'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"2854";s:5:"score";s:17:"262.4363499413325";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"4695";s:5:"score";s:18:"163.59239533357473";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"2870";s:5:"score";s:18:"105.12882039795628";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4505";s:5:"score";s:17:"74.21839586437312";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"3793";s:5:"score";s:17:"72.36617969201224";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"4447";s:5:"score";s:17:"71.25488688518392";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"2242";s:5:"score";s:17:"68.78539795919855";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"3353";s:5:"score";s:17:"68.75651659068117";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"3302";s:5:"score";s:17:"64.99589085753567";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"3341";s:5:"score";s:17:"60.40366570075362";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"699";s:5:"score";s:17:"59.85659610443201";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"4466";s:5:"score";s:17:"57.09854102263739";}}
+  _wp_rp_image: empty
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>In the previous <a title="Highly Available ELK (Elasticsearch, Logstash and Kibana) Setup" href="http://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup">post </a>we setup the complete ELK stack from top to bottom. And everything should be working as needed; however one thing you will want to do once everything is stable is to change all ES (Elasticsearch) nodes to communicate in unicast mode instead of how it was setup which was in mulitcast discovery mode. Switching to unicast mode will keep all of the network chatter down doing discovery of your ES cluster. This will also result in better performance for your cluster. I have made all of this extremely simple for you if you followed the previous post and used the install scripts. I have included all of the settings that will need to be changed in all of the configuration files so all that is required is to comment out certain sections, uncomment the relevant sections required and restart all services.</p>
+<p>So to switch over to unicast mode we will need to do the following.</p>
+<hr />
+<p>&nbsp;</p>
+<p><strong>ES (Elasticsearch Master/Data Nodes (es-1, es-2):</strong></p>
+<p>On each of your ES Master/Data nodes from a terminal session change the following settings. (Remember that if you used different hostnames/IPs your settings will be different)</p>
+<pre>sudo nano /etc/elasticsearch/elasticsearch.yml</pre>
+<p>Now at the bottom of the config file you will see the following.</p>
+<pre>##### Uncomment below instead of using multicast and update with your actual ES Master/Data nodenames #####
+#discovery.zen.ping.unicast.hosts: ["es-1", "es-2"]
+#discovery.zen.ping.multicast.enabled: false</pre>
+<p>You will need to uncomment these lines out so they look like the following.</p>
+<pre>##### Uncomment below instead of using multicast and update with your actual ES Master/Data nodenames #####
+discovery.zen.ping.unicast.hosts: ["es-1", "es-2"]
+discovery.zen.ping.multicast.enabled: false</pre>
+<p>Now you will need to restart the elasticsearch service</p>
+<pre>sudo service elasticsearch restart</pre>
+<p>And if all went well your cluster should be back up and running. You can verify and look for any issues by checking the elasticsearch log.</p>
+<pre>tail /var/log/elasticsearch/logstash-cluster.log</pre>
+<p>You should see successful discovery of your cluster and an elected master node.<br />
+So if all went well you will now need to proceed to each of your ELK frontend nodes.</p>
+<hr />
+<p>&nbsp;</p>
+<p><strong>ELK (Elasticsearch, Logstash and Kibana) Nodes (logstash-1, logstash-2):</strong></p>
+<p>On each of your ELK frontend nodes from a terminal session change the following settings.</p>
+<pre>sudo nano /etc/elasticsearch/elasticsearch.yml</pre>
+<p>Now at the bottom of the config file you will see the following.</p>
+<pre>##### Uncomment below instead of using multicast and update with your actual ES Master/Data nodenames #####
+#discovery.zen.ping.unicast.hosts: ["es-1", "es-2"]
+#discovery.zen.ping.multicast.enabled: false</pre>
+<p>You will need to uncomment these lines out so they look like the following.</p>
+<pre>##### Uncomment below instead of using multicast and update with your actual ES Master/Data nodenames #####
+discovery.zen.ping.unicast.hosts: ["es-1", "es-2"]
+discovery.zen.ping.multicast.enabled: false</pre>
+<p>Now you will need to restart the elasticsearch service</p>
+<pre>sudo service elasticsearch restart</pre>
+<p>Now you will need to modify your logstash.conf file to join the ES <em>"logstash-cluster"</em> cluster in unicast mode.<br />
+In order to this you will do the following.</p>
+<pre>sudo nano /etc/logstash/logstash.conf</pre>
+<p>You will see the following at the very bottom of the config file.</p>
+<pre>#### Multicast discovery mode ####
+# Send output to the ES cluster logstash-cluster using a predefined template
+# The following settings will be used during the initial setup which will be used for using multicast ES nodes
+# When changing to unicast discovery mode you need to comment out the following section and configure the unicast discovery mode in the next section
+output {
+        elasticsearch {
+                cluster =&gt; "logstash-cluster"
+                flush_size =&gt; 1
+                manage_template =&gt; true
+                template =&gt; "/opt/logstash/lib/logstash/outputs/elasticsearch/elasticsearch-template.json"
+        }
+}
+ 
+#### Unicast discovery mode ####
+# Send output to the ES cluster logstash-cluster using a predefined template
+# The settings below will be used when you change to unicast discovery mode for all ES nodes
+# Make sure to comment out the above multicast discovery mode section
+#output {
+#        elasticsearch {
+#                cluster =&gt; "logstash-cluster"
+#                host =&gt; "logstash"
+#                port =&gt; "9300"
+#                protocol =&gt; "node"
+#                flush_size =&gt; "1"
+#                manage_template =&gt; true
+#                template =&gt; "/opt/logstash/lib/logstash/outputs/elasticsearch/elasticsearch-template.json"
+#        }
+#}</pre>
+<p>Now change these lines to look like the following.</p>
+<pre>#### Multicast discovery mode ####
+# Send output to the ES cluster logstash-cluster using a predefined template
+# The following settings will be used during the initial setup which will be used for using multicast ES nodes
+# When changing to unicast discovery mode you need to comment out the following section and configure the unicast discovery mode in the next section
+#output {
+#        elasticsearch {
+#                cluster =&gt; "logstash-cluster"
+#                flush_size =&gt; 1
+#                manage_template =&gt; true
+#                template =&gt; "/opt/logstash/lib/logstash/outputs/elasticsearch/elasticsearch-template.json"
+#        }
+#}
+ 
+#### Unicast discovery mode ####
+# Send output to the ES cluster logstash-cluster using a predefined template
+# The settings below will be used when you change to unicast discovery mode for all ES nodes
+# Make sure to comment out the above multicast discovery mode section
+output {
+        elasticsearch {
+                cluster =&gt; "logstash-cluster"
+                host =&gt; "logstash"
+                port =&gt; "9300"
+                protocol =&gt; "node"
+                flush_size =&gt; "1"
+                manage_template =&gt; true
+                template =&gt; "/opt/logstash/lib/logstash/outputs/elasticsearch/elasticsearch-template.json"
+        }
+}</pre>
+<p>Once you have changed these settings you need to restart the logstash service.</p>
+<pre>sudo service logstash restart</pre>
+<p>You should now have all ELK components communicating via unicast instead of multicast now. If you have any issues with communications from your logstash services make sure that you have the following settings in your HAProxy nodes configuration. Again if you followed the initial setup in the previous post these settings should already be there.</p>
+<pre>sudo nano /etc/haproxy/haproxy.cfg</pre>
+<p>You should see the following in this configuration file.</p>
+<pre>listen elasticsearch-TCP-9300 10.0.101.60:9300
+        mode tcp
+        option tcpka
+        option tcplog
+        #balance leastconn - The server with the lowest number of connections receives the connection
+        #balance roundrobin - Each server is used in turns, according to their weights.
+        #balance source - Source IP hashed and divided by total weight of servers designates which server will receive the request
+        balance roundrobin
+        server es-1 es-1:9300 check
+        server es-2 es-2:9300 check</pre>
+<p>If this section is missing you will need to add it and reload your haproxy config.</p>
+<pre>sudo service haproxy reload</pre>
+<p>So once all of this has been setup you should be good to go running in Unicast mode for your whole ES cluster. This will also allow you to run your different nodes outside of the same subnet as well as allow you to add additional nodes in different subnets.</p>
+<p>Enjoy!</p>

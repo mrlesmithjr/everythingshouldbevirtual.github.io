@@ -1,0 +1,79 @@
+---
+layout: post
+title: Veeam Backup and Replication to Nexenta NFS
+date: 2013-02-01 13:24:46.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Backups
+- Disaster Recovery
+- Nexenta
+- Veeam
+tags:
+- backups
+- disaster recovery
+- linux
+- nexenta
+- NFS
+- repository
+- veeam
+- VMware
+- Vsphere
+meta:
+  _yoast_wpseo_linkdex: '60'
+  _edit_last: '11'
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  _yoast_wpseo_focuskw: veeam nfs repository
+  _wpas_done_all: '1'
+  snap_isAutoPosted: '1'
+  snapFB: s:319:"a:1:{i:0;a:9:{s:13:"SNAPincludeFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"490878107607759_574293969266172";s:5:"pDate";s:19:"2013-02-01
+    18:25:40";s:4:"doFB";s:1:"1";}}";
+  snapLI: s:216:"a:1:{i:0;a:6:{s:13:"SNAPincludeLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:4:"doLI";s:1:"1";s:11:"SNAPformatT";s:6:"&nbsp;";}}";
+  snapSU: s:242:"a:1:{i:0;a:8:{s:13:"SNAPincludeSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2ZNyqx";s:5:"pDate";s:19:"2013-02-01
+    18:26:43";s:4:"doSU";s:1:"1";}}";
+  snapTW: 's:270:"a:1:{i:0;a:8:{s:13:"SNAPincludeTW";s:1:"1";s:10:"SNAPformat";s:31:"%TITLE%
+    - %URL% #veeam #nexenta";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"297410670989832192";s:5:"pDate";s:19:"2013-02-01
+    18:26:44";s:4:"doTW";s:1:"1";}}";'
+  _wp_rp_related_posts_query_result_cache_expiration: '1509589962'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1570";s:5:"score";s:18:"166.94811518087837";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1134";s:5:"score";s:18:"159.51628316243796";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1151";s:5:"score";s:17:"158.0105046191496";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1158";s:5:"score";s:18:"145.58786482634792";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1581";s:5:"score";s:18:"124.98473343563484";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"245";s:5:"score";s:18:"105.41759611063762";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"909";s:5:"score";s:18:"103.20679052350997";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1146";s:5:"score";s:18:"103.16500458465619";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"2021";s:5:"score";s:18:"101.20236896266701";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"522";s:5:"score";s:18:"100.40258990258154";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1012";s:5:"score";s:17:"95.22104923993614";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1952";s:5:"score";s:17:"94.87124523558896";}}
+  _wp_rp_image: '3617'
+  dsq_thread_id: '3346748004'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>In my testing so far I have decided to throw this together as a valid scenario which could be a good solution, but obviously open to additional feedback and testing. And I know I am not the first to do this so please feel free to provide feedback. And I also look forward to discussing this with the Veeam engineers.</p>
+<p>Thinking through the design of this I am seeing that I would potentially want to utilize NFS for my backup repositories attached to a linux vm using 10GB uplinks to my Nexenta NAS (or any other NAS appliance). I personally like the idea of going this route versus any windows server(s) having potentially 100+TB of storage hanging off of it even if it is a Windows 2012 server with all of its newness. And I would never want to rely on Windows NFS client for anything of this magnitude. Obviously my goal is to not have to build a physical server and attach storage to it just for this when I am trying to leverage virtualization. This is not to say that is a bad idea for anyone, but it doesn’t make sense to me. And to be clear I have equal levels of knowledge on Windows and Linux just in case you are wondering that. <img class="wlEmoticon wlEmoticon-smile" style="border-style: none;" alt="Smile" src="{{ site.baseurl }}/assets/wlEmoticon-smile.png" /></p>
+<p>I am not going through the setup of Veeam in this post, but assuming that you know how to do the basics and then adding another backup repository which is on a linux vm. For my testing I enabled root on a Ubuntu 12.04 vm. Adding a Linux repository requires ssh access to the server, so make sure the openssh-server package is installed.</p>
+<p>enable root with the following command.</p>
+<pre>sudo passwd</pre>
+<p>Create the folder on the Nexenta appliance and enable NFS.</p>
+<p>Set the settings for the folder as the screenshots below with changes made with the highlighted settings.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/12-50-28.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="12-50-28" alt="12-50-28" src="{{ site.baseurl }}/assets/12-50-28_thumb.png" width="244" height="137" border="0" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/12-50-47.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="12-50-47" alt="12-50-47" src="{{ site.baseurl }}/assets/12-50-47_thumb.png" width="244" height="32" border="0" /></a></p>
+<p>Set the NFS settings on Nexenta as the following screenshot.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/12-47-36.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="12-47-36" alt="12-47-36" src="{{ site.baseurl }}/assets/12-47-36_thumb.png" width="244" height="143" border="0" /></a></p>
+<p>Do the following on your Linux vm</p>
+<p>Install the NFS client package</p>
+<pre>sudo apt-get install nfs-common</pre>
+<p>Create mount point</p>
+<pre>sudo mkdir /veeam backups</pre>
+<p>Modify /etc/fstab to add the mount point on boot</p>
+<pre>sudo nano /etc/fstab</pre>
+<p>Add the following to the bottom of /etc/fstab and modify to your environment</p>
+<pre>192.168.202.60:/volumes/datapool/veeam_backups /veeam_backups nfs hard,intr,nfsvers=3,tcp,bg,_netdev,auto,nolock 0 0</pre>
+<p>Mount the NFS share</p>
+<pre>sudo mount –a</pre>
+<p>Your NFS share should now be mounted</p>
+<p>Now you will need to add the Linux server to the backup repository from the Veeam server console.</p>
+<p>Follow the screenshots below to add your new Linux backup repository.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/13-02-16.png"><img style="background-image: none; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="13-02-16" alt="13-02-16" src="{{ site.baseurl }}/assets/13-02-16_thumb.png" width="244" height="158" border="0" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/13-02-38.png"><img style="background-image: none; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="13-02-38" alt="13-02-38" src="{{ site.baseurl }}/assets/13-02-38_thumb.png" width="244" height="172" border="0" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/13-03-08.png"><img style="background-image: none; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="13-03-08" alt="13-03-08" src="{{ site.baseurl }}/assets/13-03-08_thumb.png" width="244" height="181" border="0" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/13-03-28.png"><img style="background-image: none; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="13-03-28" alt="13-03-28" src="{{ site.baseurl }}/assets/13-03-28_thumb.png" width="244" height="172" border="0" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/13-03-39.png"><img style="background-image: none; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="13-03-39" alt="13-03-39" src="{{ site.baseurl }}/assets/13-03-39_thumb.png" width="244" height="172" border="0" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/13-04-02.png"><img style="background-image: none; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="13-04-02" alt="13-04-02" src="{{ site.baseurl }}/assets/13-04-02_thumb.png" width="244" height="171" border="0" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/13-04-22.png"><img style="background-image: none; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="13-04-22" alt="13-04-22" src="{{ site.baseurl }}/assets/13-04-22_thumb.png" width="244" height="173" border="0" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/13-04-37.png"><img style="background-image: none; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="13-04-37" alt="13-04-37" src="{{ site.baseurl }}/assets/13-04-37_thumb.png" width="244" height="226" border="0" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/13-04-51.png"><img style="background-image: none; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="13-04-51" alt="13-04-51" src="{{ site.baseurl }}/assets/13-04-51_thumb.png" width="244" height="172" border="0" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/13-04-59.png"><img style="background-image: none; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="13-04-59" alt="13-04-59" src="{{ site.baseurl }}/assets/13-04-59_thumb.png" width="244" height="171" border="0" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/13-05-24.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px;" title="13-05-24" alt="13-05-24" src="{{ site.baseurl }}/assets/13-05-24_thumb.png" width="244" height="171" border="0" /></a></p>
+<p>That’s it now enjoy your Veeam NFS repository. Feel free to leave feedback or any questions. I welcome all comments. <img class="wlEmoticon wlEmoticon-smile" style="border-style: none;" alt="Smile" src="{{ site.baseurl }}/assets/wlEmoticon-smile.png" /></p>

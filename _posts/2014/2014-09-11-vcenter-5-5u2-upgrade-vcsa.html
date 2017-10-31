@@ -1,0 +1,62 @@
+---
+layout: post
+title: vCenter 5.5U2 Upgrade on VCSA
+date: 2014-09-11 15:13:35.000000000 -04:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- vcenter
+- vcsa
+meta:
+  _edit_last: '11'
+  snapLI: s:274:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapTW: 's:315:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:59:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vCenter #VMware";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"510144203633197056";s:5:"pDate";s:19:"2014-09-11
+    19:13:50";}}";'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"e2c1bc62f0ac45aaf5799ce396ce0b56";s:5:"pDate";s:19:"2014-09-11
+    19:13:36";}}";
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2owCTa";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/2owCTa/comments";s:5:"pDate";s:19:"2014-09-11
+    19:13:50";}}";
+  _s2mail: 'yes'
+  _wp_rp_related_posts_query_result_cache_expiration: '1509555443'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"4466";s:5:"score";s:17:"75.88998555013285";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1940";s:5:"score";s:17:"75.88998555013285";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"2233";s:5:"score";s:18:"53.511959423364104";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"481";s:5:"score";s:17:"41.13954217530337";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1879";s:5:"score";s:16:"38.7822321825941";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"2909";s:5:"score";s:18:"38.023252939112865";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1390";s:5:"score";s:17:"37.82308602200539";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"487";s:5:"score";s:17:"37.39593782147421";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"2021";s:5:"score";s:15:"32.451931331596";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1943";s:5:"score";s:15:"32.451931331596";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"623";s:5:"score";s:15:"32.451931331596";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"497";s:5:"score";s:15:"32.451931331596";}}
+  _wp_rp_image: empty
+  dsq_thread_id: '3346749370'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>So I decided to upgrade my vCenter 5.5U1 VCSA to the latest vCenter 5.5U2 release yesterday and it has been a complete disaster at this point. vCenter continually crashes every few minutes now. I was just poking through logs and found where the service is crashing. I am including the context of the log below.</p>
+<p>&nbsp;</p>
+<pre>
+mem&gt; 2014-09-11T19:06:53.383Z [7F02DC3D0700 warning 'Default' opID=HB-host-8637@82541-3778684f] [VdbStatement] SQL execution failed: UPDATE VPX_HOST SET ROOT_RES_CONFIG = ? WHERE ID = ?
+mem&gt; 2014-09-11T19:06:53.383Z [7F02DC3D0700 warning 'Default' opID=HB-host-8637@82541-3778684f] [VdbStatement] Execution elapsed time: 2 ms
+mem&gt; 2014-09-11T19:06:53.383Z [7F02DC3D0700 warning 'Default' opID=HB-host-8637@82541-3778684f] [VdbStatement] Bind parameters:
+mem&gt; 2014-09-11T19:06:53.383Z [7F02DC3D0700 warning 'Default' opID=HB-host-8637@82541-3778684f] [VdbStatement] datatype: 11, size: 1234, arraySize: 0
+mem&gt; 2014-09-11T19:06:53.383Z [7F02DC3D0700 warning 'Default' opID=HB-host-8637@82541-3778684f] [VdbStatement] value = "ha-r..."
+mem&gt; 2014-09-11T19:06:53.383Z [7F02DC3D0700 warning 'Default' opID=HB-host-8637@82541-3778684f] [VdbStatement] datatype: 7, size: 4, arraySize: 0
+mem&gt; 2014-09-11T19:06:53.383Z [7F02DC3D0700 warning 'Default' opID=HB-host-8637@82541-3778684f] [VdbStatement] value = "8637"
+mem&gt; 2014-09-11T19:06:53.383Z [7F02DC3D0700 error 'Default' opID=HB-host-8637@82541-3778684f] [VdbStatement] SQLError was thrown: "ODBC error: (00000) - " is returned when executing SQL statement "UPDATE VPX_HOST SET ROOT_RES_CONFIG = ? WHERE ID = ?"
+mem&gt; 2014-09-11T19:06:53.417Z [7F02DC3D0700 verbose 'VpxProfiler' opID=HB-host-8637@82541-3778684f] [1-] [VpxdVdb] SaveCLOB: vim.ResourceConfigSpec (took 36 ms)
+mem&gt; 2014-09-11T19:06:53.418Z [7F02DC3D0700 error 'commonvpxCommon' opID=HB-host-8637@82541-3778684f] [Vpxd_HandleVmRootError] Received unrecoverable VmRootError. Generating minidump ...
+mem&gt; 2014-09-11T19:06:53.418Z [7F02DC3D0700 error 'Default' opID=HB-host-8637@82541-3778684f] An unrecoverable problem has occurred, stopping the VMware VirtualCenter service. Error: Error[VdbODBCError] (-1) "ODBC error: (00000) - " is returned when executing SQL statement "UPDATE VPX_HOST SET ROOT_RES_CONFIG = ? WHERE ID = ?"
+mem&gt; 2014-09-11T19:06:53.418Z [7F02DC3D0700 verbose 'commonvpxCommon' opID=HB-host-8637@82541-3778684f] Backtrace: 
+mem&gt; --&gt; 
+mem&gt; 2014-09-11T19:06:53.487Z [7F02DC3D0700 panic 'Default' opID=HB-host-8637@82541-3778684f] (Log recursion level 2) Unrecoverable VmRootError. Panic!
+
+------ In-memory logs end   --------
+2014-09-11T19:06:53.487Z [7F02DC3D0700 panic 'Default' opID=HB-host-8637@82541-3778684f] Section for VMware VirtualCenter, pid=10869, version=5.5.0, build=2001466, option=Release</pre>
+<p>If anyone has any thoughts let me know.<br />
+Enjoy!</p>

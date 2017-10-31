@@ -1,0 +1,69 @@
+---
+layout: post
+title: vSphere 6.0 Syslog Configuration
+date: 2015-03-13 10:14:12.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Virtualization
+- VMware
+- vSphere 6.0
+tags:
+- elk
+- logstash
+- syslog
+- vsphere 6.0
+meta:
+  _edit_last: '11'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:274:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _s2mail: 'yes'
+  _yoast_wpseo_focuskw: vsphere 6.0 Syslog
+  _yoast_wpseo_metadesc: vSphere 6.0 Syslog
+  _yoast_wpseo_linkdex: '79'
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"849842033e72e74e37e3d62dc5400159";s:5:"pDate";s:19:"2015-03-13
+    14:14:12";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1510304931'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"4695";s:5:"score";s:17:"94.68677001723565";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"4263";s:5:"score";s:17:"91.38164533911942";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"345";s:5:"score";s:17:"77.97319074085902";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4466";s:5:"score";s:17:"72.51707612841386";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"2280";s:5:"score";s:17:"55.22580385759785";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"2854";s:5:"score";s:17:"51.04319633042612";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"118";s:5:"score";s:17:"50.87919396282996";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1815";s:5:"score";s:17:"48.56964227212815";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"2985";s:5:"score";s:17:"48.37189507424593";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4447";s:5:"score";s:16:"45.0667703961297";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"3341";s:5:"score";s:17:"44.93629290829105";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1494";s:5:"score";s:17:"39.38340313739026";}}
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"1jDWsx";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/1jDWsx/comments";s:5:"pDate";s:19:"2015-03-13
+    14:14:20";}}";
+  snapTW: 's:317:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:61:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vSphere #vSphere6";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"576385812427722752";s:5:"pDate";s:19:"2015-03-13
+    14:14:21";}}";'
+  _wp_rp_image: '4344'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<h2>vSphere 6.0 Syslog Configuration</h2>
+<p>So in setting up a new ELK Stack from scratch (more on this later) and also standing up the GA release of vSphere 6.0 I had to go through setting up syslog from the hosts once again. Pretty much the same as before but for those that would like to know if there is anything special in regards to sending to <a title="Highly Available ELK (Elasticsearch, Logstash and Kibana) Setup" href="http://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup">logstash</a> I thought that I would share this. There is nothing special at all.</p>
+<p>First thing to do is open up the UI using your favorite browser and select your host(s) from the hosts and clusters home page. Now select manage and advanced settings.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/03/Screen-Shot-2015-03-13-at-9.57.35-AM.png"><img class="alignnone size-medium wp-image-4299" src="{{ site.baseurl }}/assets/Screen-Shot-2015-03-13-at-9.57.35-AM-300x130.png" alt="Screen Shot 2015-03-13 at 9.57.35 AM" width="300" height="130" /></a></p>
+<p>In the search bar enter the following 'syslog.global.logHost' and you will see the setting to add your global syslog servers. Highlight the setting and click the edit icon (pencil).</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/03/Screen-Shot-2015-03-13-at-9.59.31-AM.png"><img class="alignnone size-medium wp-image-4300" src="{{ site.baseurl }}/assets/Screen-Shot-2015-03-13-at-9.59.31-AM-300x130.png" alt="Screen Shot 2015-03-13 at 9.59.31 AM" width="300" height="130" /></a></p>
+<p>Now enter your syslog servers to send to. In my case I will be setting the following 'tcp://logstash.everythingshouldbevirtual.local:1514,tcp://logstash-dev.everythingshouldbevirtual.local:1514'.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/03/Screen-Shot-2015-03-13-at-10.01.03-AM.png"><img class="alignnone size-medium wp-image-4301" src="{{ site.baseurl }}/assets/Screen-Shot-2015-03-13-at-10.01.03-AM-300x51.png" alt="Screen Shot 2015-03-13 at 10.01.03 AM" width="300" height="51" /></a></p>
+<p>Click ok and the setting should now look similar to below.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/03/Screen-Shot-2015-03-13-at-10.01.46-AM.png"><img class="alignnone size-medium wp-image-4302" src="{{ site.baseurl }}/assets/Screen-Shot-2015-03-13-at-10.01.46-AM-300x30.png" alt="Screen Shot 2015-03-13 at 10.01.46 AM" width="300" height="30" /></a></p>
+<p>Now you will need to go to the next advanced setting which is 'security profile' and enable syslog. Click edit on the 'firewall' settings.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/03/Screen-Shot-2015-03-13-at-9.40.18-AM.png"><img class="alignnone size-medium wp-image-4303" src="{{ site.baseurl }}/assets/Screen-Shot-2015-03-13-at-9.40.18-AM-300x98.png" alt="Screen Shot 2015-03-13 at 9.40.18 AM" width="300" height="98" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/03/Screen-Shot-2015-03-13-at-9.40.44-AM.png"><img class="alignnone size-medium wp-image-4304" src="{{ site.baseurl }}/assets/Screen-Shot-2015-03-13-at-9.40.44-AM-300x211.png" alt="Screen Shot 2015-03-13 at 9.40.44 AM" width="300" height="211" /></a><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/03/Screen-Shot-2015-03-13-at-9.41.12-AM.png"><img class="alignnone size-medium wp-image-4305" src="{{ site.baseurl }}/assets/Screen-Shot-2015-03-13-at-9.41.12-AM-300x210.png" alt="Screen Shot 2015-03-13 at 9.41.12 AM" width="300" height="210" /></a></p>
+<p>Click ok.</p>
+<p>Now you need to restart the 'syslog' service. Scroll down in the 'security profile' settings and click edit on the 'services' section. Now scroll down until you see 'Syslog Server', highlight it and click 'restart'.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/03/Screen-Shot-2015-03-13-at-9.45.14-AM.png"><img class="alignnone size-medium wp-image-4306" src="{{ site.baseurl }}/assets/Screen-Shot-2015-03-13-at-9.45.14-AM-300x209.png" alt="Screen Shot 2015-03-13 at 9.45.14 AM" width="300" height="209" /></a></p>
+<p>&nbsp;</p>
+<p>Click ok.</p>
+<p>At this point you should be good to and start seeing some messages showing up in your syslog server.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/03/Screen-Shot-2015-03-13-at-9.48.27-AM.png"><img class="alignnone size-medium wp-image-4307" src="{{ site.baseurl }}/assets/Screen-Shot-2015-03-13-at-9.48.27-AM-300x159.png" alt="Screen Shot 2015-03-13 at 9.48.27 AM" width="300" height="159" /></a></p>
+<p>And there you have it. Happy syslogging and remember "Log all things!!!!".</p>
+<p>Enjoy!</p>

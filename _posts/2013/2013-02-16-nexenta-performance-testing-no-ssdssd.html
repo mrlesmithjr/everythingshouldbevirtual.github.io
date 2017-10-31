@@ -1,0 +1,130 @@
+---
+layout: post
+title: Nexenta Performance Testing No-SSD/SSD
+date: 2013-02-16 12:03:22.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Nexenta
+- Storage
+- Virtualization
+- VMware
+- vSphere 5.1
+tags:
+- io analyzer
+- nexenta
+- Nexentastor
+- performance
+- ssd
+- Vsphere
+meta:
+  _yoast_wpseo_linkdex: '66'
+  _edit_last: '11'
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  snapFB: s:286:"a:1:{i:0;a:8:{s:4:"doFB";i:0;s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"490878107607759_582484108447158";s:5:"pDate";s:19:"2013-02-16
+    17:04:22";}}";
+  snapLI: s:389:"a:1:{i:0;a:8:{s:4:"doLI";i:0;s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:124:"http://www.linkedin.com/updates?discuss=&amp;scope=138895851&amp;stype=M&amp;topic=5708591690403569664&amp;type=U&amp;a=FB5m";s:5:"pDate";s:19:"2013-02-16
+    17:05:19";s:11:"SNAPformatT";s:6:"&nbsp;";}}";
+  snapSU: s:209:"a:1:{i:0;a:7:{s:4:"doSU";i:0;s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"4PKhwX";s:5:"pDate";s:19:"2013-02-16
+    17:05:30";}}";
+  snapTW: 's:247:"a:1:{i:0;a:7:{s:4:"doTW";i:0;s:10:"SNAPformat";s:41:"%TITLE% - %URL%
+    #nexenta #vmware #vsphere";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"302826051690704897";s:5:"pDate";s:19:"2013-02-16
+    17:05:31";}}";'
+  _yoast_wpseo_focuskw: Nexenta ssd performance
+  _yoast_wpseo_title: Nexenta Performance Testing No-SSD/SSD - Everything Should Be
+    Virtual
+  _wpas_done_all: '1'
+  snap_isAutoPosted: '1'
+  _wp_rp_related_posts_query_result_cache_expiration: '1511865911'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1444";s:5:"score";s:18:"181.24666689513745";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1583";s:5:"score";s:18:"153.76714381731713";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"909";s:5:"score";s:17:"118.0508596452595";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1154";s:5:"score";s:18:"112.12172725956316";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"913";s:5:"score";s:18:"110.48248037742297";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"2316";s:5:"score";s:16:"87.9245386046803";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1637";s:5:"score";s:17:"85.75904045795855";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1399";s:5:"score";s:17:"85.75904045795855";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1777";s:5:"score";s:17:"78.19066119012203";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1422";s:5:"score";s:17:"78.19066119012203";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1413";s:5:"score";s:17:"78.19066119012203";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"915";s:5:"score";s:17:"78.19066119012203";}}
+  _wp_rp_image: '3641'
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>In this post I will be testing Disk IO without SSD for L2ARC and ZIL/SLOG and then again with SSD for L2ARC and ZIL/SLOG. I will be using the VMware I/O analyzer from <a href="http://labs.vmware.com/flings/io-analyzer" target="_blank">here</a>. The SSD drives I will be using are the Intel 520 120GB drives. We will see what the different IO scenarios will look like for NFS and iSCSI. I will also be changing the disk sizes for the second virtual disk on the analyzer from the default of 100MB to 20GB. I am doing this because my NAS/SAN has 16GB of memory installed and I do not want it to cache the data giving false output. I will also be running the test duration for the default 120 secs.</p>
+<p>Check out <a title="http://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-1/" href="http://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-1/" target="_blank">this </a>post and then <a title="http://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2" href="http://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2" target="_blank">this </a>one for information on my Nexenta configurations.</p>
+<p>First download the I/O analyzer appliance zip file and then extract it. Then import the ova file using the vCenter client.</p>
+<p>Below are the different VMware IO Analyzer tests used. I tried to use what I would consider real world scenarios to get a real sense of performance vs. just seeing max performance. If you would like to see a test of a different scenario feel free to leave a comment on this post.</p>
+<p><strong>OLTP 4K <strong> (4K 70% Read 100% Random) </strong>- NFS<br />
+</strong></p>
+<p style="text-align: center;">NFS</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/10-27-51.png"><img class="alignnone size-medium wp-image-1244" alt="10-27-51" src="{{ site.baseurl }}/assets/10-27-51-300x223.png" width="300" height="223" /></a></p>
+<p style="text-align: center;">NFS - SSD</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/10-25-35.png"><img class="alignnone size-medium wp-image-1243 aligncenter" alt="10-25-35" src="{{ site.baseurl }}/assets/10-25-35-300x226.png" width="300" height="226" /></a></p>
+<p style="text-align: center;">NFS - (Sync=disabled)</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/10-34-29.png"><img class="alignnone size-medium wp-image-1246 aligncenter" alt="10-34-29" src="{{ site.baseurl }}/assets/10-34-29-300x223.png" width="300" height="223" /></a></p>
+<p style="text-align: center;"> NFS - SSD - (Sync=disabled)</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/10-38-26.png"><img class="alignnone size-medium wp-image-1247" alt="10-38-26" src="{{ site.baseurl }}/assets/10-38-26-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: left;"><strong>OLTP 4K (4K 70% Read 100% Random) - iSCSI</strong></p>
+<p style="text-align: center;">iSCSI</p>
+<p style="text-align: left;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/10-42-59.png"><img class="alignnone size-medium wp-image-1249 aligncenter" alt="10-42-59" src="{{ site.baseurl }}/assets/10-42-59-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: center;">iSCSI - SSD</p>
+<p style="text-align: left;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/10-44-17.png"><img class="alignnone size-medium wp-image-1250 aligncenter" alt="10-44-17" src="{{ site.baseurl }}/assets/10-44-17-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: center;"><em>Results from above clearly show that iSCSI using SSD for ZIL/SLOG and L2ARC outperforms the other scenarios including NFS.</em></p>
+<p style="text-align: left;"><strong>SQL - 64k <strong>(64k 66% Read 100% Random)</strong> - NFS</strong></p>
+<p style="text-align: center;">NFS</p>
+<p style="text-align: left;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/10-53-30.png"><img class="alignnone size-medium wp-image-1253 aligncenter" alt="10-53-30" src="{{ site.baseurl }}/assets/10-53-30-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: center;">NFS - SSD</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/10-54-38.png"><img class="alignnone size-medium wp-image-1254" alt="10-54-38" src="{{ site.baseurl }}/assets/10-54-38-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: center;">NFS - (Sync=disabled)</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/10-56-12.png"><img class="alignnone size-medium wp-image-1255" alt="10-56-12" src="{{ site.baseurl }}/assets/10-56-12-300x225.png" width="300" height="225" /></a></p>
+<p style="text-align: center;">NFS - SSD - (Sync=disabled)</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/10-58-08.png"><img class="alignnone size-medium wp-image-1256" alt="10-58-08" src="{{ site.baseurl }}/assets/10-58-08-300x223.png" width="300" height="223" /></a></p>
+<p style="text-align: left;"><strong>SQL - 64k (64k 66% Read 100% Random) - iSCSI</strong></p>
+<p style="text-align: center;">iSCSI</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-00-38.png"><img class="alignnone size-medium wp-image-1257" alt="11-00-38" src="{{ site.baseurl }}/assets/11-00-38-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: center;">iSCSI - SSD</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-01-35.png"><img class="alignnone size-medium wp-image-1258" alt="11-01-35" src="{{ site.baseurl }}/assets/11-01-35-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: center;"><em>Results from above clearly show that iSCSI using SSD for ZIL/SLOG and L2ARC outperforms the other scenarios including NFS.</em></p>
+<p style="text-align: left;"><strong>Exchange 2007<strong> (8k 55% Read 80% Random)</strong> - NFS</strong></p>
+<p style="text-align: center;">NFS</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-06-05.png"><img class="alignnone size-medium wp-image-1259" alt="11-06-05" src="{{ site.baseurl }}/assets/11-06-05-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: center;">NFS - SSD</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-06-50.png"><img class="alignnone size-medium wp-image-1260" alt="11-06-50" src="{{ site.baseurl }}/assets/11-06-50-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: center;">NFS - (Sync=disabled)</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-08-04.png"><img class="alignnone size-medium wp-image-1261" alt="11-08-04" src="{{ site.baseurl }}/assets/11-08-04-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: center;">NFS - SSD - (Sync=disabled)</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-09-44.png"><img class="alignnone size-medium wp-image-1262" alt="11-09-44" src="{{ site.baseurl }}/assets/11-09-44-300x225.png" width="300" height="225" /></a></p>
+<p style="text-align: left;"><strong>Exchange 2007 (8k 55% Read 80% Random) - iSCSI</strong></p>
+<p style="text-align: center;">iSCSI</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-14-24.png"><img class="alignnone size-medium wp-image-1263" alt="11-14-24" src="{{ site.baseurl }}/assets/11-14-24-300x226.png" width="300" height="226" /></a></p>
+<p style="text-align: center;">iSCSI - SSD</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-15-44.png"><img class="alignnone size-medium wp-image-1264" alt="11-15-44" src="{{ site.baseurl }}/assets/11-15-44-300x226.png" width="300" height="226" /></a></p>
+<p style="text-align: center;"><em>Results from above clearly show that iSCSI using SSD for ZIL/SLOG and L2ARC outperforms the other scenarios including NFS.</em></p>
+<p style="text-align: left;"><strong>Webserver (<strong>8k 95% Read 75% Random)</strong> - NFS</strong></p>
+<p style="text-align: center;">NFS</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-27-28.png"><img class="alignnone size-medium wp-image-1265" alt="11-27-28" src="{{ site.baseurl }}/assets/11-27-28-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: center;">NFS - SSD</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-28-32.png"><img class="alignnone size-medium wp-image-1266" alt="11-28-32" src="{{ site.baseurl }}/assets/11-28-32-300x225.png" width="300" height="225" /></a></p>
+<p style="text-align: center;">NFS - (Sync=disabled)</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-31-00.png"><img class="alignnone size-medium wp-image-1267" alt="11-31-00" src="{{ site.baseurl }}/assets/11-31-00-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: center;">NFS - SSD - (Sync=disabled)</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-32-08.png"><img class="alignnone size-medium wp-image-1268" alt="11-32-08" src="{{ site.baseurl }}/assets/11-32-08-300x224.png" width="300" height="224" /></a></p>
+<p style="text-align: left;"><strong>Webserver (8k 95% Read 75% Random) - iSCSI</strong></p>
+<p style="text-align: center;">iSCSI</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-34-37.png"><img class="alignnone size-medium wp-image-1269" alt="11-34-37" src="{{ site.baseurl }}/assets/11-34-37-300x226.png" width="300" height="226" /></a></p>
+<p style="text-align: center;">iSCSI - SSD</p>
+<p style="text-align: center;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/02/11-35-40.png"><img class="alignnone size-medium wp-image-1270" alt="11-35-40" src="{{ site.baseurl }}/assets/11-35-40-300x225.png" width="300" height="225" /></a></p>
+<p style="text-align: center;"><em>Results from above clearly show that iSCSI using SSD for ZIL/SLOG and L2ARC outperforms the other scenarios including NFS.</em></p>
+<p style="text-align: center;"><em><strong>Notes</strong></em></p>
+<ul>
+<li>ZIL is not touched using iSCSI unless you disable writeback cache for the zvol.</li>
+<li>For NFS it appears that throughput and IOPS increased marginally, but the latency decreased significantly when using SSD for ZIL/SLOG and L2ARC. But iSCSI with SSD clearly outperformed NFS in all tests.</li>
+<li>To check out the usage of L2ARC go <a href="https://github.com/mharsch/arcstat" target="_blank">here </a>and get the arcstat.pl script and run it with the following commands.</li>
+<li>
+<pre>./arcstat.pl  -f read,hits,miss,hit%,l2read,l2hits,l2miss,l2hit%,arcsz,l2size</pre>
+</li>
+</ul>
+<p>That is all I have for this testing scenario and again I welcome comments and would be glad to perform additional tests if asked.</p>
+<p>Enjoy!</p>
+<p>**Update** You can see the results of a few of these same tests on my new server build <a title="http://everythingshouldbevirtual.com/new-nexenta-server-test-iscsi-ssd" href="http://everythingshouldbevirtual.com/new-nexenta-server-test-iscsi-ssd" target="_blank">here</a>.</p>

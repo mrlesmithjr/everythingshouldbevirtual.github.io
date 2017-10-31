@@ -1,0 +1,77 @@
+---
+layout: post
+title: Add Windows Sysprep Files to vCenter Server Virtual Appliance
+date: 2013-10-11 14:37:49.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- vCenter
+- VMware
+- vSphere 5.5
+tags:
+- sysprep
+- vcenter
+- vcenter server appliance
+meta:
+  _edit_last: '11'
+  snapEdIT: '1'
+  snapFB: s:300:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_483751091723338";s:5:"pDate";s:19:"2013-10-11
+    18:37:52";}}";
+  snapSU: s:213:"a:1:{i:0;a:7:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2LkQBK";s:5:"pDate";s:19:"2013-10-11
+    18:38:00";}}";
+  _s2mail: 'yes'
+  _thumbnail_id: '1946'
+  _wpas_done_all: '1'
+  snapTW: 's:270:"a:1:{i:0;a:7:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:60:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vcenter #windows";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"388735252707176449";s:5:"pDate";s:19:"2013-10-11
+    18:38:01";}}";'
+  snap_isAutoPosted: '1'
+  snapLI: s:187:"a:1:{i:0;a:5:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:6:"&nbsp;";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1509633329'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"2021";s:5:"score";s:17:"86.86989094891908";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1940";s:5:"score";s:17:"66.68742187763407";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1879";s:5:"score";s:18:"62.799725296788466";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"2909";s:5:"score";s:18:"62.734145651077554";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4466";s:5:"score";s:18:"55.470619238115304";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"2233";s:5:"score";s:17:"47.37896577506997";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"481";s:5:"score";s:18:"46.108438949597165";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1390";s:5:"score";s:17:"41.00434704439786";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"3114";s:5:"score";s:18:"40.800237071975154";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"2280";s:5:"score";s:18:"40.800237071975154";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"623";s:5:"score";s:17:"38.33304578821766";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"497";s:5:"score";s:17:"38.33304578821766";}}
+  dsq_needs_sync: '1'
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>In case you are using the vCSA and need to upload sysprep files this should get you going.</p>
+<p>First off download the relevant sysprep files that you may need by using the links below.</p>
+<p><a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=3E90DC91-AC56-4665-949B-BEDA3080E0F6" target="_blank">Windows XP PRO SP2</a></p>
+<p><a href="http://www.microsoft.com/downloads/details.aspx?familyid=A34EDCF2-EBFD-4F99-BBC4-E93154C332D6" target="_blank">Windows 2003 Server SP1</a></p>
+<p><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=93f20bb1-97aa-4356-8b43-9584b7e72556" target="_blank">Windows 2003 Server SP2</a></p>
+<p><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=93f20bb1-97aa-4356-8b43-9584b7e72556&amp;displaylang=en" target="_blank">Windows 2003 Server R2</a></p>
+<p><a href="http://www.microsoft.com/downloads/details.aspx?familyid=C2684C95-6864-4091-BC9A-52AEC5491AF7&amp;displaylang=en" target="_blank">Windows 2003 Server x64</a></p>
+<p>Extract the files using the command below for Windows 2003 x64. This is what I am using in this example.</p>
+<pre>WindowsServer2003.WindowsXP-KB926028-v3-x64-ENU.exe /x</pre>
+<p><a href="http://www.microsoft.com/downloads/details.aspx?familyid=C2684C95-6864-4091-BC9A-52AEC5491AF7&amp;displaylang=en" target="_blank">Windows XP x64</a></p>
+<p><a href="http://www.microsoft.com/downloads/details.aspx?familyid=673a1019-8e3e-4be0-ac31-70dd21b5afa7&amp;displaylang=en" target="_blank">Windows XP Pro SP3</a></p>
+<p>Now connect to your vCSA using your browser of choice. https://{vcsahostname/ip}:5480</p>
+<p>Once logged in on the main page you will see under utilities a button to upload Sysprep files. Click upload.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/10/21-33-59.png"><img class="alignnone size-medium wp-image-1946" alt="21-33-59" src="{{ site.baseurl }}/assets/21-33-59-300x210.png" width="300" height="210" /></a></p>
+<p>&nbsp;</p>
+<p>Now select the Windows sysprep version you would like to upload.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/10/21-34-40.png"><img class="alignnone size-medium wp-image-1947" alt="21-34-40" src="{{ site.baseurl }}/assets/21-34-40-300x227.png" width="300" height="227" /></a></p>
+<p>&nbsp;</p>
+<p>Select choose file.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/10/21-49-08.png"><img class="alignnone size-medium wp-image-1948" alt="21-49-08" src="{{ site.baseurl }}/assets/21-49-08-300x228.png" width="300" height="228" /></a></p>
+<p>&nbsp;</p>
+<p>Now browse to the location of the sysprep.exe file that you extracted from the downloaded file from above.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/10/21-49-42.png"><img class="alignnone size-medium wp-image-1949" alt="21-49-42" src="{{ site.baseurl }}/assets/21-49-42-300x177.png" width="300" height="177" /></a></p>
+<p>&nbsp;</p>
+<p>Click close.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/10/21-50-07.png"><img class="alignnone size-medium wp-image-1950" alt="21-50-07" src="{{ site.baseurl }}/assets/21-50-07-300x227.png" width="300" height="227" /></a></p>
+<p>&nbsp;</p>
+<p>All done. As you can see it is pretty easy. Easier than using a Windows vCenter Server IMHO. But YMMV. :)</p>
+<p>Enjoy!</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

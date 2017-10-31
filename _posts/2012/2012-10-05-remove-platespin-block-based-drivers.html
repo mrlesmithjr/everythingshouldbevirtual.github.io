@@ -1,0 +1,72 @@
+---
+layout: post
+title: Remove Platespin Block Based Drivers
+date: 2012-10-05 11:22:09.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Disaster Recovery
+- Platespin
+tags: []
+meta:
+  _edit_last: '11'
+  fb_social_plugin_settings_box_subscribe: default
+  _jd_tweet_this: 'yes'
+  al2fb_facebook_link_id: '1329619822_3749386616441'
+  al2fb_facebook_link_time: '2012-10-05T15:22:13+00:00'
+  al2fb_facebook_link_picture: post=https://everythingshouldbevirtual.com/?al2fb_image=1
+  _wp_jd_wp: http://wp.me/p2C5rM-9R
+  _wp_jd_target: http://wp.me/p2C5rM-9R
+  _jd_wp_twitter: 'a:2:{i:0;s:92:"#ElRetardoLand New post: Remove Platespin Block
+    Based Drivers http://wp.me/p2C5rM-9R #VMware";i:1;s:95:"#ElRetardoLand Post Edited:
+    Remove Platespin Block Based Drivers http://wp.me/p2C5rM-9R #VMware";}'
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  snapFB: s:147:"a:1:{i:0;a:4:{s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:4:"doFB";i:0;}}";
+  snapLI: s:156:"a:1:{i:0;a:4:{s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:4:"doLI";i:0;s:11:"SNAPformatT";s:6:"&nbsp;";}}";
+  snapSU: s:96:"a:1:{i:0;a:3:{s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:4:"doSU";i:0;}}";
+  snapTW: s:95:"a:1:{i:0;a:3:{s:10:"SNAPformat";s:15:"%TITLE% - %URL%";s:8:"attchImg";s:1:"0";s:4:"doTW";i:0;}}";
+  _yoast_wpseo_title: Remove Platespin Block Based Drivers - Everything Should Be
+    Virtual
+  _wp_rp_related_posts_query_result_cache_expiration: '1510376496'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"253";s:5:"score";s:18:"41.283971242960995";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1819";s:5:"score";s:17:"27.16861510880303";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1890";s:5:"score";s:18:"22.875453420177195";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"2021";s:5:"score";s:18:"21.543611764850567";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"229";s:5:"score";s:18:"18.872310508670374";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1842";s:5:"score";s:18:"17.597587606567476";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1581";s:5:"score";s:18:"17.597587606567476";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1282";s:5:"score";s:18:"17.597587606567476";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1016";s:5:"score";s:18:"17.597587606567476";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"114";s:5:"score";s:18:"16.854613818732474";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1134";s:5:"score";s:18:"16.599605274972358";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"245";s:5:"score";s:18:"16.599605274972358";}}
+  _wp_rp_image: empty
+  dsq_thread_id: '3363714843'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p><strong>Remove Platespin Block-Based drivers</strong><strong></strong><br />
+In order to increase a drive size you must first remove the block-based drivers and reboot. Once rebooted you will be able to increase the capacity of a disk. After doing so you will have to go to the platespin server and remove the workload and then add it back.<br />
+Below is the link on removing these drivers.</p>
+<p>Go <a title="http://www.novell.com/support/php/search.do?cmd=displayKC&amp;docType=kc&amp;externalId=7005616&amp;sliceId=1&amp;docTypeID=DT_TID_1_1&amp;dialogID=118906851&amp;stateId=0%200%20242563522" href="http://www.novell.com/support/php/search.do?cmd=displayKC&amp;docType=kc&amp;externalId=7005616&amp;sliceId=1&amp;docTypeID=DT_TID_1_1&amp;dialogID=118906851&amp;stateId=0%200%20242563522" target="_blank">here</a>.<br />
+<a href="http://www.novell.com/support/php/search.do?cmd=displayKC&amp;docType=kc&amp;externalId=7005616&amp;sliceId=1&amp;docTypeID=DT_TID_1_1&amp;dialogID=118906851&amp;stateId=0%200%20242563522"><br />
+</a></p>
+<p>The link is not working at this time.<br />
+So here is what to do.</p>
+<p>Download and extract the Devcon.exe from Microsoft <a href="http://support.microsoft.com/kb/311272" target="_blank">KB 311272</a>.<br />
+2. From a command prompt, execute:</p>
+<pre>devcon stack storage\volume</pre>
+<p>Below is an example of the output. PsMon will be listed as a upper filter.<br />
+STORAGE\VOLUME\1&amp;30A96598&amp;0&amp;SIGNATURE11781178OFFSET7E00LENGTH63F3DFE00<br />
+Name: Generic volume<br />
+Setup Class: {71A27CDD-812A-11D0-BEC7-08002BE2092F} Volume<br />
+Class upper filters:<br />
+Upper filters:<br />
+psmon<br />
+Controlling service:<br />
+volsnap<br />
+1 matching device(s) found</p>
+<p>Download and extract <a title="http://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-BBT-Installs.zip" href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-BBT-Installs.zip">PsMonInstall.zip</a></p>
+<p>Here is the command to run to remove the Platespin tools.</p>
+<pre>PsMonInstall.exe /inf c:\windows\inf\psmon.inf /uninstall psmon /remove</pre>
+<p>Now reboot the workload and make sure that each drive does not contain any files like platespin.bitmap.bbvt in the root of the drive. If they do exist delete them.</p>
+<p>Now if you need/want to install the Platespin tools manually head over to <a title="http://everythingshouldbevirtual.com/how-to-install-block-based-tools-for-platespin-workloads-manually" href="http://everythingshouldbevirtual.com/how-to-install-block-based-tools-for-platespin-workloads-manually">this </a>link on how to do that.</p>
+<p>Enjoy!</p>

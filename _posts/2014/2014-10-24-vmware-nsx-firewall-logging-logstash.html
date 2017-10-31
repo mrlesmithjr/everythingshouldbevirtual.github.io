@@ -1,0 +1,55 @@
+---
+layout: post
+title: VMware NSX Firewall Logging with Logstash
+date: 2014-10-24 17:30:45.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Logstash
+- Monitoring
+- NSX
+- Virtualization
+- VMware
+tags:
+- logstash
+- nsx
+meta:
+  _edit_last: '11'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:274:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _s2mail: 'yes'
+  _yoast_wpseo_focuskw: vmware nsx firewall
+  _yoast_wpseo_metadesc: vmware nsx firewall logging
+  _yoast_wpseo_linkdex: '62'
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"3203b5251144835f263d8bb1c2e922bd";s:5:"pDate";s:19:"2014-10-24
+    21:30:46";}}";
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"1lOPeR";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/1lOPeR/comments";s:5:"pDate";s:19:"2014-10-24
+    21:30:57";}}";
+  snapTW: 's:331:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:75:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vmware #nsx #nsxninja #logstash";s:8:"attchImg";s:1:"1";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"525761391563898880";s:5:"pDate";s:19:"2014-10-24
+    21:30:58";}}";'
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_expiration: '1509692452'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"3793";s:5:"score";s:17:"87.22515155575736";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"3365";s:5:"score";s:17:"82.47212311668241";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"3145";s:5:"score";s:17:"78.28709587040882";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"3353";s:5:"score";s:17:"69.58286708309359";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"3302";s:5:"score";s:17:"68.70296451493621";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"4466";s:5:"score";s:17:"68.16266505712777";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"2242";s:5:"score";s:17:"67.15007643430823";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"3313";s:5:"score";s:16:"66.3876601741103";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"2870";s:5:"score";s:16:"66.3876601741103";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4695";s:5:"score";s:17:"65.58667527862232";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"2985";s:5:"score";s:17:"60.40366570075362";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"2854";s:5:"score";s:17:"60.40366570075362";}}
+  dsq_thread_id: ''
+  _oembed_9f91500a5ca09ad9e826acfb7b4b2459: "{{unknown}}"
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>So the past day or so I have been working on getting some good detail from my NSX Edge's (ESG and DLR) and I have been able to get them working very well. The Kibana dashboard looks great too. :) So I wanted to share this out with anyone else who may be looking at doing the same thing or just needing a way to get useful information out of NSX in regards to firewall activity. I am also working on some of the other logging facilities within NSX and will share those once I get those tidied up.</p>
+<p>Below is the code you will need to get started in setting up your logstash.conf file.<br />
+https://gist.github.com/mrlesmithjr/8a018d57f79dc4f451e6</p>
+<p>And here is a quick dashboard view for now.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/10/Screen-Shot-2014-10-24-at-5.20.52-PM.png"><img class="alignnone size-medium wp-image-3349" src="{{ site.baseurl }}/assets/Screen-Shot-2014-10-24-at-5.20.52-PM-300x143.png" alt="Screen Shot 2014-10-24 at 5.20.52 PM" width="300" height="143" /></a></p>
+<p>Enjoy!</p>

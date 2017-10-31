@@ -1,0 +1,377 @@
+---
+layout: post
+title: Ansible - Highly Available ELK Stack
+date: 2015-07-20 21:17:37.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Ansible
+- Automation
+- Linux
+- Logstash
+- Monitoring
+- Ubuntu
+tags:
+- Ansible
+- elk
+- elk stack
+- kibana
+- logstash
+meta:
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapFB: s:298:"a:1:{i:0;a:10:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:2:"do";s:1:"1";}}";
+  snapLI: s:317:"a:1:{i:0;a:11:{s:4:"doLI";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:12:"liMsgFormatT";s:1:"
+    ";s:2:"do";s:1:"1";}}";
+  snapSU: s:322:"a:1:{i:0;a:10:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"244PZs";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/244PZs/comments";s:5:"pDate";s:19:"2015-07-21
+    01:17:47";s:2:"do";s:1:"1";}}";
+  _s2mail: 'yes'
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:21:"mrlesmithjr - Ansible";s:11:"github_user";s:11:"mrlesmithjr";s:11:"github_repo";s:7:"Ansible";}
+  _yoast_wpseo_focuskw: Ansible - Highly Available ELK Stack
+  _yoast_wpseo_metadesc: Ansible - Highly Available ELK Stack
+  _yoast_wpseo_linkdex: '80'
+  snap_isAutoPosted: '1'
+  snapDL: s:259:"a:1:{i:0;a:8:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"e23a574e63f076adf033d016f4359625";s:5:"pDate";s:19:"2015-07-21
+    01:17:38";s:2:"do";s:1:"1";}}";
+  snapTW: 's:355:"a:1:{i:0;a:10:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:81:"%TITLE%
+    - %URL% #everythingshouldbevirtual #logstash #ansible #DevOps #automation";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"623300807358681088";s:5:"pDate";s:19:"2015-07-21
+    01:17:47";s:2:"do";s:1:"1";}}";'
+  _yoast_wpseo_focuskw_text_input: Ansible - Highly Available ELK Stack
+  _yoast_wpseo_primary_category: ''
+  _wp_rp_related_posts_query_result_cache_expiration: '1510589359'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"2985";s:5:"score";s:18:"163.59239533357473";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"2854";s:5:"score";s:18:"147.49805988038966";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"4263";s:5:"score";s:18:"135.81768188925136";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4505";s:5:"score";s:18:"116.79279398396372";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4447";s:5:"score";s:18:"114.69294110372076";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"4297";s:5:"score";s:17:"94.68677001723565";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"699";s:5:"score";s:17:"89.07751763071582";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"2242";s:5:"score";s:17:"69.78338029079367";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"5383";s:5:"score";s:17:"69.60476940419882";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"3313";s:5:"score";s:17:"69.16024889638905";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"3341";s:5:"score";s:17:"65.58667527862232";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"4391";s:5:"score";s:17:"63.48791964218971";}}
+  _wp_rp_image: empty
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<p style="text-align: center;"><strong>Ansible - Highly Available ELK Stack</strong></p>
+<p style="text-align: left;">A little over a year ago I provided installation scripts along with <a href="http://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup">this</a> post to help setup a completely redundant ELK Stack. This post has definitely been one of my most popular posts that I have ever put out and lot's of great feedback provided. Over the past few months I have been working on getting all of this functionality and then some ported over to <a href="http://ansible.com" target="_blank">Ansible</a> which has proven to be amazing to say the least. However the missing piece has been providing this out to the community for consumption as well as getting additional feedback in areas that could be improved on. So I am now putting this all together (Hopefully in a consumable way) and providing this to the great community. As always this will be a working guide on setting this all up as I am sure that I will miss pieces here and there as I release these playbooks. I have spent a good bit of time trying to make these playbooks as customizable as I can allowing for them to fit within any environment. I am of course open to any ideas or thoughts on how to make these even better.</p>
+<p style="text-align: left;">All of this will be contained in my <a href="https://github.com/mrlesmithjr/Ansible" target="_blank">GitHub</a> repository. A note on this is that I have created one repository for all Ansible roles in order to use them across different solutions as well as have a repository that would be all inclusive for a complete site setup which would include additional environments other than just ELK. As I share out additional roles I will be building on the foundation of a complete site, meaning that variables that should carry out over all roles will be contained in <em><strong>group_vars/all </strong></em>directory<em><strong>. </strong></em>I prefer to use individual files for specific variables instead of placing all of them in a single group_vars/all file. But of course you may choose to do differently.</p>
+<p style="text-align: left;"><strong>UPDATE - 04-17-2016</strong></p>
+<hr />
+<p>As you work through this setup it has come to my attention that this post is extremely out of date. So YMMV as you attempt to install ELK. I intend on publishing a more current post on setting up ELK which in most cases is even easier than the process here including the Ansible roles. If you would like to clone and leverage much more current versions of each ELK role or would like to just have them as a reference in case you run into issues following this post. You can visit each of the newer Ansible roles from below. Hope this helps!</p>
+<p>The main Ansible role with some details included can be found <a href="https://github.com/mrlesmithjr/ansible-elkstack">here</a>.</p>
+<p><a href="https://github.com/mrlesmithjr/ansible-elk-kibana">https://github.com/mrlesmithjr/ansible-elk-kibana</a><br />
+<a href="https://github.com/mrlesmithjr/ansible-elk-processor">https://github.com/mrlesmithjr/ansible-elk-processor</a><br />
+<a href="https://github.com/mrlesmithjr/ansible-elk-haproxy">https://github.com/mrlesmithjr/ansible-elk-haproxy</a><br />
+<a href="https://github.com/mrlesmithjr/ansible-elk-pre-processor">https://github.com/mrlesmithjr/ansible-elk-pre-processor</a><br />
+<a href="https://github.com/mrlesmithjr/ansible-elk-es">https://github.com/mrlesmithjr/ansible-elk-es</a><br />
+<a href="https://github.com/mrlesmithjr/ansible-elk-broker">https://github.com/mrlesmithjr/ansible-elk-broker</a></p>
+<hr />
+<blockquote>
+<p style="text-align: center;">Example of group_vars/all</p>
+</blockquote>
+<pre>administrator@ansible:~/ansible/group_vars/all$ ls -l
+total 44
+-rw-rw-r-- 1 administrator administrator 5753 Jul 20 17:31 accounts
+-rw-rw-r-- 1 administrator administrator 1073 Jul 20 17:31 email
+-rw-rw-r-- 1 administrator administrator  284 Jul 20 17:31 gitlab
+-rw-rw-r-- 1 administrator administrator  468 Jul 20 17:31 monitoring
+-rw-rw-r-- 1 administrator administrator 1160 Jul 20 17:31 network
+-rw-rw-r-- 1 administrator administrator  214 Jul 20 17:31 rundeck
+-rw-rw-r-- 1 administrator administrator  139 Jul 20 17:31 security
+-rw-rw-r-- 1 administrator administrator 2127 Jul 20 17:31 servers
+-rw-rw-r-- 1 administrator administrator  233 Jul 20 17:31 time
+-rw-rw-r-- 1 administrator administrator  457 Jul 20 17:31 vcenter
+</pre>
+<p style="text-align: left;">As I provision nodes in my environment I use a bootstrap playbook and then a site playbook which will perform many tasks that should be consistent across all nodes. Feel free to tweak as you see fit but make sure to modify variables in specific files in <em><strong>group_vars/all</strong></em> prior to going any further ensuring that these variable align with your environment. I keep all specific user account and passwords in <em><strong>group_vars/all/accounts</strong></em> therefore when you pull this file from Github it will not contain much.</p>
+<blockquote>
+<p style="text-align: center;">bootstrap.yml</p>
+</blockquote>
+<pre>---
+- hosts: all
+  sudo: yes
+  roles:
+    - { role: change-hostname, when: update_hostname }
+
+- hosts: all
+  gather_facts: yes
+  sudo: yes
+  roles:
+    - bootstrap
+</pre>
+<blockquote>
+<p style="text-align: center;">site.yml</p>
+</blockquote>
+<pre>---
+- hosts: all
+  sudo: yes
+  remote_user: remote
+  roles:
+    - { role: disable-firewall, when: not enable_firewall }
+    - { role: enable-firewall, when: enable_firewall }
+    - base
+    - ntp
+    - rsyslog
+    - { role: change-hostname, when: update_hostname }
+    - { role: collectd, when: enable_collectd_monitoring }
+    - { role: postfix, when: configure_postfix }
+    - { role: sensu, when: enable_sensu_monitoring }
+    - { role: snmpd, when: enable_snmpd }
+    - { role: sysdig, when: install_sysdig is defined and install_sysdig }
+    - { role: timezone, when: change_timezone }
+    - { role: zabbix-agent, when: enable_zabbix_monitoring }
+</pre>
+<p style="text-align: left;">So you should now clone my Github repo by doing the following into a folder of your choosing.</p>
+<pre>git clone https://github.com/mrlesmithjr/Ansible.git
+</pre>
+<p style="text-align: left;">So with all of the above out of the way let's go ahead and get started.</p>
+<blockquote>
+<p style="text-align: center;">***Assumption - you have an understanding of using Ansible***</p>
+</blockquote>
+<p><strong>ELK Nodes</strong></p>
+<p>In order to make this highly available and scalable you will need to deploy a number of nodes in groups based on their role. And each role will have a specific resource requirement. This will be based on a starting point allowing for you to scale either vertical or horizontal (preferably horizontal).</p>
+<p>The naming that I will be using will have a <em><strong>-p</strong></em> in the node names which references production. This allows for you to build out production and say dev or test using the same playbooks and roles with just some minor changes to some group_vars/groups. All nodes are based on Ubuntu 14.04 LTS x64.</p>
+<ul>
+<li>elk-p-broker-nodes
+<ul>
+<li>3 nodes</li>
+<li>Elasticsearch Master nodes, Redis cache, Kibana WebUI</li>
+<li>Elasticsearch min. 2 master nodes up in cluster required</li>
+<li>1vCPU, 4GB RAM, 36GB hard drive</li>
+</ul>
+</li>
+<li>elk-p-es-nodes
+<ul>
+<li>3 nodes</li>
+<li>Elasticsearch Data nodes</li>
+<li>2vCPU,4GB RAM, 250GB hard drive</li>
+</ul>
+</li>
+<li>elk-p-pre-processor-nodes
+<ul>
+<li>2 nodes</li>
+<li>Logstash inputs, pre-processing, multiline filtering</li>
+<li>Send output to the broker-nodes via Redis</li>
+<li>1vCPU, 1GB RAM, 36GB hard drive</li>
+</ul>
+</li>
+<li>elk-p-processor-nodes
+<ul>
+<li>4 nodes</li>
+<li>Logstash parsers</li>
+<li>Gather input from broker nodes via Redis</li>
+<li>Send output to the es-nodes via Elasticsearch</li>
+<li>2vCPU, 2GB RAM, 36GB hard drive</li>
+</ul>
+</li>
+<li>elk-p-haproxy-nodes
+<ul>
+<li>2 nodes</li>
+<li>KeepAliveD VIP, Load Balancers for all of the ELK Stack</li>
+<li>Also gather UDP syslog for devices that cannot be configured for TCP</li>
+<li>1vCPU, 512MB RAM, 36GB hard drive</li>
+</ul>
+</li>
+</ul>
+<p>Once you have all of these deployed you will create or add to your Ansible inventory as follows. The group elk-p-nodes will include all of the nodes part of the setup in order to apply variables that apply to all nodes allowing us to get more granular with variables in the specific groups. Or you may use the included hosts file included in the Github repo.</p>
+<blockquote>
+<p style="text-align: center;">hosts</p>
+</blockquote>
+<pre>[elk-p-nodes]
+elk-p-haproxy-[1:2]
+elk-p-broker-[1:3]
+elk-p-es-[1:3]
+elk-p-pre-processor-[1:2]
+elk-p-processor-[1:4]
+
+[elk-p-haproxy-nodes]
+elk-p-haproxy-[1:2]
+
+[elk-p-broker-nodes]
+elk-p-broker-[1:3]
+
+[elk-p-es-nodes]
+elk-p-es-[1:3]
+
+[elk-p-pre-processor-nodes]
+elk-p-pre-processor-[1:2]
+
+[elk-p-processor-nodes]
+elk-p-processor-[1:4]
+</pre>
+<p style="text-align: center;">Now either create or modify the following group_vars/group names to fit your requirements. (Only groups with specific settings pertaining to ELK will be shown below and are only shown here for a reference. Each of these are included in the github repository.)</p>
+<blockquote>
+<p style="text-align: left;">group_vars/elk-p-broker-nodes<br />
+group_vars/elk-p-es-nodes<br />
+group_vars/elk-p-haproxy-nodes</p>
+</blockquote>
+<pre>syslog_servers:
+  - name: '{{ logstash_server_fqdn }}'
+    port: 514
+    proto: tcp
+  - name: 'logstash-dev.{{ pri_domain_name }}'
+    port: 514
+    proto: udp
+</pre>
+<blockquote><p>group_vars/elk-p-nodes</p></blockquote>
+<pre>additional_logstash_workers: true  #true=add additional workers defined in logstash_workers | false=disable
+config_logstash: true  #defines if logstash should be configured or not...this should be set to true unless there is a reason not to
+config_rabbitmq_ha: '{{ use_rabbitmq }}'  #only define if using rabbitmq instead of redis for broker nodes and rabbitmq ha is required for redundancy of queues **recommended if using rabbitmq
+enable_firewall: false
+enable_rabbitmq_clustering: '{{ use_rabbitmq }}'  #only define if using rabbitmq instead of redis for broker nodes and your requirements are for clustering of rabbitmq nodes **recommended if using rabbitmq
+es_cluster_name: logstash-prod  #define the elasticsearch cluster name to configure
+es_config_nfs: false  #configure and NFS mount to setup for archiving of elasticsearch data - has to be configured using the elasticsearch API or another method **recommended for long term archiving
+es_curator_close_after_days: 14  #defined the number of days to keep elasticsearch indexes open
+es_curator_max_keep_days: 30  #defines data retention policy for elasticsearch...purges data to keep disk space in order... **recommend aligning this with NFS archiving
+es_dest: /etc/elasticsearch/elasticsearch.yml
+es_fielddata_cache_size: 40%  #elasticsearch tweak...research before tweaking this
+es_min_master_nodes: 2  #defines the minimum number of elasticsearch master nodes to keep from split-brain scenario in cluster....adjust based on number of elk-broker-nodes deployed. should be at least 1 more than half of nodes
+es_nfs_mount: 10.0.101.51:/volumes/HD-Pool/elasticsearch-snapshots  #define NFS mount to configure if setting up for archiving
+es_nfs_mount_opts: defaults  #adjust NFS mountpoint options...research before changing
+es_nfs_mountpoint: /mnt/elasticsearch-snapshots  #define NFS mountpoint to mount es_nfs_mount to
+es_replicas: 1  #defines the number of data replicas to maintain in elasticsearch cluster....default is 1...research before changing this
+es_shards: 5  #defines the number of data shards to maintain in elasticsearch cluster....default is 5...research before changing this
+esxinaming:  #define your VMware ESXi naming standards if used...this should be set to host pattern...example - esxi01.everythingshouldbevirtual.local - define as esxi
+  - esxi
+hadoop_notifications: '{{ infra_email_notifications }}'
+hadoopnaming: '' #define your Hadoop naming standards if used...this should be set to host pattern...example - hd01.everythingshouldbevirtual.local - define as hd
+#  - hd  #uncomment and remove '' above if setting
+keepalived_router_id: 51  #defines the router_id to configure for keepalived...ensure not to define an already in use router_id if keepalived exists on the same subnet
+keepalived_vip: 10.0.101.60  #defines the VIP to be assigned to the cluster...this will be the address to access all components of ELK...create a DNS record for this address...ex - logstash.everythingshouldbevirtual.local
+keepalived_vip_hostname: '{{ logstash_server_fqdn }}'  #define the DNS record created for keepalived_vip  #defined in group_vars/all/configs
+keepalived_vip_int: eth0  #defines the network interface for keepalived to use for VIP and HAProxy (Load Balancer)
+kibana_elasticsearch: 'http://{{ keepalived_vip_hostname }}:9200'  #defines the url to configure Kibana UI to communicate with elasticsearch cluster..should be set to keepalived_vip or keepalived_vip_hostname
+kibana_host: 0.0.0.0  #defines Kibana host...should remain as 0.0.0.0 unless other requirements are required...research before changing
+kibana_port: 5601
+logstash_alerts_domain: '{{ smtp_domain_name }}'  #defines the domain to be applied to email alerts...this may be different than pri_domain_name (group_vars/all/configs) ex. everythingshouldbevirtual.local and everythingshouldbevirtual.com
+logstash_alerts_email: 'logstash.alerts@{{ logstash_alerts_domain }}'  #define email address to use for email alerts to be sent from logstash
+logstash_config_dir: /etc/logstash/conf.d  #defines the location where logstash configurations will be located....default is /etc/logstash/conf.d
+logstash_drop_grokparsefailures: false  #set to true if you want to drop all messages resulting in _grokparsefailure
+logstash_enable_alerts: true  #defines if alerts should be enabled...example is email alerts..
+logstash_workers: 4  #define the number of logstash worker processes to spawn
+netscalernaming: '' #define your Citrix Netscaler naming standards if used...this should be set to host pattern...example - nsvpx01.everythingshouldbevirtual.local - define as nsvpx
+#  - nsvpx  #uncomment and remove '' above if setting
+nsxnaming: '' #define your VMware NSX naming standards if used...this should be set to host pattern...example - nsx-rt01.everythingshouldbevirtual.local - define as nsx-rt
+#  - vShield-edge  #uncomment and remove '' above if setting
+#  - nsx-rt  #uncomment and remove '' above if setting
+pfsensenaming:  #define your PFSense firewall naming standards if used...this should be set to host pattern...example - pfsense01.everythingshouldbevirtual.local - define as pfsense
+  - pfsense
+redis_max_memory: 2048  #define the max amount of memory to use for redis
+redis_max_memory_policy: allkeys-lru  #defines redis max memory policy...research before changing
+redis_server_name: '{{ keepalived_vip_hostname }}'  #define the hostname or IP address of your redis server for elk-pre-processors to send logstash output...should be set to keepalived_vip or keepalived_vip_hostname
+rundeck_logstash_host: '{{ logstash_server_fqdn }}'
+rundeck_logstash_port: 9700
+use_rabbitmq: false  #defines if rabbitmq should be used on elk-broker nodes...either use rabbitmq or redis... **recommend redis
+use_redis: true  #defines if redis should be used on elk-broker nodes...either use redis or rabbitmq... **recommend redis
+</pre>
+<blockquote><p>elk-p-pre-processor-nodes</p></blockquote>
+<pre>syslog_servers:
+  - name: localhost
+    port: 10514
+    proto: tcp
+</pre>
+<blockquote><p>elk-p-processor-nodes</p></blockquote>
+<p style="text-align: left;">Now with <em><strong>group_vars</strong></em> out of the way you will need to modify or create host_vars/node name for only the <em><strong>elk-p-haproxy</strong></em> nodes but the defaults I have included she be all that is required which basically only defines KeepAliveD setting specific to each node. Examples below.</p>
+<blockquote><p>elk-p-haproxy-1</p></blockquote>
+<pre>---
+keepalived_router_pri: 101
+keepalived_vrrp_state: MASTER
+</pre>
+<blockquote><p>elk-p-haproxy-2</p></blockquote>
+<pre>---
+keepalived_router_pri: 100
+keepalived_vrrp_state: BACKUP
+</pre>
+<p>Now we should be ready to run our elkstack playbook and watch the building begin. Below is what the playbook looks like which is included in the Github repo. You will need to modify the remote_user variable to reflect the account that you will be connecting to all of your nodes with.</p>
+<blockquote><p>elkstack_prod.yml</p></blockquote>
+<pre>---
+- hosts: elk-p-nodes
+  remote_user: remote
+  sudo: yes
+  roles:
+    - { role: disable-firewall, when: not enable_firewall }
+    - { role: enable-firewall, when: enable_firewall }
+    - elk-network-tweaks
+
+- hosts: elk-p-broker-nodes
+  remote_user: remote
+  sudo: yes
+  roles:
+    - { role: redis, when: use_redis }
+    - { role: rabbitmq, when: use_rabbitmq }
+    - nginx
+    - elasticsearch
+    - elk-broker
+    - elk-kibana
+    - elk-tuning
+
+- hosts: elk-p-es-nodes
+  remote_user: remote
+  sudo: yes
+  roles:
+    - elasticsearch
+    - elk-es
+    - elk-tuning
+
+- hosts: elk-p-pre-processor-nodes
+  remote_user: remote
+  sudo: yes
+  roles:
+    - logstash
+    - elk-pre-processor
+    - dnsmasq
+
+- hosts: elk-p-processor-nodes
+  remote_user: remote
+  sudo: yes
+  roles:
+    - elasticsearch
+    - logstash
+    - elk-processor
+    - dnsmasq
+
+- hosts: elk-p-haproxy-nodes
+  remote_user: remote
+  sudo: yes
+  roles:
+    - logstash
+    - haproxy
+    - elk-haproxy
+</pre>
+<p>So if all nodes have been provisioned and naming matches the Ansible group_vars, host_vars and the Ansible inventory file you should be ready to run the following and watch everything get built.</p>
+<pre>ansible-playbook -i hosts elkstack_prod.yml
+</pre>
+<p>There you have it. You should have a functioning ELK Stack deployment at the end of the runs.</p>
+<p>You will connect either to http://logstashvipORlogstashvipname:5601 or http://logstashvipORlogstashvipname.</p>
+<p>Configure your devices to connect to the following (Unless you changed the roles).</p>
+<pre>logstash_inputs:
+  - prot: tcp
+    port: 10514
+    type: syslog
+  - prot: tcp
+    port: 1514
+    type: VMware
+  - prot: tcp
+    port: 1515
+    type: vCenter
+  - prot: tcp
+    port: 1517
+    type: Netscaler
+  - prot: tcp
+    port: 28778
+    type: elasticsearch-curator
+  - prot: tcp
+    format: json
+    port: 3515
+    type: eventlog
+  - prot: tcp
+    codec: json_lines
+    port: 3525
+    type: iis
+</pre>
+<p>And of course if not on this list you will send to UDP/514 or whatever else you may have added.<br />
+You will notice that VMware is listed above as tcp/1514. This worked great until a few months back and messages began dropping on several environments running ESXi 5.5U2+. To work around that we now configure the ESXi hosts to send via udp/514 and all of the filtering is included here to properly parse ESXi hosts.<br />
+For additional device setups you can still reference my original post <a href="http://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup" target="_blank">here</a>.</p>
+<p>As I mentioned in the beginning, I am sure that this post will need some modifications based on the fact that I have spent several months working through all of this and moving the setup to Ansible. But also I have made many changes in order to try and fit this into each unique environment. However, I of course am just one person doing this with a great understanding of how I have put this all together so I will need to rely on each and everyone of your valuable input in order to make this a better solution for all.</p>
+<p>As always! Enjoy!</p>

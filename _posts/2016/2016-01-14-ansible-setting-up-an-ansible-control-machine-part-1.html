@@ -1,0 +1,723 @@
+---
+layout: post
+title: Ansible - Setting up an Ansible Control Machine - Part-1
+date: 2016-01-14 17:00:47.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Ansible
+- Automation
+tags:
+- Ansible
+meta:
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapFB: s:298:"a:1:{i:0;a:10:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:2:"do";s:1:"1";}}";
+  snapLI: s:317:"a:1:{i:0;a:11:{s:4:"doLI";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:12:"liMsgFormatT";s:1:"
+    ";s:2:"do";s:1:"1";}}";
+  _s2mail: 'yes'
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  _oembed_21ef3da71d6144cb81571b13d275c949: "{{unknown}}"
+  snapTW: 's:345:"a:1:{i:0;a:10:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:71:"%TITLE%
+    - %URL% #everythingshouldbevirtual #ansible #DevOPS #automation";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"687757552059158528";s:5:"pDate";s:19:"2016-01-14
+    22:05:53";s:2:"do";s:1:"1";}}";'
+  _yoast_wpseo_primary_category: ''
+  snapSU: s:429:"a:1:{i:0;a:14:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2j6Yvb";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/2j6Yvb/comments";s:5:"pDate";s:19:"2016-01-14
+    22:05:52";s:2:"do";s:1:"1";s:9:"msgFormat";s:16:"%TITLE% - %TEXT%";s:5:"suCat";s:2:"IT";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snap_isAutoPosted: '1'
+  _yoast_wpseo_focuskw_text_input: Ansible - Setting up an Ansible Control Machine
+  _yoast_wpseo_focuskw: Ansible - Setting up an Ansible Control Machine
+  _yoast_wpseo_linkdex: '64'
+  snapDL: s:370:"a:1:{i:0;a:12:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"03dddfb6be36af4f5859e0d85ca84443";s:5:"pDate";s:19:"2016-01-14
+    22:05:41";s:2:"do";s:1:"1";s:10:"msgTFormat";s:7:"%TITLE%";s:9:"msgFormat";s:9:"%EXCERPT%";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1511342946'
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"4886";s:5:"score";s:17:"77.14650367578103";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"4915";s:5:"score";s:17:"63.51488634219545";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"4725";s:5:"score";s:18:"62.751818296946624";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4695";s:5:"score";s:16:"61.9685065657155";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4934";s:5:"score";s:17:"59.21177933248411";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"4803";s:5:"score";s:17:"56.99088583909415";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"4391";s:5:"score";s:17:"56.95974330620632";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"4879";s:5:"score";s:17:"55.80228314745531";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"4431";s:5:"score";s:16:"55.6382057147174";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"7966";s:5:"score";s:17:"54.80430081586019";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"7064";s:5:"score";s:18:"53.719375397721066";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"4944";s:5:"score";s:17:"52.33308103660118";}}
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<p style="text-align: center;"><strong>Ansible - Setting up an Ansible Control Machine - Part-1</strong></p>
+<p>In this post we will be setting up an Ansible Control Machine to execute our Ansible tasks from. This server will not have writable access to our Git repos so no changes can be made and pushed up. For our Ansible Control Machine we will be using an Ubuntu 14.04 LTS server.</p>
+<p>The focus of this was to setup a control machine in order to test and push code based on a specific Ansible release. This was mainly due to the release of 2.0 in which I have ran into several issues as far as backwards compatibility and I do not want to go through and make changes so soon on roles and such that have been working for quite some time now. And also as I begin training others and learning the Infra-As-Code journey.</p>
+<p>If you are interested in testing this out in a Vagrant environment I have put together a repo for going through these series of posts to come. This Vagrant environment will spin up a <a href="https://www.gerritcodereview.com/" target="_blank">Gerrit Code Review</a> server and a client in which you can follow along with throughout this post. You can view the GitHub repo <a href="https://github.com/mrlesmithjr/vagrant-ansible-gerrit-lab" target="_blank">here</a>.</p>
+<blockquote><p><strong>Note*** - This post will be updated over time so it may or not be complete at the time of reading.</strong></p></blockquote>
+<p>To install python follow the below for your OS.</p>
+<hr />
+<p>&nbsp;</p>
+<p>Ubuntu:</p>
+<pre>sudo apt-get update
+sudo apt-get install python-setuptools python-dev libffi-dev libssl-dev git sshpass tree
+sudo easy_install pip
+</pre>
+<hr />
+<p>&nbsp;</p>
+<p>OSX:<br />
+You will need to install <a href="https://developer.apple.com/xcode/" target="_blank">Xcode</a> developers kit first.<br />
+Next you will need to install <a href="http://brew.sh/" target="_blank">Homebrew</a>.</p>
+<pre>ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+</pre>
+<p>Now you can install python.</p>
+<pre>sudo easy_install pip
+</pre>
+<hr />
+<p>&nbsp;</p>
+<p>Now with the above out of the way we are ready to begin.</p>
+<pre>sudo -H pip uninstall virtualenv
+sudo -H pip uninstall virtualenvwrapper
+sudo -H pip install virtualenv
+sudo -H pip install virtualenvwrapper --ignore-installed six
+sudo -H pip install httplib2
+mkdir ~/.virtualenvs
+</pre>
+<p>If not using zsh and standard bash</p>
+<pre>echo "source "$(which virtualenvwrapper.sh) &gt;&gt; ~/.profile
+echo "export WORKON_HOME=~/.virtualenvs" &gt;&gt; ~/.profile
+source ~/.profile
+</pre>
+<p>If using zsh</p>
+<pre>echo "source "$(which virtualenvwrapper.sh) &gt;&gt; ~/.zshrc
+echo "export WORKON_HOME=~/.virtualenvs" &gt;&gt; ~/.zshrc
+source ~/.zshrc
+</pre>
+<p>Now let's create our Python virtual environments for testing different versions of Ansible.</p>
+<pre>mkdir ~/ansible_virtualenvs
+</pre>
+<pre>cd ~/ansible_virtualenvs
+mkdir 1.9.4
+cd 1.9.4
+mkvirtualenv ansible-1.9.4
+pip install ansible==1.9.4
+ansible --version
+deactivate
+
+cd ~/ansible_virtualenvs
+mkdir 1.9.5
+cd 1.9.5
+mkvirtualenv ansible-1.9.5
+pip install ansible==1.9.5
+ansible --version
+deactivate
+
+cd ~/ansible_virtualenvs
+mkdir 1.9.6
+cd 1.9.6
+mkvirtualenv ansible-1.9.6
+pip install ansible==1.9.6
+ansible --version
+deactivate
+
+cd ~/ansible_virtualenvs
+mkdir 2.0.0.1
+cd 2.0.0.1
+mkvirtualenv ansible-2.0.0.1
+pip install ansible==2.0.0.1
+ansible --version
+deactivate
+
+cd ~/ansible_virtualenvs
+mkdir 2.0.0.2
+cd 2.0.0.2
+mkvirtualenv ansible-2.0.0.2
+pip install ansible==2.0.0.2
+ansible --version
+deactivate
+
+cd ~/ansible_virtualenvs
+mkdir 2.0.1.0
+cd 2.0.1.0
+mkvirtualenv ansible-2.0.1.0
+pip install ansible==2.0.1.0
+ansible --version
+deactivate
+
+cd ~/ansible_virtualenvs
+mkdir 2.0.2.0
+cd 2.0.2.0
+mkvirtualenv ansible-2.0.2.0
+pip install ansible==2.0.2.0
+ansible --version
+deactivate
+
+cd ~/ansible_virtualenvs
+mkdir 2.1.0.0
+cd 2.1.0.0
+mkvirtualenv ansible-2.1.0.0
+pip install ansible==2.1.0.0
+ansible --version
+deactivate
+</pre>
+<p>Now we are ready to start working within our different Ansible version environments.</p>
+<p>So let's first setup our 1.9.4 environment.</p>
+<pre>workon ansible-1.9.4
+pip install pyopenssl ndg-httpsclient pyasn1 pysphere pyvmomi git-review
+</pre>
+<p>Now we will setup our 2.0 environment.</p>
+<pre>deactivate
+</pre>
+<pre>workon ansible-2.0
+pip install pyopenssl ndg-httpsclient pyasn1 pysphere pyvmomi git-review
+</pre>
+<p>Now let's create our Git Projects directory to store all of our Git Projects and code.</p>
+<pre>mkdir ~/Git_Projects
+cd ~/Git_Projects
+</pre>
+<p>Now we are ready to start populating our GitHub repo(s) with the code we want to use and/or just view.</p>
+<p>I have a GitHub repo that has some Ansible tasks that will allow us to pull down our specific required repos.</p>
+<pre>cd ~/Git_Projects
+git clone https://github.com/mrlesmithjr/ansible-clone-git-repos.git
+</pre>
+<p>Once the code is pulled down you can modify the defaults/main.yml file to comment out or add additional GitHub user(s) repos to pull down.</p>
+<pre>cd ansible-clone-git-repos
+vi defaults/main.yml</pre>
+<p>You will see the default is the following:</p>
+<pre>github_users:  #define github user(s) to clone repos from
+  - bunchc
+  - debops
+  - lowescott
+  - Mierdin
+  - mrlesmithjr
+  - dstamen
+  - phpipam
+</pre>
+<p>I will just be pulling down my own personal repos so I will comment out the other as such:</p>
+<pre>github_users:  #define github user(s) to clone repos from
+#  - bunchc
+#  - debops
+#  - lowescott
+#  - Mierdin
+  - mrlesmithjr
+#  - dstamen
+#  - phpipam
+</pre>
+<p>Now save the file.</p>
+<p>Let's now use our Ansible virtual environment of 1.9.4 here on out. ( We can easily switch between Ansible versions in order to conduct testing from our same control machine. )</p>
+<pre>workon ansible-1.9.4
+./clone_git_repos.sh</pre>
+<p>Once all of the repos have been pulled down you can take a look at them.</p>
+<pre>cd ../GitHub/mrlesmithjr
+ls
+</pre>
+<p>And below is a script you can run to perform all of the steps above if you want to take the easy way :)</p>
+<p>https://gist.github.com/mrlesmithjr/74ea7fe5ea52e971aa74</p>
+<p>Now that we have some roles downloaded we can begin using them but we first need to decide how we will leverage using these roles. There are several ways that we can do this of course. But now is the time to make that decision.</p>
+<p>By default even in our Ansible virtual environment our roles would be installed and looked for in the normal directory of <em><strong>/etc/ansible/roles</strong></em>.</p>
+<p>There are reasons to store all of your roles there and also there are reasons not to. I am only providing what I find to be the best for my environment(s). I personally choose to store all of my roles within a folder called roles which would be part of my actual project. If you are looking for a way to consolidate roles and ensure that all projects use the same common roles that works very well too. I do this by collecting all of my roles into an internal Git repo called <strong>ansible-common-core-roles</strong>. And when I create a new project I pull these roles from my internal Git repo as below:</p>
+<pre>git clone git@gitserver:/ansible-common-core-roles.git roles
+</pre>
+<p>Now I can leverage the same roles throughout each project as well as others can too. I also do this for common variables and inventory to be used over and over again for consistency. I use a repo called <strong>ansible-environments</strong> and when I need those I will pull them down as below:</p>
+<pre>git clone git@gitserver:/ansible-environments.git environments
+</pre>
+<p>Now when I need to run a play I can leverage all of these common roles and variables as below:</p>
+<pre>ansible-playbook -i environments/production/site/inventory playbook.yml
+</pre>
+<p>As you can from above I reference production/site which is where we can store site specific group_vars and host_vars. This allows for variables to be site specific.</p>
+<p>Another method that I use is when I might want to create a semi-private repository to ensure that I or someone else has not updated the ansible-common-core-roles. Or I need a role that is specific to that project. Keep in mind I may still want to leverage upstream Git repos for my roles but I want to ensure they are only updated when I choose. For this method I will show an example of how to set this up.</p>
+<p>First we need to create our directory structure for our LAMP Stack project.</p>
+<pre>cd ~/Git_Projects
+mkdir -p Lab/LAMP
+cd Lab/LAMP
+mkdir environments roles
+git init
+</pre>
+<p>Now for this project in order to define where my roles are located I will create an <strong>ansible.cfg</strong> file to use. Keep in mind by default when running an Ansible playbook it will also look in the current directory for a roles directory. I am doing this to ensure that I am using this specific roles directory and not the default <strong>/etc/ansible/roles</strong> directory. This will ensure that if I or someone else placed a role in that directory it will not accidentally be used. Just a precaution.</p>
+<p>So let's create our ansible.cfg file in our project folder. You can check out the additional options you can use in your <strong>ansible.cfg</strong> <a href="http://docs.ansible.com/ansible/intro_configuration.html" target="_blank">here</a>. Keep in mind this will only apply any differences in the default <strong>ansible.cfg</strong> which is installed as part of the Ansible package.</p>
+<pre>vi ansible.cfg
+</pre>
+<p>And we will add the following to this file.</p>
+<pre>[defaults]
+roles_path = ./roles
+</pre>
+<p>We can also add multiple roles_path locations if we desire that as well by doing the following:</p>
+<pre>roles_path = ./roles:/opt/ansible/roles
+</pre>
+<p>But we will only defining one path for this project.</p>
+<p>Now we are ready to being creating our project. So first we know that for a LAMP stack we will need Apache, MySQL and PHP/Python/Perl. Well in this example I know that from the roles we pulled down from my GitHub repo have those roles so I will leverage those for this project.</p>
+<p>So first thing I will do is create a <strong>requirements.yml</strong> file which is where we will define which roles from different resources I might want to leverage.</p>
+<pre>vi requirements.yml
+</pre>
+<p>And we will add the following bit of information to this file.</p>
+<pre>---
+- src: https://github.com/mrlesmithjr/ansible-apache2.git
+- src: https://github.com/mrlesmithjr/ansible-mysql.git
+</pre>
+<p>The above states that we will be pulling the repos defined. And in order to pull these roles down we will run the following:</p>
+<pre>ansible-galaxy install -r requirements.yml
+</pre>
+<p>Once that has completed we can ensure that we did indeed pull down the roles we defined and they were installed to our roles directory as defined in our <strong>ansible.cfg</strong> file.</p>
+<pre>cd roles
+ls
+</pre>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP/roles$ ls
+ansible-apache2  ansible-mysql
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP/roles$
+</pre>
+<p>So we did indeed install them as required and they were placed in the correct folder.<br />
+Now say we want to ensure we have the most current roles from our upstream Git repo and we executed the same command as we did previously:</p>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$ ansible-galaxy install -r requirements.yml 
+- executing: git clone https://github.com/mrlesmithjr/ansible-apache2.git ansible-apache2
+- executing: git archive --prefix=ansible-apache2/ --output=/tmp/tmp8Xzo8j.tar HEAD
+- extracting ansible-apache2 to ./roles/ansible-apache2
+- error: the specified role ansible-apache2 appears to already exist. Use --force to replace it.
+- ansible-apache2 was NOT installed successfully.
+- you can use --ignore-errors to skip failed roles.
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$
+</pre>
+<p>As you can see we received errors stating that the roles already exist. So we can get around this if we force them to be installed again by doing the following:</p>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$ ansible-galaxy install -r requirements.yml -f
+- executing: git clone https://github.com/mrlesmithjr/ansible-apache2.git ansible-apache2
+- executing: git archive --prefix=ansible-apache2/ --output=/tmp/tmp6JgwxN.tar HEAD
+- extracting ansible-apache2 to ./roles/ansible-apache2
+- ansible-apache2 was installed successfully
+- executing: git clone https://github.com/mrlesmithjr/ansible-mysql.git ansible-mysql
+- executing: git archive --prefix=ansible-mysql/ --output=/tmp/tmpkc5W2l.tar HEAD
+- extracting ansible-mysql to ./roles/ansible-mysql
+- ansible-mysql was installed successfully
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$
+</pre>
+<p>Now we have success and we now have the latest roles from our upstream Git repo using our <strong>requirements.yml</strong> file. You could also easily just pull down roles without using a <strong>requirements.yml</strong> file by doing the following:</p>
+<pre>cd roles
+git clone https://github.com/mrlesmithjr/ansible-apache2.git
+git clone https://github.com/mrlesmithjr/ansible-mysql.git
+</pre>
+<p>Now in order to pull the latest code you can change into the roles/role directory and do the following:<br />
+We will be checking the ansible-apache2 role.</p>
+<pre>cd roles/ansible-apache2
+git pull
+</pre>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP/roles/ansible-apache2$ git pull
+Already up-to-date.
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP/roles/ansible-apache2$
+</pre>
+<p>As you can see the role is already up-to-date. One reason not to do this (as far as my experience has been) is that because this is part of another Git repo, if we store our project on an internal Git repo, when we push our code up it will not include any directories that are pulled from another upstream repo. So I generally will just use a <strong>requirements.yml</strong> file and update the roles this way. Remember before doing that you may want to create a new Git branch for testing first.</p>
+<pre>git checkout -b test
+</pre>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$ git checkout -b test
+Switched to a new branch 'test'
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$
+</pre>
+<pre>ansible-galaxy install -r requirements.yml -f
+</pre>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$ ansible-galaxy install -r requirements.yml -f
+- executing: git clone https://github.com/mrlesmithjr/ansible-apache2.git ansible-apache2
+- executing: git archive --prefix=ansible-apache2/ --output=/tmp/tmp2HWi5u.tar HEAD
+- extracting ansible-apache2 to ./roles/ansible-apache2
+- ansible-apache2 was installed successfully
+- executing: git clone https://github.com/mrlesmithjr/ansible-mysql.git ansible-mysql
+- executing: git archive --prefix=ansible-mysql/ --output=/tmp/tmp55rV1S.tar HEAD
+- extracting ansible-mysql to ./roles/ansible-mysql
+- ansible-mysql was installed successfully
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$
+</pre>
+<p>Now this is not much use for our internal Git repo at this time because we have not set that up yet. I will leave this up to you to decide on your internal Git repo server and setup. I choose to use Gerrit because I want code review abilities. If you are interested in setting up a Gerrit server I have an <strong>ansible-gerrit</strong> role that can be leveraged for that as well. You can view this in the ~/<strong>Git_Projects/GitHub/mrlesmithjr/ansible-gerrit</strong> directory that we pulled down in the beginning of this post. <em>( I will be publishing another post on setting up a Gerrit server later and will reference it from here if interested. )</em></p>
+<pre>cd ~/Git_Projects/GitHub/mrlesmithjr/ansible-gerrit/
+</pre>
+<p>Now let's create an Ansible playbook to leverage our roles for our LAMP project.</p>
+<p>Before we begin let's ensure that we are in our LAMP project directory.</p>
+<pre>cd ~/Git_Projects/Lab/LAMP/
+</pre>
+<p>Now we will create a playbook.yml file as below:</p>
+<pre>vi playbook.yml
+</pre>
+<pre>---
+- name: Build LAMP Servers
+  hosts: lamp-servers
+  become: true
+  vars:
+    - install_php: true
+  roles:
+    - role: ansible-apache2
+    - role: ansible-mysql
+  tasks:
+</pre>
+<p>Now with our playbook created we need to create our inventory file and our group_vars and host_vars.</p>
+<pre>cd environments
+mkdir -p dev/group_vars/all dev/host_vars prod/group_vars/all prod/host_vars test/group_vars/all test/host_vars
+</pre>
+<p>To see all of our environment folders we just created:</p>
+<pre>tree
+</pre>
+<pre>(ansible-1.9.4)vagrant@client:~/Git_Projects/Lab/LAMP/environments$ tree
+.
+├── dev
+│   ├── group_vars
+│   │   └── all
+│   └── host_vars
+├── prod
+│   ├── group_vars
+│   │   └── all
+│   └── host_vars
+└── test
+    ├── group_vars
+    │   └── all
+    └── host_vars
+
+12 directories, 0 files
+(ansible-1.9.4)vagrant@client:~/Git_Projects/Lab/LAMP/environments$
+</pre>
+<p>We will work within our dev environment here.</p>
+<pre>cd environments/dev
+</pre>
+<p>Now create your inventory file.</p>
+<pre>vi inventory
+</pre>
+<p>And add the following:</p>
+<pre>[lamp-servers]
+lamp-01
+lamp-02
+</pre>
+<p>Now if you look at our playbook we defined a variable there which is install_php: true we could also not define this variable within our playbook but within our group_vars for our dev environment.</p>
+<pre>cd group_vars
+mkdir lamp-servers
+cd lamp-servers
+vi apache.yml
+</pre>
+<p>Now paste the following:</p>
+<pre>---
+install_php: true
+</pre>
+<p>Now we can remove that variable definition from our playbook as our group_vars will now cover that variable.</p>
+<pre>cd ../../../../
+vi playbook.yml
+</pre>
+<p>Now remove the line with the following:</p>
+<pre>- install_php: true
+</pre>
+<p>So our playbook should now look like below:</p>
+<pre>---
+- name: Build LAMP Servers
+  hosts: lamp-servers
+  become: true
+  vars:
+  roles:
+    - role: ansible-apache2
+    - role: ansible-mysql
+  tasks:
+</pre>
+<p>Now we should have everything in place except our servers to provision which I will not be going into here.</p>
+<p>So now to kick off the Ansible playbook to test out we would run the following:</p>
+<pre>ansible-playbook -i environments/dev/inventory playbook.yml --user remote --ask-pass --ask-sudo-pass
+</pre>
+<p>If you notice above we are specifying the user and prompting for passwords. We could get around this requirement and add our ssh public key to the remote servers we will be managing (Highly recommend). You could follow your normal process of accomplishing this or you can check out the Ansible role called ansible-manage-ssh-keys that we pulled down in the beginning of this post.</p>
+<pre>cd ~/Git_Projects/GitHub/mrlesmithjr/ansible-manage-ssh-keys/
+</pre>
+<p>But for this exercise let's go ahead and add that role to our requirements.yml file and pull that down to our roles directory as well.</p>
+<pre>vi requirements.yml
+</pre>
+<p>And paste the below at the end of the file:</p>
+<pre>- src: https://github.com/mrlesmithjr/ansible-manage-ssh-keys.git
+</pre>
+<p>So our requirements.yml should now look like below:</p>
+<pre>---
+- src: https://github.com/mrlesmithjr/ansible-apache2.git
+- src: https://github.com/mrlesmithjr/ansible-mysql.git
+- src: https://github.com/mrlesmithjr/ansible-manage-ssh-keys.git
+</pre>
+<p>Now let's pull down our requirements once again. Remember we will get errors if the role already exists so you may want to force the install as previously shown or if you want to ensure that you do not pull any changes in our upstream repo do not force the install.</p>
+<pre>ansible-galaxy install -r requirements.yml
+</pre>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$ ansible-galaxy install -r requirements.yml 
+- executing: git clone https://github.com/mrlesmithjr/ansible-apache2.git ansible-apache2
+- executing: git archive --prefix=ansible-apache2/ --output=/tmp/tmp53JbAU.tar HEAD
+- extracting ansible-apache2 to ./roles/ansible-apache2
+- error: the specified role ansible-apache2 appears to already exist. Use --force to replace it.
+- ansible-apache2 was NOT installed successfully.
+- you can use --ignore-errors to skip failed roles.
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$
+</pre>
+<p>As before we received errors and if you check our roles directory the new role was not pulled down either.</p>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$ ls roles
+ansible-apache2  ansible-mysql
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$
+</pre>
+<p>How can we get around this without forcing the install? If you notice in the messages above there is a reference to using --ignore-errors. We can leverage that parameter in order to pull down our additional roles without touching the previously existing roles.</p>
+<pre>ansible-galaxy install -r requirements.yml -i
+</pre>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$ ansible-galaxy install -r requirements.yml -i
+- executing: git clone https://github.com/mrlesmithjr/ansible-apache2.git ansible-apache2
+- executing: git archive --prefix=ansible-apache2/ --output=/tmp/tmpNuZPUo.tar HEAD
+- extracting ansible-apache2 to ./roles/ansible-apache2
+- error: the specified role ansible-apache2 appears to already exist. Use --force to replace it.
+- ansible-apache2 was NOT installed successfully.
+- executing: git clone https://github.com/mrlesmithjr/ansible-mysql.git ansible-mysql
+- executing: git archive --prefix=ansible-mysql/ --output=/tmp/tmpLQFR1m.tar HEAD
+- extracting ansible-mysql to ./roles/ansible-mysql
+- error: the specified role ansible-mysql appears to already exist. Use --force to replace it.
+- ansible-mysql was NOT installed successfully.
+- executing: git clone https://github.com/mrlesmithjr/ansible-manage-ssh-keys.git ansible-manage-ssh-keys
+- executing: git archive --prefix=ansible-manage-ssh-keys/ --output=/tmp/tmp2RVBbl.tar HEAD
+- extracting ansible-manage-ssh-keys to ./roles/ansible-manage-ssh-keys
+- ansible-manage-ssh-keys was installed successfully
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$
+</pre>
+<p>Now you see that at the end our ansible-manage-ssh-keys role was successfully installed. And to verify:</p>
+<pre>ls roles/
+</pre>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$ ls roles/
+ansible-apache2  ansible-manage-ssh-keys  ansible-mysql
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$
+</pre>
+<p>Now we see our additional role as being installed.</p>
+<p>Now we are ready to setup our ssh keys to initiate ssh password-less sessions to run our Ansible plays against our servers.</p>
+<pre>ssh-keygen
+</pre>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$ ssh-keygen 
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/remote/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/remote/.ssh/id_rsa.
+Your public key has been saved in /home/remote/.ssh/id_rsa.pub.
+The key fingerprint is:
+98:bc:e8:9c:a8:a3:c2:54:eb:2b:b9:9d:33:a1:cb:78 remote@ansible-control
+The key's randomart image is:
++--[ RSA 2048]----+
+|                 |
+|                 |
+|                 |
+|   . . o         |
+|  . . + S        |
+| . o . .         |
+|o + o .          |
+|==EB..           |
+|*B=+B            |
++-----------------+
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$
+</pre>
+<p>Now that we have generated our users ssh keys (remote is username in this case) we are now ready to setup our ability to deploy these keys.</p>
+<p>So let's create the directory in which this role will look for our ssh keys to deploy.</p>
+<pre>mkdir ssh_pub_keys
+</pre>
+<p>Now we need to copy our ssh public key that we just generated and we will give it a name of the username@hostname.pub to easily identify.</p>
+<pre>cp ~/.ssh/id_rsa.pub ssh_pub_keys/$USER@$HOSTNAME.pub
+</pre>
+<p>And if we take a look at our ssh_pub_keys directory:</p>
+<pre>ls ssh_pub_keys/
+</pre>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$ ls ssh_pub_keys/
+remote@ansible-control.pub
+(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$
+</pre>
+<p>Now before we go any further we need to decide whether we will be using an account that already exists on our remote servers to add our ssh pub to or if we will be creating a new account for remote provisioning of our Ansible roles. I prefer to use an account called remote but this can be any account that you desire which has sudo access and preferably no password for sudo. <strong><em>(DO NOT USE ROOT). </em></strong>If you need to setup user accounts you can leverage the Ansible role called ansible-users that we pulled down in the beginning of this post. And have a look at that and leverage the role if desired. For this example I will be leveraging this role to keep consistency.</p>
+<p>So I will add the following additional role to our requirements.yml file and then install the additional role.</p>
+<pre>cd ~/Git_Projects/Lab/LAMP
+vi requirements.yml
+</pre>
+<p>Add the following additional role:</p>
+<pre>- src: https://github.com/mrlesmithjr/ansible-users.git
+</pre>
+<p>Now our requirements.yml should look like below:</p>
+<pre>---
+- src: https://github.com/mrlesmithjr/ansible-apache2.git
+- src: https://github.com/mrlesmithjr/ansible-mysql.git
+- src: https://github.com/mrlesmithjr/ansible-manage-ssh-keys.git
+- src: https://github.com/mrlesmithjr/ansible-users.git
+</pre>
+<p>And again let's install our requirements. (Remember we will be ignoring errors (-i) but you can force (-f) the install as well)</p>
+<pre>ansible-galaxy install -r requirements.yml -i
+</pre>
+<pre>(ansible-1.9.4)remote@ansible-control:~/Git_Projects/Lab/LAMP$ ansible-galaxy install -r requirements.yml -i
+- executing: git clone https://github.com/mrlesmithjr/ansible-apache2.git ansible-apache2
+- executing: git archive --prefix=ansible-apache2/ --output=/tmp/tmp2xUow3.tar HEAD
+- extracting ansible-apache2 to ./roles/ansible-apache2
+- error: the specified role ansible-apache2 appears to already exist. Use --force to replace it.
+- ansible-apache2 was NOT installed successfully.
+- executing: git clone https://github.com/mrlesmithjr/ansible-mysql.git ansible-mysql
+- executing: git archive --prefix=ansible-mysql/ --output=/tmp/tmpyT61RC.tar HEAD
+- extracting ansible-mysql to ./roles/ansible-mysql
+- error: the specified role ansible-mysql appears to already exist. Use --force to replace it.
+- ansible-mysql was NOT installed successfully.
+- executing: git clone https://github.com/mrlesmithjr/ansible-manage-ssh-keys.git ansible-manage-ssh-keys
+- executing: git archive --prefix=ansible-manage-ssh-keys/ --output=/tmp/tmpCOJ05g.tar HEAD
+- extracting ansible-manage-ssh-keys to ./roles/ansible-manage-ssh-keys
+- error: the specified role ansible-manage-ssh-keys appears to already exist. Use --force to replace it.
+- ansible-manage-ssh-keys was NOT installed successfully.
+- executing: git clone https://github.com/mrlesmithjr/ansible-users.git ansible-users
+- executing: git archive --prefix=ansible-users/ --output=/tmp/tmpIy507F.tar HEAD
+- extracting ansible-users to ./roles/ansible-users
+- ansible-users was installed successfully
+</pre>
+<p>Now that the ansible-users role has been installed we need to take a look and see what we need to add to create a new user called remote on our servers which we will attach our ssh keys to and use for Ansible deployments.<br />
+So if you look at roles/ansible-users/defaults/main.yml</p>
+<pre>---
+# defaults file for ansible-users
+create_local_users: true  #defines creating local user accounts on hosts
+create_users:  #defines user accounts to setup on hosts....define here or in group_vars/all
+  - user: demo_user  #define username
+    authorized_keys: ''
+    comment: 'Demo user'  #define a comment to associate with the account
+    generate_keys: false  #generate ssh keys...true|false
+    home: ''  #define a different home directory... ''=/home/username
+    pass: demo_password  #define password for account
+    setup: false  #true=creates account|false=removes account if exists...true|false
+    shell: ''  #define a different shell for the user
+    preseed_user: false  #defines if user should be setup as default user during preseed auto-install...Only 1 user can be added...used in tftpserver Ansible role (mrlesmithjr.tftpserver or ansible-tftpserver)
+    sudo: false  #define if user should have sudo access...true|false
+    system_account: false  #define if account is a system account...true|falseinstall_fail2ban: false
+</pre>
+<p>From the above we will need to define our user(s) to create on our remote servers. In my case I will be creating a user named remote and granting sudo access to this account. Now we could easily add our account information to the above file but rather than doing that we will create a new group_vars file that will contain our accounts. We can either define this for the lamp-servers group or the all group. Defining on lamp-servers will only apply to our lamp-servers whereas if we define in all, the account(s) will be created on all of our servers and not just lamp-servers.</p>
+<p>So let's create our group_vars/all variable file for our Dev environment.</p>
+<pre>mkdir environments/dev/group_vars/all
+vi environments/dev/group_vars/all/accounts.yml
+</pre>
+<p>And add the following..Modify of course for your environment.</p>
+<pre>---
+create_users:  #defines user accounts to setup on hosts....define here or in group_vars/all
+  - user: remote  #define username
+    authorized_keys: ''
+    comment: 'Ansible remote user'  #define a comment to associate with the account
+    generate_keys: false  #generate ssh keys...true|false
+    home: ''  #define a different home directory... ''=/home/username
+    pass: password1  #define password for account
+    setup: true  #true=creates account|false=removes account if exists...true|false
+    shell: ''  #define a different shell for the user
+    preseed_user: false  #defines if user should be setup as default user during preseed auto-install...Only 1 user can be added...used in tftpserver Ansible role (mrlesmithjr.tftpserver or ansible-tftpserver)
+    sudo: true  #define if user should have sudo access...true|false
+    system_account: false  #define if account is a system account...true|falseinstall_fail2ban: false
+</pre>
+<p>Now that is set we also need to define our ssh pub key information for our ansible-manage-ssh-keys role. So if you look at the default vars for this role.</p>
+<pre>---
+# defaults file for ansible-manage-ssh-keys
+enable_manage_ssh_keys: false  #defines if remote ssh keys should be managed
+manage_ssh_keys:
+  - remote_user: demo_user  #define username on remote system to add defined keys to
+    present: true  #defines if ssh key should be added or removed
+    keys:  #define key(s) to add to remote username
+      - ssh_pub_keys/demo_user.pub
+      - ssh_pub_keys/demo_user_1.pub
+  - remote_user: demo_user2
+    present: false
+    keys:
+      - ssh_pub_keys/demo_user2.pub
+</pre>
+<p>From the above default variables we need to add the info for our generated keys and associate that with the account (remote) that we will be creating on our servers. So let's do that by adding this information to the same file we created above to add our user(s) to. This way we can keep everything together in an accounts related file and apply security against it if desired (recommended) using ansible-vault (More on this another time).</p>
+<pre>vi environments/dev/group_vars/all/accounts.yml
+</pre>
+<p>And modify the above variables to match the below and append them to our accounts.yml file.</p>
+<pre>enable_manage_ssh_keys: true  #defines if remote ssh keys should be managed
+manage_ssh_keys:
+  - remote_user: remote  #define username on remote system to add defined keys to
+    present: true  #defines if ssh key should be added or removed
+    keys:  #define key(s) to add to remote username
+      - ssh_pub_keys/remote@ansible-control.pub
+</pre>
+<p>Now our accounts.yml file should like below:</p>
+<pre>---
+create_users:  #defines user accounts to setup on hosts....define here or in group_vars/all
+  - user: remote  #define username
+    authorized_keys: ''
+    comment: 'Ansible remote user'  #define a comment to associate with the account
+    generate_keys: false  #generate ssh keys...true|false
+    home: ''  #define a different home directory... ''=/home/username
+    pass: password1  #define password for account
+    setup: true  #true=creates account|false=removes account if exists...true|false
+    shell: ''  #define a different shell for the user
+    preseed_user: false  #defines if user should be setup as default user during preseed auto-install...Only 1 user can be added...used in tftpserver Ansible role (mrlesmithjr.tftpserver or ansible-tftpserver)
+    sudo: true  #define if user should have sudo access...true|false
+    system_account: false  #define if account is a system account...true|falseinstall_fail2ban: false
+enable_manage_ssh_keys: true  #defines if remote ssh keys should be managed
+manage_ssh_keys:
+  - remote_user: remote  #define username on remote system to add defined keys to
+    present: true  #defines if ssh key should be added or removed
+    keys:  #define key(s) to add to remote username
+      - ssh_pub_keys/remote@ansible-control.pub
+</pre>
+<p>Now that we have all of the above taken care of we need to make sure our playbook has all of the appropriate roles added. And it should now look like below:</p>
+<pre>---
+- name: Build LAMP Servers
+  hosts: lamp-servers
+  become: true
+  vars:
+  roles:
+    - role: ansible-users
+    - role: ansible-manage-ssh-keys
+    - role: ansible-apache2
+    - role: ansible-mysql
+  tasks:
+</pre>
+<p>&nbsp;</p>
+<blockquote><p><strong>Tweaks</strong></p>
+<hr />
+<p>&nbsp;</p></blockquote>
+<p>Now how about some tweaking to speed things up? Well one thing we can do is enable fact caching. Ansible by default allows you to either use Redis or a jsonfile to cache facts that are gathered. I prefer to use Redis but that is just my preference. Depending on your choice you can follow the respective section below.</p>
+<p>Redis:<br />
+We need to first install redis and we can do so as below:</p>
+<pre>sudo apt-get install redis-server
+</pre>
+<p>If you are using OSX then you can install redis as follows using <a href="http://brew.sh/" target="_blank">homebrew</a>:</p>
+<pre>brew install redis
+ln -sfv /usr/local/opt/redis/*.plist ~/Library/LaunchAgents
+</pre>
+<p>Now you can validate that redis is running:<br />
+Ubuntu/Debian:</p>
+<pre>sudo service redis-server status
+</pre>
+<p>OSX:</p>
+<pre>brew services list | grep redis
+</pre>
+<p>Now let's configure Ansible to leverage redis and we will do that by editing our ansible.cfg (You can do this globally or per project. We will be doing it at a project level).</p>
+<pre>cd ~/Git_Projects/Lab/LAMP
+vi ansible.cfg
+</pre>
+<p>And add the following to the end of the file.</p>
+<pre>gathering = smart
+fact_caching = redis
+fact_caching_timeout = 86400
+</pre>
+<p>And our ansible.cfg file should look like the following now:</p>
+<pre>[defaults]
+roles_path = ./roles
+gathering = smart
+fact_caching = redis
+fact_caching_timeout = 86400
+</pre>
+<p>Now we need to install the redis python module in each of our Python Virtual Environments.<br />
+ansible-1.9.4</p>
+<pre>deactivate
+workon ansible-1.9.4
+pip install redis
+</pre>
+<p>Now let's configure our 2.0 environment.</p>
+<pre>deactivate
+workon ansible-2.0
+pip install redis
+</pre>
+<p>Now we can now leverage Redis for our fact_caching which will speed up our plays when they start.</p>
+<blockquote><p><strong>Updating Python Modules</strong></p>
+<hr />
+<p>&nbsp;</p></blockquote>
+<p>How can we update all of our Python modules for each of our Virtual Environments? Actually quite easy. Just do the following in each environment:</p>
+<pre>pip freeze | xargs pip install -U
+</pre>
+<p>So we would do the following for our two Ansible Virtual Environments.<br />
+ansible-1.9.4</p>
+<pre>deactivate
+workon ansible-1.9.4
+pip freeze | xargs pip install -U
+</pre>
+<p>ansible-2.0</p>
+<pre>deactivate
+workon ansible-2.0
+pip freeze | xargs pip install -U
+</pre>
+<p>Now all of our Python modules for each Virtual Environment are up-to-date.</p>
+<blockquote><p><strong>Additional Ansible Tools</strong></p>
+<hr />
+</blockquote>
+<p>Below is a list of some additional tools that you may want to checkout as well.</p>
+<p><a href="https://github.com/dellis23/ansible-toolkit" target="_blank">Ansible-Toolbox</a></p>
+<pre>pip install ansible-toolbox</pre>
+<hr />
+<p>&nbsp;</p>
+<p>And there you have it. This will conclude Part-1 of setting up an Ansible Control Machine. Up next will be actually beginning our preparation of our remote servers leveraging these roles that we just finished preparing.</p>
+<p>Feel free to leave feedback as I am interested in hearing from others and hopefully this has been useful.</p>
+<p>Enjoy!</p>

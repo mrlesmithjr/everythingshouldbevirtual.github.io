@@ -1,0 +1,57 @@
+---
+layout: post
+title: Disabling SSLv3 on NSX Edge Devices
+date: 2015-02-06 12:31:28.000000000 -05:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- VMware
+- VMware NSX
+meta:
+  snap_MYURL: ''
+  snapEdIT: '1'
+  _yoast_wpseo_linkdex: '59'
+  _edit_last: '11'
+  snapTW: 's:323:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:67:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vSphere #NSX #VMwareNSX";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"563751890794471424";s:5:"pDate";s:19:"2015-02-06
+    17:31:39";}}";'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"af77d2d00a0e6ffda4383b7f80eeb85a";s:5:"pDate";s:19:"2015-02-06
+    17:31:28";}}";
+  _s2mail: 'yes'
+  _yoast_wpseo_focuskw: Disabling SSL3v3
+  _yoast_wpseo_metadesc: Disabling SSLv3 on NSX Edge
+  snap_isAutoPosted: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:274:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1510591443'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"3365";s:5:"score";s:17:"76.84586396967302";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"3145";s:5:"score";s:17:"44.43603655013196";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"3073";s:5:"score";s:17:"44.43603655013196";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4725";s:5:"score";s:17:"36.78190678130383";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1190";s:5:"score";s:18:"31.823131799546662";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1494";s:5:"score";s:17:"29.51598945302555";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:2:"69";s:5:"score";s:17:"29.19095159467286";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"939";s:5:"score";s:17:"28.38002137842406";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"5901";s:5:"score";s:18:"27.907243822230665";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"199";s:5:"score";s:18:"26.639029224425148";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1695";s:5:"score";s:17:"25.64104689283003";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1402";s:5:"score";s:17:"25.64104689283003";}}
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"243G5x";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/243G5x/comments";s:5:"pDate";s:19:"2015-02-06
+    17:31:39";}}";
+  _wp_rp_image: empty
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<h4>Disabling SSLv3 on NSX Edge Devices</h4>
+<p>So a few months back after the Poodle attack I had a request to disable SSLv3 on the NSX Edge Gateways so I started looking around and didn't find anyway to do this other than disabling SSL versions for SSLVPN therefore I had to setup the Edge LB to do SSL passthrough to the webserver(s) themselves. Well I am here to let you know that this has now been addressed and the original KB was updated yesterday to allow disabling SSLv3 on an NSX Edge Gateway. The KB article can be read <a title="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2105096#sf36090735" href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2105096#sf36090735">here</a>. And the extracted portion pertaining to doing this is below.</p>
+<blockquote><p><strong>"</strong></p>
+<p><strong>Disable SSLv3 Support on NSX Edge Load Balancer SSL Offload Services</strong>:</p>
+<ol>
+<li>In the Load Balancer section of the NSX Edge configuration, create an Application Profile.</li>
+<li>Restrict the ciphers to a trusted list.</li>
+</ol>
+<p>For more information on setting the cipher line, see See the following <a href="http://www.openssl.org/docs/apps/ciphers.html" target="_blank">openssl.org</a> page.</p>
+<p>The Default is AES:ALL:!aNULL:!eNULL:+RC4:@STRENGTH<br />
+Sample cipher rule to disable SSLv3:AES:ALL:!aNULL:!eNULL:+RC4:@STRENGTH:!SSLv3:ALL</p>
+<p><strong>Disable SSLv3 Support on NSX Edge Load Balancer SSL Passthrough Services</strong>:</p>
+<p>Currently with SSL Passthrough services, there is no functionality to restrict SSLv3. You must disable SSLv3 on the member pool systems of the load balancer VIP. Future releases will address this.</p>
+<p>"</p></blockquote>
+<p>&nbsp;</p>

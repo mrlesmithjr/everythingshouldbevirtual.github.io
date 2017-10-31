@@ -1,0 +1,135 @@
+---
+layout: post
+title: Ansible - Provision Docker Swarm Mode (1.12) Cluster
+date: 2016-11-18 15:01:34.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Ansible
+- Automation
+- Docker
+tags:
+- Ansible
+- Docker
+- docker swarm
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapDL: s:162:"a:1:{i:0;a:6:{s:2:"do";s:1:"1";s:10:"msgTFormat";s:7:"%TITLE%";s:9:"msgFormat";s:9:"%EXCERPT%";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doDL";s:1:"1";}}";
+  _s2mail: 'yes'
+  catchbox-sidebarlayout: default
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  _yoast_wpseo_content_score: '30'
+  _yoast_wpseo_primary_category: '444'
+  _yoast_wpseo_focuskw_text_input: Ansible - Provision Docker Swarm Mode (1.12) Cluster
+  _yoast_wpseo_focuskw: Ansible - Provision Docker Swarm Mode (1.12) Cluster
+  _yoast_wpseo_linkdex: '68'
+  snap_isAutoPosted: '1'
+  snapFB: s:298:"a:1:{i:0;a:10:{s:2:"do";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doFB";s:1:"1";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:290:"a:1:{i:0;a:10:{s:2:"do";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:12:"liMsgFormatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doLI";s:1:"1";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1510981288'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"6883";s:5:"score";s:18:"107.02295960133327";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"6657";s:5:"score";s:18:"100.83452876650523";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"6912";s:5:"score";s:17:"71.70375492317974";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4803";s:5:"score";s:17:"59.15757547227268";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4886";s:5:"score";s:17:"57.46297975155022";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"5763";s:5:"score";s:18:"56.892557439615366";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"4915";s:5:"score";s:17:"54.05348356707337";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"5498";s:5:"score";s:18:"53.719375397721066";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"4695";s:5:"score";s:18:"53.719375397721066";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4431";s:5:"score";s:18:"53.719375397721066";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"6225";s:5:"score";s:17:"49.64600505044946";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"5734";s:5:"score";s:17:"49.64600505044946";}}
+  snapTW: 's:326:"a:1:{i:0;a:10:{s:2:"do";s:1:"1";s:10:"SNAPformat";s:52:"%TITLE%
+    - %URL% #Docker #ansible #DevOps #automation";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:4:"doTW";s:1:"1";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"799704164481794048";s:5:"pDate";s:19:"2016-11-18
+    20:01:45";}}";'
+  _wp_rp_image: empty
+  snapSU: s:332:"a:1:{i:0;a:11:{s:2:"do";s:1:"1";s:9:"msgFormat";s:16:"%TITLE% - %TEXT%";s:5:"suCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doSU";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2ZjThv";s:7:"postURL";s:45:"http://www.stumbleupon.com/su/2ZjThv/comments";s:5:"pDate";s:19:"2016-11-18
+    20:01:45";}}";
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<p style="text-align: center;"><strong>Ansible - Provision Docker Swarm Mode (1.12) Cluster</strong></p>
+<hr />
+<p style="text-align: left;">Lately I have been working quite a bit with the latest Docker Swarm Mode released in Docker 1.12 and so far it has been pretty awesome. The days of spinning up a Docker Swarm cluster with all of the complexity&nbsp;(Consul, Registrator, and etc.) are old-school now. To do a comparison you can checkout a great post by Scott Lowe <a href="http://blog.scottlowe.org/2015/03/06/running-own-docker-swarm-cluster/">here</a>&nbsp;and also checkout a <a href="https://www.vagrantup.com/">Vagrant</a> lab that I put together for learning almost a year ago <a href="https://github.com/mrlesmithjr/vagrant-ansible-docker">here</a>. With the latest release of Docker 1.12 they have made the process SO much easier and much less complex. To read up on the functionality and ease head over <a href="https://docs.docker.com/engine/swarm/">here</a>. Now the purpose of this post is not to go step by step on how easy it now is to provision a cluster but rather to take it to another level. Let's automate the provisioning using <a href="https://www.ansible.com/">Ansible</a> instead. This allows for a much more consistent and predictable provisioning method as well as the ability to easily scale your cluster(s). In addition to this post I highly recommend you fork or clone my <a href="https://github.com/mrlesmithjr/vagrant-ansible-docker-swarm">GitHub repo</a> to spin up a 7-node Docker Swarm Mode cluster completely automated and provisioned using <a href="https://www.ansible.com/">Ansible</a> and <a href="https://www.vagrantup.com/">Vagrant</a>. You can read more about the usage and some examples within that repo as well. So what I WILL cover in this post is the process along with examples of how to use Ansible to provision a Docker Swarm Mode cluster.</p>
+<ul>
+<li style="text-align: left;">Assumptions:
+<ul>
+<li style="text-align: left;">You have already provisioned your nodes in which will comprise your Docker Swarm Mode cluster
+<ul>
+<li style="text-align: left;">OS Installed (<em>Ubuntu 16.04</em> in my case) as well as Docker Engine installed...Checkout my <a href="https://www.ansible.com/">Ansible</a> role for this as well <a href="https://github.com/mrlesmithjr/ansible-docker">here</a></li>
+</ul>
+</li>
+<li style="text-align: left;">Identified the interface which will be used for all Docker Swarm Mode communications and such (<em>enp0s8</em> in my case)</li>
+</ul>
+</li>
+</ul>
+<p>So the first thing we will ensure is correct is our Ansible inventory and groups. We need&nbsp;to define&nbsp;the overall Docker nodes group (<em>docker-nodes</em>) as well as which nodes are considered managers (<em>docker-swarm-managers</em>) and which nodes are workers (<em>docker-swarm-workers</em>). Below is an example of the Ansible inventory that I use:</p>
+<pre>[docker-nodes]
+node[0:6]
+
+[docker-swarm-managers]
+node[0:2]
+
+[docker-swarm-workers]
+node[3:6]
+
+</pre>
+<p>Now we need to define some Ansible variables which are required to successfully provision our cluster:</p>
+<pre>docker_swarm_addr: "{{ hostvars[inventory_hostname]['ansible_' + docker_swarm_interface]['ipv4']['address'] }}"
+docker_swarm_cert_expiry: '2160h0m0s' # Validity period for node certificates (default 2160h0m0s)
+docker_swarm_dispatcher_heartbeat_duration: '5s' # Dispatcher heartbeat period (default 5s)
+docker_swarm_interface: "enp0s8"
+docker_swarm_managers_ansible_group: 'docker-swarm-managers'
+docker_swarm_networks:
+  - name: 'my_net'
+    driver: 'overlay'
+    state: 'present'
+  - name: 'test'
+    driver: 'overlay'
+    state: 'absent'
+docker_swarm_primary_manager: '{{ groups[docker_swarm_managers_ansible_group][0] }}'
+# docker_swarm_primary_manager: 'node0'
+docker_swarm_task_history_limit: '5' # Task history retention limit (default 5)
+docker_swarm_workers_ansible_group: 'docker-swarm-workers'
+docker_swarm_port: "2377"
+</pre>
+<p>As you can see from the above we can define which node will be considered as the <em>docker_swarm_primary_manager</em> in two different ways. The first (default) method is to use the Ansible inventory group name and choose the first node in that group or the second method would be to just define the actual node name. Some of the other variables are to define/update actual Docker Swarm cluster settings (default values by default) as well as defining some Docker networks to manage.</p>
+<p>And now for the actual Ansible playbook that we will be using to make all of the magic happen behind this:</p>
+<p>https://gist.github.com/mrlesmithjr/398fa971ccc1355e1ce223851f77c5bf</p>
+<p>As you can see we are actually capturing both the manager and worker tokens for the cluster as well. This is the key for success here. So how are we doing this? Let's take a look at the tasks that accomplish this.</p>
+<p>First we need to capture the tokens on our docker_swarm_primary_manager:</p>
+<pre>    - name: docker_swarm | Capturing Docker Swarm Worker join-token
+      command: "docker swarm join-token -q worker"
+      changed_when: false
+      register: "docker_swarm_worker_token"
+      when: &gt;
+            inventory_hostname == docker_swarm_primary_manager
+
+    - name: docker_swarm | Capturing Docker Swarm Manager join-token
+      command: "docker swarm join-token -q manager"
+      changed_when: false
+      register: "docker_swarm_manager_token"
+      when: &gt;
+            inventory_hostname == docker_swarm_primary_manager
+</pre>
+<p>If you notice from above we are literally just running the docker swarm command to query our join-token for the manager and worker tokens and registering those facts. Easy as that!</p>
+<p>Next we need to define the facts for both join-tokens in order for our additional nodes to successfully join our Swarm cluster. And we do that with the following tasks:</p>
+<pre>    - name: docker_swarm | Defining Docker Swarm Manager join-token
+      set_fact:
+        docker_swarm_manager_token: "{{ hostvars[docker_swarm_primary_manager]['docker_swarm_manager_token'] }}"
+      changed_when: false
+      when: &gt;
+            inventory_hostname != docker_swarm_primary_manager
+
+    - name: docker_swarm | Defining Docker Swarm Worker join-token
+      set_fact:
+        docker_swarm_worker_token: "{{ hostvars[docker_swarm_primary_manager]['docker_swarm_worker_token'] }}"
+      changed_when: false
+      when: &gt;
+            inventory_hostname != docker_swarm_primary_manager
+</pre>
+<p>Now that these facts are registered we can now leverage these on our additional Swarm nodes.</p>
+<p>Some additional tasks we are able to do are to also manage our Docker networks including overlay networks for our Swarm cluster. We can also update some additional settings for our Docker Swarm cluster which we do in the last three tasks of the playbook.</p>
+<p>So there you have it. An easy way to provision a Docker Swarm (1.12) mode cluster using Ansible allowing for easily scaled out provisioning.</p>
+<p>Stay tuned for additional posts coming in the future in regards to some additional Docker Swarm mode goodness.</p>
+<p>Enjoy!</p>

@@ -1,0 +1,111 @@
+---
+layout: post
+title: Installing Veeam Backup and Replication
+date: 2013-02-05 16:48:11.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Backups
+- Disaster Recovery
+- Veeam
+tags:
+- backups
+- DR
+- esxi
+- veeam
+- Vsphere
+meta:
+  _yoast_wpseo_linkdex: '73'
+  _edit_last: '11'
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  snapFB: s:290:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"490878107607759_577122295650006";s:5:"pDate";s:19:"2013-02-07
+    01:18:48";}}";
+  snapLI: s:393:"a:1:{i:0;a:8:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:124:"http://www.linkedin.com/updates?discuss=&amp;scope=138895851&amp;stype=M&amp;topic=5705092223486410752&amp;type=U&amp;a=nF2E";s:5:"pDate";s:19:"2013-02-07
+    01:19:41";s:11:"SNAPformatT";s:6:"&nbsp;";}}";
+  snapSU: s:213:"a:1:{i:0;a:7:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2VOQR2";s:5:"pDate";s:19:"2013-02-07
+    01:19:55";}}";
+  snapTW: 's:240:"a:1:{i:0;a:7:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:30:"%TITLE%
+    - %URL% #veeam #vmware";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"299326603979288576";s:5:"pDate";s:19:"2013-02-07
+    01:19:58";}}";'
+  _yoast_wpseo_focuskw: Installing Veeam Backup and Replication
+  _wpas_done_all: '1'
+  snap_isAutoPosted: '1'
+  _wp_rp_related_posts_query_result_cache_expiration: '1511990627'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1016";s:5:"score";s:17:"159.6978068224721";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1581";s:5:"score";s:18:"146.05032370846092";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"245";s:5:"score";s:17:"139.9832392048396";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1842";s:5:"score";s:18:"100.61868389140966";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"522";s:5:"score";s:17:"97.81993524473094";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1570";s:5:"score";s:17:"97.26230190343375";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"2021";s:5:"score";s:17:"96.65477495367391";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1952";s:5:"score";s:17:"93.97699070965048";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1922";s:5:"score";s:17:"93.97699070965048";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1429";s:5:"score";s:17:"91.22528867660003";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1151";s:5:"score";s:17:"90.73911993867915";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1711";s:5:"score";s:17:"88.69239306263634";}}
+  _wp_rp_image: empty
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>In this post we will be installing the Backup and Replication server components. This is a fairly straight forward installation with very minimal setup steps after installation to get started using it. Of course there are many advanced setup scenarios that you can build which would require much more setup time. I will go into those on another post soon.</p>
+<p>First off read the minimum requirements and FAQ <a href="http://www.veeam.com/veeam_backup_6_5_release_notes_rn.pdf" target="_blank">here</a>.</p>
+<p>Or just read below for the hardware requirements which were copied from the above pdf.</p>
+<p><strong>Veeam Backup &amp; Replication Server</strong><br />
+Hardware<br />
+CPU: any x86/x64 processor.<br />
+Memory: 4 GB RAM.<br />
+Hard Disk Space: 2 GB for product installation. 10 GB per 100 VM for guest file system catalog folder (persistent data). Sufficient free disk space for Instant VM Recovery cache folder (non-persistent data, at least 10 GB recommended).<br />
+Network: 1 Gbps LAN for on-site backup and replication, 1 Mbps or faster WAN for off-site backup and replication. High latency links are supported, but TCP/IP connection must not drop.</p>
+<p><strong>Backup Proxy Server<br />
+</strong>Hardware<br />
+CPU: modern x86/x64 processor (minimum 2 cores). Using faster multi-core processors improves data processing performance, and allows for more concurrent jobs.<br />
+Memory: 2 GB RAM per concurrent job. Using faster memory (DDR3) improves data processing performance.<br />
+Hard Disk Space: 300 MB.<br />
+Network: 1 Gbps LAN for on-site backup and replication, 1 Mbps or faster WAN for off-site backup and replication. High latency links are supported, but TCP/IP connection must not drop.</p>
+<p><strong>Backup Repository Server<br />
+</strong>Hardware<br />
+CPU: any x86/x64 processor.<br />
+Memory: 2 GB RAM per concurrent job.<br />
+Network: 1 Gbps LAN for on-site backup and replication, 1 Mbps or faster WAN for off-site backup and replication. Unreliable, high latency links with packet loss are supported, but TCP/IP connection must not drop completely.</p>
+<p>In this scenario we will be using a Windows 2008 R2  x64 server to install on.</p>
+<p>Let's get started.</p>
+<p>Launch installation program<img alt="" src="{{ site.baseurl }}/assets/ATAYUdfwOcnRAAAAAElFTkSuQmCC" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/4I3WMEKH8AH8AGdD1iB4YABPoAP4AP4QNs+8P9yeL8dfC8IHgAAAABJRU5ErkJggg==" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/wCw6GpB4NtZvgAAAABJRU5ErkJggg==" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/7rt9YThXnO+AAAAAElFTkSuQmCC" /><img alt="" src="{{ site.baseurl }}/assets/0Jo3uShUGBAAAAAElFTkSuQmCC" /></p>
+<p>Download and browse to your trial license file.</p>
+<p><img alt="" src="{{ site.baseurl }}/assets/wPDFcUfQTp9+gAAAABJRU5ErkJggg==" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/o14LsAAAAAElFTkSuQmCC" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/x8Ib1ne2vQhVgAAAABJRU5ErkJggg==" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/+bCffChSB4SAAAAAElFTkSuQmCC" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/wUA5gJzBEAAAAAElFTkSuQmCC" /><img alt="" src="{{ site.baseurl }}/assets/Hx+VP2Cx2ZaoAAAAAElFTkSuQmCC" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/D7ie8uRgu0gAEYgAEYGAoDo6E0hHYwKGEABmAABmAgzADGvzQsEiChEQzAAAzAwFAY+P89ezKHApjscwAAAABJRU5ErkJggg==" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/0HAzDQBgNIHsmTwcMADMAADBTKAJIvtGPbyADZB5UEDMAADPSbASSP5MngYQAGYAAGCmXgJMnzCMjRPAKSuBJXGIABGICBLhiQp0DqJ979fwZubtZE3jr2AAAAAElFTkSuQmCC" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/6UgYoA5QBysAYZaCFPAENKAOUAcoAZYAysLwy8P8B5HesKcbM99sAAAAASUVORK5CYII=" /></p>
+<p>Now that the installation is complete launch the app.</p>
+<p><img alt="" src="{{ site.baseurl }}/assets/w+37YmNoNM3CQAAAABJRU5ErkJggg==" /></p>
+<p>Now we will configure our first backup job to run.</p>
+<p><img alt="" src="{{ site.baseurl }}/assets/wfsRDhlx1TlVAAAAABJRU5ErkJggg==" /></p>
+<p>Click backup job.</p>
+<p><img alt="" src="{{ site.baseurl }}/assets/dHy975eqz0j52spx+taOV81VJbfKIACKIACKNCiArIw8oMCKIACKIACLSvAWtWydWgbCqAACqCAOhlRYlUB71gv5XhdK+fr2L33tJ+TZhiAARiAARiAARiAARiAARiAARiAARiAARiAgT4YUBetjZC1UbL+fph2YD6fL+RfHw2iDsCGARiAARiAARiAARiAARiAARiAARiAARiAARiYIgPqZxWn7KvXJ4tn8gfOVwbDFAcDfYZ7GIABGIABGIABGIABGIABGIABGIABGICBPhnA+fqQK7BPQakLPWEABmAABmAABmAABmAABmAABmAABmAABmAABoQBnK84X3E+wwAMwAAMwAAMwAAMwAAMwAAMwAAMwAAMwAAMDMBA6Hzl281QAAVQAAVQAAVQAAVQAAVQAAVQAAVQAAVQAAVQAAX6U0Byvv4D7dw9oi1+w4wAAAAASUVORK5CYII=" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/B8m6umX8rJIbwAAAABJRU5ErkJggg==" /></p>
+<p>Click on VMware vSphere</p>
+<p><img alt="" src="{{ site.baseurl }}/assets/HwlzDg+QxzDgAAAAAElFTkSuQmCC" /></p>
+<p>Enter IP or DNS name for host or enter your vCenter info.</p>
+<p><img alt="" src="{{ site.baseurl }}/assets/pgEn2Dbdbi8AAAAASUVORK5CYII=" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/rxIUAAAAAElFTkSuQmCC" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/m2P7thBsCMAAAAABJRU5ErkJggg==" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/wOVYFPqluMbigAAAABJRU5ErkJggg==" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/X+K5GT4P91GeQAAAABJRU5ErkJggg==" /></p>
+<p>Click add to select which virtual machines you would like to backup.</p>
+<p><img alt="" src="{{ site.baseurl }}/assets/9bWwS4Q4x3AAAAAElFTkSuQmCC" /></p>
+<p>When adding objects to backup you can select data center, cluster, hosts, folders, resource pools, datastores or individual virtual machines. Make sure that you layout your different objects in vCenter to whatever makes sense and makes this selection process the easiest and cleanest as well as something that will capture the virtual machines even if they move between any of these objects.</p>
+<p><img alt="" src="{{ site.baseurl }}/assets/7rVp3DZ8y2LAAAAAElFTkSuQmCC" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/Jq13Q2ubTdYAAAAASUVORK5CYII=" /></p>
+<p>Select your backup repository you want to backup to. For information on adding a Linux NFS backup repository read <a title="https://everythingshouldbevirtual.com/veeam-backup-and-replication-to-nexenta-nfs" href="https://everythingshouldbevirtual.com/veeam-backup-and-replication-to-nexenta-nfs" target="_blank">this </a>article.</p>
+<p><img alt="" src="{{ site.baseurl }}/assets/hQhJGz9IAAAAASUVORK5CYII=" /></p>
+<p>Select Enable application-aware image processing for servers such as Exchange or MS SQL and any other application that uses VSS technology.</p>
+<p><img alt="" src="{{ site.baseurl }}/assets/A4yX0R0pnztiAAAAAElFTkSuQmCC" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/HykGHmF6g1v2AAAAAElFTkSuQmCC" /></p>
+<p><img alt="" src="{{ site.baseurl }}/assets/DlHQMYOBIDBPWavBJUgqqDemEGjrRIGes1Fyl5l3eCek0GCOqF5UQH9ZoXvQVf3jGAgSMxQFCvyStBJag6qBdm4EiLlLFec5GSd3knqNdkgKBeWE50UK950Vvw5R0DGDgSAwT1mrwSVIKqg3phBo60SBnrNRcpeZd3gnpNBggqOSGoGMAABjCAAQxgYCgGCCoghwJSt+SavynLu7xjAAMYwEDIAEElqAQVAxjAAAYwgAEMDMUAQQXkUED6Ddpv0BjAAAYwgAEMzIL6fwHiSOSQnYkArgAAAABJRU5ErkJggg==" /></p>
+<p>That's all there is to it. Now you are ready to start your backups. More posts will follow going over file level restores, full vm restores and etc. As well as on replication scenarios.</p>
+<p>Feel free to leave comments as I look forward to any and all feedback.</p>

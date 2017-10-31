@@ -1,0 +1,43 @@
+---
+layout: post
+title: ELK tuning and troubleshooting
+date: 
+type: post
+published: false
+status: draft
+categories: []
+tags: []
+meta:
+  _edit_last: '11'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapDL: s:102:"a:1:{i:0;a:3:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";}}";
+  snapFB: s:253:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snapLI: s:247:"a:1:{i:0;a:8:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snapSU: s:119:"a:1:{i:0;a:4:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";}}";
+  snapTW: 's:172:"a:1:{i:0;a:5:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";}}";'
+  _s2mail: 'yes'
+  _oembed_5f41339362d861275df129ccfd5cb12c: "{{unknown}}"
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>nano /etc/sysctl.conf<br />
+# Decrease swap usage to a workable level<br />
+vm.swappiness=10<br />
+# Improve cache management<br />
+vm.vfs_cache_pressure=50<br />
+tune2fs -o journal_data_writeback /dev/sdb1<br />
+tune2fs -O ^has_journal /dev/sdb1<br />
+e2fsck -f /dev/sdb1<br />
+echo "/dev/sdb1 /var/lib/elasticsearch ext4 defaults,data=writeback,noatime 0 0" &gt;&gt; /etc/fstab</p>
+<p>&nbsp;</p>
+<p>clear cache</p>
+<p>http://logstash:9200/_cache/clear</p>

@@ -1,0 +1,50 @@
+---
+layout: post
+title: vSphere 5.1 - Migrating standard switches (VSS) to distributed switches (VDS)
+  using new web ui
+date: 2012-09-13 21:15:47.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Virtualization
+- VMware
+- vSphere 5.1
+tags:
+- esxi
+- esxi 5.1
+- vcenter
+- vcenter 5.1
+- Vsphere
+- vsphere 5.1
+meta:
+  _edit_last: '11'
+  fb_social_plugin_settings_box_subscribe: default
+  _jd_tweet_this: 'yes'
+  al2fb_facebook_link_id: '1329619822_3664691739122'
+  al2fb_facebook_link_time: '2012-09-14T01:15:52+00:00'
+  al2fb_facebook_link_picture: post=https://everythingshouldbevirtual.com/?al2fb_image=1
+  _wp_jd_wp: http://wp.me/p2C5rM-81
+  _wp_jd_target: http://wp.me/p2C5rM-81
+  _jd_wp_twitter: 'a:1:{i:0;s:127:"New post: vSphere 5.1 - Migrating standard switches
+    (VSS) to distributed switches (VDS) http://wp.me/p2C5rM-81 #VMware #VMworld";}'
+  _wpt_failed: 'a:5:{s:6:"author";s:0:"";s:8:"sentence";s:143:"Post Edited: vSphere
+    5.1 - Migrating standard switches (VSS) to distributed switches (VDS) using new
+    we http://wp.me/p2C5rM-81 #VMware #VMworld";s:5:"error";s:303:"403 Forbidden:
+    The request is understood, but it has been refused. This code is used when requests
+    are understood, but are denied by Twitter. Reasons can include: Too many Tweets
+    created in a short time or the same Tweet was submitted twice in a row, among
+    others. This is not an error by WP to Twitter.";s:4:"code";s:3:"403";s:9:"timestamp";s:10:"1347676458";}'
+  _wp_rp_related_posts_query_result_cache_expiration: '1509826980'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"623";s:5:"score";s:18:"209.82546556784098";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"487";s:5:"score";s:18:"201.89251472375412";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"481";s:5:"score";s:17:"198.5873900456379";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"626";s:5:"score";s:18:"160.33222154949715";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"503";s:5:"score";s:17:"158.3411924660606";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"747";s:5:"score";s:18:"144.91496898239012";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"522";s:5:"score";s:18:"137.99013109885473";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"765";s:5:"score";s:18:"109.89957833170614";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1630";s:5:"score";s:17:"98.70165237073348";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"939";s:5:"score";s:17:"85.26001047700639";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1940";s:5:"score";s:17:"74.22536122527944";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1935";s:5:"score";s:16:"73.4791206332408";}}
+  _wp_rp_image: empty
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>Here is a quick walk-through on the process of migrating standard vSwitches (VSS) to distributed switches (VDS) using the new web ui in vSphere 5.1. In this post I will be migrating the management ports, vMotion ports and guest network ports only. I chose to do them separately doing guest networks first and then moving the managment and vMotion ports second. You can do this all at one time if you want to and it should work fine. However I did mess up once and the new rollback feature kicked in for my console ports and I was back in business. Click through the gallery below and go through each picture one by one and there are captions in those areas of detail. Enjoy!</p>
+<p>[nggallery id=3]</p>

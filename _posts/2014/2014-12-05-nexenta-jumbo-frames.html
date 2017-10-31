@@ -1,0 +1,72 @@
+---
+layout: post
+title: Nexenta Jumbo Frames
+date: 2014-12-05 10:20:13.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Nexenta
+- Storage
+- Virtualization
+- VMware
+tags:
+- jumbo frames
+- nexenta
+meta:
+  _edit_last: '11'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"c60ea18dd3d978a4e8463906e22870bb";s:5:"pDate";s:19:"2014-12-05
+    15:20:14";}}";
+  snapTW: 's:316:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:60:"%TITLE%
+    - %URL% #everythingshouldbevirtual #Nexenta #vsphere";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"540888438808272896";s:5:"pDate";s:19:"2014-12-05
+    15:20:27";}}";'
+  _s2mail: 'yes'
+  _yoast_wpseo_focuskw: nexenta jumbo frames
+  _yoast_wpseo_metadesc: Nexenta Jumbo Frames
+  _yoast_wpseo_linkdex: '85'
+  snap_isAutoPosted: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:274:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"40W78Q";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/40W78Q/comments";s:5:"pDate";s:19:"2014-12-05
+    15:20:27";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1510036330'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1583";s:5:"score";s:18:"61.288021755780974";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"2233";s:5:"score";s:17:"59.36519087327282";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1196";s:5:"score";s:18:"59.336294279375764";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1399";s:5:"score";s:17:"57.30316142649147";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"909";s:5:"score";s:17:"57.22651838073989";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1637";s:5:"score";s:16:"55.1059368491033";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"913";s:5:"score";s:18:"54.805059207201225";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1422";s:5:"score";s:18:"52.600410912073606";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"915";s:5:"score";s:18:"52.600410912073606";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1154";s:5:"score";s:17:"49.93653337333416";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"2162";s:5:"score";s:16:"48.6155505827841";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1908";s:5:"score";s:16:"48.6155505827841";}}
+  dsq_thread_id: '3350632011'
+  _wp_rp_image: empty
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p><strong>Nexenta jumbo frames</strong></p>
+<p>I Wanted to go through and enable jumbo frames for my lab iSCSI storage which is running on Nexenta CE (For about 4 years now). So how do you do this? Login to your Nexenta WEBUI and head over to setting and network and change the MTU from 1500 to 9000. Easy enough right? Well not quite in my case. I attempted to do this and was immediately presented with an error stating that I could not change the MTU in a bright red error at the top of the screen. (I forgot to capture this screenshot) So how do you get around this? Actually pretty easy but it will require a reboot of your storage. Note the detail of your interface naming as this should represent the driver that your network adapter is using. In my case I am using the E1000G driver.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-05-at-10.18.21-AM.png"><img class="alignnone size-medium wp-image-3769" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-05-at-10.18.21-AM-300x101.png" alt="Screen Shot 2014-12-05 at 10.18.21 AM" width="300" height="101" /></a></p>
+<p>SSH to your Nexenta array and then execute the following.</p>
+<pre>option expert_mode =1
+!bash</pre>
+<p>Hit "y" to enter the actual shell.<br />
+Now modify the following file using vi or nano.</p>
+<pre>nano /kernel/drv/e1000g.conf</pre>
+<p>Look for the following line</p>
+<pre>MaxFrameSize=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0;</pre>
+<p>Underneath that line you will see what the different values represent.<br />
+# 0 is for normal ethernet frames.<br />
+# 1 is for upto 4k size frames.<br />
+# 2 is for upto 8k size frames.<br />
+# 3 is for upto 16k size frames.</p>
+<p>So based on this information we will need to use 3 so that we can use an MTU value of 9000.<br />
+Now comment out the existing line (Safety Net) by adding a # in front of MaxFrameSize</p>
+<pre>#MaxFrameSize=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0;</pre>
+<p>Now add a new line with the following</p>
+<pre>MaxFrameSize=3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3;</pre>
+<p>Save the file and exit. Now reboot your Nexenta box.</p>
+<p>Once the box is back up you should be able to back into the WEBUI and change MTU from 1500 to 9000 now. Make sure that your switch has jumbo frames enabled as well as your hypervisors or device that is connecting to your Nexenta box.</p>
+<p>Good luck!</p>
+<p>Enjoy!</p>

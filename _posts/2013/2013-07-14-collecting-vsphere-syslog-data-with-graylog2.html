@@ -1,0 +1,59 @@
+---
+layout: post
+title: Collecting vSphere Syslog Data with Graylog2
+date: 2013-07-14 12:36:42.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Graylog2
+- Monitoring
+- Ubuntu
+- VMware
+- vSphere 5.1
+tags:
+- debian
+- graylog2
+- syslog
+- ubuntu
+- VMware
+- Vsphere
+meta:
+  _edit_last: '11'
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  snapLI: s:273:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:6:"&nbsp;";s:11:"isPrePosted";s:1:"1";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";b:0;}}";
+  _wpas_done_all: '1'
+  snap_isAutoPosted: '1'
+  snapFB: s:387:"a:1:{i:0;a:12:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_445319145566533";s:5:"pDate";s:19:"2013-07-14
+    16:36:47";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";b:0;}}";
+  snapSU: s:232:"a:1:{i:0;a:8:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"1FwqCg";s:5:"pDate";s:19:"2013-07-14
+    16:36:53";s:4:"nsfw";s:1:"0";}}";
+  snapTW: 's:322:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:69:"%TITLE%
+    - %URL% #everythingshouldbevirtual #graylog2 #vmware #vsphere";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"356452250173968384";s:5:"pDate";s:19:"2013-07-14
+    16:36:53";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;}}";'
+  snap_MYURL: ''
+  _wp_rp_related_posts_query_result_cache_expiration: '1511797865'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1494";s:5:"score";s:17:"158.1077370780476";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"2646";s:5:"score";s:18:"116.57095166033926";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"3249";s:5:"score";s:18:"109.90654263998886";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"2626";s:5:"score";s:18:"109.90654263998886";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4115";s:5:"score";s:17:"96.71125599191257";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"7208";s:5:"score";s:17:"93.91958709652357";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"2280";s:5:"score";s:17:"92.36401642888424";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"5383";s:5:"score";s:17:"87.85181901685696";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"699";s:5:"score";s:16:"83.0738881477345";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1695";s:5:"score";s:16:"76.5999989983991";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"345";s:5:"score";s:17:"73.36131202858547";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"626";s:5:"score";s:17:"71.36766070527572";}}
+  _wp_rp_image: '3781'
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>Are you looking for a good syslog collector for your environment but not wanting to shell out the money for <a title="http://www.splunk.com/" href="http://www.splunk.com/" target="_blank">Splunk</a> or <a title="http://www.vmware.com/products/datacenter-virtualization/vcenter-log-insight/overview.html" href="http://www.vmware.com/products/datacenter-virtualization/vcenter-log-insight/overview.html" target="_blank">VMware vCenter Log Insight</a>? Not saying there is anything wrong with either one of these products except they can be very expensive and they are overall excellent products. Especially how tightly integrated VMware vCenter Log Insight is with other VMware products but if all you really care about is getting good syslog data which is presented very well and extremely useful well <a title="http://graylog2.org/" href="http://graylog2.org/" target="_blank">Graylog2</a> may be just want you need for your environment. I have been using Graylog2 for a few months now and I absolutely love it. Well of course one reason is the cost (Open Source) and over the years of using other open source syslog tools it is an extremely well groomed product and worth looking into. There is also a great community around this product as well which are very helpful and responsive.</p>
+<p>So my intention of this post is to make those aware of the product that may not be and to help those who know about the product but may have issues getting it up and running successfully. I would like to first direct you to a previous post I did which is all about a shell script available on <a title="https://github.com/mrlesmithjr/graylog2" href="https://github.com/mrlesmithjr/graylog2" target="_blank">github</a> which will automate the complete installation of Graylog2 on Ubuntu and Debian. I have been working on this script for a few months now and it is has been very successful for many including myself. I keep this script updated with the latest versions as well as tweaking it along the way as the need arises. Several have requested certain features and checks to be included so I like to incorporate some of those ideas into the script when they make sense. So to follow the install instructions and get an idea of how to get Graylog2 up and running head over to this <a title="http://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation" href="http://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation" target="_blank">post</a> and then return to this post once you have Graylog2 up and running using the script from Method #1.</p>
+<p>Now assuming that you have Graylog2 up and running let's configure our ESXi hosts to send their syslogs to our new Graylog2 server.</p>
+<p>Open your vSphere Client and select your host from vCenter or connect directly to your host. Select configuration and then advanced settings under the software section. Scroll down and expand <em>Syslog</em> and select <em>global</em>. Now under <em>Syslog.global.loghost</em> fill in <em>udp://ipaddressofgraylog2:514</em> then click ok.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/07/11-59-45.png"><img class="alignnone size-medium wp-image-1826" alt="11-59-45" src="{{ site.baseurl }}/assets/11-59-45-300x147.png" width="300" height="147" /></a></p>
+<p>&nbsp;</p>
+<p>Now you have to allow syslog data to be sent from your host. In order to do this you must configure the firewall on the host to allow this. So on the configuration page select security profile under the Software section. Scroll down to syslog and enable the checkbox and click ok.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/07/13-16-34.png"><img class="alignnone size-medium wp-image-1836" alt="13-16-34" src="{{ site.baseurl }}/assets/13-16-34-300x170.png" width="300" height="170" /></a></p>
+<p>Once that is done you should start to see syslog data showing up in Graylog2. The only other thing you might want to do is make sure that each of your hosts are showing up as unique hosts within Graylog2. Other than that you are good to go. You can also configure other devices in your environment to send their syslog data back to your Graylog2 server.</p>
+<p>Enjoy!</p>

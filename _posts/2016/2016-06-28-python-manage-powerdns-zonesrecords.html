@@ -1,0 +1,534 @@
+---
+layout: post
+title: Python - Manage PowerDNS Zones/Records
+date: 2016-06-28 20:58:10.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Coding
+- Python
+tags:
+- powerdns
+- python
+meta:
+  snapSU: s:337:"a:1:{i:0;a:11:{s:2:"do";s:1:"1";s:9:"msgFormat";s:16:"%TITLE% - %TEXT%";s:5:"suCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doSU";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"23MvL9";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/23MvL9/comments";s:5:"pDate";s:19:"2016-06-29
+    00:58:22";}}";
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapDL: s:162:"a:1:{i:0;a:6:{s:2:"do";s:1:"1";s:10:"msgTFormat";s:7:"%TITLE%";s:9:"msgFormat";s:9:"%EXCERPT%";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doDL";s:1:"1";}}";
+  snapFB: s:298:"a:1:{i:0;a:10:{s:2:"do";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doFB";s:1:"1";s:11:"isPrePosted";s:1:"1";}}";
+  _s2mail: 'yes'
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  _yoast_wpseo_focuskw_text_input: Python - Manage PowerDNS Zones/Records
+  _yoast_wpseo_focuskw: Python - Manage PowerDNS Zones/Records
+  _yoast_wpseo_linkdex: '68'
+  _yoast_wpseo_content_score: '60'
+  _yoast_wpseo_primary_category: '445'
+  snap_isAutoPosted: '1'
+  snapLI: s:290:"a:1:{i:0;a:10:{s:2:"do";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:12:"liMsgFormatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doLI";s:1:"1";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1511902600'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"6231";s:5:"score";s:18:"122.54692943088065";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"5057";s:5:"score";s:16:"77.1803233753363";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"7702";s:5:"score";s:17:"67.25268114023632";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1494";s:5:"score";s:18:"28.371326677885154";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"7208";s:5:"score";s:18:"22.481242431940966";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"4803";s:5:"score";s:18:"19.150885539573963";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"6033";s:5:"score";s:18:"18.267220034996466";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"3249";s:5:"score";s:18:"17.107583044529417";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"4944";s:5:"score";s:17:"16.67150376569204";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4588";s:5:"score";s:17:"16.27016237472243";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"4695";s:5:"score";s:18:"14.628201270647494";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"2254";s:5:"score";s:18:"14.628201270647494";}}
+  snapTW: 's:342:"a:1:{i:0;a:10:{s:2:"do";s:1:"1";s:10:"SNAPformat";s:68:"%TITLE%
+    - %URL% #everythingshouldbevirtual #PowerDNS #DevOPS #Python";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:4:"doTW";s:1:"1";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"747957346912002048";s:5:"pDate";s:19:"2016-06-29
+    00:58:22";}}";'
+  catchbox-sidebarlayout: default
+  _wp_rp_image: empty
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<p style="text-align: center;"><strong>Python - Manage PowerDNS Zones/Records</strong></p>
+<hr />
+<p style="text-align: left;">While working on another PowerDNS project I have started working on a Python script to manage Zones/Records. Being that there is not a ton of info out there around this I wanted to begin sharing what I have put together so far.</p>
+<p style="text-align: left;">As far as provisioning PowerDNS I have spent a good bit of time over the past year working on an Ansible role which will do a ton of the PowerDNS deployment. You can also create Zones/Records using this role which is basically just a template that creates a shell script and uses curl to leverage the PowerDNS API. You can checkout this role <a href="https://github.com/mrlesmithjr/ansible-powerdns">here</a>.</p>
+<p style="text-align: left;">So as I mentioned this post is purely about using Python to manage PowerDNS. And with that being said below is the latest version of the script. Or you can head over to the GitHub repo <a href="https://github.com/mrlesmithjr/python-powerdns-management">here</a>.</p>
+<p>https://gist.github.com/mrlesmithjr/bf23ac9ac56b5be0706c7ee950fc23ab</p>
+<p><strong>Usage examples</strong><br />
+---------------------</p>
+<p>To get an idea of some of the cli parameters that you can use do a quick show help...</p>
+<pre>./pdns.py --help                                                                                                                                                                                          
+</pre>
+<pre>usage: pdns.py [-h] [--apikey APIKEY] [--apihost APIHOST] [--apiport APIPORT]
+               [--content CONTENT] [--disabled {True,False}]
+               [--masters MASTERS] [--name NAME] [--nameservers NAMESERVERS]
+               [--priority PRIORITY]
+               [--recordType {A,AAAA,CNAME,MX,NS,SOA,SRV}]
+               [--setPTR {True,False}] [--ttl TTL] [--zone ZONE]
+               [--zoneType {MASTER,NATIVE,SLAVE}]
+               {add_records,add_zones,delete_zones,query_zones}
+
+PDNS Controls...
+
+positional arguments:
+  {add_records,add_zones,delete_zones,query_zones}
+                        Define action to take
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --apikey APIKEY       PDNS API Key
+  --apihost APIHOST     PDNS API Host
+  --apiport APIPORT     PDNS API Port
+  --content CONTENT     DNS Record content
+  --disabled {True,False}
+                        Define if Record is disabled
+  --masters MASTERS     DNS zone masters
+  --name NAME           DNS record name
+  --nameservers NAMESERVERS
+                        DNS nameservers for zone
+  --priority PRIORITY   Define priority
+  --recordType {A,AAAA,CNAME,MX,NS,SOA,SRV}
+                        DNS record type
+  --setPTR {True,False}
+                        Define if PTR record is created
+  --ttl TTL             Define TTL
+  --zone ZONE           DNS zone
+  --zoneType {MASTER,NATIVE,SLAVE}
+                        DNS Zone Type
+</pre>
+<p>Create a new Master Zone with info below:</p>
+<ul>
+<li>Zone: dev.vagrant.local</li>
+<li>ZoneType: MASTER</li>
+<li>Master: 172.28.128.3</li>
+<li>Nameservers:
+<ul>
+<li>172.28.128.3</li>
+<li>172.28.128.4</li>
+<li>172.28.128.5</li>
+</ul>
+</li>
+</ul>
+<p>But before we start let's do a quick query of the existing zones defined on our master.</p>
+<pre>./pdns.py query_zones --apihost 172.28.128.3
+</pre>
+<p>Results...</p>
+<pre>[
+    {
+        "kind": "Master",
+        "name": "prod.vagrant.local",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/prod.vagrant.local.",
+        "account": "",
+        "last_check": 0,
+        "notified_serial": 2016062816,
+        "masters": [],
+        "serial": 2016062816,
+        "id": "prod.vagrant.local."
+    },
+    {
+        "kind": "Master",
+        "name": "test.vagrant.local",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/test.vagrant.local.",
+        "account": "",
+        "last_check": 0,
+        "notified_serial": 2016062879,
+        "masters": [],
+        "serial": 2016062879,
+        "id": "test.vagrant.local."
+    },
+    {
+        "kind": "Master",
+        "name": "vagrant.local",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/vagrant.local.",
+        "account": "",
+        "last_check": 0,
+        "notified_serial": 2016062806,
+        "masters": [],
+        "serial": 2016062806,
+        "id": "vagrant.local."
+    },
+    {
+        "kind": "Master",
+        "name": "128.28.172.in-addr.arpa",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/128.28.172.in-addr.arpa.",
+        "account": "",
+        "last_check": 0,
+        "notified_serial": 2016062842,
+        "masters": [],
+        "serial": 2016062842,
+        "id": "128.28.172.in-addr.arpa."
+    }
+]
+</pre>
+<p>Now let's create our new master zone...</p>
+<pre>./pdns.py add_zones --apihost 172.28.128.3 --zone dev.vagrant.local --zoneType MASTER --nameservers 172.28.128.3,172.28.128.4,172.28.128.5</pre>
+<p>Results of the above ...</p>
+<pre>{
+    "kind": "Master",
+    "name": "dev.vagrant.local",
+    "dnssec": false,
+    "url": "/servers/localhost/zones/dev.vagrant.local.",
+    "account": "",
+    "comments": [],
+    "last_check": 0,
+    "records": [
+        {
+            "disabled": false,
+            "content": "172.28.128.3",
+            "type": "NS",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "172.28.128.4",
+            "type": "NS",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "172.28.128.5",
+            "type": "NS",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "node0.test.vagrant.local hostmaster.test.vagrant.local 2016062901 10800 3600 604800 3600",
+            "type": "SOA",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        }
+    ],
+    "soa_edit": "",
+    "notified_serial": 0,
+    "masters": [],
+    "soa_edit_api": "INCEPTION-INCREMENT",
+    "serial": 2016062901,
+    "id": "dev.vagrant.local."
+}
+</pre>
+<p>Now let's create the slave zones on our PowerDNS slaves with the info below:</p>
+<ul>
+<li>Zone: dev.vagrant.local</li>
+<li>ZoneType: SLAVE</li>
+<li>Master: 172.28.128.3</li>
+<li>Slaves:
+<ul>
+<li>172.28.128.4</li>
+<li>172.28.128.5</li>
+</ul>
+</li>
+</ul>
+<pre>./pdns.py add_zones --apihost 172.28.128.4 --zone dev.vagrant.local --zoneType SLAVE --masters 172.28.128.3
+</pre>
+<p>And the results after running the above ....</p>
+<pre>{
+	"id": "dev.vagrant.local.",
+	"url": "/servers/localhost/zones/dev.vagrant.local.",
+	"name": "dev.vagrant.local",
+	"kind": "Slave",
+	"dnssec": false,
+	"account": "",
+	"masters": ["172.28.128.3"],
+	"serial": 0,
+	"notified_serial": 0,
+	"last_check": 0,
+	"soa_edit_api": "",
+	"soa_edit": "",
+	"records": [],
+	"comments": []
+}
+</pre>
+<p>And now repeat the above process on our 172.28.128.5 slave.</p>
+<pre>./pdns.py add_zones --apihost 172.28.128.5 --zone dev.vagrant.local --zoneType SLAVE --masters 172.28.128.3
+</pre>
+<p>And to validate that our new zones exist on our Master...</p>
+<pre>./pdns.py query_zones --apihost 172.28.128.3
+</pre>
+<p>Results show...</p>
+<pre>[
+    {
+        "kind": "Master",
+        "name": "prod.vagrant.local",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/prod.vagrant.local.",
+        "account": "",
+        "last_check": 0,
+        "notified_serial": 2016062816,
+        "masters": [],
+        "serial": 2016062816,
+        "id": "prod.vagrant.local."
+    },
+    {
+        "kind": "Master",
+        "name": "test.vagrant.local",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/test.vagrant.local.",
+        "account": "",
+        "last_check": 0,
+        "notified_serial": 2016062879,
+        "masters": [],
+        "serial": 2016062879,
+        "id": "test.vagrant.local."
+    },
+    {
+        "kind": "Master",
+        "name": "vagrant.local",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/vagrant.local.",
+        "account": "",
+        "last_check": 0,
+        "notified_serial": 2016062806,
+        "masters": [],
+        "serial": 2016062806,
+        "id": "vagrant.local."
+    },
+    {
+        "kind": "Master",
+        "name": "128.28.172.in-addr.arpa",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/128.28.172.in-addr.arpa.",
+        "account": "",
+        "last_check": 0,
+        "notified_serial": 2016062842,
+        "masters": [],
+        "serial": 2016062842,
+        "id": "128.28.172.in-addr.arpa."
+    },
+    {
+        "kind": "Master",
+        "name": "dev.vagrant.local",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/dev.vagrant.local.",
+        "account": "",
+        "last_check": 0,
+        "notified_serial": 2016062901,
+        "masters": [],
+        "serial": 2016062901,
+        "id": "dev.vagrant.local."
+    }
+]
+</pre>
+<p>And as you can see the new master zone for dev.vagrant.local now exists.</p>
+<p>And if we do a quick check on one of our slave nodes...</p>
+<pre>./pdns.py query_zones --apihost 172.28.128.4
+</pre>
+<p>Results...</p>
+<pre>[
+    {
+        "kind": "Slave",
+        "name": "prod.vagrant.local",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/prod.vagrant.local.",
+        "account": "",
+        "last_check": 1467154120,
+        "notified_serial": 0,
+        "masters": [
+            "172.28.128.3"
+        ],
+        "serial": 2016062816,
+        "id": "prod.vagrant.local."
+    },
+    {
+        "kind": "Slave",
+        "name": "test.vagrant.local",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/test.vagrant.local.",
+        "account": "",
+        "last_check": 1467152860,
+        "notified_serial": 0,
+        "masters": [
+            "172.28.128.3"
+        ],
+        "serial": 2016062879,
+        "id": "test.vagrant.local."
+    },
+    {
+        "kind": "Slave",
+        "name": "vagrant.local",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/vagrant.local.",
+        "account": "",
+        "last_check": 1467154240,
+        "notified_serial": 0,
+        "masters": [
+            "172.28.128.3"
+        ],
+        "serial": 2016062806,
+        "id": "vagrant.local."
+    },
+    {
+        "kind": "Slave",
+        "name": "128.28.172.in-addr.arpa",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/128.28.172.in-addr.arpa.",
+        "account": "",
+        "last_check": 1467154060,
+        "notified_serial": 0,
+        "masters": [
+            "172.28.128.3"
+        ],
+        "serial": 2016062842,
+        "id": "128.28.172.in-addr.arpa."
+    },
+    {
+        "kind": "Slave",
+        "name": "dev.vagrant.local",
+        "dnssec": false,
+        "url": "/servers/localhost/zones/dev.vagrant.local.",
+        "account": "",
+        "last_check": 1467159949,
+        "notified_serial": 0,
+        "masters": [
+            "172.28.128.3"
+        ],
+        "serial": 2016062901,
+        "id": "dev.vagrant.local."
+    }
+]
+</pre>
+<p>Now that our zones are setup we are ready to create a few records. So let's create some records using the following info:</p>
+<ul>
+<li>Zone: dev.vagrant.local
+<ul>
+<li>name: test01.dev.vagrant.local
+<ul>
+<li>recordType: A</li>
+<li>content: 172.28.128.161</li>
+</ul>
+</li>
+<li>name: development.dev.vagrant.local
+<ul>
+<li>recordType: CNAME</li>
+<li>content: test01.dev.vagrant.local</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>So let's create our A record.</p>
+<pre>./pdns.py add_records --zone dev.vagrant.local --name test01 --content 172.28.128.161 --recordType A
+</pre>
+<p>Results...</p>
+<pre>{
+    "kind": "Master",
+    "name": "dev.vagrant.local",
+    "dnssec": false,
+    "url": "/servers/localhost/zones/dev.vagrant.local.",
+    "account": "",
+    "comments": [],
+    "last_check": 0,
+    "records": [
+        {
+            "disabled": false,
+            "content": "172.28.128.3",
+            "type": "NS",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "172.28.128.4",
+            "type": "NS",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "172.28.128.5",
+            "type": "NS",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "node0.test.vagrant.local hostmaster.test.vagrant.local 2016062902 10800 3600 604800 3600",
+            "type": "SOA",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "172.28.128.161",
+            "type": "A",
+            "name": "test01.dev.vagrant.local",
+            "ttl": 3600
+        }
+    ],
+    "soa_edit": "",
+    "notified_serial": 2016062901,
+    "masters": [],
+    "soa_edit_api": "INCEPTION-INCREMENT",
+    "serial": 2016062902,
+    "id": "dev.vagrant.local."
+}
+</pre>
+<p>And now we can create our CNAME record...</p>
+<pre>./pdns.py add_records --zone dev.vagrant.local --name development --content test01.dev.vagrant.local --recordType CNAME
+</pre>
+<p>Results...</p>
+<pre>{
+    "kind": "Master",
+    "name": "dev.vagrant.local",
+    "dnssec": false,
+    "url": "/servers/localhost/zones/dev.vagrant.local.",
+    "account": "",
+    "comments": [],
+    "last_check": 0,
+    "records": [
+        {
+            "disabled": false,
+            "content": "172.28.128.3",
+            "type": "NS",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "172.28.128.4",
+            "type": "NS",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "172.28.128.5",
+            "type": "NS",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "node0.test.vagrant.local hostmaster.test.vagrant.local 2016062903 10800 3600 604800 3600",
+            "type": "SOA",
+            "name": "dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "test01.dev.vagrant.local",
+            "type": "CNAME",
+            "name": "development.dev.vagrant.local",
+            "ttl": 3600
+        },
+        {
+            "disabled": false,
+            "content": "172.28.128.161",
+            "type": "A",
+            "name": "test01.dev.vagrant.local",
+            "ttl": 3600
+        }
+    ],
+    "soa_edit": "",
+    "notified_serial": 2016062902,
+    "masters": [],
+    "soa_edit_api": "INCEPTION-INCREMENT",
+    "serial": 2016062903,
+    "id": "dev.vagrant.local."
+}
+</pre>
+<p>So there you have it. So far this seems to be working quite nice. This is obviously no where near complete so stay tuned on that. I will also be following up another post soon on how to leverage my Ansible role mentioned above to do these same tasks at a larger scale.</p>
+<p>Enjoy!</p>
