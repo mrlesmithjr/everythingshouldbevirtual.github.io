@@ -1,0 +1,212 @@
+---
+layout: post
+title: Nexentastor/ESXi5/3750G/LACP/VDS/NFS/iSCSI - Part 1
+date: 2012-07-21 09:55:35.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Cisco
+- Networking
+- Nexenta
+- Storage
+- Virtualization
+- VMware
+tags:
+- ESXI5
+- iSCSI
+- LACP
+- NAS
+- Nexentastor
+- NFS
+- VMware
+meta:
+  _edit_last: '11'
+  fb_social_plugin_settings_box_like: default
+  fb_social_plugin_settings_box_subscribe: default
+  fb_social_plugin_settings_box_comments: default
+  _jd_tweet_this: 'yes'
+  _jd_twitter: ''
+  _wp_jd_clig: ''
+  _wp_jd_bitly: ''
+  _wp_jd_wp: http://wp.me/p2C5rM-F
+  _wp_jd_yourls: ''
+  _wp_jd_url: ''
+  _wp_jd_target: http://wp.me/p2C5rM-F
+  _jd_wp_twitter: 'a:4:{i:0;s:86:"Post Edited: Nexentastor/ESXi5/3750G/LACP/VDS/NFS/iSCSI
+    - Part 1 http://wp.me/p2C5rM-F";i:1;s:86:"Post Edited: Nexentastor/ESXi5/3750G/LACP/VDS/NFS/iSCSI
+    - Part 1 http://wp.me/p2C5rM-F";i:2;s:86:"Post Edited: Nexentastor/ESXi5/3750G/LACP/VDS/NFS/iSCSI
+    - Part 1 http://wp.me/p2C5rM-F";i:3;s:118:"@elretardoland Post Edited: Nexentastor/ESXi5/3750G/LACP/VDS/NFS/iSCSI
+    - Part 1 http://wp.me/p2C5rM-F #VMware #VMworld";}'
+  _jd_post_meta_fixed: 'true'
+  _yoast_wpseo_linkdex: '64'
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  snapFB: s:147:"a:1:{i:0;a:4:{s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:4:"doFB";i:0;}}";
+  snapLI: s:156:"a:1:{i:0;a:4:{s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:4:"doLI";i:0;s:11:"SNAPformatT";s:6:"&nbsp;";}}";
+  snapSU: s:96:"a:1:{i:0;a:3:{s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:4:"doSU";i:0;}}";
+  _yoast_wpseo_focuskw: Nexenta NFS iSCSI 3750G
+  snapTW: s:221:"a:1:{i:0;a:7:{s:10:"SNAPformat";s:15:"%TITLE% - %URL%";s:8:"attchImg";s:1:"0";s:4:"doTW";i:0;s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"298549237753446400";s:5:"pDate";s:19:"2013-02-04
+    21:50:59";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1509709123'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"909";s:5:"score";s:17:"294.5528533519046";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"3826";s:5:"score";s:17:"153.8781523222181";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:2:"98";s:5:"score";s:18:"145.02767493247285";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"913";s:5:"score";s:18:"123.90228981955674";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"471";s:5:"score";s:18:"111.26582878050567";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"199";s:5:"score";s:18:"101.91752524547371";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"747";s:5:"score";s:17:"98.50241766075081";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"887";s:5:"score";s:17:"91.69298607071445";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"623";s:5:"score";s:17:"84.52409154359131";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"289";s:5:"score";s:17:"80.73326169188483";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1695";s:5:"score";s:17:"80.52078156512364";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1016";s:5:"score";s:17:"79.88741747409358";}}
+  _wp_rp_image: '3653'
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>So I have been using <a title="Nexentastor" href="http://www.nexentastor.org" target="_blank">Nexentastor</a> for almost 2 years now in my home lab. It is an amazing storage solution. I have used many others over the years (FreeNAS, OpenFiler, NASLite) and I by far like Nexentastor the best. I also use HP Lefthand P4000 iSCSI storage and fiber channel IBM SAN storage on a daily basis at work, but the ZFS filesystem is amazing. I am using a 15 drive storage array configured with about 8TB of protected usable storage. All configured in one zpool with sever mirror groups within including a hot spare. I am using <a href="http://www.supermicro.com/products/accessories/addon/AOC-USAS-L8i.cfm" target="_blank">Supermicro AOC-USAS-L8i</a> SAS controllers with SATA fan-out connectors. Each disk in each mirror group is on a separate controller. Dual-Core AMD, 16GB of RAM, mirrored syspool in hot swap trays that load from the rear using 2.5" SATA drives. Two 1GB Intel NICs configured as an aggregate utilizing LACP L2 with multiple VLANs separating NFS and iSCSI traffic.</p>
+<p>Screenshot below of zpool status..</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/nexentastor-zpool-status.png"><img class="alignnone size-medium wp-image-42" title="nexentastor zpool status" alt="" src="{{ site.baseurl }}/assets/nexentastor-zpool-status-300x234.png" width="300" height="234" /></a></p>
+<p>&nbsp;</p>
+<p>I have spent a good bit of time going through several scenarios on using this solution with vSphere 4.x and now vSphere 5.x Using different switches, port configurations, vswitches, and now using VDS. iSCSI connectivity and NFS. I have pretty much settled on NFS for my bigger VM's, but use iSCSI on some smaller vms. The reason for this is due to the VAAI issues that exist in the current version of Nexentastor (3.1.3) Read about it <a href="http://nexentastor.org/boards/1/topics/3273">here</a>....</p>
+<p>I wanted to put this post together for other's that may be trying to do the same thing that I have accomplished here which will include screenshots and settings to use on the Nexentastor NAS, Cisco 3750G switch and also the vSphere 5.x VDS configurations all in one place so you don't have to hunt all over Google.</p>
+<p><em>So let's get started.</em></p>
+<p>First thing is to create your vlans on the 3750G.</p>
+<pre>switch01#conf t
+Enter configuration commands, one per line. End with CNTL/Z.
+switch01(config)#vlan 127
+switch01(config-vlan)#name NFS_1
+switch01(config-vlan)#exit
+switch01(config)#vlan 128
+switch01(config-vlan)#name NFS_2
+switch01(config-vlan)#exit
+switch01(config)#vlan 129
+switch01(config-vlan)#name iSCSI_1
+switch01(config-vlan)#exit
+switch01(config)#vlan 130
+switch01(config-vlan)#name iSCSI_2
+switch01(config-vlan)#exit
+switch01(config)#exit
+switch01#sh vlan</pre>
+<p>VLAN Name Status Ports<br />
+---- -------------------------------- --------- -------------------------------<br />
+127 NFS_1 active<br />
+128 NFS_2 active<br />
+129 iSCSI_1 active<br />
+130 iSCSI_2 active<br />
+switch01#</p>
+<p>&nbsp;</p>
+<p>configure your ports on your 3750G for LACP.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/Port-Channel-3750.png"><img class="alignnone size-medium wp-image-44" title="Port-Channel (3750)" alt="" src="{{ site.baseurl }}/assets/Port-Channel-3750-300x71.png" width="300" height="71" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/LACP-Ports-added-to-port-channel.png"><img class="alignnone size-medium wp-image-45" title="LACP-Ports added to port-channel" alt="" src="{{ site.baseurl }}/assets/LACP-Ports-added-to-port-channel-300x176.png" width="300" height="176" /></a></p>
+<p>Verify that the etherchannel protocol is LACP and using L2. Bold items below...</p>
+<pre>switch01#sh etherchannel 2 detail</pre>
+<p><strong>Group state = L2</strong><br />
+Ports: 2 Maxports = 16<br />
+Port-channels: 1 Max Port-channels = 16<br />
+<strong>Protocol: LACP</strong><br />
+Ports in the group:<br />
+-------------------<br />
+Port: Gi1/0/5<br />
+------------</p>
+<p>Port state = Up Mstr Assoc In-Bndl<br />
+Channel group = 2 Mode = Active Gcchange = -<br />
+Port-channel = Po2 GC = - Pseudo port-channel = Po2<br />
+Port index = 0 Load = 0x00 Protocol = LACP</p>
+<p>Flags: S - Device is sending Slow LACPDUs F - Device is sending fast LACPDUs.<br />
+A - Device is in active mode. P - Device is in passive mode.</p>
+<p>Local information:<br />
+LACP port Admin Oper Port Port<br />
+Port Flags State Priority Key Key Number State<br />
+Gi1/0/5 SA bndl 32768 0x2 0x2 0x5 0x3D</p>
+<p>Partner's information:<br />
+--More--  <br />
+LACP port Oper Port Port<br />
+Port Flags Priority Dev ID Age Key Number State<br />
+Gi1/0/5 FA 4096 001b.2198.4294 23s 0x1 0x1 0x3F</p>
+<p>Age of the port in the current state: 02d:04h:11m:18s</p>
+<p>Port: Gi1/0/6<br />
+------------</p>
+<p>Port state = Up Mstr Assoc In-Bndl<br />
+Channel group = 2 Mode = Active Gcchange = -<br />
+Port-channel = Po2 GC = - Pseudo port-channel = Po2<br />
+Port index = 0 Load = 0x00 Protocol = LACP</p>
+<p>Flags: S - Device is sending Slow LACPDUs F - Device is sending fast LACPDUs.<br />
+A - Device is in active mode. P - Device is in passive mode.</p>
+<p>Local information:<br />
+LACP port Admin Oper Port Port<br />
+Port Flags State Priority Key Key Number State<br />
+Gi1/0/6 SA bndl 32768 0x2 0x2 0x6 0x3D</p>
+<p>--More--  Partner's information:</p>
+<p>LACP port Oper Port Port<br />
+Port Flags Priority Dev ID Age Key Number State<br />
+Gi1/0/6 FA 4096 001b.2198.4294 23s 0x1 0x2 0x3F</p>
+<p>Age of the port in the current state: 02d:04h:10m:47s</p>
+<p>Port-channels in the group:<br />
+---------------------------</p>
+<p>Port-channel: Po2 (Primary Aggregator)</p>
+<p>------------</p>
+<p>Age of the Port-channel = 02d:04h:59m:33s<br />
+Logical slot/port = 10/2 Number of ports = 2<br />
+HotStandBy port = null<br />
+Port state = Port-channel Ag-Inuse<br />
+<strong>Protocol = LACP</strong></p>
+<p>Ports in the Port-channel:</p>
+<p>--More--  Index Load Port EC state No of bits<br />
+------+------+------+------------------+-----------<br />
+0 00 Gi1/0/5 Active 0<br />
+0 00 Gi1/0/6 Active 0</p>
+<p>Time since last port bundled: 02d:04h:10m:48s Gi1/0/6</p>
+<p>switch01#</p>
+<p>Now on your Nexentastor NAS you have to create your aggregate of ports and enable LACP and then change from default L3,L4 (Default) load-balancing to L2,L3.</p>
+<p>ssh to nexentastor and login to the NMC.</p>
+<pre>nmc@nexentastor2:/$ setup network aggregation create</pre>
+<p>Links to aggregate : e1000g0, e1000g2<br />
+LACP mode : passive<br />
+Optional link name :<br />
+LINK POLICY ADDRPOLICY LACPACTIVITY LACPTIMER FLAGS<br />
+aggr1 L3,L4 auto passive short -----</p>
+<p>Now you need to gain access to the real command line.</p>
+<pre>nmc@nexentastor2:/$ option expert_mode = 1</pre>
+<pre>nmc@nexentastor2:/$ !bash</pre>
+<p>You are about to enter the Unix ("raw") shell and execute low-level Unix command(s). Warning: using low-level Unix commands is not recommended! Execute? Yes</p>
+<pre>root@nexentastor2:/volumes# dladm modify-aggr -P L2,L3 aggr1</pre>
+<p>Now verify that you have LACP enabled with L2,L3</p>
+<pre>root@nexentastor2:/volumes# dladm show-aggr</pre>
+<p>LINK POLICY ADDRPOLICY LACPACTIVITY LACPTIMER FLAGS<br />
+aggr1 L2,L3 auto passive short -----<br />
+root@nexentastor:/volumes#</p>
+<p>Now configure you aggregate with additional vlans on top of your aggregate for each of the vlans that were created on the 3750G (127,128,129 and 130) This can be done via nmc or nmv. We will be separating these out for current use and later use, but we can use the different vlans for MPIO with iSCSI, and because you cannot use MPIO with NFS we can create NFS exports on different subnets to be used as VMware datastores mounted on different subnets which will allow us to use different uplinks therefore creating our own MPIO functionality.</p>
+<p>Assign an IP to each vlan as you create them.</p>
+<p>vlan 127 - 172.16.127.50 (NFS_1)</p>
+<p>vlan 128 - 172.16.128.50 (NFS_2)</p>
+<p>vlan 129 - 172.16.129.50 (iSCSI_1)</p>
+<p>vlan 130 - 172.16.130.50 (iSCSI_2)</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/Nexentastor-Network.png" target="_blank"><img class="alignnone size-medium wp-image-49" title="Nexentastor - Network" alt="" src="{{ site.baseurl }}/assets/Nexentastor-Network-300x41.png" width="300" height="41" /></a></p>
+<p>Now connect to your vCenter Server and configure your VDS (vSphere Distributed Switch). You cannot do VDS without vCenter.</p>
+<p>The assumption here is that you have already configured and are using VDS in your vSphere environment. If you are not then you will need to configure this.</p>
+<p>Below is a view of what your VDS deployment may look like.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/VDS-Switches.png" target="_blank"><img class="alignnone size-medium wp-image-58" title="VDS - Switches" alt="" src="{{ site.baseurl }}/assets/VDS-Switches-300x211.png" width="300" height="211" /></a></p>
+<p>&nbsp;</p>
+<p>Let's configure the iSCSI ports first. There are two ways we can do the iSCSI ports. The first way is on a single vlan for both the storage and the vmkernel ports for each ESXi host. The second way is to use two different vlans for the storage and the same for each ESXi host, which is what we are going to do. This is why we created a total of four vlans earlier in this post. Two for NFS and two for iSCSI.</p>
+<p>Click create a new port group</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/VDS-Switches.png"><img class="alignnone size-medium wp-image-58" title="VDS - Switches" alt="" src="{{ site.baseurl }}/assets/VDS-Switches-300x211.png" width="300" height="211" /></a></p>
+<p>Name it whatever you want and change the VLAN type to VLAN and enter 129 for the VLAN ID, click next and then finish.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/Create_Distributed_Port_Group.png"><img class="size-medium wp-image-62 alignnone" title="Create_Distributed_Port_Group" alt="" src="{{ site.baseurl }}/assets/Create_Distributed_Port_Group-300x250.png" width="300" height="250" /></a></p>
+<p>Now we need to configure the iSCSI port group that we just created. Right click on the port group (dvPortGroup-iSCSI_1) and select edit settings. Click on Teaming and Failover. We need to change the Active Uplinks to only be one of your dvUplinks, and move the rest of the Uplinks to the Unused Uplinks section. This will create the iSCSI Port binding rule later on in the configuration of the iSCSI software storage adapter.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/VDS-iSCSI_1-Port-Group-Teaming-and-Failover1.png"><img class="alignnone size-medium wp-image-108" title="VDS - iSCSI_1-Port-Group - Teaming and Failover" alt="" src="{{ site.baseurl }}/assets/VDS-iSCSI_1-Port-Group-Teaming-and-Failover1-300x223.png" width="300" height="223" /></a></p>
+<p>Now do the same thing as above creating the dvportgroup but change the vlan to 130 and change the dvuplink teaming to only use dvuplink4 instead of dvuplink3.</p>
+<p>Now we have to create the vmkernel ports to use for our iSCSI VDS Ports.</p>
+<p>Go to the configuration tab on your host and select networking, vSphere distributed switch and click Manage Virtual Adapters.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/Create_Distributed_Switch_VMK-Ports_iSCSI.png"><img class="alignnone size-medium wp-image-126" title="Create_Distributed_Switch_VMK-Ports_iSCSI" alt="" src="{{ site.baseurl }}/assets/Create_Distributed_Switch_VMK-Ports_iSCSI-300x149.png" width="300" height="149" /></a></p>
+<p>Click add, new virtual adapter, next, vmkernel</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/Create_Distributed_Switch_VMK-Ports_iSCSI-add.png"><img class="alignnone size-medium wp-image-128" title="Create_Distributed_Switch_VMK-Ports_iSCSI-add" alt="" src="{{ site.baseurl }}/assets/Create_Distributed_Switch_VMK-Ports_iSCSI-add-300x175.png" width="300" height="175" /></a></p>
+<p>Select port group dvPortGroup-iSCSI_1, next</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/Create_Distributed_Switch_VMK-Ports_iSCSI-select-Port-Group-.png"><img class="alignnone size-medium wp-image-127" title="Create_Distributed_Switch_VMK-Ports_iSCSI-select-Port-Group" alt="" src="{{ site.baseurl }}/assets/Create_Distributed_Switch_VMK-Ports_iSCSI-select-Port-Group--300x223.png" width="300" height="223" /></a></p>
+<p>Now assign an IP address, remember we used vlan129 for iSCSI_1 and vlan130 for iSCSI_2. Once you have assigned the IP address click next and finish. Now you need to do the same for dvPortGroup-iSCSI_2 and use an ip on vlan130. ex. 172.16.130.30 and follow the same process as creating the vmkernel port for iSCSI_1. You will need to do this on each of your hosts if you have more than one.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/Create_Distributed_Switch_VMK-Ports_iSCSI-Assign_IP-.png"><img class="alignnone size-medium wp-image-129" title="Create_Distributed_Switch_VMK-Ports_iSCSI-Assign_IP" alt="" src="{{ site.baseurl }}/assets/Create_Distributed_Switch_VMK-Ports_iSCSI-Assign_IP--300x221.png" width="300" height="221" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Below is a screenshot of the switch ports being graphed by cacti with this iSCSI setup. You can see how the inbound and outbound traffic is being spread between the two ports.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/07/Nexentastor-LACP-VDS-iSCSI-Cacti-graph.png"><img class="alignnone size-medium wp-image-124" title="Nexentastor LACP - VDS - iSCSI - Cacti graph" alt="" src="{{ site.baseurl }}/assets/Nexentastor-LACP-VDS-iSCSI-Cacti-graph-300x283.png" width="300" height="283" /></a></p>
+<p>&nbsp;</p>
+<p>That's it for now.....Part 2 is <a title="http://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2" href="http://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2">here</a>.</p>
+<p>&nbsp;</p>

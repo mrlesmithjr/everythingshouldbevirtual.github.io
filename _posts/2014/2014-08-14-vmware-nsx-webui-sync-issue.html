@@ -1,0 +1,48 @@
+---
+layout: post
+title: VMware NSX WebUI Sync Issue
+date: 2014-08-14 10:38:57.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- NSX
+- VMware
+- vSphere 5.5
+tags:
+- nsx
+- VMware NSX
+- Vsphere
+meta:
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"3BUppr";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/3BUppr/comments";s:5:"pDate";s:19:"2014-08-14
+    14:39:12";}}";
+  snapTW: 's:318:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:62:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vsphere #vmwarensx";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"499928231219564544";s:5:"pDate";s:19:"2014-08-14
+    14:39:13";}}";'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"573c79d864b2afb563906dbf6dba5e36";s:5:"pDate";s:19:"2014-08-14
+    14:38:59";}}";
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:274:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _yoast_wpseo_focuskw: VMware NSX
+  _s2mail: 'yes'
+  _yoast_wpseo_linkdex: '67'
+  snap_isAutoPosted: '1'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  _edit_last: '11'
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_expiration: '1510384492'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"3365";s:5:"score";s:18:"121.72515008894567";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"3341";s:5:"score";s:17:"78.28709587040882";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"3073";s:5:"score";s:17:"73.76752442991506";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"2156";s:5:"score";s:17:"46.64721268043432";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"2233";s:5:"score";s:17:"45.02723025015642";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"4186";s:5:"score";s:17:"44.43603655013196";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"3114";s:5:"score";s:18:"42.462185434160716";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1581";s:5:"score";s:17:"39.65403400832268";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1815";s:5:"score";s:17:"37.74032647394125";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1695";s:5:"score";s:17:"36.47812428549314";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"765";s:5:"score";s:17:"36.47812428549314";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1842";s:5:"score";s:17:"35.41567026774191";}}
+  dsq_thread_id: '3358593528'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>So I recently had an issue when trying to create some new tenant networks and had a very strange issue. When creating the Logical Switches within NSX I was receiving a timeout error stating that the they had not been created. However when looking at the thick client I could clearly see the new Logical Switches in the inventory. What is up with that? Anyways I opened a support ticket and we started going through everything trying to figure out what the issue was. Not really coming up with much as we went through anything. So the engineer was collecting tech support logs and screenshots I happened to mention to him that I had upgraded vCenter Server to 5.5 U1c last week and that I was also using vCenter Heartbeat. He thought about it a bit and we dove into NSX manager and stumbled upon the view which shows the last successful inventory sync between NSX Manager and vCenter. Sure enough there it was....It has not successfully synced up in almost a week...Right before I upgraded vCenter Server to the latest version. So we then rebooted the NSX Manager to see if it would sync up and sure enough it did and all was working again. So if you find yourself in this scenario make sure to check within NSX Manager to validate that synchronizations are occurring successfully.</p>
+<p>Enjoy!</p>

@@ -1,0 +1,142 @@
+---
+layout: post
+title: Vagrant - Adding a second hard drive
+date: 2016-02-17 22:11:24.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Vagrant
+tags:
+- vagrant
+meta:
+  _s2mail: 'yes'
+  _yoast_wpseo_focuskw_text_input: Vagrant - Adding a second hard drive
+  _yoast_wpseo_focuskw: Vagrant - Adding a second hard drive
+  snapEdIT: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"1c9a236e95efa01a5e4ec15ac9c14b59";s:5:"pDate";s:19:"2016-02-18
+    03:11:25";}}";
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  _yoast_wpseo_linkdex: '68'
+  snap_isAutoPosted: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:271:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1511356887'
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"5734";s:5:"score";s:17:"82.67809517650815";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"5777";s:5:"score";s:17:"81.68011284491305";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"4902";s:5:"score";s:17:"57.91887639750077";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4879";s:5:"score";s:17:"54.42936954323158";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4824";s:5:"score";s:18:"53.545704038686495";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"6225";s:5:"score";s:18:"50.668743810086085";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"4915";s:5:"score";s:18:"50.668743810086085";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"4886";s:5:"score";s:18:"50.668743810086085";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"6033";s:5:"score";s:18:"47.363619131969855";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4944";s:5:"score";s:18:"47.363619131969855";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"4803";s:5:"score";s:18:"47.363619131969855";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"4962";s:5:"score";s:18:"46.365636800374745";}}
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"1bG6rN";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/1bG6rN/comments";s:5:"pDate";s:19:"2016-02-18
+    03:11:33";}}";
+  snapTW: 's:298:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"700155667441516544";s:5:"pDate";s:19:"2016-02-18
+    03:11:34";}}";'
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<blockquote><strong>Vagrant - Adding a second hard drive</strong></p></blockquote>
+<p>&nbsp;</p>
+<hr />
+<p>I was just working on some Vagrant lab stuff and had a need to spin up a Vagrant node with more than one hard drive. So I turned to google and did some searching and finally came up with the pieces of the Vagrantfile that needed to be added to accomplish this. So more as a reference for myself and maybe someone else may have a need I am showing an example Vagrantfile which does just this.</p>
+<p>In the example below I have made the relevant configurations required <strong>bold</strong> text.</p>
+<pre># -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+<strong>disk = './secondDisk.vdi'</strong>
+Vagrant.configure(2) do |config|
+  config.vm.define "iscsitarget" do |iscsitarget|
+    iscsitarget.vm.box = "ubuntu/trusty64"
+    iscsitarget.vm.hostname = "iscsitarget"
+
+    iscsitarget.vm.network :private_network, ip: "192.168.202.201"
+
+    iscsitarget.vm.provider "virtualbox" do |vb|
+      <strong>unless File.exist?(disk)</strong>
+        <strong>vb.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]</strong>
+      <strong>end</strong>
+      vb.memory = "1024"
+      <strong>vb.customize ['storageattach', :id,  '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]</strong>
+    end
+  end
+  config.vm.provision :shell, path: "provision.sh", keep_color: "true"
+end
+</pre>
+<p>So what we are doing in the above example is:<br />
+Defining the variable disk= to the desired filename for the second hard drive.<br />
+Defining the new hard drive size to be created if it does not already exist. 20 * 1024 = 20G<br />
+And finally defining the controller and port to attach this new hard drive to. The SATAController is what is used for my Virtualbox instance running on OSX. This may be different depending on your setup. So it might be just SATA or something else in your case.</p>
+<p>And if I spin my node up and do a quick check it shows the new hard drive as being attached and available for use.</p>
+<pre>vagrant@iscsitarget:~$ sudo fdisk -l
+
+Disk /dev/sda: 42.9 GB, 42949672960 bytes
+4 heads, 32 sectors/track, 655360 cylinders, total 83886080 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x000789a2
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048    83886079    41942016   83  Linux
+
+<strong>Disk /dev/sdb: 21.5 GB, 21474836480 bytes</strong>
+255 heads, 63 sectors/track, 2610 cylinders, total 41943040 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x00000000
+
+Disk /dev/sdb doesn't contain a valid partition table
+</pre>
+<p>So there you have it and hope this may just help someone else too.</p>
+<p>And if you want to add more than two hard-drives to your Vagrant build. See example below:</p>
+<pre># -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure(2) do |config|
+  config.vm.define "zfs" do |zfs|
+#    zfs.vm.box = "mrlesmithjr/jessie64"
+    zfs.vm.box = "mrlesmithjr/trusty64"
+    zfs.vm.hostname = "zfs"
+
+    zfs.vm.network :private_network, ip: "192.168.202.201"
+
+    zfs.vm.provider "virtualbox" do |vb|
+      unless File.exist?('./secondDisk.vdi')
+        vb.customize ['createhd', '--filename', './secondDisk.vdi', '--variant', 'Fixed', '--size', 10 * 1024]
+      end
+      unless File.exist?('./thirdDisk.vdi')
+        vb.customize ['createhd', '--filename', './thirdDisk.vdi', '--variant', 'Fixed', '--size', 10 * 1024]
+      end
+      vb.memory = "1024"
+      vb.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', './secondDisk.vdi']
+      vb.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', './thirdDisk.vdi']
+    end
+    zfs.vm.provision :shell, path: "provision.sh", keep_color: "true"
+  end
+  config.vm.define "client" do |client|
+#    client.vm.box = "mrlesmithjr/jessie64"
+    client.vm.box = "mrlesmithjr/trusty64"
+    client.vm.hostname = "client"
+
+    client.vm.network :private_network, ip: "192.168.202.202"
+    client.vm.provision :shell, inline: "sudo apt-get update &amp;&amp; sudo apt-get -y install open-iscsi"
+  end
+end
+</pre>
+<p>Enjoy!</p>

@@ -1,0 +1,55 @@
+---
+layout: post
+title: Homebrew NAS Performance
+date: 
+type: post
+published: false
+status: draft
+categories: []
+tags: []
+meta:
+  _edit_last: '11'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapDL: s:102:"a:1:{i:0;a:3:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";}}";
+  snapFB: s:253:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snapLI: s:247:"a:1:{i:0;a:8:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snapSU: s:119:"a:1:{i:0;a:4:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";}}";
+  snapTW: 's:172:"a:1:{i:0;a:5:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";}}";'
+  _s2mail: 'yes'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<h1 style="text-align: center;">Homebrew NAS Performance</h1>
+<p style="text-align: left;">A week or so ago I built my <a title="Homebrew NAS for vSphere" href="http://everythingshouldbevirtual.com/homebrew-nas-vsphere">hombrew NAS</a> (2 of them). And overall it has been working extremely well. I have had each of them lock up on me (one of them 3 times and the one just once). I have this narrowed down to a pure memory starvation (ZFS) and they both lock up and are completely non-responsive and absolutely zero information in the logs to figure out what actually happened. After doing a few memory adjustments which are in the original post I still wasn't getting where I needed to be. However I came across this nice little script that runs under nohup and continually monitors available memory and adjust ZFS primarycache and ARC settings on the fly. What a great little script it has been. I will share this script below but I need to make sure to give out props to the creator of this script for sure. So with all of this being said I will begin sharing some testing results that you can clearly see where the script kicked in to keep the system from memory starvation. But overall the performance results have been great IMHO. The ZFS stats and performance stats are provided my logstash (I will be sharing these setups in a later post).</p>
+<h4 style="text-align: center;">Test 1 (iSCSI - Backed with 14-2TB SATA drives in 7 different ZMIrror sets in the ZPOOL and 1 SSD for L2ARC and 1 SSD for ZIL)</h4>
+<p>I ran a series of tests using VMware IO Analyzer trying to simulate a multitude of different workloads.</p>
+<h6>OLTP - 4k</h6>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.07.50-PM.png"><img class="alignnone size-medium wp-image-3972" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.07.50-PM-300x102.png" alt="Screen Shot 2014-12-23 at 5.07.50 PM" width="300" height="102" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.08.10-PM.png"><img class="alignnone size-medium wp-image-3973" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.08.10-PM-300x203.png" alt="Screen Shot 2014-12-23 at 5.08.10 PM" width="300" height="203" /></a></p>
+<p>OLTP - 8k</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.12.20-PM.png"><img class="alignnone size-medium wp-image-3975" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.12.20-PM-300x113.png" alt="Screen Shot 2014-12-23 at 5.12.20 PM" width="300" height="113" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.12.39-PM.png"><img class="alignnone size-medium wp-image-3974" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.12.39-PM-300x207.png" alt="Screen Shot 2014-12-23 at 5.12.39 PM" width="300" height="207" /></a></p>
+<p>SQL Server - 16k</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.14.44-PM.png"><img class="alignnone size-medium wp-image-3977" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.14.44-PM-300x112.png" alt="Screen Shot 2014-12-23 at 5.14.44 PM" width="300" height="112" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.15.04-PM.png"><img class="alignnone size-medium wp-image-3976" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.15.04-PM-300x203.png" alt="Screen Shot 2014-12-23 at 5.15.04 PM" width="300" height="203" /></a></p>
+<p>SQL Server - 64k</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.16.20-PM.png"><img class="alignnone size-medium wp-image-3979" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.16.20-PM-300x108.png" alt="Screen Shot 2014-12-23 at 5.16.20 PM" width="300" height="108" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.16.35-PM.png"><img class="alignnone size-medium wp-image-3978" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.16.35-PM-300x212.png" alt="Screen Shot 2014-12-23 at 5.16.35 PM" width="300" height="212" /></a></p>
+<p>MAX IOPS - (Read)</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.17.59-PM.png"><img class="alignnone size-medium wp-image-3981" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.17.59-PM-300x112.png" alt="Screen Shot 2014-12-23 at 5.17.59 PM" width="300" height="112" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.18.19-PM.png"><img class="alignnone size-medium wp-image-3980" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.18.19-PM-300x205.png" alt="Screen Shot 2014-12-23 at 5.18.19 PM" width="300" height="205" /></a></p>
+<p>MAX Throughput - (Read)</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.19.45-PM.png"><img class="alignnone size-medium wp-image-3983" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.19.45-PM-300x106.png" alt="Screen Shot 2014-12-23 at 5.19.45 PM" width="300" height="106" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.20.00-PM.png"><img class="alignnone size-medium wp-image-3982" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.20.00-PM-300x216.png" alt="Screen Shot 2014-12-23 at 5.20.00 PM" width="300" height="216" /></a></p>
+<p>MAX Throughput - (Write)</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.21.23-PM.png"><img class="alignnone size-medium wp-image-3985" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.21.23-PM-300x107.png" alt="Screen Shot 2014-12-23 at 5.21.23 PM" width="300" height="107" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.22.19-PM.png"><img class="alignnone size-medium wp-image-3984" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.22.19-PM-300x216.png" alt="Screen Shot 2014-12-23 at 5.22.19 PM" width="300" height="216" /></a></p>
+<p>MAX IOPS - (Write)</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.23.29-PM.png"><img class="alignnone size-medium wp-image-3987" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.23.29-PM-300x107.png" alt="Screen Shot 2014-12-23 at 5.23.29 PM" width="300" height="107" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.23.42-PM.png"><img class="alignnone size-medium wp-image-3986" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.23.42-PM-300x211.png" alt="Screen Shot 2014-12-23 at 5.23.42 PM" width="300" height="211" /></a></p>
+<p>And the ZFS Logstash graph. You can see right before 16:20 where the script kicked in and modified the amount L1ARC memory usage. It started high and then dropped to keep the NAS from starving from memory. Obviously this affects performance some but can use some more tuning. Or more memory. This system has 32GB of RAM in it.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.26.33-PM.png"><img class="alignnone size-medium wp-image-3988" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.26.33-PM-300x153.png" alt="Screen Shot 2014-12-23 at 5.26.33 PM" width="300" height="153" /></a></p>
+<p>And the actual performance graph from Logstash. Disregard the NFS stats in this graph as this was an iSCSI test and I have not created the performance collection for this yet.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-23-at-5.30.34-PM.png"><img class="alignnone size-medium wp-image-3989" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-23-at-5.30.34-PM-300x155.png" alt="Screen Shot 2014-12-23 at 5.30.34 PM" width="300" height="155" /></a></p>

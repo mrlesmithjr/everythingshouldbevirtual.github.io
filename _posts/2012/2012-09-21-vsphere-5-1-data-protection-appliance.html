@@ -1,0 +1,43 @@
+---
+layout: post
+title: vSphere 5.1 Data Protection Appliance
+date: 2012-09-21 16:19:01.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Backups
+- Virtualization
+- VMware
+- vSphere 5.1
+tags:
+- esxi
+- esxi 5.1
+- phdvirtual
+- vdp
+- veeam
+- VMware
+- Vsphere
+- vsphere 5.1
+meta:
+  _edit_last: '11'
+  fb_social_plugin_settings_box_subscribe: default
+  _jd_tweet_this: 'yes'
+  al2fb_facebook_link_id: '1329619822_3693840787830'
+  al2fb_facebook_link_time: '2012-09-21T20:19:05+00:00'
+  al2fb_facebook_link_picture: post=https://everythingshouldbevirtual.com/?al2fb_image=1
+  _wp_jd_wp: http://wp.me/p2C5rM-8q
+  _wp_jd_target: http://wp.me/p2C5rM-8q
+  _jd_wp_twitter: 'a:1:{i:0;s:93:"#ElRetardoLand New post: vSphere 5.1 Data Protection
+    Appliance http://wp.me/p2C5rM-8q #VMware";}'
+  _wp_rp_related_posts_query_result_cache_expiration: '1510773737'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"623";s:5:"score";s:17:"166.1925614790307";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"626";s:5:"score";s:17:"143.7351483897278";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"497";s:5:"score";s:18:"137.99013109885473";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"747";s:5:"score";s:17:"136.6869022615153";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"503";s:5:"score";s:17:"134.6850064207385";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"487";s:5:"score";s:18:"130.89923950350146";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"481";s:5:"score";s:18:"130.26541608156543";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"765";s:5:"score";s:18:"113.57329437303598";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1581";s:5:"score";s:18:"113.39710333904375";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1016";s:5:"score";s:18:"100.40258990258154";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1630";s:5:"score";s:17:"99.59704811377428";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1134";s:5:"score";s:17:"97.69351698156748";}}
+  _wp_rp_image: empty
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>I just installed and configured the new vSphere 5.1 VDP appliance. Very easy installation and integrates well and works very well. But of course I am now looking at the fact that I am capped at 2TB limit and I have some servers that have nearly 16TB of storage. That is a problem of course. From what I have found so far it is possible to run up to 10 VDP appliances per vCenter Server. That is great, but how can I spread the data across appliances. :) Now knowing that the builtin dedupe will help on most cases this still looks like this is the catch to possibly engage EMC to get a full blown version of <a title="http://www.emc.com/backup-and-recovery/avamar/avamar.htm" href="http://www.emc.com/backup-and-recovery/avamar/avamar.htm" target="_blank">avamar</a>. :) How nice is that. :) Maybe they will change the 2TB limit going forward? Also I do understand that this is a solution that would be useful for SMB or even a home lab. But even my home lab could outgrow that very quick. :) I am not hating here by any means. I still think this looks like a great solution which is included for us with vSphere 5.1, but it still makes <a title="http://www.veeam.com" href="http://www.veeam.com" target="_blank">Veeam</a> and <a title="http://www.phdvirtual.com/" href="http://www.phdvirtual.com/" target="_blank">PHDVirtual</a> look appealing. But hey this is our choice and this is what makes this stuff interesting. I will however still mess around with the VDP and see how well it works over time.</p>

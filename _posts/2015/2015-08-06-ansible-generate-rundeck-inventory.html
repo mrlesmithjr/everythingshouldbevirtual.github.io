@@ -1,0 +1,107 @@
+---
+layout: post
+title: Ansible - Generate Rundeck Inventory
+date: 2015-08-06 18:00:53.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Ansible
+- Automation
+tags:
+- Ansible
+- jenkins
+- rundeck
+meta:
+  _wp_rp_image: empty
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:271:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _s2mail: 'yes'
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:14:"Ansible Github";s:11:"github_user";s:11:"mrlesmithjr";s:11:"github_repo";s:7:"ansible";}
+  _yoast_wpseo_focuskw: Ansible - Generate Rundeck Inventory
+  _yoast_wpseo_metadesc: Ansible - Generate Rundeck Inventory
+  _yoast_wpseo_linkdex: '70'
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"35277579f57f4597edf113af574bc1f5";s:5:"pDate";s:19:"2015-08-06
+    22:00:54";}}";
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"76eySA";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/76eySA/comments";s:5:"pDate";s:19:"2015-08-06
+    22:01:03";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1509700634'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"7702";s:5:"score";s:17:"64.13664691959625";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"4713";s:5:"score";s:17:"61.98436805409402";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"4648";s:5:"score";s:17:"61.98436805409402";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4803";s:5:"score";s:17:"58.91370817346832";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4367";s:5:"score";s:18:"58.239603810047825";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"4386";s:5:"score";s:18:"56.568267651759726";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"4411";s:5:"score";s:18:"52.244571018696995";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"4944";s:5:"score";s:17:"51.66920687380642";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"4879";s:5:"score";s:18:"49.311896881097155";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4915";s:5:"score";s:17:"47.92560251997726";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"4431";s:5:"score";s:17:"47.92560251997726";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"6225";s:5:"score";s:17:"47.63940083259202";}}
+  snapTW: 's:336:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:80:"%TITLE%
+    - %URL% #everythingshouldbevirtual #rundeck #devops #automation #ansible";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"629411892394504193";s:5:"pDate";s:19:"2015-08-06
+    22:01:04";}}";'
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<p style="text-align: center;"><strong>Ansible - Generate Rundeck Inventory</strong></p>
+<p style="text-align: left;">I have been doing some testing with Jenkins and Rundeck along with Ansible lately. I wanted a way to number one not have to manually update resources.xml for Rundeck but my biggest desire was to have Rundeck populated with the same hosts that Ansible was managing.</p>
+<blockquote><p>vars: (external in group_vars/all/configs)</p></blockquote>
+<pre>rundeck_generate_resources_xml: true  #will rebuild resources.xml and prepare for delivery to your rundeck_server
+rundeck_resources_xml_file: resources.xml
+rundeck_resources_xml_location: /var/lib/rundeck/var
+rundeck_server: ci-pipeline
+</pre>
+<blockquote><p>Role Task: (generate_rundeck_resources.yml)</p></blockquote>
+<pre>---
+- name: identifying hosts
+  action: ping
+  register: id_hosts
+
+- name: checking for exsisting resources.xml
+  stat: path='{{ rundeck_resources_xml_location }}/{{ rundeck_resources_xml_file }}'
+  delegate_to: '{{ rundeck_server }}'
+  register: resources_xml
+  run_once: true
+
+- name: creating resources.xml
+  template: src='{{ rundeck_resources_xml_file }}.j2' dest='{{ rundeck_resources_xml_location }}/{{ rundeck_resources_xml_file }}' owner=rundeck group=rundeck mode=0755
+  delegate_to: '{{ rundeck_server }}'
+  run_once: true
+  when: not resources_xml.stat.exists
+
+- name: creating rundeck resources.xml (not rundeck_server)
+  lineinfile: dest="{{ rundeck_resources_xml_location }}/{{ rundeck_resources_xml_file }}"
+              line=""
+              insertbefore="^"
+              state=present
+  delegate_to: '{{ rundeck_server }}'
+  with_items: id_hosts.results
+  when: (inventory_hostname != rundeck_server)
+
+- name: creating rundeck resources.xml (rundeck_server)
+  lineinfile: dest="{{ rundeck_resources_xml_location }}/{{ rundeck_resources_xml_file }}"
+              line=""
+              insertbefore="^"
+              state=present
+  delegate_to: '{{ rundeck_server }}'
+  with_items: id_hosts.results
+  when: (inventory_hostname == rundeck_server)
+
+- name: cleaning up tags in resources.xml
+  shell: "sed -i -e \"s/[][]//g\" {{ rundeck_resources_xml_location }}/{{ rundeck_resources_xml_file }}"
+  delegate_to: '{{ rundeck_server }}'
+  run_once: true
+
+- name: cleaning up resources.xml
+  shell: "sed -i -e \"s/'//g\" {{ rundeck_resources_xml_location }}/{{ rundeck_resources_xml_file }}"
+  delegate_to: '{{ rundeck_server }}'
+  run_once: true
+
+- name: ensuring resources.xml is still owned by rundeck user
+  file: path="{{ rundeck_resources_xml_location }}/{{ rundeck_resources_xml_file }}" owner=rundeck group=rundeck mode=0755
+  delegate_to: '{{ rundeck_server }}'
+  run_once: true
+</pre>
+<p>Enjoy!</p>

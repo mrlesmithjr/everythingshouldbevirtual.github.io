@@ -1,0 +1,127 @@
+---
+layout: post
+title: Installing IBM XIV Utilities for vCenter 5.1
+date: 2013-06-11 19:54:46.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- IBM
+- Storage
+- vCenter
+- Virtualization
+tags: []
+meta:
+  _edit_last: '11'
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  snapFB: s:300:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_431811926917255";s:5:"pDate";s:19:"2013-06-11
+    23:54:51";}}";
+  snapSU: s:213:"a:1:{i:0;a:7:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"9pdfGf";s:5:"pDate";s:19:"2013-06-11
+    23:55:02";}}";
+  _wpas_done_all: '1'
+  snapTW: 's:264:"a:1:{i:0;a:7:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:54:"%TITLE%
+    - %URL% #everythingshouldbevirtual @ibmstorage";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"344603717879873536";s:5:"pDate";s:19:"2013-06-11
+    23:55:03";}}";'
+  snap_isAutoPosted: '1'
+  snapLI: s:187:"a:1:{i:0;a:5:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:6:"&nbsp;";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1510054676'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"289";s:5:"score";s:17:"57.49969231535297";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"545";s:5:"score";s:18:"57.476023399429096";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"168";s:5:"score";s:16:"40.3876531299722";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"2169";s:5:"score";s:18:"36.086333718838574";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1581";s:5:"score";s:17:"32.45865211186846";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"2233";s:5:"score";s:17:"32.19312149002734";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1879";s:5:"score";s:18:"31.131088528921214";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:2:"41";s:5:"score";s:18:"28.384404533376397";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"3826";s:5:"score";s:18:"28.068827791862205";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"3765";s:5:"score";s:18:"25.290000886562833";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"103";s:5:"score";s:18:"25.079279855260168";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"162";s:5:"score";s:18:"24.903472183351234";}}
+  _wp_rp_image: '3757'
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>In a previous <a title="http://everythingshouldbevirtual.com/using-ibm-xiv-and-vsphere5-you-need-to-install-the-vasa-and-management-console-for-vcenter" href="http://everythingshouldbevirtual.com/using-ibm-xiv-and-vsphere5-you-need-to-install-the-vasa-and-management-console-for-vcenter" target="_blank">post </a>I went through the installation of the IBM XIV VASA version 1.1.1 which was a windows based installation. The VASA provides a lot of good information from the XIV storage devices.</p>
+<p>Taken from the IBM guide <a title="http://pic.dhe.ibm.com/infocenter/strhosts/ic/index.jsp?topic=%2Fcom.ibm.help.strghosts.doc%2Fhsg_vasa_1.1.5.html" href="http://pic.dhe.ibm.com/infocenter/strhosts/ic/index.jsp?topic=%2Fcom.ibm.help.strghosts.doc%2Fhsg_vasa_1.1.5.html" target="_blank">here </a>this is what it provides.</p>
+<p><em>"The IBM Storage Provider is installed on an IBM Storage Integration Server (a Linux server) that monitors one or more IBM XIV storage systems. From that server, the IBM Storage Provider provides a standard interface for any connected VMware vCenter Server using VMware APIs for Storage Awareness (VASA), delivering information about storage topology, capabilities and state, as well as storage events and alerts to vCenter Server in real time.</em></p>
+<p><em>VMware administrators can view this information on the vSphere Client management station, and can configure storage-related operations accordingly."</em></p>
+<p>Version 1.1.5 of the IBM VASA does not install on Windows but rather it is a RHEL RPM install therefore I will be using a <a title="http://www.centos.org/" href="http://www.centos.org/" target="_blank">CentOS </a>6 vm for this guide.</p>
+<p>Download and install CentOS 6.4 (Latest version at the time of writing this up). A minimal install will work just fine.</p>
+<p>Once CentOS us up and running you will need to do the following from an SSH session to the server.</p>
+<pre>yum install -y libxslt</pre>
+<p>The above will install the failed dependency needed to install all of the RPM packages.</p>
+<p>Download the IBM VASA package from <a title="http://www-933.ibm.com/support/fixcentral/swg/doSelectFixes?options.selectedFixes=IBM_Storage_Provider_for_VMware_VASA_v1.1.5&amp;continue=1" href="http://www-933.ibm.com/support/fixcentral/swg/doSelectFixes?options.selectedFixes=IBM_Storage_Provider_for_VMware_VASA_v1.1.5&amp;continue=1" target="_blank">here</a>.</p>
+<p>Copy the IBM_Storage_Provider_for_VMware_VASA_1.1.5.tar.gz file over to your CentOS server and extract it.</p>
+<pre>tar zxvf IBM_Storage_Provider_for_VMware_VASA_1.1.5.tar.gz</pre>
+<p>Once extracted you will see the following files.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-15-28.png"><img class="alignnone size-medium wp-image-1726" alt="10-15-28" src="{{ site.baseurl }}/assets/10-15-28-300x143.png" width="300" height="143" /></a></p>
+<p>&nbsp;</p>
+<p>Now you are ready to install the packages. From within the folder where you extracted the files run the following:</p>
+<pre>rpm -ivh *.rpm</pre>
+<p>If you see the following errors running the above command reference the failed dependency package to install further up in this post.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-27-21.png"><img class="alignnone size-medium wp-image-1728" alt="11-27-21" src="{{ site.baseurl }}/assets/11-27-21-300x151.png" width="300" height="151" /></a></p>
+<p>&nbsp;</p>
+<p>As the packages are installed this is what you should see.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-30-40.png"><img class="alignnone size-medium wp-image-1729" alt="11-30-40" src="{{ site.baseurl }}/assets/11-30-40-300x113.png" width="300" height="113" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-31-01.png"><img class="alignnone size-medium wp-image-1730" alt="11-31-01" src="{{ site.baseurl }}/assets/11-31-01-300x165.png" width="300" height="165" /></a></p>
+<p>Now that all of the packages are installed you will need to configure the IPTables firewall to allow inbound communication with TCP/8443. This can be done as below. The first command will open tcp/8443 inbound and the second command will save the current firewall rules so they are saved between reboots. Also the 5 after INPUT  is the rule number to insert at. With a default install this should be fine as the current rule #5 should be reject.</p>
+<pre>iptables -I INPUT 5 -p tcp --dport 8443 -j ACCEPT
+
+service iptables save</pre>
+<p>Now you will need to switch over to the IBM Storage Provider user mode. First you will need to set the password for the ibmvp account.</p>
+<pre><code>[root]# passwd ibmvp
+Changing password for user ibmvp.
+New password: **********
+Retype new password: **********
+passwd: all authentication tokens updated successfully.
+[root]#</code></pre>
+<p>Now switch over to the ibmvp account.</p>
+<pre><code>[root]# su ibmvp</code></pre>
+<p>Now you need to add the username and password required to connect to your XIV storage.</p>
+<pre><code>ibmvp_storage_credentials set -u username -p ***********</code></pre>
+<p>To list all usernames added for storage credentials.</p>
+<pre><code>ibmvp_storage_credentials list
+</code></pre>
+<p>Now you need to create a username and password to access the IBM VASA server we are setting up. This is the account you will use when adding the storage provider information into vCenter. Change domain.local to whatever your domain name is for the email account.</p>
+<pre><code>ibmvp_admin_commands add_user -n vcenteradmin -e vcenteradmin@domain.local -p ********</code></pre>
+<p>To list all users added.</p>
+<pre><code>ibmvp_admin_commands list_users</code></pre>
+<p>Now we are ready to add an XIV system. Change the x.x.x.x to whatever the IP address is of your XIV management interface.</p>
+<pre><code>ibmvp_storage_array add -i x.x.x.x</code></pre>
+<p>To list all XIV systems added.</p>
+<pre><code>ibmvp_storage_array list</code></pre>
+<p>To list all volume from the XIV system.</p>
+<pre><code>ibmvp_volume list</code></pre>
+<p>Now you are ready to register the IBM VASA provider in vCenter.</p>
+<p>In the vSphere Client, go to <strong>Administration</strong> &gt; <strong>Storage Providers</strong>.</p>
+<p>Click <strong>Add</strong>.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-50-58.png"><img class="alignnone size-medium wp-image-1732" alt="11-50-58" src="{{ site.baseurl }}/assets/11-50-58-300x107.png" width="300" height="107" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-51-15.png"><img class="alignnone size-medium wp-image-1734" alt="11-51-15" src="{{ site.baseurl }}/assets/11-51-15-300x168.png" width="300" height="168" /></a></p>
+<p>&nbsp;</p>
+<p>Enter all details needed. Url is servername of VASA server. Login and password is for the account created above.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-58-15.png"><img class="alignnone size-medium wp-image-1736" alt="11-58-15" src="{{ site.baseurl }}/assets/11-58-15-300x170.png" width="300" height="170" /></a></p>
+<p>&nbsp;</p>
+<p>Click "Yes" to the message below.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/12-04-36.png"><img class="alignnone size-medium wp-image-1737" alt="12-04-36" src="{{ site.baseurl }}/assets/12-04-36-300x173.png" width="300" height="173" /></a></p>
+<p>&nbsp;</p>
+<p>All done.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/12-06-30.png"><img class="alignnone size-medium wp-image-1738" alt="12-06-30" src="{{ site.baseurl }}/assets/12-06-30-300x54.png" width="300" height="54" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Now we will install the IBM Storage Management for vCenter. This is a Windows based installation. You can install this on your vCenter Server and the plugin will be installed. This install is very straightforward so I will provide the screenshots.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-41-20.png"><img class="alignnone size-medium wp-image-1739" alt="10-41-20" src="{{ site.baseurl }}/assets/10-41-20-300x121.png" width="300" height="121" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-41-26.png"><img class="alignnone size-medium wp-image-1740" alt="10-41-26" src="{{ site.baseurl }}/assets/10-41-26-300x225.png" width="300" height="225" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-41-53.png"><img class="alignnone size-medium wp-image-1741" alt="10-41-53" src="{{ site.baseurl }}/assets/10-41-53-300x226.png" width="300" height="226" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-42-03.png"><img class="alignnone size-medium wp-image-1742" alt="10-42-03" src="{{ site.baseurl }}/assets/10-42-03-300x228.png" width="300" height="228" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-42-12.png"><img class="alignnone size-medium wp-image-1743" alt="10-42-12" src="{{ site.baseurl }}/assets/10-42-12-300x229.png" width="300" height="229" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-42-19.png"><img class="alignnone size-medium wp-image-1744" alt="10-42-19" src="{{ site.baseurl }}/assets/10-42-19-300x226.png" width="300" height="226" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-42-27.png"><img class="alignnone size-medium wp-image-1745" alt="10-42-27" src="{{ site.baseurl }}/assets/10-42-27-300x227.png" width="300" height="227" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-47-22.png"><img class="alignnone size-medium wp-image-1746" alt="10-47-22" src="{{ site.baseurl }}/assets/10-47-22-300x223.png" width="300" height="223" /></a></p>
+<p>Now you will need to provide the details to add the plugin to vCenter.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-53-10.png"><img class="alignnone size-medium wp-image-1747" alt="10-53-10" src="{{ site.baseurl }}/assets/10-53-10-300x149.png" width="300" height="149" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-53-23.png"><img class="alignnone size-medium wp-image-1748" alt="10-53-23" src="{{ site.baseurl }}/assets/10-53-23-300x148.png" width="300" height="148" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-53-34.png"><img class="alignnone size-medium wp-image-1749" alt="10-53-34" src="{{ site.baseurl }}/assets/10-53-34-300x148.png" width="300" height="148" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-55-05.png"><img class="alignnone size-medium wp-image-1750" alt="10-55-05" src="{{ site.baseurl }}/assets/10-55-05-300x148.png" width="300" height="148" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-55-14.png"><img class="alignnone size-medium wp-image-1751" alt="10-55-14" src="{{ site.baseurl }}/assets/10-55-14-300x147.png" width="300" height="147" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/10-55-46.png"><img class="alignnone size-medium wp-image-1752" alt="10-55-46" src="{{ site.baseurl }}/assets/10-55-46-300x174.png" width="300" height="174" /></a></p>
+<p>Now click "add" to setup the connection to the storage.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-00-59.png"><img class="alignnone size-medium wp-image-1754" alt="11-00-59" src="{{ site.baseurl }}/assets/11-00-59-300x126.png" width="300" height="126" /></a></p>
+<p>Select the IBM storage type from the drop down.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-01-09.png"><img class="alignnone size-medium wp-image-1755" alt="11-01-09" src="{{ site.baseurl }}/assets/11-01-09-300x226.png" width="300" height="226" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-01-17.png"><img class="alignnone size-medium wp-image-1756" alt="11-01-17" src="{{ site.baseurl }}/assets/11-01-17-300x224.png" width="300" height="224" /></a></p>
+<p>Enter IP/Hostname and provide login credentials.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-03-22.png"><img class="alignnone size-medium wp-image-1757" alt="11-03-22" src="{{ site.baseurl }}/assets/11-03-22-300x226.png" width="300" height="226" /></a></p>
+<p>Select the storage pool(s) you want to manage.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-03-50.png"><img class="alignnone size-medium wp-image-1758" alt="11-03-50" src="{{ site.baseurl }}/assets/11-03-50-300x227.png" width="300" height="227" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-03-59.png"><img class="alignnone size-medium wp-image-1759" alt="11-03-59" src="{{ site.baseurl }}/assets/11-03-59-300x225.png" width="300" height="225" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-04-33.png"><img class="alignnone size-medium wp-image-1760" alt="11-04-33" src="{{ site.baseurl }}/assets/11-04-33-300x125.png" width="300" height="125" /></a></p>
+<p>Change the multipathing rules for the storage. This will ensure that every datastore created or added to vSphere is configure for the correct SATP rule.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-05-10.png"><img class="alignnone size-medium wp-image-1761" alt="11-05-10" src="{{ site.baseurl }}/assets/11-05-10-300x258.png" width="300" height="258" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-05-28.png"><img class="alignnone size-medium wp-image-1762" alt="11-05-28" src="{{ site.baseurl }}/assets/11-05-28-300x225.png" width="300" height="225" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-05-37.png"><img class="alignnone size-medium wp-image-1763" alt="11-05-37" src="{{ site.baseurl }}/assets/11-05-37-300x227.png" width="300" height="227" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-05-48.png"><img class="alignnone size-medium wp-image-1764" alt="11-05-48" src="{{ site.baseurl }}/assets/11-05-48-300x238.png" width="300" height="238" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/06/11-06-39.png"><img class="alignnone size-medium wp-image-1765" alt="11-06-39" src="{{ site.baseurl }}/assets/11-06-39-300x151.png" width="300" height="151" /></a></p>
+<p>&nbsp;</p>
+<p>That's it. Now you can enjoy your newly configured utilities for IBM storage, XIV in my case.</p>
+<p>Enjoy!</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

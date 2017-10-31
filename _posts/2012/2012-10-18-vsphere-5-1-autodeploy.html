@@ -1,0 +1,148 @@
+---
+layout: post
+title: vSphere 5.1 AutoDeploy
+date: 2012-10-18 18:25:36.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- AutoDeploy
+- PowerCLI
+- PowerShell
+- Virtualization
+- VMware
+- vSphere 5.1
+tags:
+- AutoDeploy
+- esxi 5.1
+- vcenter 5.1
+- virtualization
+- VMware
+- Vsphere
+- vsphere 5.1
+- vsphere5
+meta:
+  snapFB: s:147:"a:1:{i:0;a:4:{s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:4:"doFB";i:0;}}";
+  _edit_last: '11'
+  fb_social_plugin_settings_box_subscribe: default
+  fb_social_plugin_settings_box_recommendations_bar: default
+  _s2mail: 'yes'
+  _jd_tweet_this: 'yes'
+  al2fb_facebook_link_id: '1329619822_3804076103644'
+  al2fb_facebook_link_time: '2012-10-18T22:25:40+00:00'
+  al2fb_facebook_link_picture: post=http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/15-54-28-300x169.png
+  _wp_jd_wp: http://wp.me/p2C5rM-a6
+  _wp_jd_target: http://wp.me/p2C5rM-a6
+  _jd_wp_twitter: 'a:1:{i:0;s:78:"#ElRetardoLand New post: vSphere 5.1 AutoDeploy
+    http://wp.me/p2C5rM-a6 #VMware";}'
+  snapEdIT: '1'
+  snapLI: s:124:"a:1:{i:0;a:3:{s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:4:"doLI";i:0;}}";
+  snapSU: s:96:"a:1:{i:0;a:3:{s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:4:"doSU";i:0;}}";
+  snapTW: s:95:"a:1:{i:0;a:3:{s:10:"SNAPformat";s:15:"%TITLE% - %URL%";s:8:"attchImg";s:1:"0";s:4:"doTW";i:0;}}";
+  _yoast_wpseo_title: vSphere 5.1 AutoDeploy - Everything Should Be Virtual
+  _wp_rp_related_posts_query_result_cache_expiration: '1509630975'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"623";s:5:"score";s:17:"250.7132883653386";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"497";s:5:"score";s:18:"160.33222154949715";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"747";s:5:"score";s:17:"152.8357158344069";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"487";s:5:"score";s:18:"149.92487380084592";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"481";s:5:"score";s:17:"145.3061900496204";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"522";s:5:"score";s:17:"143.7351483897278";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"503";s:5:"score";s:18:"117.64369373399066";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"939";s:5:"score";s:18:"112.12630586533706";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"765";s:5:"score";s:18:"107.52028650856202";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1630";s:5:"score";s:17:"84.51739393303691";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"2280";s:5:"score";s:17:"83.93218248055994";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1154";s:5:"score";s:17:"82.50126951599127";}}
+  _wp_rp_image: '3657'
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>In this guide we will be installing, configuring and using the AutoDeploy feature of vSphere 5.1. This is a great feature to use when you need to deploy many hosts and do not want to configure a local disk to actually load ESXi on.</p>
+<p>So let's get started...</p>
+<p>Install vCenter Server 5.1 (Reference for doing this install is <a title="http://everythingshouldbevirtual.com/2012/09/12/vcenter-5-1-quick-installation-screenshots/" href="http://everythingshouldbevirtual.com/vcenter-5-1-quick-installation-screenshots" target="_blank">here</a>.)</p>
+<p>Download and install PowerCLI 5.1 from <a title="http://communities.vmware.com/community/vmtn/server/vsphere/automationtools/powercli?view=overview" href="http://communities.vmware.com/community/vmtn/server/vsphere/automationtools/powercli?view=overview" target="_blank">here</a>.</p>
+<p>After the install completes launch the PowerCLI shortcut created on the desktop (If you are using Windows 7 you will need to right click on the shortcut and select run as administrator) and enter the following to get rid of the error on the first launch so you will be able to use the cmdlets. "Set-ExecutionPolicy RemoteSigned"</p>
+<p>Now install AutoDeploy from vCenter Server 5.1 ISO or other media that you are using.</p>
+<p>Here are some screeshots of the installation process.</p>
+<p>[nggallery id=5]</p>
+<p>Install vSphere ESXi Dump Collector. This will be used for our autodeploy hosts to send core dumps to. This will be configured within our host profile to point back to. If it is not working you will get an alert on the summary tab of your host inside viclient.</p>
+<p>Here are some screenshots of the installation.</p>
+<p>[nggallery id=7]</p>
+<p>You will now have a new icon in your viClient on the home page. It is called VMware ESXi Dump Collector.</p>
+<p>We will need to configure our hosts to use this service once we have a host profile created. The method I used is further down in this guide. More info can be found <a title="http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&amp;docType=kc&amp;docTypeID=DT_KB_1_1&amp;externalId=2002955" href="http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&amp;docType=kc&amp;docTypeID=DT_KB_1_1&amp;externalId=2002955" target="_blank">here</a>.</p>
+<p>Install VMware vSphere Syslog Collector. This will be used for our hosts to send their logs to.</p>
+<div>Use vCenter Integrated. This will add a new icon in VIclient home called Network Syslog Collector. We will be using this service to send our syslog data from our hosts.</div>
+<div></div>
+<div>Here are some screenshots of the installation.</div>
+<div>[nggallery id=8]</div>
+<p>Install the TFTP Server. I am using the one from <a title="http://www.solarwinds.com/products/freetools/free_tftp_server.aspx" href="http://www.solarwinds.com/products/freetools/free_tftp_server.aspx" target="_blank">here</a>. This is the free TFTP Server from Solarwinds.</p>
+<p>[nggallery id=9]</p>
+<p>Now launch VIclient and click home and click Auto Deploy</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/15-54-28.png"><img class="alignnone size-medium wp-image-643" title="15-54-28" alt="" src="{{ site.baseurl }}/assets/15-54-28-300x169.png" width="300" height="169" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/15-54-44.png"><img class="alignnone size-medium wp-image-644" title="15-54-44" alt="" src="{{ site.baseurl }}/assets/15-54-44-300x139.png" width="300" height="139" /></a></p>
+<p>You will now need to open IE and add *://127.0.0.1 to the trusted sites zone to allow us to download the boot zip.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/15-56-46.png"><img class="alignnone size-medium wp-image-645" title="15-56-46" alt="" src="{{ site.baseurl }}/assets/15-56-46-284x300.png" width="284" height="300" /></a></p>
+<p>Now click Download TFTP Boot Zip and save it into c:\TFTP-Root. This folder was created by installing the TFTP Server from above. Now extract the contents of the file in the root of this folder.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/15-58-37.png"><img class="alignnone size-medium wp-image-646" title="15-58-37" alt="" src="{{ site.baseurl }}/assets/15-58-37-300x115.png" width="300" height="115" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/15-59-15.png"><img class="alignnone size-medium wp-image-647" title="15-59-15" alt="" src="{{ site.baseurl }}/assets/15-59-15-300x135.png" width="300" height="135" /></a></p>
+<p>Now we need to configure the DHCP options for TFTP Boot to work. I am using MS DHCP on the Domain Controller in this lab so we will be configuring that. The options we will be configuring at #66 and #67. For Option #66 enter the IP address of your vCenter Server that is running the TFTP Server and for option #67 enter the following "undionly.kpxe.vmw-hardwired", without quotes. This information is located on your AutoDeploy screen from within the VIclient.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/16-08-33.png"><img class="alignnone size-medium wp-image-648" title="16-08-33" alt="" src="{{ site.baseurl }}/assets/16-08-33-300x101.png" width="300" height="101" /></a></p>
+<p>Download <strong>VMware-ESXi-5.1.0-799733-depot.zip</strong> from VMware's website.</p>
+<p>Create a folder c:\Depot and move the file downloaded above to here.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/16-20-13.png"><img class="alignnone size-medium wp-image-649" title="16-20-13" alt="" src="{{ site.baseurl }}/assets/16-20-13-300x117.png" width="300" height="117" /></a></p>
+<p>Now launch PowerCLI and enter <em>connect-viserver </em>.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/16-20-30.png"><img class="alignnone size-medium wp-image-650" title="16-20-30" alt="" src="{{ site.baseurl }}/assets/16-20-30-300x122.png" width="300" height="122" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/16-21-03.png"><img class="alignnone size-medium wp-image-651" title="16-21-03" alt="" src="{{ site.baseurl }}/assets/16-21-03-300x151.png" width="300" height="151" /></a></p>
+<p>Now we are going to add the depot package from above.</p>
+<p>Run this command in the PowerCLI window <em>Add-EsxSoftwareDepot c:\Depot\VMware-ESXi-5.1.0-799733-depot.zip</em></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/16-24-55.png"><img class="alignnone size-medium wp-image-652" title="16-24-55" alt="" src="{{ site.baseurl }}/assets/16-24-55-300x160.png" width="300" height="160" /></a></p>
+<p>Now run <em>Get-EsxImageProfile</em> to list the image profiles. (Still within PowerCLI)</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/16-26-44.png"><img class="alignnone size-medium wp-image-653" title="16-26-44" alt="" src="{{ site.baseurl }}/assets/16-26-44-300x151.png" width="300" height="151" /></a></p>
+<p>We will use the standard Profile which includes vmware tools in the image.</p>
+<p>Now run the following command <em>New-DeployRule –Name “FirstTimeBoot” –Item “ESXi-5.1.0-799733-standard” –Pattern “model=VMware Virtual Platform”</em></p>
+<p>This is going to create an image pattern to recognize Hosts that run in VMware Workstation, which is what my lab is using.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/16-30-25.png"><img class="alignnone size-medium wp-image-654" title="16-30-25" alt="" src="{{ site.baseurl }}/assets/16-30-25-300x157.png" width="300" height="157" /></a></p>
+<p>Once this process completes run the following command <em>Add-DeployRule -DeployRule FirstTimeBoot</em> (We will use this initial deploy rule to create our host profile)</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/16-34-28.png"><img class="alignnone size-medium wp-image-655" title="16-34-28" alt="" src="{{ site.baseurl }}/assets/16-34-28-300x148.png" width="300" height="148" /></a></p>
+<p>You are now ready to boot your ESXi Hosts via TFTP.</p>
+<p>Here is what the hosts look like when booting from AutoDeploy.</p>
+<p>[nggallery id=10]</p>
+<p>Once the hosts boot up they will automatically be added to vCenter. But we now need to create host profiles now to get applied to the new hosts.</p>
+<p>Configure your first host with all networking, storage, ntp, syslog server, dns and etc. before creating the host profile. These will be the settings that you want to be consistent across your hosts in the cluster.</p>
+<p>From the home screen in vCenter go to Host Profiles.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/18-06-55.png"><img class="alignnone size-medium wp-image-659" title="18-06-55" alt="" src="{{ site.baseurl }}/assets/18-06-55-300x134.png" width="300" height="134" /></a></p>
+<p>Click Create Profile and Select Create Profile from existing host.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/18-09-10.png"><img class="alignnone size-medium wp-image-660" title="18-09-10" alt="" src="{{ site.baseurl }}/assets/18-09-10-300x222.png" width="300" height="222" /></a></p>
+<p>Now select the host you want to create the profile from.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/18-10-39.png"><img class="alignnone size-medium wp-image-661" title="18-10-39" alt="" src="{{ site.baseurl }}/assets/18-10-39-300x224.png" width="300" height="224" /></a></p>
+<p>Enter the name for the profile. We are using "ESXiLAB" in this guide.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/18-13-08.png"><img class="alignnone size-medium wp-image-662" title="18-13-08" alt="" src="{{ site.baseurl }}/assets/18-13-08-300x222.png" width="300" height="222" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/18-13-35.png"><img class="alignnone size-medium wp-image-663" title="18-13-35" alt="" src="{{ site.baseurl }}/assets/18-13-35-300x223.png" width="300" height="223" /></a></p>
+<p>We also need to configure the host profile to send their core dumps to the dump collector.</p>
+<p>To configure using Host Profiles:</p>
+<ol>
+<li>Connect to vCenter Server using the vSphere Client.</li>
+<li>Click Home and select Host Profiles.</li>
+<li>Create or edit a host profile.</li>
+<li>Select Networking Configuration.</li>
+<li>Select Network Coredump Settings.</li>
+<li>Specify the VMkernel network interface to use for outbound traffic, such as <code>vmk0</code>.</li>
+<li>Specify the IP address and UDP port number of the remote network coredump server.</li>
+<li>Save and apply the host profile.</li>
+</ol>
+<p>Within vCenter create your datacenter and create the HA cluster and give it a name. We will be using "HA-DRS" for the cluster name.</p>
+<p>Attach host profile "ESXiLAB" profile to the "HA-DRS" cluster. Right click on the cluster, host profile and attach.</p>
+<p>Now go back to the Host Profile screen (Home, Host Profiles)</p>
+<p>Select the "ESXiLAB" profile and click Attach Host/Cluster</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/18-21-22.png"><img class="alignnone size-medium wp-image-664" title="18-21-22" alt="" src="{{ site.baseurl }}/assets/18-21-22-300x189.png" width="300" height="189" /></a></p>
+<p>Now select the "HA-DRS" cluster and click attach.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/18-22-15.png"><img class="alignnone size-medium wp-image-665" title="18-22-15" alt="" src="{{ site.baseurl }}/assets/18-22-15-300x189.png" width="300" height="189" /></a></p>
+<p>Click OK and we are done with the Host Profile.</p>
+<p>Now we are going to create an ESX software depot for our image. Read <a title="http://pubs.vmware.com/vsphere-50/index.jsp?topic=%2Fcom.vmware.powercli.cmdletref.doc_50%2FAdd-EsxSoftwareDepot.html" href="http://pubs.vmware.com/vsphere-50/index.jsp?topic=%2Fcom.vmware.powercli.cmdletref.doc_50%2FAdd-EsxSoftwareDepot.html" target="_blank">here</a> for more info on this. We will also be adding the host profile to get applied to the hosts as they are added to the cluster.</p>
+<p><em>Add-EsxSoftwareDepot http://192.168.201.5:80/vSphere-HA-depot</em></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/10/19-54-50.png"><img class="alignnone size-medium wp-image-656" title="19-54-50" alt="" src="{{ site.baseurl }}/assets/19-54-50-300x151.png" width="300" height="151" /></a></p>
+<p><em>New-EsxImageProfile -CloneProfile ESXi-5.1.0-799733-standard -name “ESXiHA”</em></p>
+<p><em>Add-EsxSoftwarePackage -ImageProfile “ESXiHA” -SoftwarePackage vmware-fdm</em> (This is going to attach the host profile that we created called "ESXiHA".</p>
+<p>Now we need to remove the first rule that we created to begin creating the host template.</p>
+<p>Run this command within PowerCLI <em>Remove-DeployRule -DeployRule FirstTimeBoot -delete</em></p>
+<p><em>New-DeployRule –Name “GoldBootRule” –Item “ESXiHA”, ESXiLAB, HA-DRS –Pattern “model=VMware Virtual Platform”</em><br />
+<em>Add-DeployRule -DeployRule “GoldBootRule”</em></p>
+<p>We are now ready to boot our ESXi hosts again and they will boot via AutoDeploy, get added to the "HA-DRS" cluster and have the "ESXiLAB" host profile applied to them.</p>
+<p>&nbsp;</p>

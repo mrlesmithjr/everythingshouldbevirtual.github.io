@@ -1,0 +1,67 @@
+---
+layout: post
+title: Solarwinds Web UI Issues with Google Chrome
+date: 2014-03-24 07:00:45.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Monitoring
+- Solarwinds
+tags:
+- solarwinds
+meta:
+  snapTW: 's:295:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"448055294145228800";s:5:"pDate";s:19:"2014-03-24
+    11:14:41";}}";'
+  snap_isAutoPosted: '1'
+  _yoast_wpseo_linkdex: '64'
+  _yoast_wpseo_focuskw: Solarwinds Web
+  _s2mail: 'yes'
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"7FzUdh";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/7FzUdh/comments";s:5:"pDate";s:19:"2014-03-24
+    11:14:40";}}";
+  snapLI: s:268:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";b:0;s:11:"isPrePosted";s:1:"1";}}";
+  snapFB: s:387:"a:1:{i:0;a:12:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";b:0;s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_558501667581613";s:5:"pDate";s:19:"2014-03-24
+    11:14:32";}}";
+  snapEdIT: '1'
+  snap_MYURL: ''
+  _edit_last: '11'
+  _wp_rp_image: '3433'
+  _wp_rp_related_posts_query_result_cache_expiration: '1510506486'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"2670";s:5:"score";s:17:"65.15708132780526";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"2458";s:5:"score";s:17:"65.15708132780526";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"2340";s:5:"score";s:17:"65.15708132780526";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1695";s:5:"score";s:18:"28.316683609121682";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"2329";s:5:"score";s:18:"28.235039620133122";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"3793";s:5:"score";s:18:"22.245738404792597";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"3302";s:5:"score";s:17:"22.01908103417859";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"2646";s:5:"score";s:18:"20.832953590003832";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1009";s:5:"score";s:18:"20.456111769257085";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1158";s:5:"score";s:17:"19.44250501352127";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1483";s:5:"score";s:17:"18.83425133681144";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"516";s:5:"score";s:17:"18.08486443792862";}}
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>So in the past few days, I have witnessed on two different environments when trying to connect to certain components of Solarwinds using Google Chrome you will see the following.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/03/19-19-04.png"><img class="alignnone size-medium wp-image-2541" alt="19-19-04" src="{{ site.baseurl }}/assets/19-19-04-300x179.png" width="300" height="179" /></a></p>
+<p>Obviously this is a pain because the page will not display. So after opening the same page using Firefox, you will see the following.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/03/19-29-34.png"><img class="alignnone size-medium wp-image-2545" alt="19-29-34" src="{{ site.baseurl }}/assets/19-29-34-300x141.png" width="300" height="141" /></a></p>
+<p>So it appears that the issue is with the SSL cert connecting back into these components. In this case I am trying to view Virtualization Manager maps. So in order to get around this we need to find the IP address of the Virtualization Manager appliance so we can accept the untrusted SSL certificate.</p>
+<p>In order to find the Virtualization Manager IP address you can go the <em>settings</em> link at the top of your Solarwinds Web UI page.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/03/19-35-23.png"><img class="alignnone size-medium wp-image-2546" alt="19-35-23" src="{{ site.baseurl }}/assets/19-35-23-300x12.png" width="300" height="12" /></a></p>
+<p>Now click on <em>Virtualization settings</em>.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/03/19-33-35.png"><img class="alignnone size-medium wp-image-2549" alt="19-33-35" src="{{ site.baseurl }}/assets/19-33-35-300x78.png" width="300" height="78" /></a></p>
+<p>Now click on <em>setup virtualization manager integration</em>.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/03/19-38-30.png"><img class="alignnone size-medium wp-image-2553" alt="19-38-30" src="{{ site.baseurl }}/assets/19-38-30-300x68.png" width="300" height="68" /></a></p>
+<p>&nbsp;</p>
+<p>The IP address for Virtualization manager will be listed as below.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/03/19-44-35.png"><img class="alignnone size-medium wp-image-2565" alt="19-44-35" src="{{ site.baseurl }}/assets/19-44-35-300x229.png" width="300" height="229" /></a></p>
+<p>&nbsp;</p>
+<p>Now go to https://virtualizationmanagerIPorFQDN and select proceed anyway.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/03/20-13-11.png"><img class="alignnone size-medium wp-image-2566" alt="20-13-11" src="{{ site.baseurl }}/assets/20-13-11-300x81.png" width="300" height="81" /></a></p>
+<p>&nbsp;</p>
+<p>You should now see the following.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/03/20-16-36.png"><img class="alignnone size-medium wp-image-2569" alt="20-16-36" src="{{ site.baseurl }}/assets/20-16-36-300x142.png" width="300" height="142" /></a></p>
+<p>&nbsp;</p>
+<p>Now head back to your Solarwinds Web UI and go to Virtualization maps (this example) and you should now be presented with a login window now instead of the very first screenshot in this post.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/03/20-18-31.png"><img class="alignnone size-medium wp-image-2573" alt="20-18-31" src="{{ site.baseurl }}/assets/20-18-31-300x142.png" width="300" height="142" /></a></p>
+<p>&nbsp;</p>
+<p>That's it...You should be good to go now.</p>
+<p>Enjoy!</p>

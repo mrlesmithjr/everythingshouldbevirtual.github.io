@@ -1,0 +1,109 @@
+---
+layout: post
+title: Vagrant - Ansible Provisioning multi-nodes
+date: 2016-02-29 17:51:55.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Ansible
+- Automation
+- Vagrant
+- Virtualization
+tags:
+- Ansible
+- vagrant
+meta:
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"4902";s:5:"score";s:18:"117.23420035074841";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"4944";s:5:"score";s:18:"112.84092732024013";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"5777";s:5:"score";s:18:"112.04893738633243";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4915";s:5:"score";s:18:"109.10040225878865";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4934";s:5:"score";s:17:"108.3974117931628";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"6225";s:5:"score";s:18:"106.17179590889947";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"4886";s:5:"score";s:18:"102.43599323843824";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"4803";s:5:"score";s:17:"100.9556483407024";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"4879";s:5:"score";s:15:"99.130868560322";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4962";s:5:"score";s:17:"94.26427262034625";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"5700";s:5:"score";s:17:"82.67809517650815";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"4619";s:5:"score";s:17:"65.68302669620607";}}
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"1Uup6i";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/1Uup6i/comments";s:5:"pDate";s:19:"2016-02-29
+    22:52:04";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1511560753'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:271:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _s2mail: 'yes'
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  _yoast_wpseo_focuskw_text_input: Vagrant - Ansible Provisioning multi-nodes
+  _yoast_wpseo_focuskw: Vagrant - Ansible Provisioning multi-nodes
+  _yoast_wpseo_linkdex: '69'
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"c0b44337ff5e097e4ae0d4f16b74555d";s:5:"pDate";s:19:"2016-02-29
+    22:51:55";}}";
+  snapTW: 's:298:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"704439017803087873";s:5:"pDate";s:19:"2016-02-29
+    22:52:04";}}";'
+  _wp_rp_image: empty
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<blockquote><strong>Vagrant - Ansible Provisioning multi-nodes</strong></p>
+<hr />
+</blockquote>
+<p>I am just throwing this out here for my own reference because I seem to always forget how to do this when spinning up multiple nodes within a Vagrant environment and then running the Ansible provisioner only once at the end of all nodes being spun up (parallel execution). :( Not sure why I always forget this but I DO!</p>
+<p>So with the above being said here is a Vagrantfile to spin up N number of nodes (5 in this case) for a Mesos/Marathon Cluster which will run the Ansible playbook (playbook.yml) after all nodes are spun up using the Vagrant Ansible provisioner.</p>
+<pre># -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure(2) do |config|
+  #Define the number of nodes to spin up
+  N = 5
+
+  #Iterate over nodes
+  (1..N).each do |node_id|
+    nid = (node_id - 1)
+
+    config.vm.define "node#{nid}" do |node|
+      node.vm.box = "mrlesmithjr/trusty64"
+      node.vm.provider "virtualbox" do |vb|
+        vb.memory = "1024"
+      end
+      node.vm.hostname = "node#{nid}"
+      node.vm.network :private_network, ip: "192.168.202.#{200 + nid}"
+      node.vm.network :forwarded_port, guest: "5050", host: "505#{nid}"
+      node.vm.network :forwarded_port, guest: "8080", host: "808#{nid}"
+
+      if node_id == N
+        node.vm.provision "ansible" do |ansible|
+          ansible.limit = "all"
+          ansible.groups = {
+            "zookeeper-nodes" =&gt; [
+              "node0",
+              "node1",
+              "node2",
+              "node3",
+              "node4"
+            ],
+            "zookeeper-master-nodes" =&gt; [
+              "node0",
+              "node1",
+              "node2"
+            ],
+            "zookeeper-slave-nodes" =&gt; [
+              "node3",
+              "node4"
+            ]
+          }
+          ansible.playbook = "playbook.yml"
+        end
+      end
+
+    end
+  end
+end
+</pre>
+<p>If you would like to view the repository on GitHub you can head over to <a href="https://github.com/mrlesmithjr/ansible-mesosphere" target="_blank">here</a> and check it out.</p>
+<p>Enjoy!</p>

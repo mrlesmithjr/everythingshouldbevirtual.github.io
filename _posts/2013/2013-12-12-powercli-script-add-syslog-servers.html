@@ -1,0 +1,74 @@
+---
+layout: post
+title: PowerCLI Script to add Syslog Servers
+date: 2013-12-12 14:06:40.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Graylog2
+- Logstash
+- Monitoring
+- PowerCLI
+- PowerShell
+- vCenter
+- VMware
+- vSphere 5.1
+- vSphere 5.5
+tags:
+- powercli
+- syslog
+meta:
+  _s2mail: 'yes'
+  snapTW: 's:295:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"411210569006739456";s:5:"pDate";s:19:"2013-12-12
+    19:06:54";}}";'
+  snap_isAutoPosted: '1'
+  _edit_last: '11'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapSU: s:259:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"9ZJhAW";s:7:"postURL";s:6:"9ZJhAW";s:5:"pDate";s:19:"2013-12-12
+    19:06:53";}}";
+  snapFB: s:274:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";b:0;s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:264:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";b:0;s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";b:0;s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";b:0;s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_expiration: '1509645179'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"3114";s:5:"score";s:17:"132.9852182332017";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"2314";s:5:"score";s:18:"102.58766534269927";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"2156";s:5:"score";s:18:"101.22877933530124";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"2329";s:5:"score";s:17:"98.47416150742913";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1815";s:5:"score";s:17:"92.36401642888424";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1494";s:5:"score";s:17:"74.39002881392747";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"345";s:5:"score";s:16:"65.9587080798605";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"626";s:5:"score";s:17:"65.67889127409124";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"118";s:5:"score";s:18:"59.710018227490906";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4466";s:5:"score";s:17:"59.46776171576659";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"4297";s:5:"score";s:17:"55.22580385759785";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"2626";s:5:"score";s:17:"47.67909684957304";}}
+  dsq_thread_id: '3346828257'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>I was asked earlier about this. So I figured I would throw this together real quick. There was a concern about adding syslog server settings to an enormous number of hosts in a cluster for Log Insight (or other). So here is a quick PowerCLI script to do this for us. Nothing too fancy but it works.</p>
+<pre># PowerCLI Script for adding syslogserver to hosts
+# @mrlesmithjr
+# EverythingShouldBeVirtual.com
+# Change the following to match your environment
+# vi_server is your vCenter
+$vi_server = “vcenterservername”
+$vcuser = "vcenterserverusername"
+$vcpass = "vcenterserverpassword"
+# Make sure to tweak the protocol and ports below to match your environment
+$syslogservers = “udp://graylog2:514,tcp://logstash:514,udp://loginsight:514”
+
+Connect-VIServer -Server $vi_server -User $vcuser -Password $vcpass
+
+# Setup variable to use in script for all hosts in vCenter
+$vmhosts = @(Get-VMHost)
+
+# Configure syslog on each host in vCenter
+foreach ($vmhost in $vmhosts) {
+Write-Host ‘$vmhost = ‘ $vmhost
+Set-VMHostAdvancedConfiguration -Name Syslog.global.logHost -Value "$syslogservers" -VMHost $vmhost
+$esxcli = Get-EsxCli -VMHost $vmhost
+$esxcli.system.syslog.reload()
+}
+
+Disconnect-VIServer * -Confirm:$false</pre>
+<p>Enjoy!</p>

@@ -1,0 +1,217 @@
+---
+layout: post
+title: Docker - Building containers using Ansible
+date: 2016-03-03 19:58:01.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Ansible
+- Automation
+- Docker
+tags: []
+meta:
+  _s2mail: 'yes'
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  _yoast_wpseo_focuskw_text_input: Docker - Building containers using Ansible
+  _yoast_wpseo_focuskw: Docker - Building containers using Ansible
+  _yoast_wpseo_linkdex: '71'
+  _yoast_wpseo_primary_category: '411'
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"8550455a745ec2e76a921cdba971cf51";s:5:"pDate";s:19:"2016-03-04
+    00:58:02";}}";
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:271:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  _wp_rp_image: empty
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2MGvvd";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/2MGvvd/comments";s:5:"pDate";s:19:"2016-03-04
+    00:58:10";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1511983855'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"6883";s:5:"score";s:17:"59.04589923236767";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"7064";s:5:"score";s:17:"56.94996212058481";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"6912";s:5:"score";s:18:"44.625898833814176";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4708";s:5:"score";s:18:"39.772568633700594";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4725";s:5:"score";s:18:"37.672924384742075";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"4411";s:5:"score";s:16:"36.9319536063178";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"4449";s:5:"score";s:16:"36.2291578326938";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"6225";s:5:"score";s:18:"35.827816441724195";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"4386";s:5:"score";s:17:"35.07842954290609";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"5734";s:5:"score";s:17:"34.67708815193649";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"5462";s:5:"score";s:18:"33.683289524137464";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"4367";s:5:"score";s:18:"33.683289524137464";}}
+  snapTW: 's:308:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:52:"%TITLE%
+    - %URL% #Ansible #Docker #automation #DevOPS";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"705557918809063424";s:5:"pDate";s:19:"2016-03-04
+    00:58:11";}}";'
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<blockquote><strong>Docker - Building containers using Ansible</strong></p>
+<hr />
+</blockquote>
+<p>Have you thought about building Docker containers using some Ansible role(s) or playbook(s) you may already be using for your regular automated deployments? Well this is something I have been going back and forth on. Whether to disregard existing Ansible roles  I have created to deploy applications and services with or to start from scratch to build Docker containers. So I wanted to share a quick example of how you can do this if interested. The only downside is that the Docker image is a little fat because of the Ansible installation within the container. The plus to this is that Ansible is already installed in the container and you can actually reconfigure your containers with different variables ( based on variables in your Ansible role(s) or playbook(s) ) using docker exec commands. But that is debatable IMHO because I would possibly rather use Ansible to spin up the containers passing the ENV variables which are defined as part of the container. So the real benefit here would be to leverage your existing role(s) and playbook(s) that you use for your non containerized instances to build your Docker containers.</p>
+<p>So with the above being said let's take these methodologies and build a MySQL container.</p>
+<p>As I mentioned above, I already have an Ansible role to deploy MySQL so I will be leveraging that.</p>
+<p>If we look at the directory structure of the files that will be copied into our Docker container during the build.</p>
+<pre>vagrant@node-1:/vagrant/containers/mysql-ansible$ tree
+.
+├── ansible_tasks
+│   ├── playbook.yml
+│   └── requirements.yml
+└── Dockerfile
+
+
+1 directory, 3 files
+</pre>
+<p>And below are the contents of the files which will be copied.</p>
+<p>playbook.yml</p>
+<pre>---
+- hosts: localhost
+  become: true
+  vars:
+    - mysql_allow_remote_connections: true
+    - mysql_docker_install: true
+  roles:
+    - role: ansible-mysql
+  tasks:
+</pre>
+<p>requirements.yml</p>
+<pre>---
+- src: https://github.com/mrlesmithjr/ansible-mysql.git
+</pre>
+<p>And our Dockerfile to build from (Using Ansible)</p>
+<pre>FROM ubuntu:14.04
+
+MAINTAINER Larry Smith Jr. &lt;mrlesmithjr@gmail.com&gt;
+
+#Update apt-cache
+RUN apt-get update
+
+#Install pre-reqs for Ansible
+RUN apt-get -y install git python-dev python-pip
+
+#Install Ansible
+RUN pip install ansible
+
+#Copy Ansible tasks
+COPY ansible_tasks /opt/ansible_tasks
+
+#Install Ansible role(s)
+RUN ansible-galaxy install -r /opt/ansible_tasks/requirements.yml
+
+#Run Ansible playbook
+RUN ansible-playbook -c local /opt/ansible_tasks/playbook.yml
+
+#Clean-up packages
+RUN apt-get -y clean &amp;&amp; \
+    apt-get -y autoremove
+
+#Clean-up temp files
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+#Expose port(s)
+EXPOSE 3306
+
+#Process start-up
+CMD ["/usr/bin/mysqld_safe"]
+</pre>
+<p>Now we can build our container..</p>
+<pre>docker build -t mysql-ansible .
+</pre>
+<p>Now if we do a standard Docker install without using Ansible using the below Dockerfile</p>
+<pre>FROM ubuntu:14.04
+
+MAINTAINER Larry Smith Jr. &lt;mrlesmithjr@gmail.com&gt;
+
+#Update apt-cache
+RUN apt-get update
+
+#Install MySQL
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
+
+#Clean-up packages
+RUN apt-get -y clean &amp;&amp; \
+    apt-get -y autoremove
+
+#Clean-up temp files
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+#Expose port(s)
+EXPOSE 3306
+
+#Process start-up
+CMD ["/usr/bin/mysqld_safe"]
+</pre>
+<p>And now build without Ansible.</p>
+<pre>docker build -t mysql .
+</pre>
+<p>And if we do a quick look at our Docker images to compare the differences in the image sizes...</p>
+<pre>vagrant@node-1:/vagrant/containers/mysql$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mysql               latest              26c155e1472e        4 seconds ago       339.4 MB
+mysql-ansible       latest              549207bd1f0e        14 minutes ago      636 MB
+ubuntu              14.04               07c86167cdc4        3 hours ago         188 MB
+</pre>
+<p>As you can see there is quite a bit of bloat using Ansible but it may or may not be worth it. So YMMV.</p>
+<p>So there you have it and hopefully you found this to be of some use. And I am very interested in your thoughts and perspecitves.</p>
+<hr />
+<p>&nbsp;</p>
+<p>Update...</p>
+<p>After posting this I thought I would see if there was a difference in the image size if I were to install Ansible via apt ppa instead. Being that I installed Ansible via pip in the previous comparison. So here are those results. (The image names are different than the above original but you can compare the image sizes to validate)</p>
+<p>Using the following Dockerfile...</p>
+<pre>FROM ubuntu:14.04
+
+MAINTAINER Larry Smith Jr. &lt;mrlesmithjr@gmail.com&gt;
+
+#Update apt-cache
+RUN apt-get update
+
+#Install pre-reqs for Ansible
+RUN apt-get -y install git software-properties-common
+
+#Adding Ansible ppa
+RUN apt-add-repository ppa:ansible/ansible
+
+#Update apt-cache
+RUN apt-get update
+
+#Install Ansible
+RUN apt-get -y install ansible
+
+#Copy Ansible tasks
+COPY ansible_tasks /opt/ansible_tasks
+
+#Install Ansible role(s)
+RUN ansible-galaxy install -r /opt/ansible_tasks/requirements.yml
+
+#Run Ansible playbook
+RUN ansible-playbook -c local /opt/ansible_tasks/playbook.yml
+
+#RUN pip uninstall ansible -y
+
+#RUN apt-get -y purge git python-dev python-pip
+
+#Clean-up packages
+RUN apt-get -y clean &amp;&amp; \
+    apt-get -y autoremove
+
+#Clean-up temp files
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+#Expose port(s)
+EXPOSE 3306
+
+#Process start-up
+CMD ["/usr/bin/mysqld_safe"]
+</pre>
+<p>And now building...</p>
+<pre>docker build -t mysql-ansible-apt .
+</pre>
+<p>And below are the results...</p>
+<pre>vagrant@node-1:/vagrant/containers$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+mysql-ansible-pip   latest              b7b7f93506c6        9 seconds ago       636 MB
+mysql-ansible-apt   latest              f9e313ffc5fa        2 minutes ago       504.9 MB
+mysql               latest              9ac234dd93bf        4 minutes ago       339.4 MB
+ubuntu              14.04               07c86167cdc4        3 hours ago         188 MB
+</pre>
+<p>And as you can see from above we indeed saved 132MB installing Ansible via apt using their ppa repository.</p>
+<p>Enjoy!</p>

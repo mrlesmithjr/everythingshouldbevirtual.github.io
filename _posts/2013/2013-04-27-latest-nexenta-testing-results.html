@@ -1,0 +1,75 @@
+---
+layout: post
+title: Latest Nexenta Testing Results
+date: 2013-04-27 08:27:31.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Nexenta
+- Storage
+tags:
+- io
+- nexenta
+- Nexentastor
+- performance
+meta:
+  _edit_last: '11'
+  _s2mail: 'yes'
+  _wpas_done_all: '1'
+  snapEdIT: '1'
+  snapFB: s:300:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_412536175511497";s:5:"pDate";s:19:"2013-04-27
+    12:27:35";}}";
+  snapSU: s:213:"a:1:{i:0;a:7:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"5ZEqUs";s:5:"pDate";s:19:"2013-04-27
+    12:27:44";}}";
+  snapTW: 's:261:"a:1:{i:0;a:7:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:51:"%TITLE%
+    - %URL% #everythingshouldbevirtual #nexenta";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"334715560933867520";s:5:"pDate";s:19:"2013-05-15
+    17:03:03";}}";'
+  snap_isAutoPosted: '1'
+  snapLI: s:187:"a:1:{i:0;a:5:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:6:"&nbsp;";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1509646661'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1196";s:5:"score";s:18:"153.76714381731713";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1444";s:5:"score";s:17:"133.6193334076626";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1399";s:5:"score";s:17:"92.22575780839284";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1422";s:5:"score";s:17:"83.17350385100666";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"915";s:5:"score";s:17:"82.17552151941155";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1637";s:5:"score";s:17:"79.18864352171715";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1777";s:5:"score";s:17:"78.19066119012203";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1413";s:5:"score";s:17:"78.19066119012203";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1890";s:5:"score";s:16:"77.4785111277878";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"909";s:5:"score";s:17:"72.77576061336993";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1000";s:5:"score";s:17:"69.78888261567555";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"913";s:5:"score";s:17:"68.79090028408044";}}
+  _wp_rp_image: '3705'
+  dsq_thread_id: '3363858875'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>So I have been running my new Nexentastor CE storage for a little more than a month now and wanted to run another IO test real quick as a sanity check. So I setup the <a title="http://labs.vmware.com/flings/io-analyzer" href="http://labs.vmware.com/flings/io-analyzer" target="_blank">VMware IO Analyzer</a> again, but changed the virtual disk size to 150GB and ran the test for 600 secs this time. I ran the same iSCSI tests as I ran <a title="http://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd" href="http://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd" target="_blank">here</a> to get an idea of the results I was getting from my older setup. Compare to iSCSI - SSD.</p>
+<p>Here are the results.</p>
+<p><strong>OLTP 4K (4K 70% Read 100% Random) – iSCSI</strong></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/08-18-24.png"><img class="alignnone size-medium wp-image-1584" alt="08-18-24" src="{{ site.baseurl }}/assets/08-18-24-300x19.png" width="300" height="19" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/08-18-39.png"><img class="alignnone size-medium wp-image-1585" alt="08-18-39" src="{{ site.baseurl }}/assets/08-18-39-300x224.png" width="300" height="224" /></a></p>
+<p>&nbsp;</p>
+<p><strong>SQL – 64k (64k 66% Read 100% Random) – iSCSI</strong></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/08-20-12.png"><img class="alignnone size-medium wp-image-1587" alt="08-20-12" src="{{ site.baseurl }}/assets/08-20-12-300x17.png" width="300" height="17" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/08-20-24.png"><img class="alignnone size-medium wp-image-1586" alt="08-20-24" src="{{ site.baseurl }}/assets/08-20-24-300x228.png" width="300" height="228" /></a></p>
+<p>&nbsp;</p>
+<p><strong>Exchange 2007 (8k 55% Read 80% Random) – iSCSI</strong></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/08-22-17.png"><img class="alignnone size-medium wp-image-1588" alt="08-22-17" src="{{ site.baseurl }}/assets/08-22-17-300x17.png" width="300" height="17" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/08-22-27.png"><img class="alignnone size-medium wp-image-1589" alt="08-22-27" src="{{ site.baseurl }}/assets/08-22-27-300x226.png" width="300" height="226" /></a></p>
+<p>&nbsp;</p>
+<p><strong>Webserver (8k 95% Read 75% Random) – iSCSI</strong></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/08-23-56.png"><img class="alignnone size-medium wp-image-1590" alt="08-23-56" src="{{ site.baseurl }}/assets/08-23-56-300x17.png" width="300" height="17" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/08-24-05.png"><img class="alignnone size-medium wp-image-1591" alt="08-24-05" src="{{ site.baseurl }}/assets/08-24-05-300x225.png" width="300" height="225" /></a></p>
+<p>&nbsp;</p>
+<p>**Update 05/15/2013**</p>
+<p>Updating with NFS results. The same IOMeter tests were done as setup at the beginning of this post. This time I tested the NFS performance instead of iSCSI. Again as the test I performed a while back iSCSI outperformed NFS again.</p>
+<p>So here are the results.</p>
+<p><strong>OLTP 4K (4K 70% Read 100% Random) – NFS</strong></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/12-53-49.png"><img class="alignnone size-medium wp-image-1644" alt="12-53-49" src="{{ site.baseurl }}/assets/12-53-49-300x16.png" width="300" height="16" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/12-54-00.png"><img class="alignnone size-medium wp-image-1645" alt="12-54-00" src="{{ site.baseurl }}/assets/12-54-00-300x224.png" width="300" height="224" /></a></p>
+<p><strong>SQL – 64k (64k 66% Read 100% Random) – NFS</strong></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/12-55-43.png"><img class="alignnone size-medium wp-image-1646" alt="12-55-43" src="{{ site.baseurl }}/assets/12-55-43-300x17.png" width="300" height="17" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/12-55-57.png"><img class="alignnone size-medium wp-image-1647" alt="12-55-57" src="{{ site.baseurl }}/assets/12-55-57-300x225.png" width="300" height="225" /></a></p>
+<p>&nbsp;</p>
+<p><strong>Exchange 2007 (8k 55% Read 80% Random) – NFS</strong></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/12-58-07.png"><img class="alignnone size-medium wp-image-1648" alt="12-58-07" src="{{ site.baseurl }}/assets/12-58-07-300x16.png" width="300" height="16" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/12-58-20.png"><img class="alignnone size-medium wp-image-1649" alt="12-58-20" src="{{ site.baseurl }}/assets/12-58-20-300x226.png" width="300" height="226" /></a></p>
+<p>&nbsp;</p>
+<p><strong>Webserver (8k 95% Read 75% Random) – NFS</strong></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/12-59-37.png"><img class="alignnone size-medium wp-image-1650" alt="12-59-37" src="{{ site.baseurl }}/assets/12-59-37-300x17.png" width="300" height="17" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/04/12-59-48.png"><img class="alignnone size-medium wp-image-1651" alt="12-59-48" src="{{ site.baseurl }}/assets/12-59-48-300x224.png" width="300" height="224" /></a></p>
+<p>So it looks like I have confirmed that I am definitely getting much better results on my new build. :) Money well spent!</p>
+<p>Enjoy!</p>
+<p>&nbsp;</p>

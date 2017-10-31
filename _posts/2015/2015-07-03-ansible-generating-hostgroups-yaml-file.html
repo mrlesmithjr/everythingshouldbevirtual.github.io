@@ -1,0 +1,378 @@
+---
+layout: post
+title: Ansible - Generating Host/Groups YAML file
+date: 2015-07-03 00:24:57.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Ansible
+- Automation
+tags:
+- Ansible
+meta:
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:271:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _s2mail: 'yes'
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"4713";s:5:"score";s:17:"73.24100223122647";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"7702";s:5:"score";s:18:"63.804004488636295";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"4621";s:5:"score";s:17:"61.98436805409402";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"5057";s:5:"score";s:18:"59.736507860815195";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"5462";s:5:"score";s:18:"58.547905169611425";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"4962";s:5:"score";s:17:"56.47572130604307";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"4391";s:5:"score";s:17:"56.47572130604307";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"4879";s:5:"score";s:17:"56.37764729235887";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"4505";s:5:"score";s:16:"55.7437087624442";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4708";s:5:"score";s:17:"55.56102717191705";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"6883";s:5:"score";s:18:"54.232373687634365";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"6225";s:5:"score";s:17:"54.02165265633171";}}
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"d02f9ec1ed30b7845bc128f16f498b7b";s:5:"pDate";s:19:"2015-07-03
+    04:24:58";}}";
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"1WB72w";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/1WB72w/comments";s:5:"pDate";s:19:"2015-07-03
+    04:25:06";}}";
+  snapTW: 's:327:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:71:"%TITLE%
+    - %URL% #everythingshouldbevirtual #DevOPS #Ansible #Automation";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"616824968421048320";s:5:"pDate";s:19:"2015-07-03
+    04:25:07";}}";'
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_expiration: '1511805109'
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<p style="text-align: center;"><strong>Ansible - Generating Host/Groups YAML file</strong></p>
+<p style="text-align: left;">As I have been working on a nice little project of mine (More on that in the near future) I came across the need to take my hosts inventory INI file and get it into a usable yaml file. I had done this in the past but it was rather ugly using sed, awk and etc. I finally came up with a nice solution and figured that I would share it with others who may have a need for something similar.</p>
+<blockquote>
+<p style="text-align: left;">My <strong><em>hosts</em></strong> inventory was like below:</p>
+</blockquote>
+<pre>jumpbox
+
+[ansible-servers]
+ansible
+
+[ansible-test-servers]
+ans-test-[1:5]
+
+[cacti-servers]
+cactimon
+
+[ci-pipeline]
+ci-pipeline
+
+[cmdb-servers]
+cmdb
+
+[desktops]
+home-ms-7693
+home-Latitude-E6530
+
+[elk-p-nodes]
+elk-p-haproxy-[1:2]
+elk-p-broker-[1:3]
+elk-p-es-[1:3]
+elk-p-pre-processor-[1:2]
+elk-p-processor-[1:5]
+
+[elk-p-haproxy-nodes]
+elk-p-haproxy-[1:2]
+
+[elk-p-broker-nodes]
+elk-p-broker-[1:3]
+
+[elk-p-es-nodes]
+elk-p-es-[1:3]
+
+[elk-p-pre-processor-nodes]
+elk-p-pre-processor-[1:2]
+
+[elk-p-processor-nodes]
+elk-p-processor-[1:5]
+
+[gitlab-servers]
+gitlab
+
+[grafana]
+grafana
+
+[graylog-servers]
+graylog
+
+[ip-services]
+ns[1:2]
+ns-1-2-clust-mgmr
+
+[nagios]
+
+[nameservers]
+ns[1:2]
+
+[plex-servers]
+plexmediaserver
+
+[sensu-servers]
+sensu
+
+[smtp]
+
+[smtp-servers]
+smtp
+
+[squid-servers]
+squid-[1:2]
+
+[tftp-server]
+tftpbuild-serv
+
+[vmcreate-Ubuntu]
+ans-test-[1:5]
+elk-p-processor-5
+cmdb
+
+[vmcreate-Windows]
+
+[vmdelete]
+</pre>
+<blockquote><p>Create a playbook called <strong><em>create_host_groups_inventory.yml</em></strong> with the below:</p></blockquote>
+<pre>- hosts: all
+  sudo: true
+  remote_user: remote
+  vars:
+    - db_inventory_dir: ./db_inventory
+    - db_inventory_file: ./db_inventory.yml
+  tasks:
+    - name: creating db_inventory_dir
+      file:
+        path: "{{ db_inventory_dir }}"
+        state: directory
+      delegate_to: localhost
+      run_once: true
+
+    - name: removing existing inventory files
+      file:
+        path: "{{ item }}"
+        state: absent
+      delegate_to: localhost
+      with_items:
+        - "{{ db_inventory_dir }}/{{ ansible_hostname }}.yml"
+        - "{{ db_inventory_file }}"
+
+    - name: creating yaml list of groups/hosts
+      template:
+        src: "db_inventory_list.yml.j2"
+        dest: "{{ db_inventory_dir }}/{{ ansible_hostname }}.yml"
+      delegate_to: localhost
+
+    - name: merging all host inventory groups into one
+      assemble:
+        src: "{{ db_inventory_dir }}/"
+        dest: "{{ db_inventory_file }}"
+      delegate_to: localhost
+      run_once: true
+
+    - name: adding list var to inventory file
+      lineinfile:
+        dest: "{{ db_inventory_file }}"
+        regexp: "^host_groups"
+        line: "host_groups{{ ':' }}"
+        insertbefore: BOF
+      delegate_to: localhost
+      run_once: true
+
+    - name: adding yaml formatting to inventory file
+      lineinfile:
+        dest: "{{ db_inventory_file }}"
+        regexp: "^---" line="---"
+        insertbefore: BOF
+      delegate_to: localhost
+      run_once: true
+
+    - name: chmodding inventory file
+      file:
+        path: "{{ db_inventory_file }}"
+        mode: 0775
+      delegate_to: localhost
+      run_once: true
+</pre>
+<p>Create a template called db_inventory_list.yml.j2 with below: (**Spacing is key when copying this file)</p>
+<pre>  - name: {{ ansible_hostname }}
+    groups:
+{% for group in group_names %}
+      - {{ group }}
+{% endfor %}
+</pre>
+<p>Now execute the following:</p>
+<pre>ansible-playbook -i hosts create_host_groups_inventory.yml
+</pre>
+<p>Once it is complete cat the db_inventory.yml and you will see the following.</p>
+<pre>---
+host_groups:
+  - name: ans-test-1
+    groups:
+      - ansible-test-servers
+      - vmcreate-Ubuntu
+
+  - name: ans-test-2
+    groups:
+      - ansible-test-servers
+      - vmcreate-Ubuntu
+
+  - name: ans-test-3
+    groups:
+      - ansible-test-servers
+      - vmcreate-Ubuntu
+
+  - name: ans-test-4
+    groups:
+      - ansible-test-servers
+      - vmcreate-Ubuntu
+
+  - name: ans-test-5
+    groups:
+      - ansible-test-servers
+      - vmcreate-Ubuntu
+
+  - name: ansible
+    groups:
+      - ansible-servers
+
+  - name: ci-pipeline
+    groups:
+      - ci-pipeline
+
+  - name: cmdb
+    groups:
+      - cmdb-servers
+      - vmcreate-Ubuntu
+
+  - name: elk-p-broker-1
+    groups:
+      - elk-p-broker-nodes
+      - elk-p-nodes
+
+  - name: elk-p-broker-2
+    groups:
+      - elk-p-broker-nodes
+      - elk-p-nodes
+
+  - name: elk-p-broker-3
+    groups:
+      - elk-p-broker-nodes
+      - elk-p-nodes
+
+  - name: elk-p-es-1
+    groups:
+      - elk-p-es-nodes
+      - elk-p-nodes
+
+  - name: elk-p-es-2
+    groups:
+      - elk-p-es-nodes
+      - elk-p-nodes
+
+  - name: elk-p-es-3
+    groups:
+      - elk-p-es-nodes
+      - elk-p-nodes
+
+  - name: elk-p-haproxy-1
+    groups:
+      - elk-p-haproxy-nodes
+      - elk-p-nodes
+
+  - name: elk-p-haproxy-2
+    groups:
+      - elk-p-haproxy-nodes
+      - elk-p-nodes
+
+  - name: elk-p-pre-processor-1
+    groups:
+      - elk-p-nodes
+      - elk-p-pre-processor-nodes
+
+  - name: elk-p-pre-processor-2
+    groups:
+      - elk-p-nodes
+      - elk-p-pre-processor-nodes
+
+  - name: elk-p-processor-1
+    groups:
+      - elk-p-nodes
+      - elk-p-processor-nodes
+
+  - name: elk-p-processor-2
+    groups:
+      - elk-p-nodes
+      - elk-p-processor-nodes
+
+  - name: elk-p-processor-3
+    groups:
+      - elk-p-nodes
+      - elk-p-processor-nodes
+
+  - name: elk-p-processor-4
+    groups:
+      - elk-p-nodes
+      - elk-p-processor-nodes
+
+  - name: elk-p-processor-5
+    groups:
+      - elk-p-nodes
+      - elk-p-processor-nodes
+      - vmcreate-Ubuntu
+
+  - name: gitlab
+    groups:
+      - gitlab-servers
+
+  - name: grafana
+    groups:
+      - grafana
+
+  - name: home-ms-7693
+    groups:
+      - desktops
+
+  - name: jumpbox
+    groups:
+      - ungrouped
+
+  - name: ns-1-2-clust-mgmr
+    groups:
+      - ip-services
+
+  - name: ns1
+    groups:
+      - ip-services
+      - nameservers
+
+  - name: ns2
+    groups:
+      - ip-services
+      - nameservers
+
+  - name: plexmediaserver
+    groups:
+      - plex-servers
+
+  - name: sensu
+    groups:
+      - sensu-servers
+
+  - name: smtp
+    groups:
+      - smtp-servers
+
+  - name: squid-1
+    groups:
+      - squid-servers
+
+  - name: squid-2
+    groups:
+      - squid-servers
+
+  - name: tftpbuild-serv
+    groups:
+      - tftp-server
+</pre>
+<p>There you have it. A nicely formatted yaml inventory list to consume as your needs require.</p>
+<p>Enjoy!</p>

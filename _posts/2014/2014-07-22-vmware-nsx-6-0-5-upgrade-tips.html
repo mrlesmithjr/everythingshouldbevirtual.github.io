@@ -1,0 +1,59 @@
+---
+layout: post
+title: VMware NSX 6.0.5 Upgrade Tips
+date: 2014-07-22 20:44:44.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- NSX
+tags:
+- VMware NSX
+meta:
+  _edit_last: '11'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"4ea253b044ffe15ecdaebc135f90abf0";s:5:"pDate";s:19:"2014-07-23
+    00:44:45";}}";
+  snapLI: s:522:"a:1:{i:0;a:13:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:19:"5897511406349094912";s:7:"postURL";s:124:"http://www.linkedin.com/updates?discuss=&amp;scope=138895851&amp;stype=M&amp;topic=5897511406349094912&amp;type=U&amp;a=Jhqf";s:5:"pDate";s:19:"2014-07-23
+    00:44:49";}}";
+  _s2mail: 'yes'
+  snapTW: 's:326:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:70:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vmwarensx #vsphere #vmware";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"491745744739921920";s:5:"pDate";s:19:"2014-07-23
+    00:44:56";}}";'
+  snap_isAutoPosted: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapSU: s:146:"a:1:{i:0;a:5:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_image: '3541'
+  _wp_rp_related_posts_query_result_cache_expiration: '1510440152'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"3145";s:5:"score";s:17:"73.76752442991506";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"3365";s:5:"score";s:17:"69.52916068933428";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"4186";s:5:"score";s:17:"44.43603655013196";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"403";s:5:"score";s:18:"32.151627542301206";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"3341";s:5:"score";s:17:"26.09110647079743";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1788";s:5:"score";s:17:"20.07919578198107";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"939";s:5:"score";s:18:"19.114513255625514";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"168";s:5:"score";s:18:"18.760651839424245";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1943";s:5:"score";s:17:"18.38392790568873";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"513";s:5:"score";s:18:"17.641754459962684";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1952";s:5:"score";s:18:"16.887165997731696";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"2502";s:5:"score";s:18:"14.808489786131304";}}
+  dsq_thread_id: '3346749012'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>So I performed my first NSX upgrade today which overall was not too bad but it did take quite a long time. I ran into a few gotchas along the way and figured that I would share those. Now if you follow <a title="http://pubs.vmware.com/NSX-6/topic/com.vmware.ICbase/PDF/nsx_6_install.pdf" href="http://pubs.vmware.com/NSX-6/topic/com.vmware.ICbase/PDF/nsx_6_install.pdf" target="_blank">this</a> guide and the release notes <a title="https://www.vmware.com/support/nsx/doc/releasenotes_nsx_vsphere_605.html" href="https://www.vmware.com/support/nsx/doc/releasenotes_nsx_vsphere_605.html" target="_blank">here</a> you should be in good shape. However you may run into a few snags as below.</p>
+<p>The first thing you may run into is when uploading the upgrade package to the NSX Manager is the following error.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/07/2014-07-16-14_18_42.png"><img class="alignnone size-medium wp-image-3081" src="{{ site.baseurl }}/assets/2014-07-16-14_18_42-300x140.png" alt="2014-07-16 14_18_42" width="300" height="140" /></a></p>
+<p>What this error is telling you is that you need to rename the downloaded upgrade package. Your browser saved the file as <em>VMware-NSX-Manager-upgrade-bundle-6.0.5-1911278.gz</em> and you need to rename the file to <em>VMware-NSX-Manager-upgrade-bundle-6.0.5-1911278.tar.gz</em> and upload the upgrade package again. Now it will proceed.</p>
+<p>The next thing you will want to do is take a snapshot of NSX Manager VM if you did not do it before uploading the upgrade package.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/07/2014-07-16-14_40_46.png"><img class="alignnone size-medium wp-image-3085" src="{{ site.baseurl }}/assets/2014-07-16-14_40_46-300x201.png" alt="2014-07-16 14_40_46" width="300" height="201" /></a></p>
+<p>You will now the see the upgrade proceeding.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/07/2014-07-16-14_41_19.png"><img class="alignnone size-medium wp-image-3089" src="{{ site.baseurl }}/assets/2014-07-16-14_41_19-300x142.png" alt="2014-07-16 14_41_19" width="300" height="142" /></a></p>
+<p>Once the upgrade completes you will be logged out of the web interface for the NSX Manager so you will want to log back in and verify that the version reflects the version you just upgraded to.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/07/2014-07-16-14_44_58.png"><img class="alignnone size-medium wp-image-3093" src="{{ site.baseurl }}/assets/2014-07-16-14_44_58-300x130.png" alt="2014-07-16 14_44_58" width="300" height="130" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/07/2014-07-16-14_45_50.png"><img class="alignnone size-medium wp-image-3094" src="{{ site.baseurl }}/assets/2014-07-16-14_45_50-300x90.png" alt="2014-07-16 14_45_50" width="300" height="90" /></a></p>
+<p>Now you will be ready to upgrade your controllers. Starting on step 3 in the release notes from the link above you need to find the controller ids of each and every one of your controllers before proceeding. Then on step 4 in the release notes they recommend taking a snapshot of each controller using the REST API and curl. I chose to use the Chrome Advanced REST client <a title="https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo?hl=en-US" href="https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo?hl=en-US" target="_blank">here</a>. The trick is that you will need to login to your NSX manager using Chrome prior to using the Advanced REST client or you will get access denied errors when attempting to create a snapshot. So login to your NSX manager and then launch the Chrome Advanced REST client.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/07/2014-07-18_14-49-20.png"><img class="alignnone size-medium wp-image-3097" src="{{ site.baseurl }}/assets/2014-07-18_14-49-20-300x165.png" alt="2014-07-18_14-49-20" width="300" height="165" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Once all of your controllers are upgraded you can then proceed to upgrading your hosts clusters which is step 7. One word of caution which I ran into. If for some reason you have created DRS rules to pin your controllers to specific hosts your upgrade on those hosts will fail. I kept attempting to resolve the upgrade for the cluster in which my controllers were located and it kept failing without any visible errors. I stumbled across the DRS rules and disabled them and sure enough the upgrade completed for that host cluster.</p>
+<p>Now you can proceed and upgrade your edge routers and logical routers. The process during the upgrade is actually deploying a new appliance, renaming the original router, renaming the new deployed appliance as the original one being upgraded and then it deletes the original router. Make sure that all of your routes are still visible on your routers and force a sync if needed.</p>
+<p>That's all for now. I will be sharing much more around NSX very soon so stay tuned. NSX is definitely very cool especially in a large environment. :)</p>
+<p>Enjoy!</p>

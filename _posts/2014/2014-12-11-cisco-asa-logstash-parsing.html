@@ -1,0 +1,60 @@
+---
+layout: post
+title: Cisco ASA Logstash Parsing
+date: 2014-12-11 22:14:47.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Cisco
+- Firewall
+- Logstash
+- Monitoring
+- Networking
+- Security
+tags:
+- asa
+- cisco
+- logstash
+meta:
+  _edit_last: '11'
+  _thumbnail_id: '3797'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:274:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _s2mail: 'yes'
+  _yoast_wpseo_focuskw: Cisco ASA Logstash Parsing
+  _yoast_wpseo_metadesc: Cisco ASA Logstash
+  _yoast_wpseo_linkdex: '67'
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"9d9e3b3be21dff6121a61a89b60d07af";s:5:"pDate";s:19:"2014-12-12
+    03:14:48";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1509879002'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"3353";s:5:"score";s:17:"88.96264754354459";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"3341";s:5:"score";s:17:"87.22515155575736";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"913";s:5:"score";s:17:"86.28719325875929";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"3313";s:5:"score";s:17:"76.07112357257995";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"2985";s:5:"score";s:17:"72.36617969201224";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"2870";s:5:"score";s:17:"70.89824134190378";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1487";s:5:"score";s:18:"63.950592073959776";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"3302";s:5:"score";s:17:"62.68874851101456";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"4695";s:5:"score";s:17:"62.28155060050611";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4466";s:5:"score";s:17:"62.28155060050611";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"2854";s:5:"score";s:17:"61.69076617941944";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1402";s:5:"score";s:17:"61.38063605088477";}}
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2VfHti";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/2VfHti/comments";s:5:"pDate";s:19:"2014-12-12
+    03:15:01";}}";
+  snapTW: 's:323:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:67:"%TITLE%
+    - %URL% #everythingshouldbevirtual #logstash #cisco #devops";s:8:"attchImg";s:1:"1";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"543242625851985920";s:5:"pDate";s:19:"2014-12-12
+    03:15:11";}}";'
+  dsq_thread_id: ''
+  _oembed_6764fcdf9ff075153ce27a019a53aee0: "{{unknown}}"
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>Cisco ASA Logstash Parsing</p>
+<p>I recently had an opportunity to get around to creating some Cisco ASA parsing for logstash to detect some abnormal activity on the network. So now that I have created the parsing and have to say it works pretty good; I figured I would share it with anyone else that may have a need for this as well. I will also share the dashboard that I created in case you want that as well.</p>
+<p>You will need to add the following to your current logstash.conf file.. I placed this at the top of my config below all inputs before standard syslog parsing to make sure it was processed first, tagged and passed the next level of syslog parsing.</p>
+<p>https://gist.github.com/mrlesmithjr/791dc72d3c92ac21342f</p>
+<p>That's it!</p>
+<p>Here are some screenshots of what the dashboard looks like.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-11-at-9.58.47-PM.png"><img class="alignnone size-medium wp-image-3797" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-11-at-9.58.47-PM-300x145.png" alt="Screen Shot 2014-12-11 at 9.58.47 PM" width="300" height="145" /></a> <a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/12/Screen-Shot-2014-12-11-at-9.59.05-PM.png"><img class="alignnone size-medium wp-image-3801" src="{{ site.baseurl }}/assets/Screen-Shot-2014-12-11-at-9.59.05-PM-300x54.png" alt="Screen Shot 2014-12-11 at 9.59.05 PM" width="300" height="54" /></a></p>
+<p>To download the dashboard grab it <a title="https://gist.github.com/mrlesmithjr/a143d71deca65c9b64e7" href="https://gist.github.com/mrlesmithjr/a143d71deca65c9b64e7">here</a>.</p>
+<p>Enjoy!</p>

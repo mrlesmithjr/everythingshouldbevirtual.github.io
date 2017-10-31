@@ -1,0 +1,56 @@
+---
+layout: post
+title: vSphere 5.5 Quick Stats Not Up to Date Error
+date: 2013-10-08 10:30:24.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- VMware
+- vSphere 5.5
+tags: []
+meta:
+  _edit_last: '11'
+  _wpas_done_all: '1'
+  snapEdIT: '1'
+  snapLI: s:187:"a:1:{i:0;a:5:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:6:"&nbsp;";s:11:"isPrePosted";s:1:"1";}}";
+  snap_isAutoPosted: '1'
+  snapFB: s:300:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_482381311860316";s:5:"pDate";s:19:"2013-10-08
+    14:30:34";}}";
+  snapSU: s:213:"a:1:{i:0;a:7:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"23hHiv";s:5:"pDate";s:19:"2013-10-08
+    14:30:47";}}";
+  snapTW: 's:261:"a:1:{i:0;a:7:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:51:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vcenter";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"387585870691577856";s:5:"pDate";s:19:"2013-10-08
+    14:30:47";}}";'
+  _s2mail: 'yes'
+  _thumbnail_id: '2019'
+  _wp_rp_related_posts_query_result_cache_expiration: '1510712208'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1938";s:5:"score";s:17:"41.44917202109296";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1940";s:5:"score";s:17:"40.45118968949785";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"3114";s:5:"score";s:18:"38.218565957852434";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"2586";s:5:"score";s:17:"37.53328404377697";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"2123";s:5:"score";s:17:"32.86284864344519";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"2084";s:5:"score";s:17:"31.86486631185007";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"2329";s:5:"score";s:17:"29.86780865153041";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1943";s:5:"score";s:18:"29.577685743545096";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"2156";s:5:"score";s:17:"26.96778830019374";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"3145";s:5:"score";s:18:"24.660645953672628";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"2280";s:5:"score";s:18:"24.660645953672628";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"2316";s:5:"score";s:18:"24.296487044013546";}}
+  dsq_thread_id: '3356119926'
+  _wp_rp_image: '2019'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>I have seen this error since I upgraded to vSphere 5.5 last week. There is a kb article <a title="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2061008" href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2061008" target="_blank">here </a>on how to fix this. According to this kb article this is a known issue in vCenter 5.5. I am using the vCSA (vCenter Server Appliance) and it is affected as well. So I just wanted to share what to do based on the KB article.</p>
+<p>Screenshot of the error.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/10/07-36-25.png"><img class="alignnone size-medium wp-image-2019" alt="07-36-25" src="{{ site.baseurl }}/assets/07-36-25-300x77.png" width="300" height="77" /></a></p>
+<p>Open putty and ssh to your vCSA and execute the following.</p>
+<pre>cd /etc/vmware-vpx/
+ cp vpxd.cfg vpxd.cfg.orig
+vim vpxd.cfg</pre>
+<p>Now scroll down to the line before &lt;/vpxd&gt; and insert the following code from the kb article referenced above.</p>
+<p>&lt;quickStats&gt;<br />
+&lt;HostStatsCheck&gt;false&lt;/HostStatsCheck&gt;<br />
+&lt;ConfigIssues&gt;false&lt;/ConfigIssues&gt;<br />
+&lt;/quickStats&gt;</p>
+<p>Now restart vCenter Server Service</p>
+<pre>service vmware-vpxd restart</pre>
+<p>Now after the services have restarted all should be good.</p>
+<p>Enjoy!</p>

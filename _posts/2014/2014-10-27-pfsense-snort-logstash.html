@@ -1,0 +1,64 @@
+---
+layout: post
+title: PFSense Snort Logstash
+date: 2014-10-27 10:21:29.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Logstash
+- Monitoring
+- PFsense
+- Security
+tags:
+- logstash
+- pfsense
+- Snort
+meta:
+  _edit_last: '11'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:274:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _s2mail: 'yes'
+  _yoast_wpseo_focuskw: PFSense Snort
+  _yoast_wpseo_metadesc: PFSense Snort Logstash
+  _yoast_wpseo_linkdex: '63'
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"b648fc078fd39672d4797ce9947b9dc7";s:5:"pDate";s:19:"2014-10-27
+    14:21:31";}}";
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"1ksGve";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/1ksGve/comments";s:5:"pDate";s:19:"2014-10-27
+    14:21:52";}}";
+  snapTW: 's:332:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:76:"%TITLE%
+    - %URL% #everythingshouldbevirtual #pfsense #elk #logstash #snortids";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"526740571164254208";s:5:"pDate";s:19:"2014-10-27
+    14:21:53";}}";'
+  _wp_rp_related_posts_query_result_cache_expiration: '1512031894'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"633";s:5:"score";s:18:"136.99421591224956";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"3313";s:5:"score";s:17:"93.77607025163135";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"3793";s:5:"score";s:16:"89.1549637260933";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"3302";s:5:"score";s:17:"76.36814052127224";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"3341";s:5:"score";s:17:"69.72987566390816";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"4466";s:5:"score";s:17:"69.28358856127974";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"2985";s:5:"score";s:17:"68.91185693867749";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"2854";s:5:"score";s:17:"68.91185693867749";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"139";s:5:"score";s:16:"66.3871408041558";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"2870";s:5:"score";s:16:"66.0311337737165";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"2242";s:5:"score";s:17:"62.58009034895758";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"4695";s:5:"score";s:18:"62.415614152309445";}}
+  _wp_rp_image: '3417'
+  dsq_thread_id: ''
+  _oembed_aab49ed03f5cab3db5a58ad9b462b590: "{{unknown}}"
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>I have been working on getting some detailed logging from Snort logs generated through PFSense and thought I would share them. This can also be modified to work with a Snort setup not running on PFSense as well. Can also modify for Suricata if needed.</p>
+<p>In order to send your Snort logs you will need an instance of logstash running on your Snort node with the following added to your logstash.conf file. Modify to suit your specific log location.</p>
+<pre>input {
+  file {
+    path =&gt; "/var/log/snort/alert"
+    type =&gt; "snort"
+    sincedb_path =&gt; "/var/log/.snortsincedb"
+  }
+} 
+</pre>
+<p>https://gist.github.com/mrlesmithjr/0799cdc3710f2ae1e182</p>
+<p>Here are some sample Kibana dashboards.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/10/Screen-Shot-2014-10-27-at-10.17.10-AM.png"><img class="alignnone size-medium wp-image-3354" src="{{ site.baseurl }}/assets/Screen-Shot-2014-10-27-at-10.17.10-AM-300x155.png" alt="Screen Shot 2014-10-27 at 10.17.10 AM" width="300" height="155" /></a></p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2014/10/Screen-Shot-2014-10-27-at-10.17.36-AM.png"><img class="alignnone size-medium wp-image-3358" src="{{ site.baseurl }}/assets/Screen-Shot-2014-10-27-at-10.17.36-AM-300x157.png" alt="Screen Shot 2014-10-27 at 10.17.36 AM" width="300" height="157" /></a></p>
+<p>Enjoy!</p>

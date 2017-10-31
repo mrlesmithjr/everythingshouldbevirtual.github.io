@@ -1,0 +1,196 @@
+---
+layout: post
+title: Vagrant - Multi-Group Ansible Provisioning
+date: 2016-06-03 12:12:44.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Ansible
+- Automation
+- Provisioning
+- Vagrant
+tags:
+- Ansible
+- vagrant
+meta:
+  _wp_rp_image: empty
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapDL: s:162:"a:1:{i:0;a:6:{s:2:"do";s:1:"1";s:10:"msgTFormat";s:7:"%TITLE%";s:9:"msgFormat";s:9:"%EXCERPT%";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doDL";s:1:"1";}}";
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snapFB: s:298:"a:1:{i:0;a:10:{s:2:"do";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doFB";s:1:"1";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:290:"a:1:{i:0;a:10:{s:2:"do";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:12:"liMsgFormatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doLI";s:1:"1";s:11:"isPrePosted";s:1:"1";}}";
+  snapSU: s:337:"a:1:{i:0;a:11:{s:2:"do";s:1:"1";s:9:"msgFormat";s:16:"%TITLE% - %TEXT%";s:5:"suCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:4:"doSU";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2u8yDU";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/2u8yDU/comments";s:5:"pDate";s:19:"2016-06-03
+    16:12:52";}}";
+  _s2mail: 'yes'
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  _yoast_wpseo_primary_category: '431'
+  _yoast_wpseo_focuskw_text_input: Vagrant - Multi-Group Ansible Provisioning
+  _yoast_wpseo_focuskw: Vagrant - Multi-Group Ansible Provisioning
+  _yoast_wpseo_linkdex: '68'
+  _wp_rp_related_posts_query_result_cache_expiration: '1511919825'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"4944";s:5:"score";s:18:"132.14215105153067";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"4902";s:5:"score";s:18:"119.11862428579897";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"4803";s:5:"score";s:18:"117.46891123363335";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4879";s:5:"score";s:18:"116.21411962770375";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4915";s:5:"score";s:18:"116.11623110891969";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"4962";s:5:"score";s:18:"112.00144517503652";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"4886";s:5:"score";s:18:"109.44533910078566";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"5734";s:5:"score";s:18:"106.30051345639204";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"4934";s:5:"score";s:18:"105.13993280722913";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4824";s:5:"score";s:17:"78.06397933564998";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"5777";s:5:"score";s:17:"75.23035851155197";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"6033";s:5:"score";s:17:"71.39308732751594";}}
+  snap_isAutoPosted: '1'
+  snapTW: 's:334:"a:1:{i:0;a:10:{s:2:"do";s:1:"1";s:10:"SNAPformat";s:60:"%TITLE%
+    - %URL% #everythingshouldbevirtual #ansible #vagrant";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:4:"doTW";s:1:"1";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"738765404646969344";s:5:"pDate";s:19:"2016-06-03
+    16:12:52";}}";'
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<p style="text-align: center;"><strong>Vagrant - Multi-Group Ansible Provisioning</strong></p>
+<p>As I continue to develop different scenario testing I continually try to leverage a common Vagrantfile across scenarios while only having to adjust variables if required for these scenarios. With one of those being defining Ansible groups to provision with Vagrant. So I wanted to share with others what I have found to be a good working solution for just that.<br />
+Check out this <a href="http://everythingshouldbevirtual.com/vagrant-complex-vagrantfile-configurations">post</a> if you are interested in what I have been using as a common Vagrantfile.</p>
+<p>In this scenario I will be spinning up 5 Vagrant boxes and would like each box to reside in an Ansible group or groups. So if you were to use the link above as a reference you could adjust the following settings and vagrant up.<br />
+Change the following settings...<br />
+From:</p>
+<pre>N = 1
+</pre>
+<p>To:</p>
+<pre>N = 5
+</pre>
+<p>From:</p>
+<pre>ansible_groups = {
+  "test-nodes" =&gt; [
+    "node[0:#{N-1}]"
+  ]
+}
+</pre>
+<p>To:</p>
+<pre>ansible_groups = {
+  "db-nodes" =&gt; [
+    "node0"
+  ],
+  "test-nodes" =&gt; [
+    "node3"
+  ],
+  "random-nodes" =&gt; [
+    "node[4:#{N-1}]"
+  ],
+  "mixed-nodes" =&gt; [
+    "node1",
+    "node4"
+  ],
+  "renamed-nodes" =&gt; [
+    "node1"
+  ]
+}
+</pre>
+<p>And after we do a vagrant up our new Vagrant Ansible inventory file should look similar to..</p>
+<pre># Generated by Vagrant
+
+node0 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222 ansible_ssh_user='vagrant' ansible_ssh_private_key_file='/Users/larrysmithjr/projects/Vagrant/ansible/.vagrant/machines/node0/virtualbox/private_key'
+node1 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2200 ansible_ssh_user='vagrant' ansible_ssh_private_key_file='/Users/larrysmithjr/projects/Vagrant/ansible/.vagrant/machines/node1/virtualbox/private_key'
+node2 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2201 ansible_ssh_user='vagrant' ansible_ssh_private_key_file='/Users/larrysmithjr/projects/Vagrant/ansible/.vagrant/machines/node2/virtualbox/private_key'
+node3 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2202 ansible_ssh_user='vagrant' ansible_ssh_private_key_file='/Users/larrysmithjr/projects/Vagrant/ansible/.vagrant/machines/node3/virtualbox/private_key'
+node4 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2203 ansible_ssh_user='vagrant' ansible_ssh_private_key_file='/Users/larrysmithjr/projects/Vagrant/ansible/.vagrant/machines/node4/virtualbox/private_key'
+
+[db-nodes]
+node0
+
+[test-nodes]
+node3
+
+[random-nodes]
+node[4:4]
+
+[mixed-nodes]
+node1
+node4
+
+[renamed-nodes]
+node1
+</pre>
+<p>We can now provision our nodes successfully with our Ansible playbook based on groups.<br />
+Example playbook:</p>
+<pre>- hosts: db-nodes
+  become: true
+  vars:
+    - django_db_type: 'mysql'
+    - install_django: true
+    - mysql_allow_remote_connections: true
+    - mysql_root_password: 'root'
+    - pri_domain_name: 'test.vagrant.local'
+  roles:
+    - role: ansible-django
+      when: install_django
+    - role: ansible-dropbox-nsot
+    - role: ansible-mariadb-mysql
+  tasks:
+    - name: Installing Pre-Reqs
+      apt:
+        name: "{{ item }}"
+        state: "present"
+      with_items:
+        - curl
+        - libapache2-mod-php5
+        - libcurl3
+        - libsqlite3-dev
+        - php5-curl
+        - php5-mcrypt
+        - php5-sqlite
+        - sqlite3
+      when: ansible_os_family == "Debian"
+
+    - name: Allowing Root Login to MySQL from Anywhere
+      mysql_user:
+        name: root
+        host: "{{ item }}"
+        password: "{{ mysql_root_password }}"
+        priv: "*.*:ALL,GRANT"
+      with_items:
+        - '%'
+
+    - name: Creating Django_DB (If Installed)
+      mysql_db:
+        name: "django_db"
+        state: "present"
+      when: install_django
+
+    - name: Installing Django Related Apps
+      pip:
+        name: "{{ item }}"
+        state: "present"
+      with_items:
+        - 'django-markdown-deux'
+        - 'django-tables2'
+      when: install_django
+
+- hosts: all
+  become: true
+  vars:
+    - pri_domain_name: 'test.vagrant.local'
+  roles:
+    - role: ansible-inventory
+  #    ignore_errors: true
+  tasks:
+
+- hosts: mixed-nodes
+  become: true
+  vars:
+    - pri_domain_name: 'test.vagrant.local'
+  roles:
+    - role: ansible-nginx
+  tasks:
+
+- hosts: all
+  become: true
+  vars:
+    - enable_manage_ssh_keys: true  #defines if remote ssh keys should be managed
+    - manage_ssh_keys:
+        - remote_user: vagrant  #define username on remote system to add defined keys to
+          state: present  #defines if ssh key should be added or removed (absent|present)
+          keys:  #define key(s) to add to remote username
+            - '/Users/larrysmithjr/.ssh/id_rsa.pub'
+  roles:
+    - role: ansible-manage-ssh-keys
+</pre>
+<p>So there you have it. A simple way to define your different Ansible groups all the while keeping a standard Vagrantfile easily customizable per Vagrant environment.</p>
+<p>Enjoy!</p>

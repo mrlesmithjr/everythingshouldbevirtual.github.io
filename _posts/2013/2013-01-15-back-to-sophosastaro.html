@@ -1,0 +1,47 @@
+---
+layout: post
+title: Back to Sophos/Astaro
+date: 2013-01-15 09:05:15.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Firewall
+- Sophos/Astaro
+tags:
+- Astaro
+- http web fitering
+- https web filtering
+- Sophos
+meta:
+  _edit_last: '11'
+  _s2mail: 'yes'
+  _wpas_done_all: '1'
+  snap_isAutoPosted: '1'
+  snapFB: s:319:"a:1:{i:0;a:9:{s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"490878107607759_560366803992222";s:5:"pDate";s:19:"2013-01-15
+    14:05:24";s:13:"SNAPincludeFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:4:"doFB";s:1:"1";}}";
+  snapLI: s:321:"a:1:{i:0;a:9:{s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:24:"HCPzwOxbDg
+    - Larry Smith";s:5:"pDate";s:19:"2013-01-15 14:05:25";s:13:"SNAPincludeLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:4:"doLI";s:1:"1";s:11:"SNAPformatT";s:6:"&nbsp;";}}";
+  snapSU: s:242:"a:1:{i:0;a:8:{s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2H0B29";s:5:"pDate";s:19:"2013-01-15
+    14:05:37";s:13:"SNAPincludeSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:4:"doSU";s:1:"1";}}";
+  snapTW: 's:270:"a:1:{i:0;a:8:{s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"291184367022260224";s:5:"pDate";s:19:"2013-01-15
+    14:05:38";s:13:"SNAPincludeTW";s:1:"1";s:10:"SNAPformat";s:31:"%TITLE% - %URL%
+    #astaro #sophos";s:8:"attchImg";s:1:"0";s:4:"doTW";s:1:"1";}}";'
+  snapEdIT: '1'
+  _wp_rp_related_posts_query_result_cache_expiration: '1509898001'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"139";s:5:"score";s:17:"108.3074313161091";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"633";s:5:"score";s:17:"37.39247973049076";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1483";s:5:"score";s:18:"29.143722612964453";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1487";s:5:"score";s:18:"28.704868886705473";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"729";s:5:"score";s:18:"28.639289240994554";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"309";s:5:"score";s:17:"27.01586915150012";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1402";s:5:"score";s:18:"24.047064084212504";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"620";s:5:"score";s:18:"24.047064084212504";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"668";s:5:"score";s:18:"23.731413680804117";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1566";s:5:"score";s:18:"23.357383111668007";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"699";s:5:"score";s:18:"22.513268354264916";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"2538";s:5:"score";s:18:"20.456111769257085";}}
+  _wp_rp_image: empty
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>Well after a few months of running my own rolled version of a UTM using Ubuntu I have officially gone back to Sophos/Astaro for the time being.  There are several reasons for this with the main reason being that I absolutely love the interface and reporting of Sophos/Astaro.  I am also doing some testing on HTTPS web filtering after a few mishaps of some google images searches showing inappropriate images for small children.  I know I can do this with my own rolled UTM, but I am sure it will be much harder.  This same issue also applies to corporate web filtering because once logged into google your google images searches and normal searches are all secure which bypasses traditional HTTP web filtering.  There are many complications with implementing HTTPS web filtering though because your firewall will act as a man in the middle which will break all HTTPS communications.  To implement this you will have to deploy the SSL cert for your firewall to all clients that you want to implement HTTPS web filtering on.  For Windows clients this is a non issue because you can deploy the cert using a GPO if you are using Active Directory.  This method will add the cert automatically for IE and Google Chrome, but Firefox and other browsers will need to have the cert manually imported.  The first few things I noticed before disabling HTTPS web filtering is that Dropbox and Google Drive stopped syncing because the HTTPS web filter is obviously intercepting that traffic as well.  So exceptions would need to be made for those two services based on destination addresses.  As you can figure from this is that it would take a lot of effort to keep up with these as they can potentially change a lot.  So I will be doing some additional testing with that.  One way is to also implement the Proxy Server Agent on the Sophos/Astaro and have dropbox use the proxy, but that doesn't work for Google Drive.  More testing to be done on that.  Again the biggest downfall for me which would also apply to others that do extensive testing at home is the 50 IP limit for the free home version of Sophos/Astaro.  So I think I would just fire up PFsense again during those times that I may be doing lots of testing or fence off the testing vms so they do not traverse the firewall using up IPs counting against the 50 IP limit.</p>
+<p>Stay tuned as I will be posting more info on this in the upcoming weeks.</p>
+<p>&nbsp;</p>

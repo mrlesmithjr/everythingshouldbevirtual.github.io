@@ -1,0 +1,61 @@
+---
+layout: post
+title: Veeam installed
+date: 2012-08-21 20:54:08.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Backups
+- Disaster Recovery
+- Storage
+- Virtualization
+- VMware
+tags:
+- backups
+- esxi
+- recovery
+- veeam
+- vsphere5
+meta:
+  _jd_tweet_this: 'yes'
+  _jd_twitter: ''
+  _wp_jd_clig: ''
+  _wp_jd_bitly: ''
+  _wp_jd_wp: http://wp.me/p2C5rM-3X
+  _wp_jd_yourls: ''
+  _wp_jd_url: ''
+  _wp_jd_target: http://wp.me/p2C5rM-3X
+  _jd_wp_twitter: 'a:1:{i:0;s:56:"New post: Veeam installed http://wp.me/p2C5rM-3X
+    #VMware";}'
+  _jd_post_meta_fixed: 'true'
+  _edit_last: '11'
+  fb_social_plugin_settings_box_subscribe: default
+  al2fb_facebook_link_id: '1329619822_3578829272614'
+  al2fb_facebook_link_time: '2012-08-22T00:54:11+00:00'
+  al2fb_facebook_link_picture: post=http://everythingshouldbevirtual.com/wp-content/uploads/2012/08/20-47-23-300x138.png
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  snapFB: s:151:"a:1:{i:0;a:4:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";}}";
+  snapLI: s:128:"a:1:{i:0;a:3:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";}}";
+  snapSU: s:100:"a:1:{i:0;a:3:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";}}";
+  snapTW: 's:126:"a:1:{i:0;a:3:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";}}";'
+  _wp_rp_related_posts_query_result_cache_expiration: '1510364016'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1134";s:5:"score";s:18:"139.83413048480017";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1282";s:5:"score";s:17:"122.0981741279351";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1581";s:5:"score";s:18:"106.87743637796274";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1016";s:5:"score";s:18:"105.41759611063762";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"2021";s:5:"score";s:17:"90.01894236745567";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"522";s:5:"score";s:17:"87.51509461707857";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"201";s:5:"score";s:17:"83.37626106272774";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1570";s:5:"score";s:17:"82.68062489155793";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1151";s:5:"score";s:17:"78.01795522759089";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"1154";s:5:"score";s:17:"71.56995527886437";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"623";s:5:"score";s:17:"71.56995527886437";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"7243";s:5:"score";s:16:"71.4923544543973";}}
+  _wp_rp_image: empty
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>Veeam is installed and running some backups. I am not able to get the search server portion to work however as of yet. I have installed Microsoft Search Server 2010 Express. Seems to be working very well right now, but seeing some high disk IO latency during backups.</p>
+<p><a href="http://everythingshouldbevirtual.com/veeam-installed/20-47-23" rel="attachment wp-att-246"><img class="alignnone size-medium wp-image-246" title="20-47-23" alt="" src="{{ site.baseurl }}/assets/20-47-23-300x138.png" width="300" height="138" /></a></p>
+<p>Update!!</p>
+<p>To get search server working do the following after installing search server 2010 express.</p>
+<p>SharePoint 2010 Central Administration → Application Management → Service Applications: Manage service applications → Search Service Application → Click Default content access account and change to either your Veeam backup service account / or an account with Read access rights to the catalog share, and NTFS permissions to the folder backing the share</p>

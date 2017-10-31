@@ -1,0 +1,69 @@
+---
+layout: post
+title: 'Support | HOWTO: How to export and import PlateSpin Migrate/Protect/Forge
+  database'
+date: 2012-08-11 19:43:59.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Disaster Recovery
+- Virtualization
+tags:
+- disaster recovery
+- DR
+- platespin
+- platespin protect
+- vsphere5
+meta:
+  _jd_tweet_this: 'yes'
+  _jd_twitter: ''
+  _wp_jd_clig: ''
+  _wp_jd_bitly: ''
+  _wp_jd_wp: http://wp.me/p2C5rM-2R
+  _wp_jd_yourls: ''
+  _wp_jd_url: ''
+  _wp_jd_target: http://wp.me/p2C5rM-2R
+  _jd_wp_twitter: 'a:3:{i:0;s:115:"New post: Support | HOWTO: How to export and import
+    PlateSpin Migrate/Protect/Forge database http://wp.me/p2C5rM-2R";i:1;s:118:"Post
+    Edited: Support | HOWTO: How to export and import PlateSpin Migrate/Protect/Forge
+    database http://wp.me/p2C5rM-2R";i:2;s:126:"Post Edited: Support | HOWTO: How
+    to export and import PlateSpin Migrate/Protect/Forge database http://wp.me/p2C5rM-2R
+    #VMware";}'
+  _jd_post_meta_fixed: 'true'
+  al2fb_facebook_link_id: '1329619822_3543160620920'
+  al2fb_facebook_link_time: '2012-08-11T23:44:03+00:00'
+  al2fb_facebook_link_picture: post=https://everythingshouldbevirtual.com/?al2fb_image=1
+  _edit_last: '11'
+  fb_social_plugin_settings_box_subscribe: default
+  _wp_rp_related_posts_query_result_cache_expiration: '1510195861'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"471";s:5:"score";s:17:"72.38412468433935";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"1134";s:5:"score";s:17:"69.76950959792113";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"245";s:5:"score";s:16:"66.2666213261798";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1016";s:5:"score";s:17:"55.98300841236262";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1570";s:5:"score";s:17:"53.31170715618242";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1151";s:5:"score";s:17:"53.31170715618242";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1146";s:5:"score";s:17:"53.31170715618242";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"1158";s:5:"score";s:17:"50.37550879187051";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"626";s:5:"score";s:17:"48.09995356680686";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"201";s:5:"score";s:17:"45.58457539348817";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1154";s:5:"score";s:17:"41.34621165290739";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"623";s:5:"score";s:17:"41.34621165290739";}}
+  _wp_rp_image: '3810'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>If you are using Platespin Protect for a disaster recovery solution for your datacenter you need to know how to do this. After attempting to upgrade to the latest 10.2 version which supports vSphere5 I have personally lost my protected workloads during the upgrade. Thank God for virtualizing my platespin server and of course taking a snapshot before attempting the upgrade. I will be updating on this sometime this week as I go through this process and document on how to do a clean upgrade.</p>
+<p><a href="https://www.netiq.com/support/kb/doc.php?id=7970601">Support | HOWTO: How to export and import PlateSpin Migrate/Protect/Forge database</a>.</p>
+<p>&nbsp;</p>
+<p>Update 08/13/2012</p>
+<p>I decided to deploy a new platespin server to run in parallel for now. This brought on it's own challenges. Follow along. I am using Server 2008 R2.</p>
+<p>Run the installer and install SQL Express for your local DB. You can also use a remote SQL installation if you would like, but I chose SQL Express. I would also recommend installing SQL Studio Express so you can browse and manage your SQL Express installation. You need to install MSXML6 prior to installing this and run the MSI installer from an administrative command prompt.</p>
+<p>First attempt at installation brought this error.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-Error-IIS-needs-to-be-in-32-bit-mode.png"><img class="alignnone size-medium wp-image-186" title="Platespin Error - IIS needs to be in 32 bit mode" src="{{ site.baseurl }}/assets/Platespin-Error-IIS-needs-to-be-in-32-bit-mode-300x171.png" alt="" width="300" height="171" /></a></p>
+<p>So I found the following link and followed it.</p>
+<p><a href="http://www.novell.com/support/kb/doc.php?id=7920881">http://www.novell.com/support/kb/doc.php?id=7920881</a></p>
+<p>Changed DefaultAppPool settings as required.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-install-DefaultAppPool-32bit-mode.png"><img class="alignnone size-medium wp-image-188" title="Platespin install - DefaultAppPool - 32bit mode" src="{{ site.baseurl }}/assets/Platespin-install-DefaultAppPool-32bit-mode-300x120.png" alt="" width="300" height="120" /></a></p>
+<p>&nbsp;</p>
+<p>Changed Application Pool Defaults as required.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-install-Application-Pool-Defaults-32bit-mode.png"><img class="alignnone size-medium wp-image-184" title="Platespin install - Application Pool Defaults - 32bit mode" src="{{ site.baseurl }}/assets/Platespin-install-Application-Pool-Defaults-32bit-mode-300x185.png" alt="" width="300" height="185" /></a></p>
+<p>Once again got this error during install. (?&gt;SJJ****)</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-Error-IIS-needs-to-be-in-32-bit-mode.png"><img class="alignnone size-medium wp-image-186" title="Platespin Error - IIS needs to be in 32 bit mode" src="{{ site.baseurl }}/assets/Platespin-Error-IIS-needs-to-be-in-32-bit-mode-300x171.png" alt="" width="300" height="171" /></a></p>
+<p>So after doing some more digging I finally had to enable these roles and the installation completed.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-install-Need-to-add-IIS6-roles.png"><img class="alignnone size-medium wp-image-183" title="Platespin install - Need to add IIS6 roles" src="{{ site.baseurl }}/assets/Platespin-install-Need-to-add-IIS6-roles-300x114.png" alt="" width="300" height="114" /></a></p>
+<p>Update....things not going so well with the upgrade. Looks like I will have to start from scratch and remove all of my workloads from the old server to free up licenses and then transfer my license to the new server and start adding all of the workloads back. Have to say not too impressed with this upgrade. All other upgrades I have done in the past have been flawless. Not this time. The import export process is failing with out of memory errors. The original server is server 2008 32bit with 6gb of memory. Guess what, 32bit only uses up to 4gb. So it appears that no matter what I attempt it fails. Platespin support has been helpful, but they could use some flexibility in situations like this. Oh well. I will update again later on any progress.</p>
+<p>&nbsp;</p>

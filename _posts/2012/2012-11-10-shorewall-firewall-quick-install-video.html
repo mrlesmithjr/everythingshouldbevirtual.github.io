@@ -1,0 +1,91 @@
+---
+layout: post
+title: Shorewall firewall quick install video
+date: 2012-11-10 19:28:17.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Firewall
+- Linux
+- Security
+- Ubuntu
+tags:
+- Firewall
+- iptables
+- shorewall
+- ubuntu
+- ubuntu 12.04
+meta:
+  _edit_last: '11'
+  fb_social_plugin_settings_box_subscribe: default
+  fb_social_plugin_settings_box_recommendations_bar: default
+  _s2mail: 'yes'
+  _jd_tweet_this: 'yes'
+  _jd_twitter: "#title# #url# #ubuntu #linux #security"
+  al2fb_facebook_link_id: '1329619822_3913319074650'
+  al2fb_facebook_link_time: '2012-11-11T00:28:19+00:00'
+  al2fb_facebook_link_picture: post=https://everythingshouldbevirtual.com/?al2fb_image=1
+  _wp_jd_wp: http://wp.me/p2C5rM-bL
+  _wp_jd_target: http://wp.me/p2C5rM-bL
+  _jd_wp_twitter: 'a:1:{i:0;s:101:"#ElRetardoLand Shorewall firewall quick install
+    video http://wp.me/p2C5rM-bL #ubuntu #linux #security";}'
+  snapEdIT: '1'
+  snapFB: s:276:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:8:"postType";s:1:"A";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snapLI: s:270:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:8:"postType";s:1:"A";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snapSU: s:119:"a:1:{i:0;a:4:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:4:"nsfw";s:1:"0";}}";
+  _oembed_580473574de70305eb86b37a230e70bc: <iframe width="500" height="281" src="http://www.youtube.com/embed/BYKyFY92IOA?feature=oembed"
+    frameborder="0" allowfullscreen></iframe>
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapDL: s:102:"a:1:{i:0;a:3:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";}}";
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  snapTW: 's:172:"a:1:{i:0;a:5:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";}}";'
+  dsq_thread_id: ''
+  _wp_rp_image: empty
+  _wp_rp_related_posts_query_result_cache_expiration: '1509646665'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"699";s:5:"score";s:18:"322.47593450823825";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"687";s:5:"score";s:18:"126.03959136300246";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"878";s:5:"score";s:18:"120.03134854872437";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"668";s:5:"score";s:18:"102.66647357854593";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1402";s:5:"score";s:17:"99.40842678197205";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1566";s:5:"score";s:17:"94.30901146102076";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1494";s:5:"score";s:16:"90.4202462621682";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"2626";s:5:"score";s:17:"76.87430257098387";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"2646";s:5:"score";s:16:"72.7918619132646";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"3249";s:5:"score";s:17:"70.20989355063347";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"2586";s:5:"score";s:17:"69.94283076538443";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"139";s:5:"score";s:17:"65.28745749293228";}}
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>Installing shorewall firewall on Ubuntu 12.04 for a simple single network configuration.</p>
+<pre>sudo nano /etc/network/interfaces</pre>
+<p>assumption is that eth0 is your internet facing interface using dhcp<br />
+add the following</p>
+<pre>iface auto eth1
+address 192.168.2.2
+netmask 255.255.255.0</pre>
+<pre>sudo apt-get install shorewall
+sudo nano /etc/default/shorewall</pre>
+<p>change <em>startup=0</em> to <em>startup=1</em></p>
+<pre>sudo nano /etc/shorewall/shorewall.conf</pre>
+<p>change <em>STARTUP_ENABLED=No</em> to <em>STARTUP_ENABLED=Yes</em></p>
+<pre>sudo cp /usr/share/doc/shorewall/default-config/* /etc/shorewall/
+sudo nano /etc/shorewall/zones</pre>
+<pre>fw firewall
+net ipv4
+loc ipv4</pre>
+<pre>sudo nano /etc/shorewall/interfaces
+net eth0 detect dhcp,routefilter,norfc1918,logmartians,nosmurfs,tcpflags
+loc eth1 detect tcpflags
+sudo nano /etc/shorewall/policy
+net all DROP info
+loc all ACCEPT
+fw all ACCEPT
+# Last Policy rule. Must be last
+all all REJECT info</pre>
+<pre>sudo nano /etc/rules</pre>
+<p>** There are no firewall rules in this as the default rule for the local network is to accept all outgoing traffic.**</p>
+<pre>sudo nano /etc/shorewall/masq
+eth0 eth1</pre>
+<pre>sudo touch /var/log/messages</pre>
+<p>&nbsp;</p>
+<p>https://youtu.be/ZbjKMJQq6Z0</p>

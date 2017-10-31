@@ -1,0 +1,174 @@
+---
+layout: post
+title: Ansible - KeepAliveD
+date: 2015-04-09 18:23:45.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Ansible
+- Automation
+tags:
+- Ansible
+meta:
+  snapTW: 's:323:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:67:"%TITLE%
+    - %URL% #everythingshouldbevirtual #Ubuntu #Ansible #DevOPS";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"586293484417593345";s:5:"pDate";s:19:"2015-04-09
+    22:23:54";}}";'
+  _edit_last: '11'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"b6b1f94d426c1457f1005486469c0af0";s:5:"pDate";s:19:"2015-04-09
+    22:23:46";}}";
+  _s2mail: 'yes'
+  _yoast_wpseo_focuskw: Ansible - KeepAlived
+  _yoast_wpseo_title: Ansible - KeepAliveD
+  _yoast_wpseo_metadesc: Ansible - KeepAliveD
+  _yoast_wpseo_linkdex: '74'
+  snap_isAutoPosted: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:274:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1510544326'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"4449";s:5:"score";s:17:"88.08982822694844";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"4391";s:5:"score";s:18:"58.551696639746424";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"4367";s:5:"score";s:18:"55.329029344782185";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"4902";s:5:"score";s:16:"54.1442181231225";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"4695";s:5:"score";s:17:"53.18284742446677";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"7702";s:5:"score";s:18:"47.573821186881105";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"4713";s:5:"score";s:18:"47.573821186881105";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"4648";s:5:"score";s:18:"47.573821186881105";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"4505";s:5:"score";s:18:"47.573821186881105";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"4411";s:5:"score";s:18:"47.573821186881105";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"7064";s:5:"score";s:18:"47.389074546722966";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"5498";s:5:"score";s:18:"47.389074546722966";}}
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"2V2vyL";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/2V2vyL/comments";s:5:"pDate";s:19:"2015-04-09
+    22:23:53";}}";
+  _oembed_36bd1e4f93ec98df908eb01074a9aa89: "{{unknown}}"
+  _wp_rp_image: empty
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<h4>Ansible - KeepAliveD</h4>
+<p>In this post I am creating a fictitious tenant using a vars file which looks like below.</p>
+<pre>/tenant_1.yml
+---
+tenant_name: tenant_1
+config_forward_rules_allow_spec: false
+
+tenant_subnets:
+  - { tenant_subnet: '192.168.70.0/24' }  # Web
+  - { tenant_subnet: '192.168.71.0/24' }  # App
+  - { tenant_subnet: '192.168.72.0/24' }  # DB
+
+tenant_vips:
+  - 10.10.10.100
+  - 10.10.10.101
+  - 10.10.10.102
+  - 10.10.10.103
+  - 10.10.10.104
+
+# Applied on router(s) forward rules
+forward_rules_allow_spec:
+#  - { protocol: 'tcp', port: '8080', source: '0.0.0.0/0', destination: '192.168.70.0/24' }
+#  - { protocol: 'tcp', port: '22', source: '0.0.0.0/0', destination: '192.168.71.0/24' }
+#  - { protocol: 'tcp', port: '22', source: '0.0.0.0/0', destination: '192.168.72.0/24' }
+
+forward_rules_allow_gen:
+  - { source: '192.168.70.0/24', destination: '0.0.0.0/0' }
+  - { source: '192.168.71.0/24', destination: '0.0.0.0/0' }
+  - { source: '192.168.72.0/24', destination: '0.0.0.0/0' }
+
+forward_rules_out_drop:
+  - { source: '192.168.70.0/24', destination: '192.168.71.0/24' }
+  - { source: '192.168.70.0/24', destination: '192.168.72.0/24' }
+  - { source: '192.168.71.0/24', destination: '192.168.70.0/24' }
+  - { source: '192.168.71.0/24', destination: '192.168.72.0/24' }
+  - { source: '192.168.72.0/24', destination: '192.168.70.0/24' }
+  - { source: '192.168.72.0/24', destination: '192.168.71.0/24' }
+
+backend_rules:
+
+# Load Balancer Setup
+
+lb_details:
+  - { name: 'web', protocol: 'tcp', listen_port: '80', tenant_vip: '10.10.10.100' } 
+  - { name: 'db', protocol: 'tcp', listen_port: '3306', tenant_vip: '10.10.10.100' }
+
+lb_defs:
+  - { lb_def_name: 'web', protocol: 'tcp', listen_port: '80', tenant_vip: '10.10.10.100', lb_group: 'web', server: 'ans-cloud-web01', backend_port: '80' }
+  - { lb_def_name: 'web', protocol: 'tcp', listen_port: '80', tenant_vip: '10.10.10.100', lb_group: 'web', server: 'ans-cloud-web02', backend_port: '80' }
+  - { lb_def_name: 'web', protocol: 'tcp', listen_port: '80', tenant_vip: '10.10.10.100', lb_group: 'web', server: 'ans-cloud-web03', backend_port: '80' }
+  - { lb_def_name: 'db', protocol: 'tcp', listen_port: '3306', tenant_vip: '10.10.10.100', lb_group: 'db', server: 'ans-cloud-db01', backend_port: '3306' }
+  - { lb_def_name: 'db', protocol: 'tcp', listen_port: '3306', tenant_vip: '10.10.10.100', lb_group: 'db', server: 'ans-cloud-db02', backend_port: '3306' }
+</pre>
+<p>And the goal of this is to dynamically create a KeepAliveD Failover configuration between two Ubuntu servers functioning as routers and load balancers.<br />
+I will be using the following playbook to generate the KeepAliveD configuration.</p>
+<pre>---
+- hosts: all
+  vars_files:
+    - ../vars/tenant_1.yml
+  tasks:
+  - name: tenant_configs | config | setting up keepalived vips
+    template: src=../templates/etc/keepalived/keepalived.conf.j2 dest=/etc/keepalived/keepalived.conf owner=root group=root mode=0644
+    run_once: true
+    notify: restart keepalived
+  handlers:
+  - name: restart keepalived
+    service: name=keepalived state=restarted
+</pre>
+<p>The playbook will use the following template to actually generate the keepalived.conf file.</p>
+<pre># {{ ansible_managed }}
+
+#### Below is for managing the whole stack involved in Quagga HA
+vrrp_script chk_zebra {
+   script "killall -0 zebra"   # verify the pid existance
+   interval 2                    # check every 2 seconds
+   weight 2                      # add 2 points of prio if OK
+}
+
+vrrp_instance Quagga {
+  state MASTER
+  interface {{ keepalived_vip_int }}
+  virtual_router_id {{ keepalived_router_id }}
+  priority {{ keepalived_router_pri }}
+  advert_int 1
+  virtual_ipaddress {
+    {{ keepalived_vip }}
+  }
+  virtual_ipaddress_excluded {
+{% for vip in tenant_vips %}
+          {{ vip }}
+{% endfor %}
+  }
+  notify_master {{ notify_master_script }}
+  notify_backup {{ notify_backup_script }}
+}
+</pre>
+<p>And what you end up with is below</p>
+<pre>#### Below is for managing the whole stack involved in Quagga HA
+vrrp_script chk_zebra {
+   script "killall -0 zebra"   # verify the pid existance
+   interval 2                    # check every 2 seconds
+   weight 2                      # add 2 points of prio if OK
+}
+
+vrrp_instance Quagga {
+  state MASTER
+  interface eth0
+  virtual_router_id 23
+  priority 101
+  advert_int 1
+  virtual_ipaddress {
+    10.10.10.4
+  }
+  virtual_ipaddress_excluded {
+          10.10.10.100
+          10.10.10.101
+          10.10.10.102
+          10.10.10.103
+          10.10.10.104
+  }
+  notify_master /opt/scripts/master.sh
+  notify_backup /opt/scripts/backup.sh
+}
+</pre>
+<p>And there you have it. You can now build out your KeepAliveD configurations.</p>
+<p>Below is the actual complete group_vars file. Which will be use for this post and future posts based on this same scenario.</p>
+<p>https://gist.github.com/mrlesmithjr/6c10a9d92a2fd9380d2b</p>
+<p>Enjoy!</p>

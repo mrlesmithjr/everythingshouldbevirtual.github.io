@@ -1,0 +1,55 @@
+---
+layout: post
+title: Graylog2 v0.92.4 Install Script
+date: 2015-01-21 21:42:36.000000000 -05:00
+type: post
+published: true
+status: publish
+categories:
+- Graylog2
+- Monitoring
+tags:
+- graylog2
+- ubuntu
+meta:
+  _edit_last: '11'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapFB: s:280:"a:1:{i:0;a:9:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  snapLI: s:274:"a:1:{i:0;a:9:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";s:11:"isPrePosted";s:1:"1";}}";
+  _s2mail: 'yes'
+  _yoast_wpseo_focuskw: Graylog2
+  _yoast_wpseo_metadesc: Graylog2
+  _yoast_wpseo_linkdex: '56'
+  snap_isAutoPosted: '1'
+  snapDL: s:242:"a:1:{i:0;a:7:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:32:"7d7470eb7d088c2de03d6436a8a62c02";s:5:"pDate";s:19:"2015-01-22
+    02:42:46";}}";
+  snapSU: s:304:"a:1:{i:0;a:9:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"1F00Jm";s:7:"postURL";s:50:"http://www.stumbleupon.com/content/1F00Jm/comments";s:5:"pDate";s:19:"2015-01-22
+    02:42:52";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1511679065'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"3249";s:5:"score";s:17:"143.8665953881206";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"2626";s:5:"score";s:18:"114.81584823924857";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"2646";s:5:"score";s:17:"101.3034811486946";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1815";s:5:"score";s:17:"96.71125599191257";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:4:"1494";s:5:"score";s:17:"75.43244510185829";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"699";s:5:"score";s:17:"72.47801452137847";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"1894";s:5:"score";s:16:"61.9398013535703";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"2254";s:5:"score";s:16:"57.1791538953896";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"527";s:5:"score";s:17:"47.74922746255493";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"2586";s:5:"score";s:17:"42.03877115650303";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"2280";s:5:"score";s:17:"38.31175035465344";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"7243";s:5:"score";s:17:"37.95633049878376";}}
+  snapTW: 's:324:"a:1:{i:0;a:9:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:68:"%TITLE%
+    - %URL% #everythingshouldbevirtual #Graylog2 #DevOPS #Ubuntu";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"558092406470766592";s:5:"pDate";s:19:"2015-01-22
+    02:42:53";}}";'
+  _wp_rp_image: empty
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<h4>Graylog2 v0.92.4 Install Script</h4>
+<p>This post will only cover a fresh new install of Graylog2.</p>
+<p>To install Graylog2 v0.92.4 do the following on a Ubuntu 12.x/13.x/14.x server.</p>
+<pre>sudo apt-get install git
+cd ~
+git clone https://github.com/mrlesmithjr/graylog2
+chmod +x graylog2/install_graylog2_90_ubuntu.sh
+sudo ./graylog2/install_graylog2_90_ubuntu.sh
+</pre>
+<p>For additional steps in setting up head over to <a title="Ubuntu 12.04 Graylog2 Installation" href="http://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation">this</a> post.</p>
+<p>Enjoy!</p>

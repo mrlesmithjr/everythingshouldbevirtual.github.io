@@ -1,0 +1,74 @@
+---
+layout: post
+title: vCenter SSO AD Gotcha
+date: 2013-08-01 19:01:23.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Microsoft
+- Server 2008 R2
+- Server 2012
+- vCenter
+- VMware
+tags:
+- active directory
+- sso
+- vcenter
+- Vsphere
+meta:
+  _edit_last: '11'
+  _s2mail: 'yes'
+  _wpas_done_all: '1'
+  snapEdIT: '1'
+  snapLI: s:187:"a:1:{i:0;a:5:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:6:"&nbsp;";s:11:"isPrePosted";s:1:"1";}}";
+  snapSU: s:127:"a:1:{i:0;a:4:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";}}";
+  snap_isAutoPosted: '1'
+  snapFB: s:300:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_453174051447709";s:5:"pDate";s:19:"2013-08-01
+    23:01:26";}}";
+  snapTW: 's:278:"a:1:{i:0;a:7:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:68:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vmware #vsphere #windows";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"363072727441084416";s:5:"pDate";s:19:"2013-08-01
+    23:04:18";}}";'
+  _thumbnail_id: '1880'
+  _wp_rp_related_posts_query_result_cache_expiration: '1509709132'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"939";s:5:"score";s:17:"83.76556271273162";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:4:"2909";s:5:"score";s:17:"70.98841442136253";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1847";s:5:"score";s:17:"69.23122818699824";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"680";s:5:"score";s:16:"67.7928178247718";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"481";s:5:"score";s:17:"67.68054948395913";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:4:"1943";s:5:"score";s:18:"62.799725296788466";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"623";s:5:"score";s:17:"62.00109343416794";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"4466";s:5:"score";s:17:"60.33914507198237";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"2021";s:5:"score";s:18:"58.141920494295505";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"2233";s:5:"score";s:18:"57.388639518672804";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"497";s:5:"score";s:18:"57.132567600300874";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"487";s:5:"score";s:18:"57.132567600300874";}}
+  dsq_thread_id: ''
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>So this past week I have been upgrading my home lab domain from AD 2008 R2 to AD 2012 and so far it has gone without a hitch (read <a title="http://everythingshouldbevirtual.com/server-2012-ad-upgrade-notes" href="http://everythingshouldbevirtual.com/server-2012-ad-upgrade-notes">here </a>on this). Well until today that is. I was attempting to login to vCenter using the viclient and the screenshot below is what I was presented with.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/08/13-21-32.png"><img class="alignnone size-medium wp-image-1880" alt="13-21-32" src="{{ site.baseurl }}/assets/13-21-32-300x270.png" width="300" height="270" /></a></p>
+<p>&nbsp;</p>
+<p>"A general system error occurred: Authorize Exception". Well that doesn't look good. :(</p>
+<p>So a good Google search returned <a title="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1015639" href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1015639" target="_blank">this </a>KB article about this. Which got me looking at my SSO configuration. So I logged into my vCenter server and started looking through the event logs and found this next.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/08/14-01-50.png"><img class="alignnone size-medium wp-image-1881" alt="14-01-50" src="{{ site.baseurl }}/assets/14-01-50-300x194.png" width="300" height="194" /></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>OK so my vcenter domain account(s) added into permissions are not resolving correctly now. Which got me thinking. I demoted my Windows 2008 R2 domain controller last night could this really be the cause of my issue? So I tested to make sure that I could launch the viclient fine using the local administrator account. Success. So I now know that vCenter is working but domain logins are not working. So I quickly launched the vCenter web gui and went into my SSO configuration and look what I found staring at me. I never even thought about this of course.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/08/13-25-41.png"><img class="alignnone size-medium wp-image-1882" alt="13-25-41" src="{{ site.baseurl }}/assets/13-25-41-300x65.png" width="300" height="65" /></a></p>
+<p>&nbsp;</p>
+<p>Sure enough, my active directory identity source was still pointing to the domain controller that I decommissioned last night. Well we can fix this easy enough. Remove the old identity source and create a new one pointing to my two new Server 2012 domain controllers.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/08/13-27-07.png"><img class="alignnone size-medium wp-image-1883" alt="13-27-07" src="{{ site.baseurl }}/assets/13-27-07-263x300.png" width="263" height="300" /></a></p>
+<p>&nbsp;</p>
+<p>Test the connection and success. :)</p>
+<p>Now back to the viclient I need to go look at the granted permissions for my domain user(s).</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/08/14-03-35.png"><img class="alignnone size-medium wp-image-1884" alt="14-03-35" src="{{ site.baseurl }}/assets/14-03-35-300x63.png" width="300" height="63" /></a></p>
+<p>&nbsp;</p>
+<p>Sure enough they are all gone.</p>
+<p>So let's add them all back.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/08/14-03-48.png"><img class="alignnone size-medium wp-image-1885" alt="14-03-48" src="{{ site.baseurl }}/assets/14-03-48-300x241.png" width="300" height="241" /></a></p>
+<p>&nbsp;</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/08/14-03-56.png"><img class="alignnone size-medium wp-image-1886" alt="14-03-56" src="{{ site.baseurl }}/assets/14-03-56-300x233.png" width="300" height="233" /></a></p>
+<p>&nbsp;</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/08/14-04-41.png"><img class="alignnone size-medium wp-image-1887" alt="14-04-41" src="{{ site.baseurl }}/assets/14-04-41-300x125.png" width="300" height="125" /></a></p>
+<p>&nbsp;</p>
+<p>Ah ha! The accounts are now added back. So now let's check and make sure that I can log into vCenter again. Success! All done!</p>
+<p>So keep this in mind if you are going through a scenario like this. Especially if you are decommissioning domain controllers. You will need to make sure beforehand that you add your new domain controller(s) into SSO as an identity source and remove the old domain controller(s) so you do not get into a bind here like I did.</p>
+<p>Enjoy!</p>

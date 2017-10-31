@@ -1,0 +1,42 @@
+---
+layout: post
+title: 'VMware KB: Disabling VAAI Thin Provisioning Block Space Reclamation UNMAP
+  in ESXi 5.0'
+date: 2012-07-28 23:32:25.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Storage
+- Virtualization
+tags: []
+meta:
+  al2fb_facebook_link_id: '1329619822_3496346010584'
+  al2fb_facebook_link_time: '2012-07-29T03:32:29+00:00'
+  al2fb_facebook_link_picture: post=https://everythingshouldbevirtual.com/?al2fb_image=1
+  _wp_rp_related_posts_query_result_cache_expiration: '1510590841'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:3:"201";s:5:"score";s:18:"37.072015377083765";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:2:"98";s:5:"score";s:18:"28.795292481539782";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"100";s:5:"score";s:18:"27.294939720231405";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"162";s:5:"score";s:18:"25.854810917024448";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:2:"92";s:5:"score";s:18:"24.914803658532975";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"26";s:5:"score";s:18:"22.499149174693105";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:4:"4186";s:5:"score";s:17:"22.38633812850218";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:3:"403";s:5:"score";s:18:"21.015181677054446";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:3:"345";s:5:"score";s:18:"20.370937988454685";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"2233";s:5:"score";s:18:"19.428720399041367";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"253";s:5:"score";s:18:"18.898394774164686";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:3:"114";s:5:"score";s:18:"18.898394774086764";}}
+  _wp_rp_image: empty
+  dsq_thread_id: '3351878543'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>Here is the VMware KB article on how to disable the VAAI SCSI UNMAP feature in ESXi5. The latest update patch disables this. You can check to see if it is enabled or disabled by running the following on your host command line by using the following command. The returned Int Value should be 0.</p>
+<p>&nbsp;</p>
+<p>~ # esxcli system settings advanced list --option /VMFS3/EnableBlockDelete</p>
+<p>Path: /VMFS3/EnableBlockDelete</p>
+<p>Type: integer</p>
+<p><strong>Int Value: 0</strong></p>
+<p>Default Int Value: 0</p>
+<p>Min Value: 0</p>
+<p>Max Value: 1</p>
+<p>String Value:</p>
+<p>Default String Value:</p>
+<p>Valid Characters:</p>
+<p>Description: Enable VMFS block delete</p>
+<p>~ #</p>
+<div><a href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2007427">VMware KB: Disabling VAAI Thin Provisioning Block Space Reclamation UNMAP in ESXi 5.0</a>.</div>

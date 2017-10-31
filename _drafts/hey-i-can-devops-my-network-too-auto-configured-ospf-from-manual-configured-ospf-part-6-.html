@@ -1,0 +1,439 @@
+---
+layout: post
+title: Hey, I can DevOPS my Network too! - Auto-configured OSPF from Manual-configured
+  OSPF (Part 6)
+date: 
+type: post
+published: false
+status: draft
+categories: []
+tags: []
+meta:
+  _edit_last: '7644'
+  _snap_forceSURL: '2'
+  snap_MYURL: ''
+  snapEdIT: '1'
+  snapDL: s:102:"a:1:{i:0;a:3:{s:4:"doDL";s:1:"1";s:11:"SNAPformatT";s:7:"%TITLE%";s:10:"SNAPformat";s:9:"%EXCERPT%";}}";
+  snapFB: s:253:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"postType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+  snapSU: s:119:"a:1:{i:0;a:4:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:4:"nsfw";s:1:"0";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";}}";
+  snapTW: 's:172:"a:1:{i:0;a:5:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";}}";'
+  _s2mail: 'yes'
+  wp_github_commits_page_fields: a:3:{s:15:"gc_widget_title";s:0:"";s:11:"github_user";s:0:"";s:11:"github_repo";s:0:"";}
+  _yoast_wpseo_focuskw: Hey, I can DevOPS my Network too! - Auto-configured OSPF from
+    Manual-configured OSPF (Part 6)
+  _yoast_wpseo_metadesc: Hey, I can DevOPS my Network too! - Auto-configured OSPF
+    from Manual-configured OSPF (Part 6)
+  _yoast_wpseo_linkdex: '71'
+  snapLI: s:244:"a:1:{i:0;a:8:{s:4:"doLI";s:1:"1";s:8:"postType";s:1:"A";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:1:" ";s:9:"isAutoImg";s:1:"A";s:8:"imgToUse";s:0:"";s:9:"isAutoURL";s:1:"A";s:8:"urlToUse";s:0:"";}}";
+author:
+  login: mrlesmithjr
+  email: mrlesmithjr@gmail.com
+  display_name: Larry Smith Jr.
+  first_name: ''
+  last_name: ''
+---
+<p style="text-align: center;"><strong>Hey, I can DevOPS my Network too! - Auto-configured OSPF from Manual-configured OSPF (Part 6)</strong></p>
+<p style="text-align: left;">In our last <a href="http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-manual-configured-ospf-part-5">post</a> we went over manually configuring OSPF between all of our routers. And at the very end we were supposed to come up with a scenario and configure each router to communicate with all other router interfaces via OSPF. And I am sure you did that right? :) Well, if not; then I have done this for you so we may proceed with this series.</p>
+<p style="text-align: left;">So what are the end results of this post exactly? What we will be covering is how you can define out your OSPF network topology in this lab manually; then, take the working configurations and create our Ansible variables in order to automate a predictable configuration. This is all about an automated, repeatable and consistent configuration management process.</p>
+<p style="text-align: left;">So let's first go through the configuration that I came up with for this series. We will then take this configuration and define our Ansible variables; in which, we will be able to reproduce this topology from scratch in an automated fashion.</p>
+<p style="text-align: left;">Below is a drawing of how I designed out my OSPF topology and we will be diving deep into how we accomplished said configuration.</p>
+<p style="text-align: left;"><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2015/09/ossrouting-OSPF-drawing-New-Page.png"><img class="size-medium wp-image-4981 aligncenter" src="{{ site.baseurl }}/assets/ossrouting-OSPF-drawing-New-Page-300x232.png" alt="ossrouting-OSPF-drawing - New Page" width="300" height="232" /></a></p>
+<p style="text-align: left;">I will be starting with router1 (r1) and proceeding all the way to router5 (r5). So if you remember from the previous posts; you will need a vagrant ssh session to each one of our routers. FYI...I will be skipping some of the basic steps in the following sections. Again, we are learning and hopefully we have learned from the previous posts the proper commands in order to do the tasks required. If you find yourself stuck feel free to leave a comment because I am sure you are not the only one who has the same issue.</p>
+<pre>vagrant ssh r1
+....
+vagrant ssh r5
+</pre>
+<p>As we continue, I will start with router1 (r1); show the routing table, perform some ping checks, then the actual OSPF configuration and then continue onto the additional routers in order (skipping ip routes and pings after router2 (r2) because I can ensure that they work :) ).</p>
+<blockquote><p>Router1 (r1)</p></blockquote>
+<pre>vagrant@r1:~$ ip route
+default via 10.0.2.2 dev eth0
+1.1.1.0/24 dev eth6  proto kernel  scope link  src 1.1.1.10
+2.2.2.0/24 via 192.168.12.12 dev eth2  proto zebra  metric 20
+3.3.3.0/24 via 192.168.31.13 dev eth5  proto zebra  metric 20
+4.4.4.0/24 via 192.168.14.14 dev eth3  proto zebra  metric 20
+5.5.5.0/24 via 192.168.15.15 dev eth4  proto zebra  metric 20
+10.0.2.0/24 dev eth0  proto kernel  scope link  src 10.0.2.15
+192.168.12.0/24 dev eth2  proto kernel  scope link  src 192.168.12.11
+192.168.14.0/24 dev eth3  proto kernel  scope link  src 192.168.14.11
+192.168.15.0/24 dev eth4  proto kernel  scope link  src 192.168.15.11
+192.168.23.0/24  proto zebra  metric 20
+	nexthop via 192.168.12.12  dev eth2 weight 1
+	nexthop via 192.168.31.13  dev eth5 weight 1
+192.168.31.0/24 dev eth5  proto kernel  scope link  src 192.168.31.11
+192.168.41.0/24 via 192.168.14.14 dev eth3  proto zebra  metric 20
+192.168.51.0/24 via 192.168.15.15 dev eth4  proto zebra  metric 20
+192.168.250.0/24 dev eth1  proto kernel  scope link  src 192.168.250.101
+</pre>
+<pre>vagrant@r1:~$ ping -c 4 2.2.2.10
+PING 2.2.2.10 (2.2.2.10) 56(84) bytes of data.
+64 bytes from 2.2.2.10: icmp_seq=1 ttl=64 time=0.040 ms
+64 bytes from 2.2.2.10: icmp_seq=2 ttl=64 time=0.304 ms
+64 bytes from 2.2.2.10: icmp_seq=3 ttl=64 time=0.305 ms
+64 bytes from 2.2.2.10: icmp_seq=4 ttl=64 time=0.321 ms
+
+--- 2.2.2.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3000ms
+rtt min/avg/max/mdev = 0.040/0.242/0.321/0.118 ms
+vagrant@r1:~$ ping -c 4 192.168.23.12
+PING 192.168.23.12 (192.168.23.12) 56(84) bytes of data.
+64 bytes from 192.168.23.12: icmp_seq=1 ttl=64 time=0.398 ms
+64 bytes from 192.168.23.12: icmp_seq=2 ttl=63 time=0.592 ms
+64 bytes from 192.168.23.12: icmp_seq=3 ttl=64 time=0.301 ms
+64 bytes from 192.168.23.12: icmp_seq=4 ttl=64 time=0.451 ms
+
+--- 192.168.23.12 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2999ms
+rtt min/avg/max/mdev = 0.301/0.435/0.592/0.107 ms
+vagrant@r1:~$ ping -c 4 3.3.3.10
+PING 3.3.3.10 (3.3.3.10) 56(84) bytes of data.
+64 bytes from 3.3.3.10: icmp_seq=1 ttl=64 time=0.048 ms
+64 bytes from 3.3.3.10: icmp_seq=2 ttl=64 time=0.305 ms
+64 bytes from 3.3.3.10: icmp_seq=3 ttl=64 time=0.260 ms
+64 bytes from 3.3.3.10: icmp_seq=4 ttl=64 time=0.399 ms
+
+--- 3.3.3.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3001ms
+rtt min/avg/max/mdev = 0.048/0.253/0.399/0.128 ms
+vagrant@r1:~$ ping -c 4 192.168.23.13
+PING 192.168.23.13 (192.168.23.13) 56(84) bytes of data.
+64 bytes from 192.168.23.13: icmp_seq=1 ttl=64 time=0.456 ms
+64 bytes from 192.168.23.13: icmp_seq=2 ttl=64 time=0.303 ms
+64 bytes from 192.168.23.13: icmp_seq=3 ttl=63 time=0.621 ms
+64 bytes from 192.168.23.13: icmp_seq=4 ttl=64 time=0.324 ms
+
+--- 192.168.23.13 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2998ms
+rtt min/avg/max/mdev = 0.303/0.426/0.621/0.126 ms
+vagrant@r1:~$ ping -c 4 4.4.4.10
+PING 4.4.4.10 (4.4.4.10) 56(84) bytes of data.
+64 bytes from 4.4.4.10: icmp_seq=1 ttl=64 time=0.260 ms
+64 bytes from 4.4.4.10: icmp_seq=2 ttl=64 time=0.379 ms
+64 bytes from 4.4.4.10: icmp_seq=3 ttl=64 time=0.364 ms
+64 bytes from 4.4.4.10: icmp_seq=4 ttl=64 time=0.265 ms
+
+--- 4.4.4.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2998ms
+rtt min/avg/max/mdev = 0.260/0.317/0.379/0.054 ms
+vagrant@r1:~$ ping -c 4 192.168.41.14
+PING 192.168.41.14 (192.168.41.14) 56(84) bytes of data.
+64 bytes from 192.168.41.14: icmp_seq=1 ttl=64 time=0.351 ms
+64 bytes from 192.168.41.14: icmp_seq=2 ttl=64 time=0.412 ms
+64 bytes from 192.168.41.14: icmp_seq=3 ttl=64 time=0.421 ms
+64 bytes from 192.168.41.14: icmp_seq=4 ttl=64 time=0.317 ms
+
+--- 192.168.41.14 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2998ms
+rtt min/avg/max/mdev = 0.317/0.375/0.421/0.045 ms
+vagrant@r1:~$ ping -c 4 5.5.5.10
+PING 5.5.5.10 (5.5.5.10) 56(84) bytes of data.
+64 bytes from 5.5.5.10: icmp_seq=1 ttl=64 time=0.365 ms
+64 bytes from 5.5.5.10: icmp_seq=2 ttl=64 time=0.280 ms
+64 bytes from 5.5.5.10: icmp_seq=3 ttl=64 time=0.324 ms
+64 bytes from 5.5.5.10: icmp_seq=4 ttl=64 time=0.383 ms
+
+--- 5.5.5.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3000ms
+rtt min/avg/max/mdev = 0.280/0.338/0.383/0.039 ms
+vagrant@r1:~$ ping -c 4 192.168.51.15
+PING 192.168.51.15 (192.168.51.15) 56(84) bytes of data.
+64 bytes from 192.168.51.15: icmp_seq=1 ttl=64 time=0.263 ms
+64 bytes from 192.168.51.15: icmp_seq=2 ttl=64 time=0.268 ms
+64 bytes from 192.168.51.15: icmp_seq=3 ttl=64 time=0.314 ms
+64 bytes from 192.168.51.15: icmp_seq=4 ttl=64 time=0.330 ms
+
+--- 192.168.51.15 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2997ms
+rtt min/avg/max/mdev = 0.263/0.293/0.330/0.035 ms
+vagrant@r1:~$
+</pre>
+<pre>Current configuration:
+!
+hostname r1
+password 8 adj822FjCZtXw
+enable password 8 tAbrWrT98arPo
+log file /var/log/quagga/ospfd.log
+log stdout
+log syslog
+service password-encryption
+!
+debug ospf event
+debug ospf packet all
+!
+!
+interface eth0
+!
+interface eth1
+!
+interface eth2
+!
+interface eth3
+!
+interface eth4
+!
+interface eth5
+!
+interface eth6
+!
+interface lo
+!
+router ospf
+ ospf router-id 192.168.250.101
+ log-adjacency-changes
+ network 1.1.1.0/24 area 0.0.0.0
+ network 192.168.12.0/24 area 0.0.0.0
+ network 192.168.14.0/24 area 0.0.0.4
+ network 192.168.15.0/24 area 0.0.0.5
+ network 192.168.31.0/24 area 0.0.0.0
+!
+line vty
+!
+end
+</pre>
+<blockquote><p>Router2 (r2)</p></blockquote>
+<pre>vagrant@r2:~$ ip route
+default via 10.0.2.2 dev eth0
+1.1.1.0/24 via 192.168.12.11 dev eth3  proto zebra  metric 20
+2.2.2.0/24 dev eth4  proto kernel  scope link  src 2.2.2.10
+3.3.3.0/24 via 192.168.23.13 dev eth2  proto zebra  metric 20
+4.4.4.0/24 via 192.168.12.11 dev eth3  proto zebra  metric 20
+5.5.5.0/24 via 192.168.12.11 dev eth3  proto zebra  metric 20
+10.0.2.0/24 dev eth0  proto kernel  scope link  src 10.0.2.15
+192.168.12.0/24 dev eth3  proto kernel  scope link  src 192.168.12.12
+192.168.14.0/24 via 192.168.12.11 dev eth3  proto zebra  metric 20
+192.168.15.0/24 via 192.168.12.11 dev eth3  proto zebra  metric 20
+192.168.23.0/24 dev eth2  proto kernel  scope link  src 192.168.23.12
+192.168.31.0/24  proto zebra  metric 20
+	nexthop via 192.168.23.13  dev eth2 weight 1
+	nexthop via 192.168.12.11  dev eth3 weight 1
+192.168.41.0/24 via 192.168.12.11 dev eth3  proto zebra  metric 20
+192.168.51.0/24 via 192.168.12.11 dev eth3  proto zebra  metric 20
+192.168.250.0/24 dev eth1  proto kernel  scope link  src 192.168.250.102
+vagrant@r2:~$
+</pre>
+<pre>vagrant@r2:~$ ping -c 4 1.1.1.10
+PING 1.1.1.10 (1.1.1.10) 56(84) bytes of data.
+64 bytes from 1.1.1.10: icmp_seq=1 ttl=64 time=0.425 ms
+64 bytes from 1.1.1.10: icmp_seq=2 ttl=64 time=0.367 ms
+64 bytes from 1.1.1.10: icmp_seq=3 ttl=64 time=0.307 ms
+64 bytes from 1.1.1.10: icmp_seq=4 ttl=64 time=0.258 ms
+
+--- 1.1.1.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2998ms
+rtt min/avg/max/mdev = 0.258/0.339/0.425/0.064 ms
+vagrant@r2:~$ ping -c 4 192.168.15.11
+PING 192.168.15.11 (192.168.15.11) 56(84) bytes of data.
+64 bytes from 192.168.15.11: icmp_seq=1 ttl=64 time=0.305 ms
+64 bytes from 192.168.15.11: icmp_seq=2 ttl=64 time=0.394 ms
+64 bytes from 192.168.15.11: icmp_seq=3 ttl=64 time=0.246 ms
+64 bytes from 192.168.15.11: icmp_seq=4 ttl=64 time=0.329 ms
+
+--- 192.168.15.11 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2997ms
+rtt min/avg/max/mdev = 0.246/0.318/0.394/0.055 ms
+vagrant@r2:~$ ping -c 4 3.3.3.10
+PING 3.3.3.10 (3.3.3.10) 56(84) bytes of data.
+64 bytes from 3.3.3.10: icmp_seq=1 ttl=64 time=0.273 ms
+64 bytes from 3.3.3.10: icmp_seq=2 ttl=64 time=0.285 ms
+64 bytes from 3.3.3.10: icmp_seq=3 ttl=64 time=0.410 ms
+64 bytes from 3.3.3.10: icmp_seq=4 ttl=64 time=0.293 ms
+
+--- 3.3.3.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3001ms
+rtt min/avg/max/mdev = 0.273/0.315/0.410/0.056 ms
+vagrant@r2:~$ ping -c 4 4.4.4.10
+PING 4.4.4.10 (4.4.4.10) 56(84) bytes of data.
+64 bytes from 4.4.4.10: icmp_seq=1 ttl=63 time=0.545 ms
+64 bytes from 4.4.4.10: icmp_seq=2 ttl=63 time=0.649 ms
+64 bytes from 4.4.4.10: icmp_seq=3 ttl=63 time=0.638 ms
+64 bytes from 4.4.4.10: icmp_seq=4 ttl=63 time=0.685 ms
+
+--- 4.4.4.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2998ms
+rtt min/avg/max/mdev = 0.545/0.629/0.685/0.054 ms
+vagrant@r2:~$ ping -c 4 192.168.41.14
+PING 192.168.41.14 (192.168.41.14) 56(84) bytes of data.
+64 bytes from 192.168.41.14: icmp_seq=1 ttl=63 time=0.328 ms
+64 bytes from 192.168.41.14: icmp_seq=2 ttl=63 time=0.730 ms
+64 bytes from 192.168.41.14: icmp_seq=3 ttl=63 time=0.583 ms
+64 bytes from 192.168.41.14: icmp_seq=4 ttl=63 time=0.554 ms
+
+--- 192.168.41.14 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2999ms
+rtt min/avg/max/mdev = 0.328/0.548/0.730/0.146 ms
+vagrant@r2:~$ ping -c 4 5.5.5.10
+PING 5.5.5.10 (5.5.5.10) 56(84) bytes of data.
+64 bytes from 5.5.5.10: icmp_seq=1 ttl=63 time=0.561 ms
+64 bytes from 5.5.5.10: icmp_seq=2 ttl=63 time=0.613 ms
+64 bytes from 5.5.5.10: icmp_seq=3 ttl=63 time=0.642 ms
+64 bytes from 5.5.5.10: icmp_seq=4 ttl=63 time=0.562 ms
+
+--- 5.5.5.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2998ms
+rtt min/avg/max/mdev = 0.561/0.594/0.642/0.042 ms
+vagrant@r2:~$ ping -c 4 192.168.51.15
+PING 192.168.51.15 (192.168.51.15) 56(84) bytes of data.
+64 bytes from 192.168.51.15: icmp_seq=1 ttl=63 time=0.507 ms
+64 bytes from 192.168.51.15: icmp_seq=2 ttl=63 time=0.561 ms
+64 bytes from 192.168.51.15: icmp_seq=3 ttl=63 time=0.574 ms
+64 bytes from 192.168.51.15: icmp_seq=4 ttl=63 time=0.638 ms
+
+--- 192.168.51.15 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3000ms
+rtt min/avg/max/mdev = 0.507/0.570/0.638/0.046 ms
+vagrant@r2:~$
+</pre>
+<pre>Current configuration:
+!
+hostname r2
+password 8 Finejfz4w76cM
+enable password 8 KM66jD0kHjEcU
+log file /var/log/quagga/ospfd.log
+log stdout
+log syslog
+service password-encryption
+!
+debug ospf event
+debug ospf packet all
+!
+!
+interface eth0
+!
+interface eth1
+!
+interface eth2
+!
+interface eth3
+!
+interface eth4
+!
+interface lo
+!
+router ospf
+ ospf router-id 192.168.250.102
+ log-adjacency-changes
+ redistribute connected
+ network 192.168.12.0/24 area 0.0.0.0
+ network 192.168.23.0/24 area 0.0.0.0
+!
+line vty
+!
+end
+</pre>
+<p>Router3 (r3)</p>
+<pre>Current configuration:
+!
+hostname r3
+password 8 Finejfz4w76cM
+enable password 8 KM66jD0kHjEcU
+log file /var/log/quagga/ospfd.log
+log stdout
+log syslog
+service password-encryption
+!
+debug ospf event
+debug ospf packet all
+!
+!
+interface eth0
+!
+interface eth1
+!
+interface eth2
+!
+interface eth3
+!
+interface eth4
+!
+interface lo
+!
+router ospf
+ ospf router-id 192.168.250.103
+ log-adjacency-changes
+ redistribute connected
+ network 192.168.23.0/24 area 0.0.0.0
+ network 192.168.31.0/24 area 0.0.0.0
+!
+line vty
+!
+end
+</pre>
+<p>Router4 (r4)</p>
+<pre>Current configuration:
+!
+hostname r4
+password 8 adj822FjCZtXw
+enable password 8 tAbrWrT98arPo
+log file /var/log/quagga/ospfd.log
+log stdout
+log syslog
+service password-encryption
+!
+debug ospf event
+debug ospf packet all
+!
+!
+interface eth0
+!
+interface eth1
+!
+interface eth2
+!
+interface eth3
+!
+interface eth4
+!
+interface eth5
+!
+interface lo
+!
+router ospf
+ ospf router-id 192.168.250.104
+ log-adjacency-changes
+ redistribute connected
+ network 192.168.14.0/24 area 0.0.0.4
+!
+line vty
+!
+end
+</pre>
+<p>Router5 (r5)</p>
+<pre>Current configuration:
+!
+hostname r5
+password 8 p.X.L9UuDaMEc
+enable password 8 W8o/EX2Mdd5bA
+log file /var/log/quagga/ospfd.log
+log stdout
+log syslog
+service password-encryption
+!
+debug ospf event
+debug ospf packet all
+!
+!
+interface eth0
+!
+interface eth1
+!
+interface eth2
+!
+interface eth3
+!
+interface eth4
+!
+interface lo
+!
+router ospf
+ ospf router-id 192.168.250.105
+ log-adjacency-changes
+ redistribute connected
+ network 192.168.15.0/24 area 0.0.0.5
+!
+line vty
+!
+end
+</pre>

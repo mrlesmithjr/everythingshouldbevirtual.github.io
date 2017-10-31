@@ -1,0 +1,104 @@
+---
+layout: post
+title: VMware vDS RSPAN Port Mirroring
+date: 2013-05-28 19:43:45.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Cisco
+- Monitoring
+- Networking
+- Virtualization
+- VMware
+- vSphere 5.1
+tags:
+- '5.1'
+- distributed switch
+- ntop
+- port mirroring
+- rspan
+- vds
+- VMware
+- Vsphere
+meta:
+  _edit_last: '11'
+  _s2mail: 'yes'
+  snapEdIT: '1'
+  snapFB: s:300:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_425804974184617";s:5:"pDate";s:19:"2013-05-28
+    23:43:47";}}";
+  snapSU: s:213:"a:1:{i:0;a:7:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"9BCKxf";s:5:"pDate";s:19:"2013-05-28
+    23:43:59";}}";
+  _wpas_done_all: '1'
+  snapTW: 's:269:"a:1:{i:0;a:7:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:59:"%TITLE%
+    - %URL% #everythingshouldbevirtual #vmware #vsphere";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"339527504496836608";s:5:"pDate";s:19:"2013-05-28
+    23:44:00";}}";'
+  snap_isAutoPosted: '1'
+  snapLI: s:187:"a:1:{i:0;a:5:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:6:"&nbsp;";s:11:"isPrePosted";s:1:"1";}}";
+  _wp_rp_related_posts_query_result_cache_expiration: '1511708302'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"1662";s:5:"score";s:18:"116.96263667842169";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"747";s:5:"score";s:16:"94.8788947635315";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:4:"1402";s:5:"score";s:17:"92.36067049032714";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:3:"503";s:5:"score";s:17:"92.18731795021019";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"909";s:5:"score";s:16:"86.5938280562236";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:2:"41";s:5:"score";s:17:"80.52078156512364";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"913";s:5:"score";s:17:"77.60924732796553";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"3793";s:5:"score";s:17:"76.65726917746446";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"1815";s:5:"score";s:16:"76.5999989983991";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:3:"939";s:5:"score";s:17:"71.58662658426383";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:3:"687";s:5:"score";s:17:"69.66642095694343";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1190";s:5:"score";s:17:"69.17221945425268";}}
+  _wp_rp_image: '3629'
+  dsq_thread_id: '3346748168'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>I wanted to throw this together real quick on how to setup RSPAN VLAN Port Mirroring using a Cisco switch and vDS (vSphere Distributed Switch) Destination Port Mirror which will map to a vm running <a title="http://www.ntop.org" href="http://www.ntop.org" target="_blank">NTOP</a>. This solution is working really well giving all sorts of good information. :) The other cool thing is that setting up your port mirror this way you will NOT lose your collected data if the vm migrates to another host via vMotion. :)</p>
+<p>Open an ssh session to your switch and run the following commands to create the VLAN for your remote span port. And then configure your monitor sessions for the VLAN(s) you want to capture traffic for.</p>
+<pre>conf t
+vlan 400
+remote-span
+exit
+monitor session 1 source vlan 1
+monitor session 1 source vlan 69
+monitor session 1 source vlan 100
+monitor session 1 source vlan 107
+monitor session 1 source vlan 200-201
+monitor session 1 destination remote vlan 400
+end</pre>
+<p>switch01#</p>
+<pre>sh monitor</pre>
+<p>Session 1<br />
+---------<br />
+Type : Remote Source Session<br />
+Source VLANs :<br />
+Both : 1,69,100,107,200-201<br />
+Dest RSPAN VLAN : 400</p>
+<p>Now using the vSphere 5.1 web interface browse to networking, dvswitch (might be called something else in your environment), manage and settings.</p>
+<p>Click the +New to create your new port mirror session.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/19-14-40.png"><img class="alignnone size-medium wp-image-1698" alt="19-14-40" src="{{ site.baseurl }}/assets/19-14-40-300x74.png" width="300" height="74" /></a></p>
+<p>&nbsp;</p>
+<p>Select Remote Mirroring Destination, next ...</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/18-57-02.png"><img class="alignnone size-medium wp-image-1699" alt="18-57-02" src="{{ site.baseurl }}/assets/18-57-02-300x177.png" width="300" height="177" /></a></p>
+<p>&nbsp;</p>
+<p>Change <em>status</em> to <em>enabled</em> if you want to immediately enable this monitor session at the end of the wizard or leave disabled and then enable it later. Change <em>Normal IO on desination ports </em>to <em>allowed</em> if you want the vm to still communicate on the network for normal traffic. Next ...</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/18-57-23.png"><img class="alignnone size-medium wp-image-1700" alt="18-57-23" src="{{ site.baseurl }}/assets/18-57-23-300x176.png" width="300" height="176" /></a></p>
+<p>&nbsp;</p>
+<p>Click the + and enter the VLAN id to capture traffic from. You will need to make sure that this VLAN is allowed over your uplink trunk ports into each of your hosts. Ok, Next ...</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/18-57-39.png"><img class="alignnone size-medium wp-image-1701" alt="18-57-39" src="{{ site.baseurl }}/assets/18-57-39-300x175.png" width="300" height="175" /></a></p>
+<p>&nbsp;</p>
+<p>Click the first + to select the vm port id you want to use to capture traffic with. Make sure to select the check box. Ok ...</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/18-59-04.png"><img class="alignnone size-medium wp-image-1702" alt="18-59-04" src="{{ site.baseurl }}/assets/18-59-04-300x177.png" width="300" height="177" /></a></p>
+<p>&nbsp;</p>
+<p>Next ...</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/18-59-34.png"><img class="alignnone size-medium wp-image-1703" alt="18-59-34" src="{{ site.baseurl }}/assets/18-59-34-300x176.png" width="300" height="176" /></a></p>
+<p>&nbsp;</p>
+<p>Verify all looks good and click Finish.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/18-59-44.png"><img class="alignnone size-medium wp-image-1704" alt="18-59-44" src="{{ site.baseurl }}/assets/18-59-44-300x176.png" width="300" height="176" /></a></p>
+<p>&nbsp;</p>
+<p>You have now created the port mirroring session within your distributed switch to begin capturing data from your switch.</p>
+<p>Now you will need to check your vm's UI to view the traffic. If using NTOP you will connect to http://hostname:3000</p>
+<p>Here is an example of what you should start seeing.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/19-33-55.png"><img class="alignnone size-medium wp-image-1706" alt="19-33-55" src="{{ site.baseurl }}/assets/19-33-55-300x183.png" width="300" height="183" /></a></p>
+<p>&nbsp;</p>
+<p>Here is an example diagram of what your vSphere network deployment might look like.</p>
+<p><a href="http://everythingshouldbevirtual.com/wp-content/uploads/2013/05/vDS-RSPAN-Port-Mirroring.png"><img class="alignnone size-medium wp-image-1707" alt="vDS RSPAN Port Mirroring" src="{{ site.baseurl }}/assets/vDS-RSPAN-Port-Mirroring-300x220.png" width="300" height="220" /></a></p>
+<p>&nbsp;</p>
+<p>That's it. Pretty simple and works really well.</p>
+<p>Enjoy!</p>

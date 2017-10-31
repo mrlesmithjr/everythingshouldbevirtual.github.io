@@ -1,0 +1,69 @@
+---
+layout: post
+title: SSO Server Unavailable Using Web UI
+date: 2013-03-24 10:43:55.000000000 -04:00
+type: post
+published: true
+status: publish
+categories:
+- Virtualization
+- VMware
+- vSphere 5.1
+tags:
+- SSO unavailable
+- vsphere web client
+- vsphere web ui
+meta:
+  _edit_last: '11'
+  _s2mail: 'yes'
+  _wpas_done_all: '1'
+  snapEdIT: '1'
+  snap_isAutoPosted: '1'
+  snapFB: s:300:"a:1:{i:0;a:8:{s:4:"doFB";s:1:"1";s:8:"PostType";s:1:"A";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:51:"New
+    post (%TITLE%) has been published on %SITENAME%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:31:"389547404477041_396545053777276";s:5:"pDate";s:19:"2013-03-24
+    14:43:57";}}";
+  snapLI: s:393:"a:1:{i:0;a:8:{s:4:"doLI";s:1:"1";s:10:"AttachPost";s:1:"1";s:10:"SNAPformat";s:41:"New
+    post has been published on %SITENAME%";s:11:"SNAPformatT";s:6:"&nbsp;";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:124:"http://www.linkedin.com/updates?discuss=&amp;scope=138895851&amp;stype=M&amp;topic=5721602081257701376&amp;type=U&amp;a=Y2gM";s:5:"pDate";s:19:"2013-03-24
+    14:43:58";}}";
+  snapSU: s:213:"a:1:{i:0;a:7:{s:4:"doSU";s:1:"1";s:7:"apSUCat";s:2:"IT";s:10:"SNAPformat";s:16:"%TITLE%
+    - %TEXT%";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:6:"34NHEi";s:5:"pDate";s:19:"2013-03-24
+    14:44:04";}}";
+  snapTW: 's:252:"a:1:{i:0;a:7:{s:4:"doTW";s:1:"1";s:10:"SNAPformat";s:42:"%TITLE%
+    - %URL% #everythingshouldbevirtual";s:8:"attchImg";s:1:"0";s:11:"isPrePosted";s:1:"1";s:8:"isPosted";s:1:"1";s:4:"pgID";s:18:"315836418347909120";s:5:"pDate";s:19:"2013-03-24
+    14:44:05";}}";'
+  _wp_rp_related_posts_query_result_cache_expiration: '1509755492'
+  _wp_rp_related_posts_query_result_cache_6: a:12:{i:0;O:8:"stdClass":2:{s:7:"post_id";s:4:"2084";s:5:"score";s:17:"42.32152248664142";}i:1;O:8:"stdClass":2:{s:7:"post_id";s:3:"516";s:5:"score";s:17:"38.36702527583658";}i:2;O:8:"stdClass":2:{s:7:"post_id";s:3:"497";s:5:"score";s:17:"38.36702527583658";}i:3;O:8:"stdClass":2:{s:7:"post_id";s:4:"1695";s:5:"score";s:18:"37.980496572624986";}i:4;O:8:"stdClass":2:{s:7:"post_id";s:3:"699";s:5:"score";s:17:"37.36986823671418";}i:5;O:8:"stdClass":2:{s:7:"post_id";s:3:"503";s:5:"score";s:17:"35.06190059772035";}i:6;O:8:"stdClass":2:{s:7:"post_id";s:3:"939";s:5:"score";s:18:"34.981555731083674";}i:7;O:8:"stdClass":2:{s:7:"post_id";s:4:"4297";s:5:"score";s:17:"34.36936120285351";}i:8;O:8:"stdClass":2:{s:7:"post_id";s:4:"2123";s:5:"score";s:17:"32.97930964912725";}i:9;O:8:"stdClass":2:{s:7:"post_id";s:4:"3114";s:5:"score";s:17:"32.90530126121884";}i:10;O:8:"stdClass":2:{s:7:"post_id";s:4:"1662";s:5:"score";s:17:"31.14118944925376";}i:11;O:8:"stdClass":2:{s:7:"post_id";s:4:"1190";s:5:"score";s:18:"30.708076683635863";}}
+  _wp_rp_image: empty
+  dsq_thread_id: '3346748598'
+author:
+  login: larry.e.smith.jr
+  email: larry.e.smith.jr@gmail.com
+  display_name: mrlesmithjr
+  first_name: Larry
+  last_name: Smith
+---
+<p>I just ran into this issue. Tried to login to vSphere 5.1 web ui and received the "SSO Server Unavailable". I tried restarting the vCenter Single Sign On service and the VMware vSphere Web Client service without any luck. A little bit of google searching and I found <a title="http://pubs.vmware.com/vsphere-51/index.jsp?topic=%2Fcom.vmware.vsphere.vcenterhost.doc%2FGUID-321AB042-4F88-4A45-8FB2-36A343DFB6AB.html" href="http://pubs.vmware.com/vsphere-51/index.jsp?topic=%2Fcom.vmware.vsphere.vcenterhost.doc%2FGUID-321AB042-4F88-4A45-8FB2-36A343DFB6AB.html" target="_blank">this </a>and it allowed me to get back in.</p>
+<p>Below is an excerpt of the link from above.</p>
+<p>Configure the vSphere Web Client to Bypass vCenter Single Sign On<br />
+You can configure the vSphere Web Client to bypass the vCenter Single Sign On server. This allows the vSphere Web Client to connect directly to vCenter Server 5.0 systems that are registered with the vSphere Web Client.<br />
+If your environment contains both vCenter Server 5.0 and vCenter Server 5.1 system, you can use this setting to access the vCenter Server 5.0 systems if the vCenter Single Sign On Server becomes unavailable.<br />
+vCenter Single Sign On is required to connect to vCenter Server 5.1 systems. If you configure the vSphere Web Client to bypass Single Sign On, you cannot use it to connect to any vCenter Server 5.1 systems until you undo this configuration change.</p>
+<p>Procedure</p>
+<p>On the computer where the vSphere Web Client is installed, locate the webclient.properties file. The location of this file depends on the operating system on which the vSphere Web Client is installed.<br />
+Operating System File path</p>
+<ul>
+<li>Windows 2003</li>
+<li>%ALLUSERPROFILE%Application Data\VMware\vSphere Web Client</li>
+<li>Windows 2008</li>
+<li>%ALLUSERPROFILE%\VMware\vSphere Web Client</li>
+<li>vCenter Server Appliance</li>
+<li>/var/lib/vmware/vsphere-client</li>
+</ul>
+<p>Edit the file to include the line sso.enabled = false.<br />
+Restart the vSphere Web Client service.</p>
+<p>On Windows operating systems, restart the VMware vSphere Web Client service.<br />
+On the vCenter Server Appliance, restart the vSphere-client service by typing service vsphere-client restart.<br />
+After you have restarted the vSphere Web Client, you can select the vCenter Server 5.0 system to log in to from the login page.<br />
+What to do next<br />
+To return the vSphere Web Client to using vCenter Single Sign On, edit the webclient.properties file to remove the sso.enabled = false line, and restart the vSphere Web Client service.</p>
+<p>Enjoy!</p>
