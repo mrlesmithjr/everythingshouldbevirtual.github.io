@@ -1,5 +1,5 @@
 ---
-  title: VMware Front Experience: ESXi-Customizer
+  title: "VMware Front Experience: ESXi-Customizer"
   date: 2012-10-03 14:39:03
 ---
 

@@ -1,5 +1,5 @@
 ---
-  title: VMware KB: Disabling VAAI Thin Provisioning Block Space Reclamation UNMAP in ESXi 5.0
+  title: "VMware KB: Disabling VAAI Thin Provisioning Block Space Reclamation UNMAP in ESXi 5.0"
   date: 2012-07-28 23:32:25
 ---
 

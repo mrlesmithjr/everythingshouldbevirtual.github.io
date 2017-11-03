@@ -1,5 +1,5 @@
 ---
-  title: VMworld.com: Top 10 Sessions
+  title: "VMworld.com: Top 10 Sessions"
   date: 2012-08-31 00:36:01
 ---
 

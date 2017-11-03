@@ -1,5 +1,5 @@
 ---
-  title: VMware KB: Implementing vSphere Metro Storage Cluster using HP LeftHand Multi-Site
+  title: "VMware KB: Implementing vSphere Metro Storage Cluster using HP LeftHand Multi-Site"
   date: 2012-08-05 20:16:19
 ---
 

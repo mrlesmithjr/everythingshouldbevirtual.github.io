@@ -1,5 +1,5 @@
 ---
-  title: Analysis: Did Licensing Changes Spur VMware Vs. Microsoft?
+  title: "Analysis: Did Licensing Changes Spur VMware Vs. Microsoft?"
   date: 2012-08-22 11:01:53
 ---
 
