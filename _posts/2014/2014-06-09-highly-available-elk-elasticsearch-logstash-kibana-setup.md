@@ -532,7 +532,7 @@ will all be in a follow up post very soon.
 
 **Follow up posts**
 
-[Setup all ELK components to work in unicast mode instead of mutlicast discovery mode.](http://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-unicast-mode "Highly Available ELK (Elasticsearch, Logstash and Kibana) Unicast Mode")
+[Setup all ELK components to work in unicast mode instead of mutlicast discovery mode.](https://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-unicast-mode "Highly Available ELK (Elasticsearch, Logstash and Kibana) Unicast Mode")
 
 Here is a quick screenshot of performance from the marvel plugin just
 for reference. Only processing about 6GB/Day right now.
@@ -553,4 +553,4 @@ see how we can help.
 >
 > **If you are looking for a way of deploying this using Ansible head
 > over
-> [here](http://everythingshouldbevirtual.com/ansible-highly-available-elk-stack).**
+> [here](https://everythingshouldbevirtual.com/ansible-highly-available-elk-stack).**

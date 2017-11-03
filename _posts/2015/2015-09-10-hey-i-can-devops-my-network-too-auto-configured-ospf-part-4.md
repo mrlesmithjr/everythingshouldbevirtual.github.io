@@ -7,7 +7,7 @@
 ---
 
 In the last
-[post](http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-vagrant-up-part-3)
+[post](https://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-vagrant-up-part-3)
 we spun up (Vagrant Up) our environment. So at this point we are ready to start
 exploring and seeing how easy it is to bring up OSPF auto-configured by just
 configuring a few parameters within our Ansible settings.

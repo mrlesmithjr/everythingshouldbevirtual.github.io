@@ -61,5 +61,5 @@ etc. As well as on replication scenarios.
 
 Feel free to leave comments as I look forward to any and all feedback.
 
-Go [here](http://everythingshouldbevirtual.com/phd-virtual-restores-and-replication "http\://everythingshouldbevirtual.com/phd-virtual-restores-and-replication")
+Go [here](https://everythingshouldbevirtual.com/phd-virtual-restores-and-replication "http\://everythingshouldbevirtual.com/phd-virtual-restores-and-replication")
 for a look at the restore and replication testing.

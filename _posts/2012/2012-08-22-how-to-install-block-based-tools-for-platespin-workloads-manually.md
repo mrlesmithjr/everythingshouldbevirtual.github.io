@@ -104,4 +104,4 @@ PsMonInstall folder\\psmon.inf" /install psmon /add
 7. Reboot the source workload.
 
 [Platespin BBT
-Installs](http://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-BBT-Installs.zip)
+Installs](https://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-BBT-Installs.zip)

@@ -10,7 +10,7 @@ to actually load ESXi on.
 
 So let's get started...
 
-Install vCenter Server 5.1 (Reference for doing this install is [here](http://everythingshouldbevirtual.com/vcenter-5-1-quick-installation-screenshots "http\://everythingshouldbevirtual.com/2012/09/12/vcenter-5-1-quick-installation-screenshots/").)
+Install vCenter Server 5.1 (Reference for doing this install is [here](https://everythingshouldbevirtual.com/vcenter-5-1-quick-installation-screenshots "http\://everythingshouldbevirtual.com/2012/09/12/vcenter-5-1-quick-installation-screenshots/").)
 
 Download and install PowerCLI 5.1 from [here](http://communities.vmware.com/community/vmtn/server/vsphere/automationtools/powercli?view=overview "http\://communities.vmware.com/community/vmtn/server/vsphere/automationtools/powercli?view=overview").
 

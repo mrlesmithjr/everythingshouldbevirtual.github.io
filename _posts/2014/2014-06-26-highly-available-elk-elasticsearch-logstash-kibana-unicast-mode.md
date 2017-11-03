@@ -3,7 +3,7 @@
   date: 2014-06-26
 ---
 
-In the previous [post](http://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup "Highly Available ELK (Elasticsearch, Logstash and Kibana) Setup")
+In the previous [post](https://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup "Highly Available ELK (Elasticsearch, Logstash and Kibana) Setup")
 we setup the complete ELK stack from top to bottom. And everything should
 be working as needed; however one thing you will want to do once
 everything is stable is to change all ES (Elasticsearch) nodes to

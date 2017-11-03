@@ -7,7 +7,7 @@ also standing up the GA release of vSphere 6.0 I had to go through
 setting up syslog from the hosts once again. Pretty much the same as
 before but for those that would like to know if there is anything
 special in regards to sending to
-[logstash](http://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup "Highly Available ELK (Elasticsearch, Logstash and Kibana) Setup")
+[logstash](https://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup "Highly Available ELK (Elasticsearch, Logstash and Kibana) Setup")
 I thought that I would share this. There is nothing special at all.
 
 First thing to do is open up the UI using your favorite browser and

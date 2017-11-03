@@ -3,7 +3,7 @@
   date: 2012-11-04 10:19:55
 ---
 
-In [this](http://everythingshouldbevirtual.com/ubuntu-utm-homebrew "http\://everythingshouldbevirtual.com/ubuntu-utm-homebrew") previous post we
+In [this](https://everythingshouldbevirtual.com/ubuntu-utm-homebrew "http\://everythingshouldbevirtual.com/ubuntu-utm-homebrew") previous post we
 setup the initial UTM (Unified Threat Management). In this quick guide we will
 be setting up network traffic graphing. We want to be able to see the types and
 amount of traffic flowing through our UTM in nice graphs. So we will be setting up

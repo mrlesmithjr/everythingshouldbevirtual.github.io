@@ -15,8 +15,8 @@ output. I will also be running the test duration for the default 120
 secs.
 
 Check out
-[this ](http://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-1/ "http\://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-1/")
-post and then [this](http://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2 "http\://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2")
+[this ](https://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-1/ "http\://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-1/")
+post and then [this](https://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2 "http\://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2")
 one for information on my Nexenta configurations.
 
 First download the I/O analyzer appliance zip file and then extract it.
@@ -170,4 +170,4 @@ Enjoy!
 
 \*\*Update\*\* You can see the results of a few of these same tests on
 my new server build
-[here](http://everythingshouldbevirtual.com/new-nexenta-server-test-iscsi-ssd "http\://everythingshouldbevirtual.com/new-nexenta-server-test-iscsi-ssd").
+[here](https://everythingshouldbevirtual.com/new-nexenta-server-test-iscsi-ssd "http\://everythingshouldbevirtual.com/new-nexenta-server-test-iscsi-ssd").

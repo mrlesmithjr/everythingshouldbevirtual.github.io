@@ -5,7 +5,7 @@
 
 Here is a current view of how my NexentaStor NAS is configured from a
 disk and controller perspective. I will be modifying this some here
-soon. Go [here](http://everythingshouldbevirtual.com/new-nexenta-server-coming-soon "http\://everythingshouldbevirtual.com/new-nexenta-server-coming-soon") to
+soon. Go [here](https://everythingshouldbevirtual.com/new-nexenta-server-coming-soon "http\://everythingshouldbevirtual.com/new-nexenta-server-coming-soon") to
 take a look at what parts were used to put this all together.
 
 What you see here is that starting on the top left going down and then

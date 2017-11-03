@@ -7,7 +7,7 @@
 ---
 
 In the last
-[post](http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-define-nodes-part-2)
+[post](https://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-define-nodes-part-2)
 we defined our nodes to spin up with Vagrant which will be used from
 here on out during our series. In this post we will actually be spinning
 up the environment and begin getting a little familiar with Ansible and
@@ -903,4 +903,4 @@ And there you have it, we have now ran our playbook in parallel against
 all of our nodes. And that concludes this section of the series on
 Vagrant Up.
 
-Next up...[Auto-configured OSPF](http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-auto-configured-ospf-part-4)
+Next up...[Auto-configured OSPF](https://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-auto-configured-ospf-part-4)

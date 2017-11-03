@@ -295,4 +295,4 @@ being spread between the two ports.
 ![](../../assets/Nexentastor-LACP-VDS-iSCSI-Cacti-graph-300x283.png "Nexentastor LACP - VDS - iSCSI - Cacti graph")
 
 That's it for now.....Part 2 is
-[here](http://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2 "http\://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2").
+[here](https://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2 "http\://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-2-2").

@@ -33,7 +33,7 @@ way as the need arises. Several have requested certain features and
 checks to be included so I like to incorporate some of those ideas into
 the script when they make sense. So to follow the install instructions
 and get an idea of how to get Graylog2 up and running head over to this
-[post](http://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation "http\://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation") and
+[post](https://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation "http\://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation") and
 then return to this post once you have Graylog2 up and running using the
 script from Method #1.
 

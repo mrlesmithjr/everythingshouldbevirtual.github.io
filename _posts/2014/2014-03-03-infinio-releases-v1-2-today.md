@@ -5,7 +5,7 @@ date: 2014-03-03 11:53:01
 
 This is some great news for a Monday. Infinio has released their latest
 version which now fully supports vSphere 5.5. I did some extensive
-[testing](http://everythingshouldbevirtual.com/infinio-nexenta-testing "Infinio Install – Nexenta Testing") on their previous release which did not fully support vSphere 5.5 but
+[testing](https://everythingshouldbevirtual.com/infinio-nexenta-testing "Infinio Install – Nexenta Testing") on their previous release which did not fully support vSphere 5.5 but
 the product was still solid. I highly recommend those who are looking
 for some increased performance on your NFS datastore(s) to take a look
 at them.

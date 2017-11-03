@@ -3,7 +3,7 @@
   date: 2012-10-19 10:06:49
 ---
 
-I wrote [this](http://everythingshouldbevirtual.com/super-router-pfsense-untangle/ "http\://everythingshouldbevirtual.com/super-router-pfsense-untangle/")
+I wrote [this](https://everythingshouldbevirtual.com/super-router-pfsense-untangle/ "http\://everythingshouldbevirtual.com/super-router-pfsense-untangle/")
 guide a few days ago and this solution worked great. But what if you
 want to have more control of your threat management and build your own.
 So that is what we are going to do here. We are going to build an inline
@@ -285,6 +285,6 @@ Now your squid logs will show the correct client IP addresses instead of 127.0.0
 
 Remember the flow is Dansguardian, HAVP and then Squid
 
-Part 2 is [here](http://everythingshouldbevirtual.com/ubuntu-utm-homebrew-network-graphing "http\://everythingshouldbevirtual.com/ubuntu-utm-homebrew-network-graphing")
+Part 2 is [here](https://everythingshouldbevirtual.com/ubuntu-utm-homebrew-network-graphing "http\://everythingshouldbevirtual.com/ubuntu-utm-homebrew-network-graphing")
 
-Part 3 is [here](http://everythingshouldbevirtual.com/ubuntu-utm-homebrew-part-3-mail-proxy-and-spam-checker "http\://everythingshouldbevirtual.com/ubuntu-utm-homebrew-part-3-mail-proxy-and-spam-checker")
+Part 3 is [here](https://everythingshouldbevirtual.com/ubuntu-utm-homebrew-part-3-mail-proxy-and-spam-checker "http\://everythingshouldbevirtual.com/ubuntu-utm-homebrew-part-3-mail-proxy-and-spam-checker")

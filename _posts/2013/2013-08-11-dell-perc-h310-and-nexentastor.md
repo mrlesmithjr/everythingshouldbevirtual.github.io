@@ -98,4 +98,4 @@ and will update this post here with any details.
 
 Enjoy!
 You can find my other posts about Nexenta by going
-[here](http://everythingshouldbevirtual.com/tag/nexenta "http\://everythingshouldbevirtual.com/tag/nexenta").
+[here](https://everythingshouldbevirtual.com/tag/nexenta "http\://everythingshouldbevirtual.com/tag/nexenta").

@@ -24,7 +24,7 @@ start over from scratch. So I then proceeded on to deploy the vCSA by
 connecting to one of my hosts and deploying a new virtual appliance and
 powering it up and getting it configured. If you need a look at how to
 set this up you can head over to
-[this](http://everythingshouldbevirtual.com/deploying-vmware-vcenter-server-appliance-5-1 "http\://everythingshouldbevirtual.com/deploying-vmware-vcenter-server-appliance-5-1")
+[this](https://everythingshouldbevirtual.com/deploying-vmware-vcenter-server-appliance-5-1 "http\://everythingshouldbevirtual.com/deploying-vmware-vcenter-server-appliance-5-1")
 post and get a quick understanding of doing this for a vCSA 5.1 setup.
 The process is pretty much the same with the new vCSA 5.5 so it should
 work for you.

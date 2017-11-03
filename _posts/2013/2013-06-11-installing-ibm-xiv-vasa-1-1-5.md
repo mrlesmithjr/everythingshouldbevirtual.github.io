@@ -3,7 +3,7 @@
   date: 2013-06-11 19:54:46
 ---
 
-In a previous [post](http://everythingshouldbevirtual.com/using-ibm-xiv-and-vsphere5-you-need-to-install-the-vasa-and-management-console-for-vcenter "http\://everythingshouldbevirtual.com/using-ibm-xiv-and-vsphere5-you-need-to-install-the-vasa-and-management-console-for-vcenter") I went through the installation of the IBM XIV VASA version
+In a previous [post](https://everythingshouldbevirtual.com/using-ibm-xiv-and-vsphere5-you-need-to-install-the-vasa-and-management-console-for-vcenter "http\://everythingshouldbevirtual.com/using-ibm-xiv-and-vsphere5-you-need-to-install-the-vasa-and-management-console-for-vcenter") I went through the installation of the IBM XIV VASA version
 1.1.1 which was a windows based installation. The VASA provides a lot of good
 information from the XIV storage devices.
 

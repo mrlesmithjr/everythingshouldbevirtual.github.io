@@ -37,6 +37,6 @@ For a look at VSAN pricing head over
 I can tell you from my early beta testing that this is a very compelling
 solution and highly robust. If you are interested in setting up a VSAN
 ready nested ESXi lab you can get started with a
-[powercli](http://everythingshouldbevirtual.com/build-vsan-vsphere-lab-using-powercli "http\://everythingshouldbevirtual.com/build-vsan-vsphere-lab-using-powercli") script that I created a while back.
+[powercli](https://everythingshouldbevirtual.com/build-vsan-vsphere-lab-using-powercli "http\://everythingshouldbevirtual.com/build-vsan-vsphere-lab-using-powercli") script that I created a while back.
 
 Enjoy!

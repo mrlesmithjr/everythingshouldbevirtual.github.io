@@ -55,7 +55,7 @@ of the methods below.
 > UPDATE: 06/18/2014 \*\* Updated to v0.20.3\*\*
 >
 > UPDATE: 04/27/2014\*\* Ubuntu 14.04 VMware Virtual Appliance
-> Available [here](http://everythingshouldbevirtual.com/ubuntu-14-04-graylog2-virtual-appliance "Ubuntu 14.04 Graylog2 Virtual Appliance").\*\*
+> Available [here](https://everythingshouldbevirtual.com/ubuntu-14-04-graylog2-virtual-appliance "Ubuntu 14.04 Graylog2 Virtual Appliance").\*\*
 >
 > UPDATE: 04/29/2014\*\* CentOS install script now available for
 > v0.20.1\*\*
@@ -140,7 +140,7 @@ Graylog2 version.
 **Graylog2 Virtual Appliance**
 
 Graylog2 virtual appliance available running on Ubuntu 14.04LTS. Head
-over [here](http://everythingshouldbevirtual.com/ubuntu-14-04-graylog2-virtual-appliance "Ubuntu 14.04 Graylog2 Virtual Appliance") and get your prebuilt virtual appliance.
+over [here](https://everythingshouldbevirtual.com/ubuntu-14-04-graylog2-virtual-appliance "Ubuntu 14.04 Graylog2 Virtual Appliance") and get your prebuilt virtual appliance.
 
 **Troubleshooting issues**
 
@@ -254,7 +254,7 @@ sudo ./graylog2/install_graylog2_debian.sh
 **Method 2  **\*\*Note this may be outdated\*\*\*\*\*\*
 
 You can download the script, upload and then extract it to your Ubuntu server
-from the link below. [install_graylog2.tar.gz](http://everythingshouldbevirtual.com/wp-content/uploads/2013/03/install_graylog2.tar.gz) If you downloaded the file you will now need to run the following in the
+from the link below. [install_graylog2.tar.gz](https://everythingshouldbevirtual.com/wp-content/uploads/2013/03/install_graylog2.tar.gz) If you downloaded the file you will now need to run the following in the
 console.
 
 ```bash
@@ -284,7 +284,7 @@ of your server in install_graylog2.sh using nano as below.
 
 ```bash
 cd ~
-wget --user-agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:11.0) Gecko/20100101 Firefox/11.0" http://everythingshouldbevirtual.com/wp-content/uploads/2013/03/install_graylog2.tar.gz
+wget --user-agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:11.0) Gecko/20100101 Firefox/11.0" https://everythingshouldbevirtual.com/wp-content/uploads/2013/03/install_graylog2.tar.gz
 tar zxvf install_graylog2.tar.gz
 chmod +x install_graylog2.sh
 nano install_graylog2.sh

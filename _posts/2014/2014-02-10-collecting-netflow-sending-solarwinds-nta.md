@@ -41,7 +41,7 @@ So with my setup the first challenge is that my Cisco switches do not
 support exporting Netflow, obviously your environment may be different.
 So in order for me to collect netflow data from my switches you can take
 a look
-[here](http://everythingshouldbevirtual.com/vmware-vds-rspan-port-mirroring "http\://everythingshouldbevirtual.com/vmware-vds-rspan-port-mirroring")
+[here](https://everythingshouldbevirtual.com/vmware-vds-rspan-port-mirroring "http\://everythingshouldbevirtual.com/vmware-vds-rspan-port-mirroring")
 on how to create a RSPAN port mirror and send that data to a vDS
 (vSphere Distributed Switch) port. The difference in this article
 compared to the link above will be that we will not be installing or

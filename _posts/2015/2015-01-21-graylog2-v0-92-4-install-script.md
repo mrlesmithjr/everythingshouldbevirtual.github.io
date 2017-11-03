@@ -14,6 +14,6 @@ chmod +x graylog2/install_graylog2_90_ubuntu.sh
 sudo ./graylog2/install_graylog2_90_ubuntu.sh
 ```
 
-For additional steps in setting up head over to [this](http://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation) post.
+For additional steps in setting up head over to [this](https://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation) post.
 
 Enjoy!

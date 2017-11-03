@@ -128,6 +128,6 @@ a new Datastore that you can start using just as any other Datastore.
 You can call also get into different VM Storage Policies as well once
 you start getting familiar with vSAN in order to set different policies
 for each scenario. If you need info on the new VM Storage Policies in
-vSphere 5.5 head over [here](http://everythingshouldbevirtual.com/vsphere-5-5-storage-profiles-now-storage-policies "http\://everythingshouldbevirtual.com/vsphere-5-5-storage-profiles-now-storage-policies").
+vSphere 5.5 head over [here](https://everythingshouldbevirtual.com/vsphere-5-5-storage-profiles-now-storage-policies "http\://everythingshouldbevirtual.com/vsphere-5-5-storage-profiles-now-storage-policies").
 
 Enjoy!

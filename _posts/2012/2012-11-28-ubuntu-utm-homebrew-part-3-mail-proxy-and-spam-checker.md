@@ -5,8 +5,8 @@
 
 In this guide we will be setting up a mail proxy and spam checker that
 will run transparently.  This will be running on our Ubuntu UTM server
-that we have been building and you can check out [Part 1](http://everythingshouldbevirtual.com/ubuntu-utm-homebrew "http\://everythingshouldbevirtual.com/ubuntu-utm-homebrew")
-and [Part 2](http://everythingshouldbevirtual.com/ubuntu-utm-homebrew-network-graphing "http\://everythingshouldbevirtual.com/ubuntu-utm-homebrew-network-graphing")
+that we have been building and you can check out [Part 1](https://everythingshouldbevirtual.com/ubuntu-utm-homebrew "http\://everythingshouldbevirtual.com/ubuntu-utm-homebrew")
+and [Part 2](https://everythingshouldbevirtual.com/ubuntu-utm-homebrew-network-graphing "http\://everythingshouldbevirtual.com/ubuntu-utm-homebrew-network-graphing")
 as well.
 
 We will be using [EXIM4](http://www.exim.org/) (Using google as a

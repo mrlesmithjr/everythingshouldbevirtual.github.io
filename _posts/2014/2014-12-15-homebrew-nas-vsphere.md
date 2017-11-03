@@ -9,8 +9,8 @@ rebuild my latest build to get the new 4.x Nexenta. With that I finally
 started kicking around some ideas on going a different route instead
 (knowing that ZFS was still going to be part of the new solution). I
 have two NAS servers that I have built for Nexenta over the years
-([First build](http://everythingshouldbevirtual.com/my-home-lab-nexentastor-ce-nas)
-and [second build](http://everythingshouldbevirtual.com/new-nexenta-server-coming-soon)
+([First build](https://everythingshouldbevirtual.com/my-home-lab-nexentastor-ce-nas)
+and [second build](https://everythingshouldbevirtual.com/new-nexenta-server-coming-soon)
 ) so I started on this journey and figured that I would share it with everyone.
 
 I first set out to an idea of running a GlusterFS cluster utilizing both

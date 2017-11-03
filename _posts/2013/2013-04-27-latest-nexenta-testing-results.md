@@ -7,7 +7,7 @@ So I have been running my new Nexentastor CE storage for a little more
 than a month now and wanted to run another IO test real quick as a
 sanity check. So I setup the [VMware IO Analyzer](http://labs.vmware.com/flings/io-analyzer "http\://labs.vmware.com/flings/io-analyzer") again, but changed the virtual disk
 size to 150GB and ran the test for 600 secs this time. I ran the same iSCSI
-tests as I ran [here](http://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd "http\://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd") to
+tests as I ran [here](https://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd "http\://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd") to
 get an idea of the results I was getting from my older setup. Compare to iSCSI - SSD.
 
 Here are the results.
