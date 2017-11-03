@@ -1,5 +1,5 @@
 ---
-  title: VMware KB: Cluster warning for ESXi Shell and SSH appear on an ESXi 5 host
+  title: "VMware KB: Cluster warning for ESXi Shell and SSH appear on an ESXi 5 host"
   date: 2012-07-26 16:47:43
 ---
 

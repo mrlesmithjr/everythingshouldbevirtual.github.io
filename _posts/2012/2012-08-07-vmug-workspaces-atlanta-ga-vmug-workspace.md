@@ -1,5 +1,5 @@
 ---
-  title: VMUG : Workspaces : Atlanta, GA VMUG Workspace
+  title: "VMUG: Workspaces : Atlanta, GA VMUG Workspace"
   date: 2012-08-07 13:12:25
 ---
 

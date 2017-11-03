@@ -1,5 +1,5 @@
 ---
-  title: VMware: VMware vSphere Blog: Some useful vmkfstools hidden options
+  title: "VMware: VMware vSphere Blog: Some useful vmkfstools hidden options"
   date: 2012-08-05 20:04:07
 ---
 

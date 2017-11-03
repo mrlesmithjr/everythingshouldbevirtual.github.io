@@ -1,5 +1,5 @@
 ---
-  title: VMworld 2012 Session VSP2825: DRS: Advanced Concepts, Best Practices and Future Directions - YouTube
+  title: "VMworld 2012 Session VSP2825: DRS: Advanced Concepts, Best Practices and Future Directions - YouTube"
   date: 2012-08-30 11:20:57
 ---
 

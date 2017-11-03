@@ -1,5 +1,5 @@
 ---
-  title: VMware: VMware vSphere Blog: vSphere HA isolation response... which to use when?
+  title: "VMware: VMware vSphere Blog: vSphere HA isolation response... which to use when?"
   date: 2012-07-31 13:15:14
 ---
 

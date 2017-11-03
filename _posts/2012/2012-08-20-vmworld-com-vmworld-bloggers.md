@@ -1,5 +1,5 @@
 ---
-  title: VMworld.com: VMworld Bloggers
+  title: "VMworld.com: VMworld Bloggers"
   date: 2012-08-20 15:59:30
 ---
 

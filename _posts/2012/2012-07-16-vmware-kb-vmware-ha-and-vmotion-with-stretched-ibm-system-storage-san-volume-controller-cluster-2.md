@@ -1,5 +1,5 @@
 ---
-  title: VMware KB: VMware HA and vMotion with stretched IBM System Storage SAN Volume Controller Cluster
+  title: "VMware KB: VMware HA and vMotion with stretched IBM System Storage SAN Volume Controller Cluster"
   date: 2012-07-16 16:40:09
 ---
 
