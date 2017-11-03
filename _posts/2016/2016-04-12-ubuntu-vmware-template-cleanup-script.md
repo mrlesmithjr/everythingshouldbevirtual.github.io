@@ -1,5 +1,9 @@
 ---
   title: Ubuntu - VMware Template Cleanup Script
+  categories:
+    - Virtualization
+  tags:
+    - VMware
 ---
 
 Just sharing these scripts in case anyone ever needs/wants a quick way

@@ -1,5 +1,11 @@
 ---
   title: Vagrant - Ansible Provisioning multi-nodes
+  categories:
+    - Automation
+    - Virtualization
+  tags:
+    - Ansible
+    - Vagrant
 ---
 
 I am just throwing this out here for my own reference because I seem to

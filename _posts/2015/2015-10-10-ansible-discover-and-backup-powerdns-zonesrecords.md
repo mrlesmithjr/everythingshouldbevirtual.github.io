@@ -1,5 +1,10 @@
 ---
   title: Ansible - Discover and Backup PowerDNS
+  categories:
+    - Automation
+  tags:
+    - Ansible
+    - PowerDNS
 ---
 
 While working on a solution that requires

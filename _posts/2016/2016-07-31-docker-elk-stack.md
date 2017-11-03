@@ -1,5 +1,13 @@
 ---
   title: Docker - Ansible - ELK Stack
+  categories:
+    - Automation
+    - Containers
+    - Monitoring
+  tags:
+    - Ansible
+    - Docker
+    - ELK
 ---
 
 In this post we will be going over setting up a quick and easy way to

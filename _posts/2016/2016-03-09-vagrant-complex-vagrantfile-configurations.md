@@ -1,5 +1,9 @@
 ---
   title: Vagrant - Complex Vagrantfile Configurations
+  categories:
+    - Virtualization
+  tags:
+    - Vagrant
 ---
 
 I will be using this a reference for adding various Vagrant

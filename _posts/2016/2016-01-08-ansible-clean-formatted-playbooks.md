@@ -1,5 +1,9 @@
 ---
   title: Ansible - Clean Formatted Playbooks
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 While going through and doing some cleanup to various different roles

@@ -1,5 +1,10 @@
 ---
   title: Python - Manage PowerDNS Zones/Records
+  categories:
+    - Code
+  tags:
+    - PowerDNS
+    - Python
 ---
 
 While working on another PowerDNS project I have started working on a

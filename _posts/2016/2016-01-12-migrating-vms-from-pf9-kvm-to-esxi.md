@@ -1,5 +1,10 @@
 ---
   title: Migrating VMs from PF9 KVM to ESXi
+  categories:
+    - Virtualization
+  tags:
+    - KVM
+    - VMware
 ---
 
 I have been doing some testing over the past few months of Platform9

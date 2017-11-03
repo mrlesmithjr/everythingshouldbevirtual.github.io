@@ -1,5 +1,9 @@
 ---
   title: Hey, I can DevOPS my Network too! -- Auto-configured OSPF (Part 4)
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 In the last

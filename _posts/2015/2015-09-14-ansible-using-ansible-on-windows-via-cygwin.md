@@ -1,5 +1,9 @@
 ---
   title: Ansible - Using Ansible on Windows via Cygwin
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 As I continue down the Ansible journey to automate all things it is

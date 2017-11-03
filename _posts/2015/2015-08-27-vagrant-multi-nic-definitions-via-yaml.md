@@ -1,5 +1,9 @@
 ---
   title: Vagrant - Multi-NIC Definitions via YAML
+  categories:
+    - Virtualization
+  tags:
+    - Vagrant
 ---
 
 I am currently working on a little routing project to use as a learning

@@ -1,5 +1,11 @@
 ---
   title: Vagrant - Multi-Group Ansible Provisioning
+  categories:
+    - Automation
+    - Virtualization
+  tags:
+    - Ansible
+    - Vagrant
 ---
 
 As I continue to develop different scenario testing I continually try to

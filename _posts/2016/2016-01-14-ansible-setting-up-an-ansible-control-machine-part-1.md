@@ -1,5 +1,9 @@
 ---
   title: Ansible - Setting up an Ansible Control
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 In this post we will be setting up an Ansible Control Machine to execute

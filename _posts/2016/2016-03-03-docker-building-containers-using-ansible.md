@@ -1,5 +1,11 @@
 ---
   title: Docker - Building containers using Ansible
+  categories:
+    - Automation
+    - Containers
+  tags:
+    - Ansible
+    - Docker
 ---
 
 Have you thought about building Docker containers using some Ansible

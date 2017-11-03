@@ -1,5 +1,9 @@
 ---
 title: KVM - VM Templates
+categories:
+  - Virtualization
+tags:
+  - KVM
 ---
 
 It has been a minute since I had done any KVM based VMs so I wanted to
