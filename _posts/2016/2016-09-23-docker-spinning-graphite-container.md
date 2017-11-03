@@ -1,5 +1,9 @@
 ---
   title: Docker - Spinning Up A Graphite Container
+  categories:
+    - Containers
+  tags:
+    - Docker
 ---
 
 As I am working through some testing methodologies for

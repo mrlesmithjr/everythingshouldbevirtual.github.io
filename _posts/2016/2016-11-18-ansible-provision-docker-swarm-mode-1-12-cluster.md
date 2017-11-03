@@ -1,5 +1,11 @@
 ---
   title: Ansible - Provision Docker Swarm Mode (1.12)
+  categories:
+    - Automation
+    - Containers
+  tags:
+    - Ansible
+    - Docker
 ---
 
 Lately I have been working quite a bit with the latest Docker Swarm Mode

@@ -1,5 +1,9 @@
 ---
   title: Ansible - Debian Based Gotchas - Part-1
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 As I am currently running through some Docker setups between Debian

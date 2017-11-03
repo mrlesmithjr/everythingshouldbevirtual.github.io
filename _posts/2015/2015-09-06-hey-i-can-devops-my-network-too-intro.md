@@ -1,5 +1,9 @@
 ---
   title: Hey, I can DevOPS my Network too! - Intro
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 This will be the introduction to a multi-post series on some different

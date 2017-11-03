@@ -1,5 +1,9 @@
 ---
   title: Hey, I can DevOPS my Network too! -- Vagrant Up (Part 3)
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 In the last

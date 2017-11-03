@@ -1,5 +1,9 @@
 ---
   title: Hey, I can DevOPS my Network too! -- Manual-configured OSPF (Part 5)
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 In the previous [post](http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-auto-configured-ospf-part-4) we setup our OSPF routing topology auto-configured using Ansible.

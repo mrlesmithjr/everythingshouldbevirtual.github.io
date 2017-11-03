@@ -1,5 +1,9 @@
 ---
   title: Ansible 2.3.1 - sshpass Error
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 As you may or may not be aware, **Ansible 2.3.1.0** was recently

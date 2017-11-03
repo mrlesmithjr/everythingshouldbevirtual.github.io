@@ -1,5 +1,9 @@
 ---
   title: Ansible - Parsing CSV List Of Hosts (IP, hostname(s), MAC)
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 Recently I had a need to take an already populated spreadsheet which

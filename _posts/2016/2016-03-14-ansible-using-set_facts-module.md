@@ -1,5 +1,9 @@
 ---
   title: Ansible - Using the set_facts module
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 Today I was writing/updating an Ansible role for installing Cacti

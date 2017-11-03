@@ -1,5 +1,9 @@
 ---
   title: Hey, I can DevOPS my Network too! -- Define Nodes (Part 2)
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 In the [previous post](http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-prep-work-part-1)

@@ -1,5 +1,9 @@
 ---
   title: Vagrant - Adding a second hard drive
+  categories:
+    - Virtualization
+  tags:
+    - Vagrant
 ---
 
 I was just working on some Vagrant lab stuff and had a need to spin up a

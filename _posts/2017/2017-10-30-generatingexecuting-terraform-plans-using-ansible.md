@@ -1,5 +1,11 @@
 ---
   title: Generating/Executing Terraform Plans Using Ansible
+  date: 2017-10-30
+  categories:
+    - Automation
+  tags:
+    - Ansible
+    - Terraform
 ---
 
 Recently I have been working on a little project of my own based on

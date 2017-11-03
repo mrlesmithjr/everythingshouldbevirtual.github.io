@@ -1,5 +1,11 @@
 ---
   title: Learning Vagrant and Ansible Provisioning
+  categories:
+    - Automation
+    - Virtualization
+  tags:
+    - Ansible
+    - Vagrant
 ---
 
 After attending Tech Field Day (#NFD10) there was a great deal of

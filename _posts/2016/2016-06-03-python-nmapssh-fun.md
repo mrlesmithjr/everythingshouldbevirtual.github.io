@@ -1,5 +1,9 @@
 ---
   title: Python - NMAP/SSH Fun
+  categories:
+    - Code
+  tags:
+    - Python
 ---
 
 I am currently working on some Ansible/Python project(s) _(More to come

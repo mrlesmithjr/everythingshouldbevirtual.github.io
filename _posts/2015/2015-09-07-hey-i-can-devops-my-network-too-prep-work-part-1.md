@@ -1,5 +1,9 @@
 ---
   title: Hey, I can DevOPS my Network too! -- Prep-Work (Part 1)
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 In the previous

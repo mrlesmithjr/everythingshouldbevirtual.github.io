@@ -1,5 +1,9 @@
 ---
   title: Vagrant Box Templates
+  categories:
+    - Virtualization
+  tags:
+    - Vagrant
 ---
 
 Over the past few months I have been putting together some Vagrant box

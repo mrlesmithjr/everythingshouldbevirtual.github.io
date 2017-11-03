@@ -1,5 +1,10 @@
 ---
   title: Docker - Creating An Alpine Image With Ansible
+  categories:
+    - Containers
+  tags:
+    - Ansible
+    - Docker
 ---
 
 As I am experimenting with [Docker](https://www.docker.com) images and finding

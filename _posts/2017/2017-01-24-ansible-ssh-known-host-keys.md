@@ -1,5 +1,9 @@
 ---
   title: Ansible - SSH Known Host Keys
+  categories:
+    - Automation
+  tags:
+    - Ansible
 ---
 
 I wanted to throw this together mainly for my own reference but maybe it

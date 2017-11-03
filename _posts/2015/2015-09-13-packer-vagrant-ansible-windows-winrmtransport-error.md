@@ -1,5 +1,12 @@
 ---
   title: Packer - Vagrant - Ansible - Windows
+  categories:
+    - Automation
+    - Virtualization
+  tags:
+    - Ansible
+    - Packer
+    - Vagrant
 ---
 
 While doing some Packer builds for Windows Server 2012 R2 to be used

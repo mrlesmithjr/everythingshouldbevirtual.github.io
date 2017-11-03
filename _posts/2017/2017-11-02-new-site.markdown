@@ -1,6 +1,8 @@
 ---
 title: "New Site"
 date: "2017-11-02 23:01"
+categories:
+  - Announcements
 ---
 
 Welcome to the new [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)

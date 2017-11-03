@@ -1,5 +1,7 @@
 ---
 title: New Journey Begins
+categories:
+  - Announcements
 ---
 
 As many of you know, a little over 3 weeks ago, I began my search for a
