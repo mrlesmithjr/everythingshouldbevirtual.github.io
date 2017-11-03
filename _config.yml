@@ -13,7 +13,7 @@ title: "EverythingShouldBeVirtual"
 title_separator: "-"
 name: "Larry Smith Jr."
 description: "World of Virtual Things, Cloudy Things, Automation and some DevOPS"
-url: "http://everythingshouldbevirtual.com"
+url: "https://everythingshouldbevirtual.com"
 baseurl:
 repository: "mrlesmithjr/everythingshouldbevirtual.github.io"
 teaser: # path of fallback teaser image, e.g. "/assets/images/500x300.png"
