@@ -1,9 +1,9 @@
 # main links
 main:
   - title: "About"
-    url: /about/
+    url: /about
   - title: "Sponsors"
-    url: /sponsors/
+    url: /sponsors
   # - title: "Posts"
   #   url: /year-archive/
   # - title: "Categories"
