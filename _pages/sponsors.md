@@ -1,6 +1,6 @@
 ---
   title: Sponsors
-  permalink: /sponsors
+  permalink: /sponsors/
 ---
 
 ## Below you will find sponsors of this site
