@@ -72,18 +72,21 @@ social:
 
 # Analytics
 analytics:
-  provider: false # false (default), "google", "google-universal", "custom"
+  provider: "google-universal"
   google:
-    tracking_id:
+    tracking_id: "UA-17857029-3"
 
 
 # Site Author
 author:
   name: "Larry Smith Jr."
-  avatar:
-  bio:
+  avatar: "/images/2017/11/avatar.png"
+  bio: >
+       Doing my thang with #automation #DevOps and cloudy things!
+       Providing hopefully valuable content for others to consume easily
+       and also learn from.
   location: "McDonough, GA"
-  email:
+  email: "mrlesmithjr@gmail.com"
   uri:
   bitbucket:
   codepen:
@@ -91,7 +94,7 @@ author:
   flickr:
   facebook:
   foursquare:
-  github:
+  github: "mrlesmithjr"
   gitlab:
   google_plus:
   keybase:
