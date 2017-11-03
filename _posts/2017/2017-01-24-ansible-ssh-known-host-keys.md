@@ -10,47 +10,11 @@ I came up with. And it works.
 
 First create a simple playbook:
 
-{% raw %}
-
-```yaml
----
-- hosts: all
-  become: true
-  tasks:
-    - name: scan and register
-      command: "ssh-keyscan {{ item }}"
-      register: "host_keys"
-      changed_when: false
-      with_items: '{{ groups.all }}'
-      delegate_to: localhost
-      become: false
-
-    - name: write keys
-      template:
-        src: "ssh-hosts.j2"
-        dest: "/etc/ssh/ssh_known_hosts"
-```
-
-{% endraw %}
+{% gist mrlesmithjr/71f0669dfb970b4904a7cbe8b8e46863 %}
 
 Next create this simple template:
 
-{% raw %}
-
-```yaml
-{% for item in host_keys_hostname['results'] %}
-{%   for key in item['stdout_lines'] %}
-{{ key }}
-{%   endfor %}
-{% endfor %}
-{% for item in host_keys_ip['results'] %}
-{%   for key in item['stdout_lines'] %}
-{{ key }}
-{%   endfor %}
-{% endfor %}
-```
-
-{% endraw %}
+{% gist mrlesmithjr/10a0ad5ef831ca83e28f9b100e0f8ac6 %}
 
 Then run
 
