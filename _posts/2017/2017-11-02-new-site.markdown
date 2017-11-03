@@ -1,0 +1,19 @@
+---
+layout: "post"
+title: "New Site"
+date: "2017-11-02 23:01"
+---
+
+Welcome to the new [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)
+site. I had been planning on moving from a hosted Wordpress site for a few years
+now but I was stuck in a contract. I am now in the transition phase so hopefully
+this will work out great. Please bear with me as I continue to cleanup previous
+posts. If you find anything unusual please let me know. What to expect going
+forward? Many more posts. I have been lacking on content over the past year or
+more for many reasons which I will not get into. However, rest assured you will
+be getting much more content and hopefully very beneficial information. What I
+have learned by going through this transition is how our content changes over time.
+I have definitely changed in my content for sure and hopefully it will only get
+better with time.
+
+Enjoy!
