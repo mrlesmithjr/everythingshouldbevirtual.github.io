@@ -75,41 +75,6 @@ sudo apt-get install sshpass
 Interested in using Python virtual environments for Ansible regression
 testing? Here is a script to help you with that.
 
-{% raw %}
-
-```bash
-#!/usr/bin/env bash
-set -x
-
-ANSIBLE_VERSIONS=("1.9.4" "1.9.5" "1.9.6" "2.0.0.0" "2.0.0.1" "2.0.0.2" \
-                 "2.0.1.0" "2.0.2.0" "2.1.0.0" "2.1.1.0" "2.1.2.0" "2.1.3.0" \
-                 "2.1.4.0" "2.1.5.0" "2.1.6.0" "2.2.0.0" "2.2.1.0" "2.2.2.0" \
-                 "2.2.3.0" "2.3.0.0" "2.3.1.0")
-ANSIBLE_CONTAINER_VERSIONS=("0.1.0" "0.2.0" "0.3.0" "0.9.0.0" "0.9.1")
-VIRTUALENV_PATH="./python-virtualenvs"
-
-pip install virtualenv
-
-for ANSVER in "${ANSIBLE_VERSIONS[@]}"
-do
-  if [ ! -d "$VIRTUALENV_PATH/ansible-$ANSVER" ]; then
-    virtualenv $VIRTUALENV_PATH/ansible-$ANSVER
-    source $VIRTUALENV_PATH/ansible-$ANSVER/bin/activate
-    pip install ansible==$ANSVER ansible-lint
-    deactivate
-  fi
-done
-for ANSCONTVER in "${ANSIBLE_CONTAINER_VERSIONS[@]}"
-do
-  if [ ! -d "$VIRTUALENV_PATH/ansible-container-$ANSCONTVER" ]; then
-    virtualenv $VIRTUALENV_PATH/ansible-container-$ANSCONTVER
-    source $VIRTUALENV_PATH/ansible-container-$ANSCONTVER/bin/activate
-    pip install ansible-container[docker]==$ANSCONTVER ansible-lint
-    deactivate
-  fi
-done
-```
-
-{% endraw %}
+{% gist mrlesmithjr/8beb3ab7989e5ee3ef61082c9162b564 %}
 
 Enjoy!
