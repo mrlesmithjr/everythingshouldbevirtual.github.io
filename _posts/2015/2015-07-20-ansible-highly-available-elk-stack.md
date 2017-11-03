@@ -3,7 +3,7 @@
 ---
 
 A little over a year ago I provided installation scripts along with
-[this](http://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup)
+[this](https://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup)
 post to help setup a completely redundant ELK Stack. This post has
 definitely been one of my most popular posts that I have ever put out
 and lot's of great feedback provided. Over the past few months I have
@@ -431,7 +431,7 @@ environments running ESXi 5.5U2+. To work around that we now configure
 the ESXi hosts to send via udp/514 and all of the filtering is included
 here to properly parse ESXi hosts.
 For additional device setups you can still reference my original post
-[here](http://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup).
+[here](https://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup).
 
 As I mentioned in the beginning, I am sure that this post will need some
 modifications based on the fact that I have spent several months working

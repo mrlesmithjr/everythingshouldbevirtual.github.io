@@ -4,7 +4,7 @@
 ---
 
 I just did a quick test using the VMware IO Analyzer using the same
-tests that I did [here](http://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd "http\://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd").
+tests that I did [here](https://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd "http\://everythingshouldbevirtual.com/nexenta-performance-testing-no-ssdssd").
 This test was only using iSCSI with SSD for ZIL/SLOG and L2ARC. But the
 results show a considerable jump in performance which means that
 apparently the money has been well spent. I also changed the vmdk file

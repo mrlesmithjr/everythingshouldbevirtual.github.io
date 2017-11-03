@@ -14,5 +14,5 @@ git clone https://github.com/mrlesmithjr/cacti/
 ```
 
 Go
-[here](http://everythingshouldbevirtual.com/cacti-templates-for-windows "http\://everythingshouldbevirtual.com/cacti-templates-for-windows")
+[here](https://everythingshouldbevirtual.com/cacti-templates-for-windows "http\://everythingshouldbevirtual.com/cacti-templates-for-windows")
 for older versions of these templates.

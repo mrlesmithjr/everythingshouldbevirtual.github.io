@@ -5,7 +5,7 @@
 
 So this past week I have been upgrading my home lab domain from AD 2008
 R2 to AD 2012 and so far it has gone without a hitch (read
-[here](http://everythingshouldbevirtual.com/server-2012-ad-upgrade-notes "http\://everythingshouldbevirtual.com/server-2012-ad-upgrade-notes")
+[here](https://everythingshouldbevirtual.com/server-2012-ad-upgrade-notes "http\://everythingshouldbevirtual.com/server-2012-ad-upgrade-notes")
 on this). Well until today that is. I was attempting to login to vCenter
 using the viclient and the screenshot below is what I was presented
 with.

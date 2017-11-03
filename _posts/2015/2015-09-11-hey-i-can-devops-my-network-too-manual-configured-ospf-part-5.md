@@ -6,7 +6,7 @@
     - Ansible
 ---
 
-In the previous [post](http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-auto-configured-ospf-part-4) we setup our OSPF routing topology auto-configured using Ansible.
+In the previous [post](https://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-auto-configured-ospf-part-4) we setup our OSPF routing topology auto-configured using Ansible.
 Which works really nice when we already know what our variable definitions are
 and the end result looks like. But maybe we do not know that yet and
 need to model what our topology and configurations will be. Well, this

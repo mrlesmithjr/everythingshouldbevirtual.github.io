@@ -23,7 +23,7 @@ that though for the flexibility. Also I am keeping an eye the
 [ansible-container](https://www.ansible.com/ansible-container) solution
 as well as it seems it is more along the lines of how I choose to
 maintain my containers. I also published another
-[post](http://everythingshouldbevirtual.com/docker-building-containers-using-ansible)
+[post](https://everythingshouldbevirtual.com/docker-building-containers-using-ansible)
 earlier this year around the idea of using Ansible to provision
 containers but was actually leveraging some of the Ansible roles that I
 had already created. I have chosen to not do this going forward (at

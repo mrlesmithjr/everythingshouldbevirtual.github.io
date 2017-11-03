@@ -64,7 +64,7 @@ Login using admin/admin and then change password on next screen
 Cacti is now installed.
 
 Download the latest version of cacti from
-[here](http://everythingshouldbevirtual.com/cacti-templates-for-windows/ "http\://everythingshouldbevirtual.com/cacti-templates-for-windows/").
+[here](https://everythingshouldbevirtual.com/cacti-templates-for-windows/ "http\://everythingshouldbevirtual.com/cacti-templates-for-windows/").
 Version 13 is the latest at the time of writing this. Download it and
 extract the zip file. There is a readme.txt that explains where to place
 the files.
@@ -179,5 +179,5 @@ Enjoy...
 
 You can follow the thread over on the Cacti forum [here](http://forums.cacti.net/viewtopic.php?f=12&t=29832 "http\://forums.cacti.net/viewtopic.php?f=12&t=29832").
 
-You can download previous versions of the templates from [here](http://everythingshouldbevirtual.com/cacti-templates-for-windows "http\://everythingshouldbevirtual.com/cacti-templates-for-windows")if
+You can download previous versions of the templates from [here](https://everythingshouldbevirtual.com/cacti-templates-for-windows "http\://everythingshouldbevirtual.com/cacti-templates-for-windows")if
 you are getting XML parse errors importing.

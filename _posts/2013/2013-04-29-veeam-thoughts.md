@@ -58,9 +58,9 @@ positive you will be happy with your
 [Veeam](http://www.veeam.com/cloud-backup-vmware-hyper-v.html?utm_source=everythingshould&utm_medium=banner&utm_campaign=cloudbackup "http\://www.veeam.com/cloud-backup-vmware-hyper-v.html?utm_source=everythingshould&utm_medium=banner&utm_campaign=cloudbackup") implementation.
 
 For a previous post which shows my initial thoughts on setting up a
-Veeam solution go [here](http://everythingshouldbevirtual.com/veeam-backup-and-replication-to-nexenta-nfs "http\://everythingshouldbevirtual.com/veeam-backup-and-replication-to-nexenta-nfs").
+Veeam solution go [here](https://everythingshouldbevirtual.com/veeam-backup-and-replication-to-nexenta-nfs "http\://everythingshouldbevirtual.com/veeam-backup-and-replication-to-nexenta-nfs").
 
-For a design scenario example go [here](http://everythingshouldbevirtual.com/veeam-br-and-hp-3par-brainstorming "http\://everythingshouldbevirtual.com/veeam-br-and-hp-3par-brainstorming").
+For a design scenario example go [here](https://everythingshouldbevirtual.com/veeam-br-and-hp-3par-brainstorming "http\://everythingshouldbevirtual.com/veeam-br-and-hp-3par-brainstorming").
 
 Get your copy of Veeam today [here](http://www.veeam.com/cloud-backup-vmware-hyper-v.html?utm_source=everythingshould&utm_medium=banner&utm_campaign=cloudbackup "http\://www.veeam.com/cloud-backup-vmware-hyper-v.html?utm_source=everythingshould&utm_medium=banner&utm_campaign=cloudbackup").
 

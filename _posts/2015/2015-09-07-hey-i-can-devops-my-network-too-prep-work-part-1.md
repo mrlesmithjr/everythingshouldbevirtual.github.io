@@ -7,7 +7,7 @@
 ---
 
 In the previous
-[post](http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-intro)
+[post](https://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-intro)
 we went over the intro on what we will be setting up by going through
 each of these posts. In this post we will be setting up our environment
 and getting everything ready to begin our journey of network
@@ -240,4 +240,4 @@ To https://github.com/everythingshouldbevirtual/vagrant-ansible-routing-template
 ```
 
 So there you have it. All synced up.
-Up Next....[Modifying our nodes configuration file to provision our nodes with Vagrant](http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-define-nodes-part-2).
+Up Next....[Modifying our nodes configuration file to provision our nodes with Vagrant](https://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-define-nodes-part-2).

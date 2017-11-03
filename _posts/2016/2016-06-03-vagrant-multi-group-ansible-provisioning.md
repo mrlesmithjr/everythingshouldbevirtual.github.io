@@ -13,7 +13,7 @@ leverage a common Vagrantfile across scenarios while only having to
 adjust variables if required for these scenarios. With one of those
 being defining Ansible groups to provision with Vagrant. So I wanted to
 share with others what I have found to be a good working solution for
-just that. Check out this [post](http://everythingshouldbevirtual.com/vagrant-complex-vagrantfile-configurations)
+just that. Check out this [post](https://everythingshouldbevirtual.com/vagrant-complex-vagrantfile-configurations)
 if you are interested in what I have been using as a common Vagrantfile.
 
 In this scenario I will be spinning up 5 Vagrant boxes and would like

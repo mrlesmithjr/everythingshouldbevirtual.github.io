@@ -24,8 +24,8 @@ sudo apt-get -y install openssh-server
 
 If you would rather install Graylog2 on your own; you can still use the
 auto-install script
-[here](http://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation "Ubuntu 12.04 Graylog2 Installation")
-and as well watch the video [here](http://everythingshouldbevirtual.com/ubuntu-graylog2-auto-install-script-video "Ubuntu Graylog2 Auto Install Script – Video").
+[here](https://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation "Ubuntu 12.04 Graylog2 Installation")
+and as well watch the video [here](https://everythingshouldbevirtual.com/ubuntu-graylog2-auto-install-script-video "Ubuntu Graylog2 Auto Install Script – Video").
 
 Enjoy!
 
@@ -49,7 +49,7 @@ password: password123
 ```
 
 Provided by @mrlesmithjr
-<http://everythingshouldbevirtual.com>
+<https://everythingshouldbevirtual.com>
 mrlesmithjr@everythingshouldbevirtual.com
 
 > **UPDATE!!!!!! ------  As of today 09-17-2015....This post may

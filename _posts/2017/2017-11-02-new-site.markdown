@@ -5,7 +5,7 @@ categories:
   - Announcements
 ---
 
-Welcome to the new [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)
+Welcome to the new [EverythingShouldBeVirtual](https://everythingshouldbevirtual.com)
 site. I had been planning on moving from a hosted Wordpress site for a few years
 now but I was stuck in a contract. I am now in the transition phase so hopefully
 this will work out great. Please bear with me as I continue to cleanup previous

@@ -5,7 +5,7 @@
 
 This article is a continuation of Part 1 that we did a while back.  I
 would highly suggest checking out that article as well prior to going
-through this article.  You can read Part 1 [here](http://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-1/).
+through this article.  You can read Part 1 [here](https://everythingshouldbevirtual.com/nexentastoresxi53750glacpvdsnfsiscsi-part-1/).
 
 # MPIO Round Robin Policy
 

@@ -19,7 +19,7 @@ not my job", "My environment is fine so it must be someone else's"
 or just general finger pointing. I have been a huge proponent of
 accountability and driving towards a solution for most of my career
 (Read about it
-[here](http://everythingshouldbevirtual.com/a-journey-to-modern-day-it-relevance)).
+[here](https://everythingshouldbevirtual.com/a-journey-to-modern-day-it-relevance)).
 I am also notorious for accepting blame when no one else is willing to
 because I know that I will push forward and get the results required to
 solve an issue as well as ensure it's repeatability. I know, I know I
@@ -35,7 +35,7 @@ test networking philosophies or continued development of your
 current/future networking environment. The focus will be to start from
 scratch and leverage technologies such as Vagrant, Ansible and Quagga to
 build out this environment (You can find a primer on Vagrant and Ansible
-[here](http://everythingshouldbevirtual.com/learning-vagrant-and-ansible-provisioning)).
+[here](https://everythingshouldbevirtual.com/learning-vagrant-and-ansible-provisioning)).
 And we will also be using GIT for our version controlling of our code. I
 will be publishing each phase of this series as I finish each section so
 there will be some lapse between posts, but I will make sure to tie them
@@ -48,4 +48,4 @@ series.
 
 So sit back and enjoy!
 
-Up next...[Prep-Work](http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-prep-work-part-1)
+Up next...[Prep-Work](https://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-prep-work-part-1)

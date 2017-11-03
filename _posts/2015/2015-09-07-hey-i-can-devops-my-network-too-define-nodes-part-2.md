@@ -6,7 +6,7 @@
     - Ansible
 ---
 
-In the [previous post](http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-prep-work-part-1)
+In the [previous post](https://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-prep-work-part-1)
 we prepped our environment in order to get everything ready to begin
 building out our environment. Which means we are now ready to finalize
 our node definitions to spin up our environment with Vagrant. So to
@@ -451,4 +451,4 @@ end
 So this concludes our node definitions which we will be using here on
 out for this series.
 
-Up next...[Vagrant UP](http://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-vagrant-up-part-3)...
+Up next...[Vagrant UP](https://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-vagrant-up-part-3)...

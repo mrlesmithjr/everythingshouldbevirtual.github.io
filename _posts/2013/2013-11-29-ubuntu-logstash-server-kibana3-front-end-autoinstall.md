@@ -8,7 +8,7 @@ wanted to try out Logstash finally. So the first thing that I wanted to
 do was create an automated script to do most of the install and
 configuration to get everything running. I figured that as I am going
 through this I would share with everyone and start building on this
-script more based on feedback. I created a [Graylog2](http://graylog2.org "http\://graylog2.org") script (located [here](http://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation "http\://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation"))
+script more based on feedback. I created a [Graylog2](http://graylog2.org "http\://graylog2.org") script (located [here](https://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation "http\://everythingshouldbevirtual.com/ubuntu-12-04-graylog2-installation"))
 that has proven to be of great help to the community and figured I might
 be able to do the same with the [Logstash](http://logstash.net "http\://logstash.net")
 community, but even if it didn't I would learn a great deal about Logstash in the
@@ -162,6 +162,6 @@ Enjoy!
 All comments and feedback are very much welcomed and encouraged.
 
 Interested in a highly available setup? Go
-[here](http://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup "Highly Available ELK (Elasticsearch, Logstash and Kibana) Setup") and
+[here](https://everythingshouldbevirtual.com/highly-available-elk-elasticsearch-logstash-kibana-setup "Highly Available ELK (Elasticsearch, Logstash and Kibana) Setup") and
 checkout the Highly Available ELK (Elasticsearch, Logstash and Kibana)
 setup.

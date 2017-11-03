@@ -31,7 +31,7 @@ __author__ = "Larry Smith Jr."
 __email___ = "mrlesmithjr@gmail.com"
 __maintainer__ = "Larry Smith Jr."
 __status__ = "Development"
-# http://everythingshouldbevirtual.com
+# https://everythingshouldbevirtual.com
 # @mrlesmithjr
 
 def main(args):

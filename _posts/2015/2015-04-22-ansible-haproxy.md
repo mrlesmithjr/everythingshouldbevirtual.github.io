@@ -3,7 +3,7 @@
 ---
 
 In
-[this](http://everythingshouldbevirtual.com/ansible-keepalived "Ansible – KeepAliveD")
+[this](https://everythingshouldbevirtual.com/ansible-keepalived "Ansible – KeepAliveD")
 previous post I setup KeepAliveD using a fictitious tenant using
 [Ansible](http://ansible.com "Ansible"). In this post I will be building
 upon that same configuration and creating the HAProxy setup.

@@ -3,7 +3,7 @@
   date: 2013-12-09 12:44:05
 ---
 
-In [this](http://everythingshouldbevirtual.com/installing-nagios-on-ubuntu-12-04 "http\://everythingshouldbevirtual.com/installing-nagios-on-ubuntu-12-04")
+In [this](https://everythingshouldbevirtual.com/installing-nagios-on-ubuntu-12-04 "http\://everythingshouldbevirtual.com/installing-nagios-on-ubuntu-12-04")
 previous post we installed Nagios 3.5.0 from source. Now that the
 current version of Nagios is 4.0.2 I wanted to walk through upgrading
 the previous version to the latest.

@@ -39,7 +39,7 @@ volsnap\
 1 matching device(s) found
 ```
 
-Download and extract [PsMonInstall.zip](http://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-BBT-Installs.zip "http\://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-BBT-Installs.zip")
+Download and extract [PsMonInstall.zip](https://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-BBT-Installs.zip "http\://everythingshouldbevirtual.com/wp-content/uploads/2012/08/Platespin-BBT-Installs.zip")
 
 Here is the command to run to remove the Platespin tools.
 
@@ -52,6 +52,6 @@ any files like platespin.bitmap.bbvt in the root of the drive. If they
 do exist delete them.
 
 Now if you need/want to install the Platespin tools manually head over
-to [this](http://everythingshouldbevirtual.com/how-to-install-block-based-tools-for-platespin-workloads-manually "http\://everythingshouldbevirtual.com/how-to-install-block-based-tools-for-platespin-workloads-manually")link on how to do that.
+to [this](https://everythingshouldbevirtual.com/how-to-install-block-based-tools-for-platespin-workloads-manually "http\://everythingshouldbevirtual.com/how-to-install-block-based-tools-for-platespin-workloads-manually")link on how to do that.
 
 Enjoy!

@@ -8,7 +8,7 @@ components to vSphere 5.5 so I figured I would capture a few things as I
 have been going through this. I installed the vCSA (vCenter Server
 Appliance) 5.5 a few days ago and finally got around to migrating my
 hosts over from the Windows vCenter Server 5.1 to the vCSA 5.5 (read
-[here](http://everythingshouldbevirtual.com/vsphere-5-5-using-vcenter-server-appliance "http\://everythingshouldbevirtual.com/vsphere-5-5-using-vcenter-server-appliance")).
+[here](https://everythingshouldbevirtual.com/vsphere-5-5-using-vcenter-server-appliance "http\://everythingshouldbevirtual.com/vsphere-5-5-using-vcenter-server-appliance")).
 So now the next step was getting my hosts upgraded from 5.1 to 5.5 and I
 wanted to use the vSphere Update Manager (VUM) for this. This is a great
 way to upgrade your vSphere hosts if you have never used it before by

@@ -11,6 +11,6 @@ of 8 drives per controller. Each mirror pair spreads across each
 controller. 2 Intel 1GBe NICS configured bundled and configured for
 LACP. 3 5-bay SuperMicro Hot Swap drive cages. I use it for NFS and
 iSCSI testing. You can read more about it and some of the configuration
-setup [here](http://everythingshouldbevirtual.com/?p=41). I highly
+setup [here](https://everythingshouldbevirtual.com/?p=41). I highly
 recommend checking it out. You can run it as a VM too for a VSA, but the
 last I checked vmxnet-3 drivers are not supported.

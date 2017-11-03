@@ -175,7 +175,7 @@ of these tools.
 My goal as of now and going forward is to take many of these
 methodologies and technologies and put them into a consumable format for
 others to begin learning (ex.
-[here](http://everythingshouldbevirtual.com/learning-vagrant-and-ansible-provisioning)).
+[here](https://everythingshouldbevirtual.com/learning-vagrant-and-ansible-provisioning)).
 Maybe someone just wants to learn Ansible for automation but maybe
 another may want to learn the same but have the ability to test out a
 network design using different routing protocols while using the exact
