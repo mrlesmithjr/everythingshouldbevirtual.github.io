@@ -1,6 +1,8 @@
 ---
 title: "New Journey Begins - Revisited"
 date: "2017-11-03 22:06"
+categories:
+  - Announcements
 ---
 
 I previously posted this post [New Journey Begins](https://everythingshouldbevirtual.com/announcements/new-journey-begins/)
