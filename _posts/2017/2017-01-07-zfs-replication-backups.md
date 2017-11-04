@@ -4,6 +4,8 @@
     - Storage
   tags:
     - ZFS
+  redirect_from:
+    - /zfs-replication-backups
 ---
 
 I recently rebuilt my lab NAS hosts with Ubuntu 16.04 and used ZFS for

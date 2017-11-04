@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /hey-i-can-devops-my-network-too-auto-configured-ospf-part-4
 ---
 
 In the last

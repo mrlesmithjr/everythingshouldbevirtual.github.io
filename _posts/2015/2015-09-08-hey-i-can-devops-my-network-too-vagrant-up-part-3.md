@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /hey-i-can-devops-my-network-too-vagrant-up-part-3
 ---
 
 In the last

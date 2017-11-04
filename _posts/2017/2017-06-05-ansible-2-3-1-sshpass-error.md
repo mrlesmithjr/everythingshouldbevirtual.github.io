@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /ansible-2-3-1-sshpass-error
 ---
 
 As you may or may not be aware, **Ansible 2.3.1.0** was recently

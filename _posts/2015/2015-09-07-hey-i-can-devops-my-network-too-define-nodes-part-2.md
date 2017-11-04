@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /hey-i-can-devops-my-network-too-define-nodes-part-2
 ---
 
 In the [previous post](https://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-prep-work-part-1)

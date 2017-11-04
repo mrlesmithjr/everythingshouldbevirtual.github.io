@@ -6,6 +6,8 @@
   tags:
     - Ansible
     - Docker
+  redirect_from:
+    - /docker-building-containers-using-ansible
 ---
 
 Have you thought about building Docker containers using some Ansible

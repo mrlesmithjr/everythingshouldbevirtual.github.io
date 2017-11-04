@@ -6,6 +6,8 @@
   tags:
     - Ansible
     - Terraform
+  redirect_from:
+    - /generatingexecuting-terraform-plans-using-ansible
 ---
 
 Recently I have been working on a little project of my own based on

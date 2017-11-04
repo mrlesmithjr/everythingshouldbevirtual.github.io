@@ -5,6 +5,8 @@
   tags:
     - Ansible
     - Docker
+  redirect_from:
+    - /docker-creating-alpine-image-ansible-installed
 ---
 
 As I am experimenting with [Docker](https://www.docker.com) images and finding

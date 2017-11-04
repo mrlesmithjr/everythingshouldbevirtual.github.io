@@ -2,6 +2,8 @@
 title: New Journey Begins
 categories:
   - Announcements
+redirect_from:
+  - /new-journey-begins
 ---
 
 As many of you know, a little over 3 weeks ago, I began my search for a

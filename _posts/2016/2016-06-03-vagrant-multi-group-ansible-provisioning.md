@@ -6,6 +6,8 @@
   tags:
     - Ansible
     - Vagrant
+  redirect_from:
+    - /vagrant-multi-group-ansible-provisioning
 ---
 
 As I continue to develop different scenario testing I continually try to

@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /hey-i-can-devops-my-network-too-intro
 ---
 
 This will be the introduction to a multi-post series on some different

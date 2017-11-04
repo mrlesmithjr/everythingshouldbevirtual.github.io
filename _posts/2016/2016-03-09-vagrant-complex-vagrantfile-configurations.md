@@ -4,6 +4,8 @@
     - Virtualization
   tags:
     - Vagrant
+  redirect_from:
+    - /vagrant-complex-vagrantfile-configurations
 ---
 
 I will be using this a reference for adding various Vagrant

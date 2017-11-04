@@ -6,6 +6,8 @@
   tags:
     - Ansible
     - Vagrant
+  redirect_from:
+    - /learning-vagrant-and-ansible-provisioning
 ---
 
 After attending Tech Field Day (#NFD10) there was a great deal of

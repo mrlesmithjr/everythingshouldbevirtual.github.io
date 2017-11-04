@@ -4,6 +4,8 @@
     - Virtualization
   tags:
     - VMware
+  redirect_from:
+    - /ubuntu-vmware-template-cleanup-script
 ---
 
 Just sharing these scripts in case anyone ever needs/wants a quick way

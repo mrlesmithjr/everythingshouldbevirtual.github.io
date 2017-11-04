@@ -4,6 +4,8 @@
     - Containers
   tags:
     - Docker
+  redirect_from:
+    - /docker-spinning-graphite-container
 ---
 
 As I am working through some testing methodologies for

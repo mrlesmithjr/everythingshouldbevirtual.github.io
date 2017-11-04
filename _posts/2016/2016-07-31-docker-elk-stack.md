@@ -8,6 +8,8 @@
     - Ansible
     - Docker
     - ELK
+  redirect_from:
+    - /docker-elk-stack
 ---
 
 In this post we will be going over setting up a quick and easy way to

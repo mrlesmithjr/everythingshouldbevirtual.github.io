@@ -6,6 +6,8 @@
   tags:
     - Ansible
     - Docker
+  redirect_from:
+    - /ansible-provision-docker-swarm-mode-1-12-cluster
 ---
 
 Lately I have been working quite a bit with the latest Docker Swarm Mode

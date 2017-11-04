@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /ansible-clean-formatted-playbooks
 ---
 
 While going through and doing some cleanup to various different roles

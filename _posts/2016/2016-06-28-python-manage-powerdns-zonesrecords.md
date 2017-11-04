@@ -5,6 +5,8 @@
   tags:
     - PowerDNS
     - Python
+  redirect_from:
+    - /python-manage-powerdns-zonesrecords
 ---
 
 While working on another PowerDNS project I have started working on a

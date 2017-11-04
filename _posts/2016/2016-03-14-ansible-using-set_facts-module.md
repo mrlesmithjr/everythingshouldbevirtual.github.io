@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /ansible-using-set_facts-module
 ---
 
 Today I was writing/updating an Ansible role for installing Cacti

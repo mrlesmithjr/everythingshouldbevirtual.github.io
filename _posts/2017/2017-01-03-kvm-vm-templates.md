@@ -4,6 +4,8 @@ categories:
   - Virtualization
 tags:
   - KVM
+redirect_from:
+  - /kvm-vm-templates
 ---
 
 It has been a minute since I had done any KVM based VMs so I wanted to

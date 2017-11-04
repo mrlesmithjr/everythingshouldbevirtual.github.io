@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /ansible-setting-up-an-ansible-control-machine-part-1
 ---
 
 In this post we will be setting up an Ansible Control Machine to execute

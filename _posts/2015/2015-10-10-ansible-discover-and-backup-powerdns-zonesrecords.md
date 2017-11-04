@@ -5,6 +5,8 @@
   tags:
     - Ansible
     - PowerDNS
+  redirect_from:
+    - /ansible-discover-and-backup-powerdns-zonesrecords
 ---
 
 While working on a solution that requires
