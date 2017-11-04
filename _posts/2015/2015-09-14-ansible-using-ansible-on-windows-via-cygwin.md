@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /ansible-using-ansible-on-windows-via-cygwin
 ---
 
 As I continue down the Ansible journey to automate all things it is

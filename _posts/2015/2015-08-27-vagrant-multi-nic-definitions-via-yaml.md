@@ -4,6 +4,8 @@
     - Virtualization
   tags:
     - Vagrant
+  redirect_from:
+    - /vagrant-multi-nic-definitions-via-yaml
 ---
 
 I am currently working on a little routing project to use as a learning

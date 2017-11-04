@@ -4,6 +4,8 @@
     - Code
   tags:
     - Python
+  redirect_from:
+    - /python-nmapssh-fun
 ---
 
 I am currently working on some Ansible/Python project(s) _(More to come

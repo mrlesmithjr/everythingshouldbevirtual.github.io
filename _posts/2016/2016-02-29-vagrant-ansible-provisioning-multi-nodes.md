@@ -6,6 +6,8 @@
   tags:
     - Ansible
     - Vagrant
+  redirect_from:
+    - /vagrant-ansible-provisioning-multi-nodes
 ---
 
 I am just throwing this out here for my own reference because I seem to

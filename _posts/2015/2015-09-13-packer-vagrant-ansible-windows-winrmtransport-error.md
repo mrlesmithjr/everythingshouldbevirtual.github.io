@@ -7,6 +7,8 @@
     - Ansible
     - Packer
     - Vagrant
+  redirect_from:
+    - /packer-vagrant-ansible-windows-winrmtransport-error
 ---
 
 While doing some Packer builds for Windows Server 2012 R2 to be used

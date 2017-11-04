@@ -4,6 +4,8 @@
     - Virtualization
   tags:
     - Vagrant
+  redirect_from:
+    - /vagrant-box-templates
 ---
 
 Over the past few months I have been putting together some Vagrant box

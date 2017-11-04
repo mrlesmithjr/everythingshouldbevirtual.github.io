@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /ansible-debian-based-gotchas-part-1
 ---
 
 As I am currently running through some Docker setups between Debian

@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /ansible-parsing-csv-list-hosts-ip-hostnames-mac
 ---
 
 Recently I had a need to take an already populated spreadsheet which

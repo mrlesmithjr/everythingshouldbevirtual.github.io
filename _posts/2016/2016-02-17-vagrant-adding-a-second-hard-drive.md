@@ -4,6 +4,8 @@
     - Virtualization
   tags:
     - Vagrant
+  redirect_from:
+    - /vagrant-adding-a-second-hard-drive
 ---
 
 I was just working on some Vagrant lab stuff and had a need to spin up a

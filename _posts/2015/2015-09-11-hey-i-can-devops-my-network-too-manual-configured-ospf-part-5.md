@@ -4,6 +4,8 @@
     - Automation
   tags:
     - Ansible
+  redirect_from:
+    - /hey-i-can-devops-my-network-too-manual-configured-ospf-part-5
 ---
 
 In the previous [post](https://everythingshouldbevirtual.com/hey-i-can-devops-my-network-too-auto-configured-ospf-part-4) we setup our OSPF routing topology auto-configured using Ansible.

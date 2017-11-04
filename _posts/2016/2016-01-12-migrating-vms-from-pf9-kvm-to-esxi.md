@@ -5,6 +5,8 @@
   tags:
     - KVM
     - VMware
+  redirect_from:
+    - /migrating-vms-from-pf9-kvm-to-esxi
 ---
 
 I have been doing some testing over the past few months of Platform9
