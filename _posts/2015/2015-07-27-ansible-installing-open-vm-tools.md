@@ -16,11 +16,11 @@ you are good to go.
 
 - name: centos | installing open-vm-tools if a vm
   yum: name=open-vm-tools state=present
-  when: ansible_os_family == "Redhat" and ansible_virtualization_type == "VMware"
+  when: ansible_os_family == "RedHat" and ansible_virtualization_type == "VMware"
 
 - name: centos | starting and enabling open-vm-tools
   service: name=vmtoolsd.service state=restarted enabled=yes
-  when: ansible_os_family == "Redhat" and ansible_virtualization_type == "VMware"
+  when: ansible_os_family == "RedHat" and ansible_virtualization_type == "VMware"
 ```
 
 There you have it. Now when you run your playbook or roles open-vm-tools
