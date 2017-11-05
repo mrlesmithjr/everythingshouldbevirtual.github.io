@@ -77,7 +77,8 @@ passed to the installer.
 
 ![Logstash_VMware_Dashboard](../../assets/Logstash_VMware_Dashboard-300x171.png)
 
-You can grab my VMware dashboard from [here](https://gist.github.com/mrlesmithjr/8f8ff8e2e8e6f43cb701 "https\://gist.github.com/mrlesmithjr/8f8ff8e2e8e6f43cb701").
+`VMware dashboard`:
+{% gist mrlesmithjr/8f8ff8e2e8e6f43cb701 %}
 
 Here is another screenshot of logging graphs by adding different search
 criteria items.
@@ -112,17 +113,18 @@ in the install script but not all of them. You will need to change the
 naming for ESXi and PFSense for your environment. (Or just use the
 auto-install script).
 
-<https://gist.github.com/mrlesmithjr/43b4e97bf16a7423bbd2>
+{% gist mrlesmithjr/43b4e97bf16a7423bbd2 %}
 
 For Windows Event Log's I highly recommend using NXLog for Windows. I
 am including a fuctional nxlog.conf file for you to use as well with the
 above logstash.conf configuration.
 
-<https://gist.github.com/mrlesmithjr/cf212836b9ce162373ed>
+{% gist mrlesmithjr/cf212836b9ce162373ed %}
 
 Here is a screenshot of the Windows Logging if you want use the
-dashboard view for Windows from
-[here](https://gist.github.com/mrlesmithjr/42db96d077f4d1035186 "https\://gist.github.com/mrlesmithjr/42db96d077f4d1035186").
+dashboard view for Windows
+
+{% gist mrlesmithjr/42db96d077f4d1035186 %}
 
 ![Logstash_Windows_Dashboard](../../assets/Logstash_Windows_Dashboard-300x171.png)
 

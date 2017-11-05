@@ -40,8 +40,7 @@ sudo nano /opt/iptables_cluster.sh
 ```
 
 Now paste the following code into this file and save it.
-
-<https://gist.github.com/mrlesmithjr/b4d1c4d7df2c9d2c1e20>
+{% gist mrlesmithjr/b4d1c4d7df2c9d2c1e20 %}
 
 Now make the script executable
 
