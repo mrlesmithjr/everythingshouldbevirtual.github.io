@@ -15,7 +15,7 @@ tidied up.
 Below is the code you will need to get started in setting up your
 logstash.conf file.
 
-<https://gist.github.com/mrlesmithjr/8a018d57f79dc4f451e6>
+{% gist mrlesmithjr/8a018d57f79dc4f451e6 %}
 
 And here is a quick dashboard view for now.
 
