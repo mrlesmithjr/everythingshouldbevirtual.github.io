@@ -9,7 +9,6 @@ same and needs some decent parsing. Some pieces of this I have taken
 from other sources online but have been modifying to suit my needs as
 well as adding additional functionality. This will be updated as time
 goes on and will be hosted on GitHub.
-
-<https://gist.github.com/mrlesmithjr/571ff9764a601efdb493>
+{% gist mrlesmithjr/571ff9764a601efdb493 %}
 
 Enjoy!

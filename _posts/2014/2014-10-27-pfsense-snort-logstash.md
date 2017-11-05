@@ -22,7 +22,7 @@ input {
 }
 ```
 
-<https://gist.github.com/mrlesmithjr/0799cdc3710f2ae1e182>
+{% gist mrlesmithjr/0799cdc3710f2ae1e182 %}
 
 Here are some sample Kibana dashboards.
 

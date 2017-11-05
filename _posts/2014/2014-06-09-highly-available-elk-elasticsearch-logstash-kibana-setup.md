@@ -77,7 +77,7 @@ sudo nano /etc/network/interfaces
 ```
 
 Overwrite the contents with the code from below.
-<https://gist.github.com/mrlesmithjr/1a52e824f22ced8e6758>
+{% gist mrlesmithjr/1a52e824f22ced8e6758 %}
 
 **HAProxy-2 (Failover)**
 
@@ -86,7 +86,7 @@ sudo nano /etc/network/interfaces
 ```
 
 Overwrite the contents with the code from below.
-<https://gist.github.com/mrlesmithjr/c8d756fb927af7f0927d>
+{% gist mrlesmithjr/c8d756fb927af7f0927d %}
 
 We need to allow an interface to be brought online that is not part of
 the _/etc/network/interfaces_ configuration so we need to run the
@@ -116,8 +116,7 @@ sudo nano /etc/ha.d/ha.cf
 ```
 
 Copy the following into ha.cf file.
-
-<https://gist.github.com/mrlesmithjr/1e9a5072b668fb5ea839>
+{% gist mrlesmithjr/1e9a5072b668fb5ea839 %}
 
 ```bash
 sudo nano /etc/ha.d/authkeys
@@ -160,8 +159,7 @@ sudo nano /etc/keepalived/keepalived.conf
 
 And copy the contents from below and save the file. Make sure to modify
 the IP addresses to match your environment.
-
-<https://gist.github.com/mrlesmithjr/9b11490f45c602726f81>
+{% gist mrlesmithjr/9b11490f45c602726f81 %}
 
 Now you need to start the _keepalived_ service
 
@@ -188,8 +186,7 @@ sudo nano /etc/haproxy/haproxy.cfg
 ```
 
 Replace all contents in haproxy.cfg with the following code.
-
-<https://gist.github.com/mrlesmithjr/5ee958df9c9ad941ac2d>
+{% gist mrlesmithjr/5ee958df9c9ad941ac2d %}
 
 Now we need to set HAProxy to enabled so it will start.
 
@@ -414,7 +411,7 @@ For _Windows_ (IIS,Eventlog and VMware vCenter logging)
 install [nxlog ](http://nxlog.org/ "http\://nxlog.org/")and use the
 following nxlog.conf file below to replace everything in C:\\Program
 Files (x86)\\nxlog\\conf\\nxlog.conf\
-<https://gist.github.com/mrlesmithjr/cf212836b9ce162373ed>
+{% gist mrlesmithjr/cf212836b9ce162373ed %}
 
 For _VMware vCenter appliance_ do the following from the appliance
 console.
@@ -480,14 +477,27 @@ by clicking the load folder at the top right and go to advanced and
 enter the gist number or url by using the gist url's below (copy and
 paste the <https://url>). Once you load the dashboard make sure to save it
 or it will be gone once you browse away.
-Apache _<https://gist.github.com/mrlesmithjr/32affb2316d38500f7e5>_
-Windows IIS _<https://gist.github.com/mrlesmithjr/4c20dd5ffc79c47474a2>_
-Nginx _<https://gist.github.com/mrlesmithjr/cf8cb356b05765bd764d>_
-PFsense
-Firewall _<https://gist.github.com/mrlesmithjr/f4c9945e04de3211d076>_
-Syslog _<https://gist.github.com/mrlesmithjr/b0c8f9d8495c8dbefba7>_
-VMware _<https://gist.github.com/mrlesmithjr/3f7c937cbefe83dafc60>_
-Windows _<https://gist.github.com/mrlesmithjr/a9847a369c7d92bbac1d>_
+
+`Apache`:
+{% gist mrlesmithjr/32affb2316d38500f7e5 %}
+
+`Windows IIS`:
+{% gist mrlesmithjr/4c20dd5ffc79c47474a2 %}
+
+`Nginx`:
+{% gist mrlesmithjr/cf8cb356b05765bd764d %}
+
+`PFsense Firewall`:
+{% gist mrlesmithjr/f4c9945e04de3211d076 %}
+
+`Syslog`:
+{% gist mrlesmithjr/b0c8f9d8495c8dbefba7 %}
+
+`VMware`:
+{% gist mrlesmithjr/3f7c937cbefe83dafc60 %}
+
+`Windows`:
+{% gist mrlesmithjr/a9847a369c7d92bbac1d %}
 
 To view your Elasticsearch [Elastic HQ](http://www.elastichq.org/ "http\://www.elastichq.org/") plugin
 go [here](http://logstash:9200/_plugin/HQ/ "http\://logstash:9200/\_plugin/HQ/").

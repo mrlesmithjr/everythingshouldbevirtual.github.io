@@ -14,8 +14,7 @@ You will need to add the following to your current logstash.conf file..
 I placed this at the top of my config below all inputs before standard
 syslog parsing to make sure it was processed first, tagged and passed
 the next level of syslog parsing.
-
-<https://gist.github.com/mrlesmithjr/791dc72d3c92ac21342f>
+{% gist mrlesmithjr/791dc72d3c92ac21342f %}
 
 That's it!
 
@@ -25,7 +24,7 @@ Here are some screenshots of what the dashboard looks like.
 
 ![Screen Shot 2014-12-11 at 9.59.05 PM](../../assets/Screen-Shot-2014-12-11-at-9.59.05-PM-300x54.png)
 
-To download the dashboard grab it
-[here](https://gist.github.com/mrlesmithjr/a143d71deca65c9b64e7).
+Below is the dashboard code:
+{% gist mrlesmithjr/a143d71deca65c9b64e7 %}
 
 Enjoy!
