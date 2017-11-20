@@ -1,5 +1,5 @@
 ---
-  title: Ansible - Setting up an Ansible Control
+  title: Ansible - Setting up an Ansible Control Machine
   categories:
     - Automation
   tags:
