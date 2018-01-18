@@ -225,6 +225,8 @@ So follow along as we break down each Ansible task below.
 Below you will find the default defined Ansible variables in use for the following
 tasks:
 
+{% raw %}
+
 ```yaml
 ipset_config_file: /etc/ipset/ipsets
 
@@ -248,6 +250,8 @@ ipset_iptables_dshield_chains:
   - INPUT
   - OUTPUT
 ```
+
+{% endraw %}
 
 #### Downloading DShield Block List
 
