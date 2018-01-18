@@ -225,6 +225,8 @@ So follow along as we break down each Ansible task below.
 Below you will find the default defined Ansible variables in use for the following
 tasks:
 
+{% raw %}
+
 ```yaml
 ipset_config_file: /etc/ipset/ipsets
 
@@ -248,6 +250,8 @@ ipset_iptables_dshield_chains:
   - INPUT
   - OUTPUT
 ```
+
+{% endraw %}
 
 #### Downloading DShield Block List
 
@@ -328,12 +332,16 @@ this case those would be `start`, `end`, `netmask`, and `attacks`.
 Now that our `block.yml` file has been generated. We can now import these variables
 into Ansible to use for further consumption.
 
+{% raw %}
+
 ```yaml
 - name: configure | Importing dshield_block_list Variables
   include_vars:
     file: "{{ ipset_dshield_block_file_yaml }}"
   when: ipset_enable_dshield_block_list
 ```
+
+{% endraw %}
 
 And once we do the above we now have a variable `dshield_block_list` which is
 available for Ansible to iterate over. This variable is defined in our template
