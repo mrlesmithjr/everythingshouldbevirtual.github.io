@@ -3,8 +3,6 @@ title: "#NFD17 - It's A Wrap"
 date: "2018-01-26"
 ---
 
-# #NFD17 - It's A Wrap
-
 I had the great pleasure to once again be a delegate at [Tech Field Day](http://techfieldday.com/)
 this past week in Silicon Valley, CA. This event was [NFD17](http://techfieldday.com/event/nfd17/)
 and had some great presentations once again by the following vendors:
