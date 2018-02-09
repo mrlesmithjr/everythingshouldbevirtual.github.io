@@ -132,12 +132,12 @@ I have this device provisioned via ZTP/iPXE and have the ability to run configur
 management tools against it, I can then further use the same tooling to provision
 out my whole infrastructure.
 
+> NOTE: You might think I have done this before or possibly built something similar! :)
+
 I plan on digging into this platform more and hopefully get my hands on either
 the Vagrant environment or physical gear to further explore it's possibilities.
 Being that it is Linux, I am sure that I can put this platform to good use!
 
-> NOTE: You might think I have done this before or possibly built something similar! :)
->
 > DISCLAIMER: I have been invited to Network Field Day 17 by Gestalt IT who
 > paid for travel, hotel, meals and transportation. I did not receive
 > any compensation to attend NFD and I am under no obligation whatsover
