@@ -42,7 +42,7 @@ These applications resources are shared with internal IOS XR processes.
 
 The diagram below lays out the architecture behind native application hosting.
 
-![Cisco XR Native Application Hosting Architecture](images/2018/02/cisco-xr-native-application-hosting-architecture.png)
+![Cisco XR Native Application Hosting Architecture](../../images/2018/02/cisco-xr-native-application-hosting-architecture.png)
 
 The `global-vrf` network namespace contains all of the native applications. This
 namespace contains the following default routes:
@@ -64,7 +64,7 @@ Plane processes. There are two components within the this space:
 The diagram below lays out the architecture behind the Docker architecture on
 IOS XR.
 
-![Cisco XR Docker Architecture](images/2018/02/cisco-xr-docker-architecture.png)
+![Cisco XR Docker Architecture](../../images/2018/02/cisco-xr-docker-architecture.png)
 
 ### Docker Application Workflow
 
@@ -100,7 +100,7 @@ by user-defined scripts(bash/python) or a configuration file without any manual
 intervention.
 
 The diagram below illustrates the ZTP process:
-![Cisco XR ZTP](images/2018/02/cisco-xr-ztp.png)
+![Cisco XR ZTP](../../images/2018/02/cisco-xr-ztp.png)
 
 You can find more details on IOS XR's ZTP functionality [here](https://xrdocs.github.io/software-management/tutorials/2016-08-26-working-with-ztp/).
 
@@ -115,7 +115,7 @@ IOS XR also supports iPXE which provides the following benefits to the platform:
 -   Chainloading
 
 The diagram below illustrates the iPXE process:
-![Cisco XR iPXE](images/2018/02/cisco-xr-ipxe.png)
+![Cisco XR iPXE](../../images/2018/02/cisco-xr-ipxe.png)
 
 ## Final Thoughts
 
