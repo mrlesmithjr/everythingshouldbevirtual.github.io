@@ -130,7 +130,7 @@ etc. I made a reference to an appliance in the session and what I meant by that 
 using this device as my provisioning device for racks, datacenters, and etc. If
 I have this device provisioned via ZTP/iPXE and have the ability to run configuration
 management tools against it, I can then further use the same tooling to provision
-out my whole infrastructure.
+out my whole infrastructure by leveraging IOS XR as my provisioning **appliance**.
 
 > NOTE: You might think I have done this before or possibly built something similar! :)
 
