@@ -8,7 +8,7 @@ I wanted to have a way to update my `Ansible` inventory from DHCP leases
 handed out by DNSMasq. Turns out it is very easy, therefore I wanted to share
 this.
 
-> NOTE: Assumption is that you have a function DNSMasq server which is configured
+> NOTE: Assumption is that you have a functional DNSMasq server which is configured
 > to allocate IP addresses correctly.
 
 First thing we need to do is create a `Jinja2` template for our inventory:
