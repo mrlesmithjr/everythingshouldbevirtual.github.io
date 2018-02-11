@@ -71,6 +71,13 @@ So now let's attempt to run our Ansible playbook once again.
 
 **SUCCESS!!!!**
 
+If you happen to be a macOS user and use [Homebrew](https://brew.sh/) you might
+want to do the following instead to make cleanup and etc. easier:
+
+```bash
+brew create https://sourceforge.net/projects/sshpass/files/sshpass/1.06/sshpass-1.06.tar.gz --force
+```
+
 Now if you were using a **Linux** host such as **Ubuntu**, this would
 have been as easy as:
 
