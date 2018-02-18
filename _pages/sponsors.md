@@ -7,6 +7,4 @@
 
 > NOTE: Thanks so much to them for being a sponsor!
 
-[![Turbonomic](turbnomic.png)](http://turbonomic.com/free-tool-vhm-fiber-optic/?utm_source=everythingshouldbevirtual&utm_medium=banner-ad&utm_campaign=vhm-fiber-optic&utm_content=250x250)
-
 [![Veeam](veeam.png)](https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjstFpD_ITI2sDXXUf_mgqsA1vv5AUbwra24zmfkair4cIkXeNeKt_rOwdnEB3dEHEoRLgDoQGhAtRrO6oVVERp3AxVHUuJ85SJIQgT3UgAs2gf0MgHhaNik7Mtcv0OBfvZhmcrp3wZgdtEpe3hDcRg&sig=Cg0ArKJSzFgBwkgDGT5R&urlfix=1&adurl=https://go.veeam.com/vmware-certification-vcp6-dcv-study-guide-exam-blueprint.html%3Fst%3Ddoubleclick%26ccode%3Ddcmbloggers)
