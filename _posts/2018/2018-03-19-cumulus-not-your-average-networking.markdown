@@ -73,12 +73,6 @@ I have only touched on a few points in this post that makes Cumulus a compelling
 solution but I can ensure you that they are for real. I highly recommend you give
 them a look and see for yourself just how cool their solution really is.
 
-> NOTE: You might think I have done this before or possibly built something similar! :)
-
-I plan on digging into this platform more and hopefully get my hands on either
-the Vagrant environment or physical gear to further explore it's possibilities.
-Being that it is Linux, I am sure that I can put this platform to good use!
-
 > DISCLAIMER: I have been invited to Network Field Day 17 by Gestalt IT who
 > paid for travel, hotel, meals and transportation. I did not receive
 > any compensation to attend NFD and I am under no obligation whatsover
