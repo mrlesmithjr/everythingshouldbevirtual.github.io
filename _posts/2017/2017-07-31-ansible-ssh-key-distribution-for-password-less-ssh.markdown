@@ -33,7 +33,9 @@ in our playbook which will contain our SSH Public Keys.
 
 `ssh_keys_distribution.yml.j2`:
 
-```raw
+{% raw %}
+
+```yaml
 ---
 _ssh_keys_distribution:
 {% for host in play_hosts %}
@@ -45,6 +47,8 @@ _ssh_keys_distribution:
 {%   endfor %}
 {% endfor %}
 ```
+
+{% endraw %}
 
 [ssh_keys_distribution.yml.j2](https://gist.github.com/mrlesmithjr/afefbc00688e7038dac2bb9a131d1242)
 
@@ -78,8 +82,9 @@ all of our SSH host keys by hostname and IP address to our remote hosts `/etc/ss
 accept the SSH host key when logging in.
 
 `ssh-hosts.j2`:
+{% raw %}
 
-```raw
+```yaml
 {% for item in host_keys_hostname['results'] %}
 {%   for key in item['stdout_lines'] %}
 {{ key }}
@@ -92,13 +97,17 @@ accept the SSH host key when logging in.
 {% endfor %}
 ```
 
+{% endraw %}
+
 [ssh-hosts.j2](https://gist.github.com/mrlesmithjr/10a0ad5ef831ca83e28f9b100e0f8ac6)
 
 And finally we will create the playbook which will handle this distribution for us.
 
 `ssh_key_distribution.yml`:
 
-```raw
+{% raw %}
+
+```yaml
 ---
 - hosts: all
   tasks:
@@ -154,6 +163,8 @@ And finally we will create the playbook which will handle this distribution for 
         - keys
       when: inventory_hostname != item[0]['host']
 ```
+
+{% endraw %}
 
 Now that we have everything in place we are ready to run this playbook against
 all of ours hosts in our inventory. And enjoy the benefits of not having to
