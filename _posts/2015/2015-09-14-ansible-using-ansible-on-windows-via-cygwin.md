@@ -15,6 +15,34 @@ this a shot. After some searching I found bits and pieces around the
 google results and pieced this all together and it works. And hopefully
 someone else will benefit from this.
 
+## New Method (Easy)
+
+> NOTE: Updated on 06/07/2018.
+
+After circling back around to this today, we can now do this much easier now.
+You will need to download [x64(64-Bit)](http://cygwin.com/setup-x86_64.exe)
+somewhere and not run it yet. Once the installer has been donloaded you are
+ready to run the installer package automated with the following (includes all
+dependencies to install Ansible):
+
+```bash
+setup-x86_64.exe -q --packages=binutils,curl,cygwin32-gcc-g++,gcc-g++,git,gmp,libffi-devel,libgmp-devel,make,nano,openssh,openssl-devel,python-crypto,python-paramiko,python2,python2-openssl,python2-pip,python2-setuptools
+```
+
+Once the Cygwin installer completes open the Cygwin desktop shortcut to
+open up the Cygwin BASH prompt.
+
+Now simply run the following:
+
+```bash
+pip2 install ansible
+```
+
+And boom, you now have Ansible easily available for Windows usage. Now continue
+onto [testing](#testing).
+
+## Old Method (Use [New Method](#new-method) instead)
+
 First we need to install Cygwin from the following [x64
 (64-Bit)](http://cygwin.com/setup-x86_64.exe) or [x86
 (32-Bit)](http://cygwin.com/setup-x86.exe).
@@ -41,7 +69,7 @@ open up the Cygwin BASH prompt.
 
 There are two ways we can install the following.
 
-## The first way (more involved).
+### The first way (more involved).
 
 > NOTE: See further down for the easy method.
 
@@ -69,7 +97,7 @@ cd PyYAML-3.10
 python setup.py install
 ```
 
-## The second way (easy)
+### The second way (easy)
 
 ```bash
 easy_install-2.7 pip
@@ -121,6 +149,8 @@ Now exit Cygwin
 ```bash
 exit
 ```
+
+## Testing
 
 And launch our Cygwin desktop shortcut once again to open up our Cygwin
 BASH prompt. You should be able to launch ansible at this point to validate that
