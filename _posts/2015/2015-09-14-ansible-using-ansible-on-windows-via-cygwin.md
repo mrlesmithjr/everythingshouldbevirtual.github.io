@@ -150,6 +150,13 @@ Now exit Cygwin
 exit
 ```
 
+Installing Ansible **_(Easy way)_**
+
+```bash
+easy_install-2.7 pip
+pip install ansible
+```
+
 ## Testing
 
 And launch our Cygwin desktop shortcut once again to open up our Cygwin
@@ -227,13 +234,6 @@ Options:
 ```
 
 BOOM!
-
-Installing Ansible **_(Easy way)_**
-
-```bash
-easy_install-2.7 pip
-pip install ansible
-```
 
 Now let's do a test download of some Ansible Galaxy roles.
 
