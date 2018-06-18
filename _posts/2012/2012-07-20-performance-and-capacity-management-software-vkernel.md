@@ -3,4 +3,4 @@
   date: 2012-07-20 16:43:57
 ---
 
-[Performance and Capacity Management Software - VKernel](http://www.vkernel.com/).
+[Performance and Capacity Management Software - VKernel](http://www.quest.com/).
