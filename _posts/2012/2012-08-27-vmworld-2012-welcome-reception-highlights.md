@@ -17,7 +17,7 @@ concerns around spreading a VLAN across multiple sites. This is huge for
 multi-tennant environments and what I was most interested in was PCI
 security and reporting for PCI audits. Also had some great discussions
 with [Zenoss](http://www.zenoss.com) for monitoring. As well as with
-[Vkernel](http://www.vkernel.com), great things in the future and
+[Vkernel](http://www.quest.com), great things in the future and
 current. I plan on looking into them a lot more and comparing to VCOPS.
 And as far as backup technologies go I highly recommend looking into
 [PHD Virtual](http://www.phdvirtual.com). I plan on doing the same.
