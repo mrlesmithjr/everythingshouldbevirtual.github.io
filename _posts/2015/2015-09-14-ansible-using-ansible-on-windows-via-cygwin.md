@@ -7,6 +7,7 @@
   redirect_from:
     - /ansible-using-ansible-on-windows-via-cygwin
 ---
+# Background
 
 As I continue down the Ansible journey to automate all things it is
 apparent that Windows is a second class citizen in some regards. I had a
@@ -26,13 +27,32 @@ ready to run the installer package automated with the following (includes all
 dependencies to install Ansible):
 
 ```bash
-setup-x86_64.exe -q --packages=binutils,curl,cygwin32-gcc-g++,gcc-g++,git,gmp,libffi-devel,libgmp-devel,make,nano,openssh,openssl-devel,python-crypto,python-paramiko,python2,python2-openssl,python2-pip,python2-setuptools
+setup-x86_64.exe -q --packages=binutils,curl,cygwin32-gcc-g++,gcc-g++,git,gmp,libffi-devel,libgmp-devel,make,nano,openssh,openssl-devel,python-crypto,python-paramiko,python2,python2-devel,python2-openssl,python2-pip,python2-setuptools
 ```
 
 Once the Cygwin installer completes open the Cygwin desktop shortcut to
 open up the Cygwin BASH prompt.
 
 Now simply run the following:
+
+> NOTE: If you also have Python installed within Windows, you may run into issues
+> if you use the incorrect pip to install Ansible. So make sure prior to installing
+> by executing the following:
+>
+> ```bash
+> which pip
+> ...
+> /cygdrive/c/Python27/Scripts/pip
+> ```
+>
+> ```bash
+> which pip2
+> ...
+> /usr/bin/pip2
+> ```
+>
+> So from the above we definitely need to use `pip2` as `pip` is actually coming
+> from Windows itself.
 
 ```bash
 pip2 install ansible
@@ -41,7 +61,7 @@ pip2 install ansible
 And boom, you now have Ansible easily available for Windows usage. Now continue
 onto [testing](#testing).
 
-## Old Method (Use [New Method](#new-method) instead)
+## Old Method (Use [New Method (Easy)](#new-method-easy) instead)
 
 First we need to install Cygwin from the following [x64
 (64-Bit)](http://cygwin.com/setup-x86_64.exe) or [x86
@@ -49,27 +69,27 @@ First we need to install Cygwin from the following [x64
 
 Install the following Cygwin components.
 
--   binutils
--   curl
--   gmp
--   libgmp-devel
--   make
--   python (2.7.x)
--   python-crypto
--   python-openssl
--   python-setuptools
--   git (2.5.x)
--   nano
--   openssh
--   openssl
--   openssl-devel
+- binutils
+- curl
+- gmp
+- libgmp-devel
+- make
+- python (2.7.x)
+- python-crypto
+- python-openssl
+- python-setuptools
+- git (2.5.x)
+- nano
+- openssh
+- openssl
+- openssl-devel
 
 Once the Cygwin installer completes open the Cygwin desktop shortcut to
 open up the Cygwin BASH prompt.
 
 There are two ways we can install the following.
 
-### The first way (more involved).
+### The first way (more involved)
 
 > NOTE: See further down for the easy method.
 
