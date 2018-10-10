@@ -83,10 +83,11 @@ def main():
             host_pnics = capture_host_pnics(host)
             host_vnics = capture_host_vnics(host)
             host_vswitches = capture_host_vswitches(host)
+            host_portgroups = capture_host_portgroups(host)
             host_info.update(
                 {'host': vsphere_host, 'hostname': host.name,
                  'pnics': host_pnics, 'vswitches': host_vswitches,
-                 'vnics': host_vnics})
+                 'portgroups': host_portgroups, 'vnics': host_vnics})
             esxi_hosts.append(host_info)
 
         Disconnect(serviceInstance)
@@ -113,9 +114,9 @@ def capture_host_vnics(host):
         vnic_info = dict()
         vnic_info.update(
             {'device': vnic.device, 'portgroup': vnic.portgroup,
-             'dhcp': vnic.spec.ip.dhcp, 'ip': vnic.spec.ip.ipAddress,
-             'subnet_mask': vnic.spec.ip.subnetMask,
-             'mac_address': vnic.spec.mac, 'mtu': vnic.spec.mtu})
+             'dhcp': vnic.spec.ip.dhcp, 'ipAddress': vnic.spec.ip.ipAddress,
+             'subnetMask': vnic.spec.ip.subnetMask,
+             'mac': vnic.spec.mac, 'mtu': vnic.spec.mtu})
         host_vnics.append(vnic_info)
     return host_vnics
 
@@ -141,6 +142,22 @@ def capture_host_vswitches(host):
     return host_vswitches
 
 
+def capture_host_portgroups(host):
+    host_portgroups = []
+    for portgroup in host.config.network.portgroup:
+        portgroup_info = dict()
+        portgroup_info.update(
+            {'name': portgroup.spec.name, 'vlanId': portgroup.spec.vlanId,
+             'vswitchName': portgroup.spec.vswitchName,
+             'nicTeamingPolicy': portgroup.spec.policy.nicTeaming.policy,
+             'allowPromiscuous': portgroup.spec.policy.security.allowPromiscuous,
+             'macChanges': portgroup.spec.policy.security.macChanges,
+             'forgedTransmits': portgroup.spec.policy.security.forgedTransmits})
+        host_portgroups.append(portgroup_info)
+
+    return host_portgroups
+
+
 if __name__ == "__main__":
     main()
 ```
@@ -154,6 +171,16 @@ So if I run the above I would get something in the likes of:
 ```json
 [
   {
+    "host": "10.0.101.61",
+    "hostname": "localhost.localdomain",
+    "vswitches": [
+      {
+        "pnics": ["vmnic0", "vmnic1"],
+        "portgroups": ["Management Network", "VM Network"],
+        "name": "vSwitch0",
+        "mtu": 1500
+      }
+    ],
     "pnics": [
       {
         "device": "vmnic0",
@@ -186,19 +213,41 @@ So if I run the above I would get something in the likes of:
         "driver": "e1000e"
       }
     ],
-    "host": "10.0.101.61",
-    "hostname": "localhost.localdomain",
     "vnics": [
       {
-        "subnet_mask": "255.255.255.0",
+        "mac": "00:23:7d:33:f0:6e",
         "dhcp": false,
-        "mac_address": "00:23:7d:33:f0:6e",
         "device": "vmk0",
-        "ip": "10.0.101.61",
+        "subnetMask": "255.255.255.0",
         "mtu": 1500,
+        "ipAddress": "10.0.101.61",
         "portgroup": "Management Network"
       }
     ],
+    "portgroups": [
+      {
+        "vswitchName": "vSwitch0",
+        "forgedTransmits": null,
+        "name": "Management Network",
+        "allowPromiscuous": null,
+        "nicTeamingPolicy": "loadbalance_srcid",
+        "macChanges": null,
+        "vlanId": 101
+      },
+      {
+        "vswitchName": "vSwitch0",
+        "forgedTransmits": null,
+        "name": "VM Network",
+        "allowPromiscuous": null,
+        "nicTeamingPolicy": "loadbalance_srcid",
+        "macChanges": null,
+        "vlanId": 0
+      }
+    ]
+  },
+  {
+    "host": "10.0.101.62",
+    "hostname": "localhost.localdomain",
     "vswitches": [
       {
         "pnics": ["vmnic0", "vmnic1"],
@@ -206,9 +255,7 @@ So if I run the above I would get something in the likes of:
         "name": "vSwitch0",
         "mtu": 1500
       }
-    ]
-  },
-  {
+    ],
     "pnics": [
       {
         "device": "vmnic0",
@@ -241,25 +288,35 @@ So if I run the above I would get something in the likes of:
         "driver": "e1000e"
       }
     ],
-    "host": "10.0.101.62",
-    "hostname": "localhost.localdomain",
     "vnics": [
       {
-        "subnet_mask": "255.255.255.0",
+        "mac": "00:23:7d:33:47:f8",
         "dhcp": false,
-        "mac_address": "00:23:7d:33:47:f8",
         "device": "vmk0",
-        "ip": "10.0.101.62",
+        "subnetMask": "255.255.255.0",
         "mtu": 1500,
+        "ipAddress": "10.0.101.62",
         "portgroup": "Management Network"
       }
     ],
-    "vswitches": [
+    "portgroups": [
       {
-        "pnics": ["vmnic0", "vmnic1"],
-        "portgroups": ["Management Network", "VM Network"],
-        "name": "vSwitch0",
-        "mtu": 1500
+        "vswitchName": "vSwitch0",
+        "forgedTransmits": null,
+        "name": "Management Network",
+        "allowPromiscuous": null,
+        "nicTeamingPolicy": "loadbalance_srcid",
+        "macChanges": null,
+        "vlanId": 101
+      },
+      {
+        "vswitchName": "vSwitch0",
+        "forgedTransmits": null,
+        "name": "VM Network",
+        "allowPromiscuous": null,
+        "nicTeamingPolicy": "loadbalance_srcid",
+        "macChanges": null,
+        "vlanId": 0
       }
     ]
   }
