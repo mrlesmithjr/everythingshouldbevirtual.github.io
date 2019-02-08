@@ -148,10 +148,10 @@ network_bridges:
     netmask: 255.255.255.0
     gateway: 192.168.1.1
     parameters:
-     bridge_stp: off
-     bridge_fd: 0
-     ports:
-       - enp0s16
+      bridge_stp: off
+      bridge_fd: 0
+      ports:
+        - enp0s16
 
 network_interfaces:
   enp0s3:
@@ -309,6 +309,18 @@ iface {{ bridge }} inet {{ _bridge['method'] }}
 ```
 
 {% endraw %}
+
+### Playbook
+
+```yaml
+---
+- hosts: node0
+  tasks:
+    - name: Generating /etc/network/interfaces
+      template:
+        src: interfaces.j2
+        dest: /etc/network/interfaces
+```
 
 ### Final Configuration
 
