@@ -24,11 +24,11 @@ needed. They are definitely adding a lot more functionality in this area for sur
 
 The diagram below outlines the IOS-XR Boot Process with iPXE and ZTP:
 
-![IOS-XR Boot Process with iPXE and ZTP](../../Images/2019/01/IOS-XR_Boot_Process_with_iPXE_and_ZTP.png)
+![IOS-XR Boot Process with iPXE and ZTP](../../images/2019/01/IOS-XR_Boot_Process_with_iPXE_and_ZTP.png)
 
 The diagram below outlines the available ZTP functions:
 
-![ZTP Functions](../../Images/2019/01/ztp_functions.png)
+![ZTP Functions](../../images/2019/01/ztp_functions.png)
 
 ### GISO
 
