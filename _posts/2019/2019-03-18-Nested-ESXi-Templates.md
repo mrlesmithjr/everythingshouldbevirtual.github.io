@@ -8,9 +8,9 @@ tags:
 ---
 
 Over the past week I have been working on a streamlined process to deploy
-nested ESXi 6.7 via automation tooling. While going through this I came across
+nested ESXi 6.7 via automation tooling. Going through this I came across
 an issue with all nested ESXi hosts obtaining the same IP address. I had already
-followed the normal processes that are well documented in regards to prepping
+followed the normal processes that are well documented in regard to prepping
 the image before bundling up for use as a template.
 
 The following were the commands that I found as a typical scenario:
@@ -44,7 +44,7 @@ sed -i '/\\/net\\/vmkernelnic\\/child\\[0000\\]\\/mac/d' /etc/vmware/esx.conf
 /sbin/auto-backup.sh
 ```
 
-The issue was that all of the hosts were still coming up with the same MAC
+The issue was that all the hosts were still coming up with the same MAC
 address. So, not sure what was going on here in my scenario, but possibly this
 may save someone else the headache I went through on this.
 
