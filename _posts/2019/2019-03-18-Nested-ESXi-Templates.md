@@ -48,4 +48,9 @@ The issue was that all the hosts were still coming up with the same MAC
 address. So, not sure what was going on here in my scenario, but possibly this
 may save someone else the headache I went through on this.
 
+> UPDATE: 05/13/2019 - Ran into the infamous `datastore1` issue when attempting
+> to join nested ESXi hosts to vCenter. You will experience the issue because
+> all of the templates have the same UUID for `datastore1`. Resolve this by
+> adding `--novmfsondisk` in your `ks.cfg`. Ex. `install --firstdisk --overwritevmfs --novmfsondisk`.
+
 Enjoy!
