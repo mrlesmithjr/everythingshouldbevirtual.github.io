@@ -31,14 +31,14 @@ comments:
     num_posts: # 5 (default)
     colorscheme: # "light" (default), "dark"
 staticman:
-  allowedFields: ['name', 'email', 'url', 'message']
+  allowedFields: ["name", "email", "url", "message"]
   branch: "master"
   commitMessage: "New comment."
   filename: comment-{@timestamp}
   format: "yml"
   moderation: true
   path: "docs/_data/comments/{options.slug}" # "/_data/comments/{options.slug}" (default)
-  requiredFields: ['name', 'email', 'message']
+  requiredFields: ["name", "email", "message"]
   transforms:
     email: "md5"
   generatedFields:
@@ -76,15 +76,14 @@ analytics:
   google:
     tracking_id: "UA-17857029-3"
 
-
 # Site Author
 author:
   name: "Larry Smith Jr."
-  avatar: "/images/2017/11/avatar.png"
+  avatar: "/images/avatar.jpeg"
   bio: >
-       Doing my thang with #automation #DevOps and cloudy things!
-       Providing hopefully valuable content for others to consume easily
-       and also learn from.
+    Doing my thang with #automation #DevOps and cloudy things!
+    Providing hopefully valuable content for others to consume easily
+    and also learn from.
   location: "McDonough, GA"
   email: "mrlesmithjr@gmail.com"
   uri: "https://everythingshouldbevirtual.com"
@@ -111,7 +110,6 @@ author:
   weibo:
   xing:
   youtube: "https://www.youtube.com/channel/UCAGZ7GM92hs20jcwQu_cKvA"
-
 
 # Reading Files
 include:
@@ -149,14 +147,12 @@ keep_files:
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
-
 # Conversion
 markdown: kramdown
 highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
-
 
 # Markdown Processing
 kramdown:
@@ -169,19 +165,16 @@ kramdown:
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
 
-
 # Sass/SCSS
 sass:
   sass_dir: _sass
   style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-
 
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
 
 # Plugins (previously gems:)
 plugins:
@@ -200,7 +193,6 @@ whitelist:
   - jekyll-feed
   - jemoji
   - jekyll-redirect-from
-
 
 # Archives
 #  Type
@@ -230,14 +222,12 @@ tag_archive:
 #     category: /categories/:name/
 #     tag: /tags/:name/
 
-
 # HTML Compression
 # - http://jch.penibelst.de/
 compress_html:
   clippings: all
   ignore:
     envs: development
-
 
 # Defaults
 defaults:
