@@ -20,8 +20,8 @@ The playbook that I had created was importing another playbook using a loop
 (Because Ansible does not support loops of tasks any other way that I know of)
 a defined number of times. As part of the `Block`, I had a conditional which
 evaluated whether or not something was true or false. And based on this
-condition, addtional tasks within the block were to be executed. Well I was
-definitely caught by surprise once I understood what was occuring. And actually,
+condition, additional tasks within the block were to be executed. Well I was
+definitely caught by surprise once I understood what was occurring. And actually,
 it is actually quite interesting to know.
 
 ### Example
