@@ -158,6 +158,14 @@ following:
 - Ansible actually evaluates the conditional which is defined as part of the
   `block` for each and every task inside the `block` itself.
 
+### Updated Example
+
+I wanted to share this with others after I had someone reach out and ask about
+using blocks and conditionals with roles. I felt this was a great question and
+wanted to share the playbook we came up with.
+
+{% gist mrlesmithjr/0bc55ad12743bbdead4cfc89d834a27e %}
+
 ### Conclusion
 
 Hope this is of some use to others in case you ever run into this unexpected
