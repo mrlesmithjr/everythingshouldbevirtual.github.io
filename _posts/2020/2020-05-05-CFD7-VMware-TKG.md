@@ -27,14 +27,14 @@ TKG extends core Kubernetes by using a Custom Resource Definition(CRD). This CRD
 
 `The Cluster API is a Kubernetes project to bring declarative, Kubernetes-style APIs to cluster creation, configuration, and management. It provides optional, additive functionality on top of core Kubernetes.`
 
-![VMware CRD - Cluster API](./2020-05-10-16-44-12.png)
+![VMware CRD - Cluster API](2020-05-10-16-44-12.jpg)
 
 ## Architecture
 
 When it comes to the architecture of TKG, we can see that there is a lot of
 bingo going on here. But hey, it takes a lot to make this work!
 
-![TKG-Architecture](./2020-05-10-16-58-44.png)
+![TKG-Architecture](2020-05-10-16-58-44.jpg)
 
 Core Components:
 
@@ -53,7 +53,7 @@ Additional Components:
 - Crash Diagnostics
 - Provided OVA and AMI Images
 
-![TKG - Component Internals](./2020-05-10-17-04-11.png)
+![TKG - Component Internals](2020-05-10-17-04-11.jpg)
 
 ## Implementations
 
@@ -75,7 +75,7 @@ Creating new TKG clusters is as simple (Not tested) as executing:
 tkg create cluster [name] --plan=production
 ```
 
-![TKG - Standalone](./2020-05-10-22-41-15.png)
+![TKG - Standalone](2020-05-10-22-41-15.jpg)
 
 The following platforms are supported to deploy to:
 
@@ -110,7 +110,7 @@ What is Tanzu Mission Control? Well the following pretty much sums that up:
 
 `Tanzu Mission Control helps organizations to overcome the challenge of managing a fleet of Kubernetes clusters on-premises, in the cloud and from multiple vendors.`
 
-![TKG - Mission Control](./2020-05-10-22-45-15.png)
+![TKG - Mission Control](2020-05-10-22-45-15.jpg)
 
 Tanzu Mission Control was under development by Heptio prior to their aquisition
 by VMware.
