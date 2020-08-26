@@ -2,8 +2,8 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Sponsors"
-    url: /sponsors/
+  # - title: "Sponsors"
+  #   url: /sponsors/
   - title: "Posts"
     url: /year-archive/
   - title: "Categories"
