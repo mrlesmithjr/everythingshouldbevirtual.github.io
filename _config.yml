@@ -98,7 +98,7 @@ author:
     Doing my thang with #automation #DevOps and cloudy things!
     Providing hopefully valuable content for others to consume easily
     and also learn from.
-  location: "McDonough, GA"
+  # location: "McDonough, GA"
   links:
     # - label: "Email"
     #   icon: "fas fa-fw fa-envelope-square"
