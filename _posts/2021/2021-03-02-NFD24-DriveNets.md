@@ -1,6 +1,6 @@
 ---
 title: NFD24 - DriveNets
-date: 03-02-2021 09:00:00
+date: 02-03-2021 09:00:00
 ---
 
 Recently I had the privilege to attend [NFD 24](https://techfieldday.com/event/nfd24/)
