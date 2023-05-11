@@ -1,9 +1,6 @@
 source "https://rubygems.org"
-gemspec
 
-gem "jekyll"
-
-group :jekyll_plugins do
-  gem "jekyll-redirect-from"
-  gem "open_uri_redirections"
-end
+gem "github-pages", group: :jekyll_plugins
+gem "jekyll-include-cache", group: :jekyll_plugins
+gem "jekyll-redirect-from", group: :jekyll_plugins
+gem "open_uri_redirections", group: :jekyll_plugins
