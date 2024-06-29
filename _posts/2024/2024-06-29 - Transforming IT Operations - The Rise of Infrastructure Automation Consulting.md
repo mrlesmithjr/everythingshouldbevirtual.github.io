@@ -1,4 +1,9 @@
-# Transforming IT Operations - The Rise of Infrastructure Automation Consulting
+---
+layout: post
+title: "Transforming IT Operations - The Rise of Infrastructure Automation Consulting"
+date: 2024-06-29
+categories: automation consulting
+---
 
 As IT environments grow in complexity and scale, efficiently managing these intricate systems has become a critical challenge for many businesses. This is where infrastructure automation consulting plays a pivotal role. While I no longer function directly as an automation engineer, I lead automation engineers on various projects, guiding them to implement cutting-edge solutions that streamline and enhance IT operations. After a hiatus of over three years from blogging, I'm excited to share the transformative impact of infrastructure automation consulting and how it can revolutionize IT infrastructure management based on my recent experiences and advancements in the field.
 
