@@ -1,5 +1,5 @@
 ---
-title: Transforming IT Operations: The Rise of Infrastructure Automation Consulting
+title: Transforming IT Operations - The Rise of Infrastructure Automation Consulting
 date: 06-28-2024 09:00:00
 ---
 
