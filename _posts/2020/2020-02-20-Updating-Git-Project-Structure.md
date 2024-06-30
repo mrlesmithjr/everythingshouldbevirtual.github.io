@@ -3,37 +3,51 @@ title: Updating Git Project Structure
 date: 2020-02-20 18:00:00
 ---
 
-As of late, I have been working on putting together a [Cookiecutter](https://cookiecutter.readthedocs.io/) template to use as part of creating new [Ansible](https://ansible.com) roles.
+## Introduction
 
-Some things I have included in [cookiecutter-ansible-role](https://github.com/mrlesmithjr/cookiecutter-ansible-role) template include:
+Creating and maintaining a consistent project structure is crucial for efficient collaboration and automation. In this post, I'll share how I've been using a [Cookiecutter](https://cookiecutter.readthedocs.io/ "https://cookiecutter.readthedocs.io/") template to streamline the creation of new [Ansible](https://ansible.com/ "https://ansible.com/") roles and how I plan to update my existing roles to fit this new structure.
 
-- Ansible role structure
-- CI
-  - GitHub Actions
-  - GitLab CI/CD
-  - Travis
-- Molecule Testing
-- Documentation
-  - Code of Conduct
-  - Contributing
-  - License
-  - Readme
+## Creating the Cookiecutter Template
 
-I have spent a good bit of time implementing some of my best practices, etc.
-which I feel are at least important to me. The ultimate goal is to leverage
-Cookiecutter to easily generate a consistent structure as I create new Ansible
-roles.
+Lately, I have been working on putting together a Cookiecutter template to use when creating new Ansible roles. [This](https://github.com/mrlesmithjr/cookiecutter-ansible-role "https://github.com/mrlesmithjr/cookiecutter-ansible-role") template includes several key features:
 
-Now this sounds great for creating new Ansible roles, but what about all of the
-hundreds of existing roles I have already? How will I get all of my existing
-roles into this same new structure? Well that is what I will be showing here.
-Exactly how I am **CURRENTLY** tackling this.
+- **Ansible Role Structure**
+- **Continuous Integration (CI)**
+    - GitHub Actions
+    - GitLab CI/CD
+    - Travis
+- **Molecule Testing**
+- **Documentation**
+    - Code of Conduct
+    - Contributing Guidelines
+    - License
+    - Readme
 
-## Example
+## Benefits of a Consistent Structure
 
-In this example I will be working with my [ansible-control-machine](https://github.com/mrlesmithjr/ansible-control-machine.git) Ansible role.
+Implementing a consistent structure has several advantages:
 
-First thing I will do is clone the project, but I will be cloning to the `ansible-control-machine.orig` directory:
+- **Ease of Use:** Developers can quickly start new projects with a familiar setup.
+- **Maintainability:** Standardized practices make it easier to maintain and update roles.
+- **Collaboration:** A standard structure improves collaboration among team members.
+
+## Challenges and Solutions
+
+This sounds great for creating new Ansible roles, but what about the hundreds of existing roles I already have? How will I incorporate all of them into this same new structure?
+
+### Migration Strategy
+
+Here are some steps to consider for migrating existing roles:
+
+1. **Assessment:** Evaluate the existing roles to understand the scope of changes needed.
+2. **Automation:** Use automation scripts to apply the new structure to existing roles.
+3. **Testing:** Ensure thorough testing to validate that the migrated roles function correctly.
+
+## Examples and Implementation
+
+In this example, I will be working in my [ansible-control-machine](https://github.com/mrlesmithjr/ansible-control-machine.git "https://github.com/mrlesmithjr/ansible-control-machine.git") Ansible role.
+
+The first thing I will do is clone the project, but I will be cloning to the `ansible-control-machine.orig` directory:
 
 ```bash
 git clone git@github.com:mrlesmithjr/ansible-control-machine.git ansible-control-machine.orig
@@ -69,8 +83,7 @@ drwxr-xr-x  17 larrysmithjr  staff   544 Feb 20 21:25 tests
 drwxr-xr-x   3 larrysmithjr  staff    96 Feb 20 21:25 vars
 ```
 
-Next I will launch `cookiecutter` to use my [cookiecutter-ansible-role](https://github.com/mrlesmithjr/cookiecutter-ansible-role) template to create a brand
-new project called `ansible-control-machine`.
+Next, I will launch `cookiecutter` and use my [cookiecutter-ansible-role](https://github.com/mrlesmithjr/cookiecutter-ansible-role "https://github.com/mrlesmithjr/cookiecutter-ansible-role") template to create a new project called `ansible-control-machine`.
 
 ```bash
 cookiecutter https://github.com/mrlesmithjr/cookiecutter-ansible-role.git
@@ -101,8 +114,7 @@ Select default_ci_badges:
 Choose from 1, 2 [1]:
 ```
 
-Now I should have a new directory called `ansible-control-machine`. So, let's
-see what the new structure looks like:
+Now I should have a new directory called `ansible-control-machine`. So, let's see what the new structure looks like:
 
 ```bash
 ls -la ansible-control-machine
@@ -134,18 +146,17 @@ drwxr-xr-x   3 larrysmithjr  staff    96 Feb 20 21:31 templates
 drwxr-xr-x   3 larrysmithjr  staff    96 Feb 20 21:31 vars
 ```
 
-As you can see, there is quite a lot more in the new structure compared to the
-original.
+As you can see, there is much more in the new structure than in the original.
 
-Now is where the fun really begins :)
+Now is where the fun begins :)
 
-Let's change into the `ansible-control-machine` directory:
+Let's change into the `ansible-control-machine` directory:
 
 ```bash
 cd ansible-control-machine
 ```
 
-Now let's do a quick `git status`:
+Now let's do a quick `git status`:
 
 ```bash
 git status
@@ -153,11 +164,9 @@ git status
 fatal: not a git repository (or any of the parent directories): .git
 ```
 
-Oh no! Where is my repo info? Answer is there isn't any yet in the new structure.
-Now let's see how we can get that back into our new structure.
+Oh no! Where is my repo info? The answer is there has yet to be any in the new structure. Let's see how we can get that back into our new structure.
 
-And we will do that by simply copying the `.git` directory from our original
-project which will bring all of that into our new directory.
+We will do that by simply copying the .git directory from our original project, which will bring all that to our new directory.
 
 ```bash
 cp -Rv ../ansible-control-machine.orig/.git .
@@ -205,8 +214,7 @@ cp -Rv ../ansible-control-machine.orig/.git .
 ../ansible-control-machine.orig/.git/packed-refs -> ./.git/packed-refs
 ```
 
-Once the copy is complete we can do another `git status` to see how things look
-now:
+Once the copy is complete, we can do another `git status` to see how things look now:
 
 ```bash
 git status
@@ -217,80 +225,76 @@ Your branch is up to date with 'origin/master'.
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-	modified:   .travis.yml
-	deleted:    .yamllint.yml
-	modified:   README.md
-	deleted:    Vagrant/.gitignore
-	deleted:    Vagrant/Vagrantfile
-	deleted:    Vagrant/ansible.cfg
-	deleted:    Vagrant/bootstrap.sh
-	deleted:    Vagrant/bootstrap.yml
-	deleted:    Vagrant/cleanup.bat
-	deleted:    Vagrant/cleanup.sh
-	deleted:    Vagrant/hosts
-	deleted:    Vagrant/nodes.yml
-	deleted:    Vagrant/playbook.yml
-	deleted:    Vagrant/prep.sh
-	deleted:    Vagrant/requirements.yml
-	deleted:    Vagrant/roles/ansible-control-machine
-	modified:   defaults/main.yml
-	modified:   meta/main.yml
-	deleted:    setup_travis_tests.sh
-	deleted:    tasks/debian.yml
-	modified:   tasks/main.yml
-	deleted:    tasks/redhat.yml
-	deleted:    tasks/setup.yml
-	deleted:    tests/.ansible-lint
-	deleted:    tests/Dockerfile.centos-7
-	deleted:    tests/Dockerfile.debian-jessie
-	deleted:    tests/Dockerfile.debian-stretch
-	deleted:    tests/Dockerfile.fedora-24
-	deleted:    tests/Dockerfile.fedora-25
-	deleted:    tests/Dockerfile.fedora-26
-	deleted:    tests/Dockerfile.fedora-27
-	deleted:    tests/Dockerfile.fedora-28
-	deleted:    tests/Dockerfile.fedora-29
-	deleted:    tests/Dockerfile.ubuntu-bionic
-	deleted:    tests/Dockerfile.ubuntu-trusty
-	deleted:    tests/Dockerfile.ubuntu-xenial
-	deleted:    tests/inventory
-	deleted:    tests/test.yml
+ modified:   .travis.yml
+ deleted:    .yamllint.yml
+ modified:   README.md
+ deleted:    Vagrant/.gitignore
+ deleted:    Vagrant/Vagrantfile
+ deleted:    Vagrant/ansible.cfg
+ deleted:    Vagrant/bootstrap.sh
+ deleted:    Vagrant/bootstrap.yml
+ deleted:    Vagrant/cleanup.bat
+ deleted:    Vagrant/cleanup.sh
+ deleted:    Vagrant/hosts
+ deleted:    Vagrant/nodes.yml
+ deleted:    Vagrant/playbook.yml
+ deleted:    Vagrant/prep.sh
+ deleted:    Vagrant/requirements.yml
+ deleted:    Vagrant/roles/ansible-control-machine
+ modified:   defaults/main.yml
+ modified:   meta/main.yml
+ deleted:    setup_travis_tests.sh
+ deleted:    tasks/debian.yml
+ modified:   tasks/main.yml
+ deleted:    tasks/redhat.yml
+ deleted:    tasks/setup.yml
+ deleted:    tests/.ansible-lint
+ deleted:    tests/Dockerfile.centos-7
+ deleted:    tests/Dockerfile.debian-jessie
+ deleted:    tests/Dockerfile.debian-stretch
+ deleted:    tests/Dockerfile.fedora-24
+ deleted:    tests/Dockerfile.fedora-25
+ deleted:    tests/Dockerfile.fedora-26
+ deleted:    tests/Dockerfile.fedora-27
+ deleted:    tests/Dockerfile.fedora-28
+ deleted:    tests/Dockerfile.fedora-29
+ deleted:    tests/Dockerfile.ubuntu-bionic
+ deleted:    tests/Dockerfile.ubuntu-trusty
+ deleted:    tests/Dockerfile.ubuntu-xenial
+ deleted:    tests/inventory
+ deleted:    tests/test.yml
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	.github/workflows/default.yml
-	.gitignore
-	.gitlab-ci.yml
-	.yamllint
-	CODE_OF_CONDUCT.md
-	CONTRIBUTING.md
-	CONTRIBUTORS.md
-	LICENSE.md
-	files/.gitkeep
-	molecule/default/Dockerfile.j2
-	molecule/default/INSTALL.rst
-	molecule/default/molecule.yml
-	molecule/shared/converge.yml
-	molecule/shared/tests/test_default.py
-	molecule/vagrant/INSTALL.rst
-	molecule/vagrant/molecule.yml
-	molecule/vagrant/prepare.yml
-	playbook.yml
-	requirements-dev.txt
-	requirements.txt
-	requirements.yml
-	templates/.gitkeep
+ .github/workflows/default.yml
+ .gitignore
+ .gitlab-ci.yml
+ .yamllint
+ CODE_OF_CONDUCT.md
+ CONTRIBUTING.md
+ CONTRIBUTORS.md
+ LICENSE.md
+ files/.gitkeep
+ molecule/default/Dockerfile.j2
+ molecule/default/INSTALL.rst
+ molecule/default/molecule.yml
+ molecule/shared/converge.yml
+ molecule/shared/tests/test_default.py
+ molecule/vagrant/INSTALL.rst
+ molecule/vagrant/molecule.yml
+ molecule/vagrant/prepare.yml
+ playbook.yml
+ requirements-dev.txt
+ requirements.txt
+ requirements.yml
+ templates/.gitkeep
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-Well that looks better but a little bit scary right? Of course not! Now all we
-need to do is decide what we want to keep and what we want to get rid of. But
-before we do that, let's create a new branch so we are not messing with `master`.
-By doing this we are ensuring that we don't mess anything up in `master` in case
-we do something wrong.
+Well, that looks better but scary. Of course not! Now, all we need to do is decide what we want to keep and what we want to get rid of. But before we do that, let's create a new branch so we are not messing with `master`. By doing this, we are ensuring that we don't mess anything up in `master` in case we do something wrong.
 
-So, let's create a new branch called `updating-structure`:
+So, let's create a new branch called `updating-structure`:
 
 ```bash
 git checkout -b updating-structure
@@ -298,49 +302,47 @@ git checkout -b updating-structure
 Switched to a new branch 'updating-structure'
 ```
 
-Now that we are in our `updating-structure` branch we can start by checking out
-anything marked as deleted in which we would like to keep.
+Now that we are in our `updating-structure` branch, we can start by checking out anything marked as deleted that we want to keep.
 
 ```bash
 git status | grep deleted
 ...
-	deleted:    .yamllint.yml
-	deleted:    Vagrant/.gitignore
-	deleted:    Vagrant/Vagrantfile
-	deleted:    Vagrant/ansible.cfg
-	deleted:    Vagrant/bootstrap.sh
-	deleted:    Vagrant/bootstrap.yml
-	deleted:    Vagrant/cleanup.bat
-	deleted:    Vagrant/cleanup.sh
-	deleted:    Vagrant/hosts
-	deleted:    Vagrant/nodes.yml
-	deleted:    Vagrant/playbook.yml
-	deleted:    Vagrant/prep.sh
-	deleted:    Vagrant/requirements.yml
-	deleted:    Vagrant/roles/ansible-control-machine
-	deleted:    setup_travis_tests.sh
-	deleted:    tasks/debian.yml
-	deleted:    tasks/redhat.yml
-	deleted:    tasks/setup.yml
-	deleted:    tests/.ansible-lint
-	deleted:    tests/Dockerfile.centos-7
-	deleted:    tests/Dockerfile.debian-jessie
-	deleted:    tests/Dockerfile.debian-stretch
-	deleted:    tests/Dockerfile.fedora-24
-	deleted:    tests/Dockerfile.fedora-25
-	deleted:    tests/Dockerfile.fedora-26
-	deleted:    tests/Dockerfile.fedora-27
-	deleted:    tests/Dockerfile.fedora-28
-	deleted:    tests/Dockerfile.fedora-29
-	deleted:    tests/Dockerfile.ubuntu-bionic
-	deleted:    tests/Dockerfile.ubuntu-trusty
-	deleted:    tests/Dockerfile.ubuntu-xenial
-	deleted:    tests/inventory
-	deleted:    tests/test.yml
+ deleted:    .yamllint.yml
+ deleted:    Vagrant/.gitignore
+ deleted:    Vagrant/Vagrantfile
+ deleted:    Vagrant/ansible.cfg
+ deleted:    Vagrant/bootstrap.sh
+ deleted:    Vagrant/bootstrap.yml
+ deleted:    Vagrant/cleanup.bat
+ deleted:    Vagrant/cleanup.sh
+ deleted:    Vagrant/hosts
+ deleted:    Vagrant/nodes.yml
+ deleted:    Vagrant/playbook.yml
+ deleted:    Vagrant/prep.sh
+ deleted:    Vagrant/requirements.yml
+ deleted:    Vagrant/roles/ansible-control-machine
+ deleted:    setup_travis_tests.sh
+ deleted:    tasks/debian.yml
+ deleted:    tasks/redhat.yml
+ deleted:    tasks/setup.yml
+ deleted:    tests/.ansible-lint
+ deleted:    tests/Dockerfile.centos-7
+ deleted:    tests/Dockerfile.debian-jessie
+ deleted:    tests/Dockerfile.debian-stretch
+ deleted:    tests/Dockerfile.fedora-24
+ deleted:    tests/Dockerfile.fedora-25
+ deleted:    tests/Dockerfile.fedora-26
+ deleted:    tests/Dockerfile.fedora-27
+ deleted:    tests/Dockerfile.fedora-28
+ deleted:    tests/Dockerfile.fedora-29
+ deleted:    tests/Dockerfile.ubuntu-bionic
+ deleted:    tests/Dockerfile.ubuntu-trusty
+ deleted:    tests/Dockerfile.ubuntu-xenial
+ deleted:    tests/inventory
+ deleted:    tests/test.yml
 ```
 
-Because this is for an Ansible role I know that I want to keep anything in
-`tasks` from the above. So I'll checkout those to keep them.
+Because this is for an Ansible role, I want to keep anything in `tasks` from the above. So I'll `checkout` those to keep them.
 
 ```bash
 git checkout tasks
@@ -348,123 +350,121 @@ git checkout tasks
 Updated 4 paths from the index
 ```
 
-Let's check our `deleted` files once more to make sure we are good:
+Let's check our `deleted` files once more to make sure we are good:
 
 ```bash
 git status | grep deleted
 ...
-	deleted:    .yamllint.yml
-	deleted:    Vagrant/.gitignore
-	deleted:    Vagrant/Vagrantfile
-	deleted:    Vagrant/ansible.cfg
-	deleted:    Vagrant/bootstrap.sh
-	deleted:    Vagrant/bootstrap.yml
-	deleted:    Vagrant/cleanup.bat
-	deleted:    Vagrant/cleanup.sh
-	deleted:    Vagrant/hosts
-	deleted:    Vagrant/nodes.yml
-	deleted:    Vagrant/playbook.yml
-	deleted:    Vagrant/prep.sh
-	deleted:    Vagrant/requirements.yml
-	deleted:    Vagrant/roles/ansible-control-machine
-	deleted:    setup_travis_tests.sh
-	deleted:    tests/.ansible-lint
-	deleted:    tests/Dockerfile.centos-7
-	deleted:    tests/Dockerfile.debian-jessie
-	deleted:    tests/Dockerfile.debian-stretch
-	deleted:    tests/Dockerfile.fedora-24
-	deleted:    tests/Dockerfile.fedora-25
-	deleted:    tests/Dockerfile.fedora-26
-	deleted:    tests/Dockerfile.fedora-27
-	deleted:    tests/Dockerfile.fedora-28
-	deleted:    tests/Dockerfile.fedora-29
-	deleted:    tests/Dockerfile.ubuntu-bionic
-	deleted:    tests/Dockerfile.ubuntu-trusty
-	deleted:    tests/Dockerfile.ubuntu-xenial
-	deleted:    tests/inventory
-	deleted:    tests/test.yml
+ deleted:    .yamllint.yml
+ deleted:    Vagrant/.gitignore
+ deleted:    Vagrant/Vagrantfile
+ deleted:    Vagrant/ansible.cfg
+ deleted:    Vagrant/bootstrap.sh
+ deleted:    Vagrant/bootstrap.yml
+ deleted:    Vagrant/cleanup.bat
+ deleted:    Vagrant/cleanup.sh
+ deleted:    Vagrant/hosts
+ deleted:    Vagrant/nodes.yml
+ deleted:    Vagrant/playbook.yml
+ deleted:    Vagrant/prep.sh
+ deleted:    Vagrant/requirements.yml
+ deleted:    Vagrant/roles/ansible-control-machine
+ deleted:    setup_travis_tests.sh
+ deleted:    tests/.ansible-lint
+ deleted:    tests/Dockerfile.centos-7
+ deleted:    tests/Dockerfile.debian-jessie
+ deleted:    tests/Dockerfile.debian-stretch
+ deleted:    tests/Dockerfile.fedora-24
+ deleted:    tests/Dockerfile.fedora-25
+ deleted:    tests/Dockerfile.fedora-26
+ deleted:    tests/Dockerfile.fedora-27
+ deleted:    tests/Dockerfile.fedora-28
+ deleted:    tests/Dockerfile.fedora-29
+ deleted:    tests/Dockerfile.ubuntu-bionic
+ deleted:    tests/Dockerfile.ubuntu-trusty
+ deleted:    tests/Dockerfile.ubuntu-xenial
+ deleted:    tests/inventory
+ deleted:    tests/test.yml
 ```
 
-Looks good. So, now I will get rid of the `Vagrant` and `tests` directories
-because I know these are for testing and I'll be replacing these with the new
-Molecule tests.
+It looks good. So, now I will get rid of the `Vagrant` and `tests` directories because I know these are for testing, and I'll be replacing them with the new Molecule tests.
 
 ```bash
 git add Vagrant/ tests/
 ```
 
-And another quick `git status` shows:
+And another quick `git status` shows:
 
 ```bash
 On branch updating-structure
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	deleted:    Vagrant/.gitignore
-	deleted:    Vagrant/Vagrantfile
-	deleted:    Vagrant/ansible.cfg
-	deleted:    Vagrant/bootstrap.sh
-	deleted:    Vagrant/bootstrap.yml
-	deleted:    Vagrant/cleanup.bat
-	deleted:    Vagrant/cleanup.sh
-	deleted:    Vagrant/hosts
-	deleted:    Vagrant/nodes.yml
-	deleted:    Vagrant/playbook.yml
-	deleted:    Vagrant/prep.sh
-	deleted:    Vagrant/requirements.yml
-	deleted:    Vagrant/roles/ansible-control-machine
-	deleted:    tests/.ansible-lint
-	deleted:    tests/Dockerfile.centos-7
-	deleted:    tests/Dockerfile.debian-jessie
-	deleted:    tests/Dockerfile.debian-stretch
-	deleted:    tests/Dockerfile.fedora-24
-	deleted:    tests/Dockerfile.fedora-25
-	deleted:    tests/Dockerfile.fedora-26
-	deleted:    tests/Dockerfile.fedora-27
-	deleted:    tests/Dockerfile.fedora-28
-	deleted:    tests/Dockerfile.fedora-29
-	deleted:    tests/Dockerfile.ubuntu-bionic
-	deleted:    tests/Dockerfile.ubuntu-trusty
-	deleted:    tests/Dockerfile.ubuntu-xenial
-	deleted:    tests/inventory
-	deleted:    tests/test.yml
+ deleted:    Vagrant/.gitignore
+ deleted:    Vagrant/Vagrantfile
+ deleted:    Vagrant/ansible.cfg
+ deleted:    Vagrant/bootstrap.sh
+ deleted:    Vagrant/bootstrap.yml
+ deleted:    Vagrant/cleanup.bat
+ deleted:    Vagrant/cleanup.sh
+ deleted:    Vagrant/hosts
+ deleted:    Vagrant/nodes.yml
+ deleted:    Vagrant/playbook.yml
+ deleted:    Vagrant/prep.sh
+ deleted:    Vagrant/requirements.yml
+ deleted:    Vagrant/roles/ansible-control-machine
+ deleted:    tests/.ansible-lint
+ deleted:    tests/Dockerfile.centos-7
+ deleted:    tests/Dockerfile.debian-jessie
+ deleted:    tests/Dockerfile.debian-stretch
+ deleted:    tests/Dockerfile.fedora-24
+ deleted:    tests/Dockerfile.fedora-25
+ deleted:    tests/Dockerfile.fedora-26
+ deleted:    tests/Dockerfile.fedora-27
+ deleted:    tests/Dockerfile.fedora-28
+ deleted:    tests/Dockerfile.fedora-29
+ deleted:    tests/Dockerfile.ubuntu-bionic
+ deleted:    tests/Dockerfile.ubuntu-trusty
+ deleted:    tests/Dockerfile.ubuntu-xenial
+ deleted:    tests/inventory
+ deleted:    tests/test.yml
 
 Changes not staged for commit:
   (use "git add/rm <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
-	modified:   .travis.yml
-	deleted:    .yamllint.yml
-	modified:   README.md
-	modified:   defaults/main.yml
-	modified:   meta/main.yml
-	deleted:    setup_travis_tests.sh
+ modified:   .travis.yml
+ deleted:    .yamllint.yml
+ modified:   README.md
+ modified:   defaults/main.yml
+ modified:   meta/main.yml
+ deleted:    setup_travis_tests.sh
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	.github/workflows/default.yml
-	.gitignore
-	.gitlab-ci.yml
-	.yamllint
-	CODE_OF_CONDUCT.md
-	CONTRIBUTING.md
-	CONTRIBUTORS.md
-	LICENSE.md
-	files/.gitkeep
-	molecule/default/Dockerfile.j2
-	molecule/default/INSTALL.rst
-	molecule/default/molecule.yml
-	molecule/shared/converge.yml
-	molecule/shared/tests/test_default.py
-	molecule/vagrant/INSTALL.rst
-	molecule/vagrant/molecule.yml
-	molecule/vagrant/prepare.yml
-	playbook.yml
-	requirements-dev.txt
-	requirements.txt
-	requirements.yml
-	templates/.gitkeep
+ .github/workflows/default.yml
+ .gitignore
+ .gitlab-ci.yml
+ .yamllint
+ CODE_OF_CONDUCT.md
+ CONTRIBUTING.md
+ CONTRIBUTORS.md
+ LICENSE.md
+ files/.gitkeep
+ molecule/default/Dockerfile.j2
+ molecule/default/INSTALL.rst
+ molecule/default/molecule.yml
+ molecule/shared/converge.yml
+ molecule/shared/tests/test_default.py
+ molecule/vagrant/INSTALL.rst
+ molecule/vagrant/molecule.yml
+ molecule/vagrant/prepare.yml
+ playbook.yml
+ requirements-dev.txt
+ requirements.txt
+ requirements.yml
+ templates/.gitkeep
 ```
 
-I'm happy with this so I'll now commit those changes:
+I'm happy with this, so I'll now commit those changes:
 
 ```bash
 git commit -m "Deleted old tests, etc. not needed"
@@ -501,23 +501,20 @@ git commit -m "Deleted old tests, etc. not needed"
  delete mode 100644 tests/test.yml
 ```
 
-Now I can start reviewing the changes that were made to the files that are marked as `modified`. So, I'll first check to see which files were modified:
+Now, I can start reviewing the changes made to the files marked as `modified`. So, I'll first check to see which files were modified:
 
 ```bash
 git status | grep modified
 ...
-	modified:   .travis.yml
-	modified:   README.md
-	modified:   defaults/main.yml
-	modified:   meta/main.yml
+ modified:   .travis.yml
+ modified:   README.md
+ modified:   defaults/main.yml
+ modified:   meta/main.yml
 ```
 
-As we can see there are only four files which have been modified. So, I'll take
-my time and go through each of those files with whatever editor of my choosing
-to see what to keep and what to discard. I personally use VSCode for this as it
-makes it really easy to discard or keep any modifications.
+As we can see, only four files have been modified. So, I'll take my time and go through each of those files with whatever editor I choose to see what to keep and what to discard. I personally use VSCode for this, as it makes it really easy to discard or keep any modifications.
 
-Once I am done with the modified files I'll go ahead and add/commit those as well.
+Once I am done with the modified files, I'll also add/commit to those.
 
 ```bash
 git status
@@ -525,34 +522,34 @@ git status
 On branch updating-structure
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	modified:   .travis.yml
-	modified:   README.md
-	modified:   meta/main.yml
+ modified:   .travis.yml
+ modified:   README.md
+ modified:   meta/main.yml
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	.github/workflows/default.yml
-	.gitignore
-	.gitlab-ci.yml
-	.yamllint
-	CODE_OF_CONDUCT.md
-	CONTRIBUTING.md
-	CONTRIBUTORS.md
-	LICENSE.md
-	files/.gitkeep
-	molecule/default/Dockerfile.j2
-	molecule/default/INSTALL.rst
-	molecule/default/molecule.yml
-	molecule/shared/converge.yml
-	molecule/shared/tests/test_default.py
-	molecule/vagrant/INSTALL.rst
-	molecule/vagrant/molecule.yml
-	molecule/vagrant/prepare.yml
-	playbook.yml
-	requirements-dev.txt
-	requirements.txt
-	requirements.yml
-	templates/.gitkeep
+ .github/workflows/default.yml
+ .gitignore
+ .gitlab-ci.yml
+ .yamllint
+ CODE_OF_CONDUCT.md
+ CONTRIBUTING.md
+ CONTRIBUTORS.md
+ LICENSE.md
+ files/.gitkeep
+ molecule/default/Dockerfile.j2
+ molecule/default/INSTALL.rst
+ molecule/default/molecule.yml
+ molecule/shared/converge.yml
+ molecule/shared/tests/test_default.py
+ molecule/vagrant/INSTALL.rst
+ molecule/vagrant/molecule.yml
+ molecule/vagrant/prepare.yml
+ playbook.yml
+ requirements-dev.txt
+ requirements.txt
+ requirements.yml
+ templates/.gitkeep
 ```
 
 ```bash
@@ -563,11 +560,9 @@ git commit -m "Updated files, etc. after new structure"
  rewrite README.md (87%)
 ```
 
-Then the final step is to go ahead and add the remaining `untracked files`. As
-these would be new files which are part of my new desired structure and I'll
-want those to be committed as well.
+The final step is to go ahead and add the remaining `untracked files`. As these would be new files that are part of my new desired structure, I'll also want those to be committed.
 
-We can add all `untracked files` by:
+We can add all `untracked files` by:
 
 ```bash
 git add .
@@ -579,31 +574,31 @@ git status
 On branch updating-structure
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	new file:   .github/workflows/default.yml
-	new file:   .gitignore
-	new file:   .gitlab-ci.yml
-	new file:   .yamllint
-	new file:   CODE_OF_CONDUCT.md
-	new file:   CONTRIBUTING.md
-	new file:   CONTRIBUTORS.md
-	new file:   LICENSE.md
-	new file:   files/.gitkeep
-	new file:   molecule/default/Dockerfile.j2
-	new file:   molecule/default/INSTALL.rst
-	new file:   molecule/default/molecule.yml
-	new file:   molecule/shared/converge.yml
-	new file:   molecule/shared/tests/test_default.py
-	new file:   molecule/vagrant/INSTALL.rst
-	new file:   molecule/vagrant/molecule.yml
-	new file:   molecule/vagrant/prepare.yml
-	new file:   playbook.yml
-	new file:   requirements-dev.txt
-	new file:   requirements.txt
-	new file:   requirements.yml
-	new file:   templates/.gitkeep
+ new file:   .github/workflows/default.yml
+ new file:   .gitignore
+ new file:   .gitlab-ci.yml
+ new file:   .yamllint
+ new file:   CODE_OF_CONDUCT.md
+ new file:   CONTRIBUTING.md
+ new file:   CONTRIBUTORS.md
+ new file:   LICENSE.md
+ new file:   files/.gitkeep
+ new file:   molecule/default/Dockerfile.j2
+ new file:   molecule/default/INSTALL.rst
+ new file:   molecule/default/molecule.yml
+ new file:   molecule/shared/converge.yml
+ new file:   molecule/shared/tests/test_default.py
+ new file:   molecule/vagrant/INSTALL.rst
+ new file:   molecule/vagrant/molecule.yml
+ new file:   molecule/vagrant/prepare.yml
+ new file:   playbook.yml
+ new file:   requirements-dev.txt
+ new file:   requirements.txt
+ new file:   requirements.yml
+ new file:   templates/.gitkeep
 ```
 
-Now we can commit these as well:
+Now, we can commit these as well:
 
 ```bash
 git commit -m "New files, etc. from new structure"
@@ -634,17 +629,15 @@ git commit -m "New files, etc. from new structure"
  create mode 100644 templates/.gitkeep
 ```
 
-Now I am all done with updating my project with a new desired structure in place
-without losing anything other than what I hopefully intended. So, you can now
-push those changes up to the `updating-structure` branch.
+Now, I am updating my project with a new desired structure without losing anything other than what I intended. So, you can now push those changes up to the `updating-structure` branch.
 
-Let's ensure our `git remote` is still in place before doing so:
+Let's ensure our `git remote` is still in place before doing so:
 
 ```bash
 git remote -v
 ...
-origin	git@github.com:mrlesmithjr/ansible-control-machine.git (fetch)
-origin	git@github.com:mrlesmithjr/ansible-control-machine.git (push)
+origin git@github.com:mrlesmithjr/ansible-control-machine.git (fetch)
+origin git@github.com:mrlesmithjr/ansible-control-machine.git (push)
 ```
 
 Awesome! So we are good to go and can now push them up.
@@ -667,23 +660,12 @@ To github.com:mrlesmithjr/ansible-control-machine.git
  * [new branch]      updating-structure -> updating-structure
 ```
 
-Once that is completed you can then start testing and resolving any issues that
-you may find from any CI tests if enabled. In my case I have pushed to GitHub
-and I have a GitHub Actions workflow that should kick off. Remember, this is
-something I included in the Cookiecutter template.
+Once that is completed, you can start testing and resolving any issues you may find from any CI tests if enabled. In my case, I have pushed to GitHub, and I have a GitHub Actions workflow that should kick off. Remember, this is something I included in the Cookiecutter template.
 
-And finally, once you are happy with where your new `updating-structure` branch
-is. You can then create a Pull Request to get the changes merged into your
-`master` branch. I want to stress once again that we have not touched our
-`master` branch at all so it still has the original structure until the Pull
-Request is merged.
+Finally, once you are happy with the state of your new updating-structure branch, you can create a Pull Request to merge the changes into your master branch. I want to stress once again that we have not touched our master branch at all, so it will remain with its original structure until the Pull Request is merged.
 
 ## Conclusion
 
-Overall, this is not too bad of an excercise to get the new structure in place.
-But initially it can be quite daunting as you may be worried about causing
-issues. But if you follow these steps, you should be just fine! So, there you
-have it. I'd love to hear from others on how they go about these types of
-scenarios and your experiences. So feel free to leave feedback.
+This is an excellent exercise to get the new structure in place. However, initially, it can be daunting, as you may be worried about causing issues. But if you follow these steps, you should be just fine! So, there you have it. I'd love to hear from others on how they go about these types of scenarios and your experiences, so feel free to leave feedback.
 
 Enjoy!
