@@ -16,11 +16,11 @@ remote_theme: mmistakes/minimal-mistakes@4.24.0
 
 # Site Settings
 locale: "en_US"
-title: "EverythingShouldBeVirtual"
+title: "EverythingShouldBeVirtual part of Methodical Cloud"
 title_separator: "-"
 subtitle: # site tagline that appears below site title in masthead
 name: "Larry Smith Jr."
-description: "World of Virtual Things, Cloudy Things, Automation and some DevOPS."
+description: "Exploring and sharing insights on virtualization, cloud technologies, automation, and DevOps. Methodical Cloud is focused on providing content-driven resources such as podcasts, blogs, and educational materials."
 url: "https://everythingshouldbevirtual.com" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl: "" # the subpath of your site, e.g. "/blog"
 repository: "mrlesmithjr/everythingshouldbevirtual.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -72,6 +72,8 @@ social:
     - "https://github.com/mrlesmithjr"
     - "https://twitter.com/mrlesmithjr"
     - "https://www.linkedin.com/in/mrlesmithjr/"
+    - label: "Methodical Cloud Podcast"
+      url: "https://methodicalcloud.com/podcast"
 
 # Analytics
 analytics:
@@ -85,10 +87,8 @@ author:
   name: "Larry Smith Jr."
   avatar: "/images/avatar.jpeg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio: >
-    Doing my thang with #automation #DevOps and cloudy things!
-    Providing hopefully valuable content for others to consume easily
-    and also learn from.
-  # location: "McDonough, GA"
+    Exploring and sharing practical insights on virtualization, cloud technologies, automation, and DevOps.
+    My mission is to empower others to build, automate, and innovate with confidence.
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -106,12 +106,8 @@ author:
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/mrlesmithjr"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/mrlesmithjr"
+    - label: "Methodical Cloud"
+      url: "https://methodicalcloud.com"
 
 # Reading Files
 include:
