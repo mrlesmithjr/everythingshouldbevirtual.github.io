@@ -3,6 +3,10 @@ title: Sponsors
 permalink: /sponsors/
 ---
 
-## Below you will find sponsors of this site
+## Welcome Our Sponsors
 
-> NOTE: Thanks so much to them for being a sponsor!
+We are grateful for the support of our current and future sponsors. Your contribution helps us keep this site running and enables us to provide valuable content to our community.
+
+> A special thank you to those who support us — we couldn't do it without you!
+
+If you're interested in becoming a sponsor and partnering with us, feel free to [contact us](#).
