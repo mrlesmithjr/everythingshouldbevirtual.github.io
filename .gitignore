@@ -1,3 +1,6 @@
+# macOS
+.DS_Store
+
 # Vim
 *~
 *.sw[p_]
@@ -6,10 +9,11 @@
 *.sublime-project
 *.sublime-workspace
 
-# Ruby Gem
+# Ruby
 *.gem
-.bundle
+.bundle/
 Gemfile.lock
+vendor/
 **/vendor/bundle
 
 # Node.js and NPM
@@ -18,12 +22,12 @@ npm-debug.log*
 package-lock.json
 codekit-config.json
 
-# macOS
-.DS_Store
-
 # Jekyll generated files
 .jekyll-cache
 .jekyll-metadata
 .sass-cache
 _asset_bundler_cache
 _site
+
+# Local environment files (optional)
+.env
