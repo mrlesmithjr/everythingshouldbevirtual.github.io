@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "We've Moved: Welcome to Methodical Cloud"
 date: 2025-04-28
 categories: update
